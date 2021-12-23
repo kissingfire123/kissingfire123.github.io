@@ -1,0 +1,4 @@
+[submodule "ananke"]
+	path = hugo-blog-server/themes/ananke 
+	url = https://github.com/kissingfire123/gohugo-theme-ananke.git
+	branch =  master
