@@ -2,5 +2,5 @@ baseURL = 'https://kissingfire123.github.io'
 languageCode = 'en-us'
 title = 'LWY Blog Site'
 theme = "ananke"
-publishDir="../publish"
+publishDir="../docs"
 
