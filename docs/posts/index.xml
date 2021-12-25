@@ -8,12 +8,12 @@
     <language>zh</language>
     <lastBuildDate>Thu, 23 Dec 2021 16:29:59 +0800</lastBuildDate><atom:link href="https://kissingfire123.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>https://kissingfire123.github.io/posts/my-first-post/</link>
+      <title>10个Linux容易被遗忘但好用的指令</title>
+      <link>https://kissingfire123.github.io/posts/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E8%A2%AB%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Thu, 23 Dec 2021 16:29:59 +0800</pubDate>
       
-      <guid>https://kissingfire123.github.io/posts/my-first-post/</guid>
-      <description>My-first-post:from lwy  a b c  </description>
+      <guid>https://kissingfire123.github.io/posts/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E8%A2%AB%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4/</guid>
+      <description>1) pgrep ​ pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。 $ pgrep -u username_xx ​ 这个命令相当于： ##</description>
     </item>
     
   </channel>
