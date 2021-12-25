@@ -2,3 +2,6 @@
 	path = hugo-blog-server/themes/ananke 
 	url = https://github.com/kissingfire123/gohugo-theme-ananke.git
 	branch =  master
+[submodule "hugo-blog-server/themes/cleanwhite"]
+	path = hugo-blog-server/themes/cleanwhite
+	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite.git

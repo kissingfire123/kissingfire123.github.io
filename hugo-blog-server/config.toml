@@ -1,6 +1,6 @@
 baseURL = 'https://kissingfire123.github.io'
-languageCode = 'en-us'
-title = 'LWY Blog Site'
-theme = "ananke"
+languageCode = 'zh'
+title = 'BenjaminLee的Blog'
+theme = "cleanwhite"
 publishDir="../docs"
 
