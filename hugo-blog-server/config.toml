@@ -1,6 +1,6 @@
 baseURL = 'https://kissingfire123.github.io'
 languageCode = 'zh'
-title = 'BenjaminLee的Blog'
+title = 'Liwenyao的Blog'
 theme = "cleanwhite"
 publishDir="../docs"
 
@@ -78,7 +78,7 @@ home = ["HTML", "RSS", "Algolia"]
   stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
   github         = "https://github.com/kissingfire123"
-  wechat         = "img/lwy_wechat.png"
+  #wechat         = "img/lwy_wechat.jpg"
 #  medium         = "full profile url in medium"
   #pinterest     = "full profile url in pinterest"
   #reddit        = "full profile url in reddit"
