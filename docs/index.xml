@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>MetalGuide(1)指令组织和执行模型</title>
+      <link>https://kissingfire123.github.io/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/</guid>
+      <description>一 基本概念认知 ​ Metal 是一个和 OpenGL ES 类似的面向底层的图形编程接口，通过使用相关的API 可以直接操作 GPU。不过不同的是，Metal不具有跨平台特性</description>
+    </item>
+    
+    <item>
       <title>归档</title>
       <link>https://kissingfire123.github.io/top/archive/</link>
       <pubDate>Sat, 25 Dec 2021 23:01:39 +0800</pubDate>
