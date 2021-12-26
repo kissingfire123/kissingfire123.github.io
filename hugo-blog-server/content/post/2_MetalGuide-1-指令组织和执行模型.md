@@ -2,7 +2,7 @@
 title:       "MetalGuide(1)指令组织和执行模型"
 subtitle:    ""
 description: "MetalGuide系列第一部分"
-date:        2021-12-26
+date:        2021-12-18
 author:      "liwenyao"
 image:       "img/metal-plane.png"
 tags:        ["Metal","图形渲染"]

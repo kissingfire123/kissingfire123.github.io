@@ -2,11 +2,11 @@
 title:       "10个容易遗忘但好用的Linux命令"
 subtitle:    ""
 description: ""
-date:        2021-12-26
+date:        2021-12-18
 author:      "liwenyao"
-image:       ""
-tags:        ["系统应用", "linux"]
-categories:  ["系统应用" ]
+image:       "img/tools.jpeg"
+tags:        ["shell脚本", "linux"]
+categories:  ["工具" ]
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title:       "MetalGuide(3)着色器程序与库"
 subtitle:    ""
-description: "MetalGuide系列第二部分"
+description: "MetalGuide系列第三部分"
 date:        2021-12-26
 author:      "liwenyao"
 image:       "img/metal-plane.png"
