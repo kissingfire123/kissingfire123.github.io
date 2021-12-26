@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="10个容易遗忘但好用的Linux命令" />
-    <meta property="og:title" content="10个容易遗忘但好用的Linux命令" />
-    <meta property="twitter:title" content="10个容易遗忘但好用的Linux命令" />
+    <meta name="title" content="MetalGuide(2)资源与对象" />
+    <meta property="og:title" content="MetalGuide(2)资源与对象" />
+    <meta property="twitter:title" content="MetalGuide(2)资源与对象" />
     
 
     
-    <meta name="description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。">
-    <meta property="og:description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。" />
-    <meta property="twitter:description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。" />
+    <meta name="description" content="MetalGuide系列第二部分">
+    <meta property="og:description" content="MetalGuide系列第二部分" />
+    <meta property="twitter:description" content="MetalGuide系列第二部分" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Wenyao, Benjamin-Lee, Benjamin-Lee, Wenyao的网络日志, Wenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C&#43;&#43;,图形渲染,OpenGL,Metal">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>10个容易遗忘但好用的Linux命令-Wenyao的博客 | Benjamin-Lee Blog</title>
+    <title>MetalGuide(2)资源与对象-Wenyao的博客 | Benjamin-Lee Blog</title>
 
-    <link rel="canonical" href="/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">
+    <link rel="canonical" href="/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -155,7 +155,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/wallhaven-%e5%a4%aa%e7%a9%ba_header.png')
+        background-image: url('/img/metal-plane.png')
     }
 </style>
 
@@ -167,16 +167,16 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8" title="系统应用">
-                            系统应用
+                        <a class="tag" href="/tags/metal" title="Metal">
+                            Metal
                         </a>
                         
-                        <a class="tag" href="/tags/linux" title="linux">
-                            linux
+                        <a class="tag" href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93" title="图形渲染">
+                            图形渲染
                         </a>
                         
                     </div>
-                    <h1>10个容易遗忘但好用的Linux命令</h1>
+                    <h1>MetalGuide(2)资源与对象</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -211,78 +211,114 @@
                 post-container">
 
                 
-                <h3 id="1---pgrep">1)   pgrep</h3>
-<p>​	pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pgrep -u  username_xx
-</code></pre></div><p>​	这个命令相当于：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">##效果待定,awk命令不熟悉(逃</span>
-ps -ef | egrep <span style="color:#f1fa8c">&#39;^username_xx&#39;</span> | awk <span style="color:#f1fa8c">&#39;{print $2}&#39;</span>   
-</code></pre></div><h3 id="2pstree">2）pstree</h3>
-<p>​	这个命令可以用树形的方式列出进程。</p>
-<h3 id="3bc">3）bc</h3>
-<p>​	这个命令主要是做一个精度比较高的数学运算的。比如开平方根等。下面是一个我们利用bc命令写的一个脚本（文件名：square.sh）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">#!/bin/bash
-</span><span style="color:#ff79c6"></span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#8be9fd;font-style:italic">$#</span> <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">]</span>
-<span style="color:#ff79c6">then</span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;Usage: sqrt number&#39;</span>    
-	<span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">1</span>
-<span style="color:#ff79c6">else</span>    
-	<span style="color:#8be9fd;font-style:italic">echo</span> -e <span style="color:#f1fa8c">&#34;sqrt(</span><span style="color:#8be9fd;font-style:italic">$1</span><span style="color:#f1fa8c">)\nquit\n&#34;</span> | bc -q -i
-<span style="color:#ff79c6">fi</span>
-<span style="color:#6272a4">#运行方式：./squar.sh   或者 ./square.sh  10.00</span>
-</code></pre></div><h3 id="4split">4）split</h3>
-<p>​	把一个很大的文件分割成一些小的文件，注意，split执行后源文件仍然在的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#例如把上文的square.sh分割成多个文件,先查看大小，发现是124字节</span>
-ls -al 
-<span style="color:#6272a4">#sqx_为前缀，会得到3个文件:sqx_aa,sqx_ab,sqx_ac</span>
-split  -b   <span style="color:#bd93f9">50</span>  square.sh   sqx_  
-<span style="color:#6272a4">#把文件重新合并，使用cat命令即可</span>
-cat  sqx_*  &gt; square.sh.new
-</code></pre></div><h3 id="5nl">5）nl</h3>
-<p>​	nl命令其它和cat命令很像，只不过它会打上行号。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#不加后续的head命令也可以</span>
-liwenyao@ubuntu:~$ nl square.sh | head -n <span style="color:#bd93f9">5</span>
-     1	<span style="color:#6272a4">#!/bin/bash</span>
-     2	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#8be9fd;font-style:italic">$#</span> <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">]</span>
-     3	<span style="color:#ff79c6">then</span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;Usage: sqrt number&#39;</span>    
-     4		<span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">1</span>
-     5	<span style="color:#ff79c6">else</span> 
-</code></pre></div><h3 id="6mkfifo">6）mkfifo</h3>
-<p>​	mkfifo的作用是创建一个有名管道，平时使用的较多的是无名管道，例如“ls | grep txt”.</p>
-<p>​	有名管道创建后可以像文件一样存在文件夹中，像是一个缓存区。</p>
-<p>​	使用举例如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#在终端窗口1执行如下命令，ls没有输出内容</span>
-mkfifo  pipex
-ls  &gt;  pipex
-
-<span style="color:#6272a4">#打开终端窗口2执行如下命，会看到 ls 命令输出的内容</span>
-cat  &lt;   pipex 
-</code></pre></div><p><strong>拓展：常用的管道命令有</strong>==&gt;</p>
+                <h2 id="三-资源对象buffers和textures">三 资源对象[Buffers和Textures]</h2>
+<p>​	<strong>MTLBuffer</strong>它表示一块非格式化的内存可以存放任何类型的数据。它通常用于存放顶点数据、着色程序和计算状态数据。</p>
+<p>​	<strong>MTLTexture</strong>，它表示一块有格式的图像数据，有特定的纹理类型和像素格式。它通常被用作顶点着色程序、片元着色程序、或是并行计算函数的纹理源，它也可以存放图形渲染的结果输出。通常<code>MTLTexture</code>结构为这几种：1维、2维、或3维的图像，或是1维、2维的图像数组，或是拥有6个2维图像的立方体。</p>
+<p>​	<strong>MTLSamplerState</strong>，虽然采样器不是资源，但它总是用于纹理对象的查找计算。</p>
+<h3 id="31-buffer对象">3.1 Buffer对象</h3>
+<h4 id="311创建buffer对象">3.1.1创建Buffer对象</h4>
+<p>​	一个<code>MTLBuffer</code>对象表示了一个可以装载任何类型数据的内存片段。</p>
+<p>​	下面的<code>MTLDevice</code>方法可以用于创建并返回类型MTLBuffer对象:</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+	Protocol((MTLDevice))--支持创建---withLength(newBufferWithLength:options)-.功能.-det0(新分配内存并创建一个MTLBuffer对象)
+  Protocol--支持创建---withBytes(newBufferWithBytes:length:options)-.功能.-det1(从已有的cpu存储copy数据到新分配到内存中)
+  Protocol--支持创建---withBytesNocopy(newBufferWithBytesNoCopy:length:options:deallocator)-.功能.-det2(创建MTLBuffer对象,不分配新内存而是使用一个已存在的内存)
+</code></pre><h4 id="312-buffer的对象方法">3.1.2 Buffer的对象方法</h4>
+<p>​	Buffer缓存对象有2种方法：</p>
 <ul>
-<li>cut、grep、sort、wc、uniq</li>
-<li>tee：重定向，既能在屏幕输出，又能保存到文件中</li>
-<li>tr、col、join、paste、expand、split</li>
+<li><code>contents</code>: 返回缓存对象对应内存的CPU地址;</li>
+<li><code>newTextureWithDescriptor</code>:offset:bytesPerRow: 创建某种特定类型的纹理。</li>
 </ul>
-<h3 id="7ldd">7）ldd</h3>
-<p>​	这个命令可以知道你的一个可执行文件所使用了动态链接库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">###假设有个文件calc.so,命令后接文件名即可，具体参数选项可参照命令help内容</span>
-ldd calc.so
-</code></pre></div><h3 id="8col">8）col</h3>
-<p>​	Linux col命令用于过滤控制字符。</p>
-<p>​	在许多UNIX说明文件里，都有RLF控制字符。当我们运用shell特殊字符&quot;&gt;&ldquo;和&rdquo;&raquo;&quot;，把说明文件的内容输出成纯文本文件时，控制字符会变成乱码，col指令则能有效滤除这些控制字符。</p>
-<p>​	下面以 man 命令帮助文档为例，讲解col 命令的使用。</p>
-<p>​	将man 命令的帮助文档保存为man_help，使用-b 参数过滤所有控制字符。在终端中使用如下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#man命令用法，man + linux命令</span>
-man man | col -b &gt; man_help 
-</code></pre></div><h3 id="9xmlwf">9）xmlwf</h3>
-<p>​	这个命令可以让你检查一下一个XML文档是否是所有的tag都是正常的。</p>
-<h3 id="10lsof">10）lsof</h3>
-<p>​	这个命令可以列出打开了的文件。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>root@RHELSVR5 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># lsof | grep TCP</span>
-httpd       <span style="color:#bd93f9">548</span>    apache    4u     IPv6   <span style="color:#bd93f9">14300967</span>    TCP *:http <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-httpd       <span style="color:#bd93f9">548</span>    apache    6u     IPv6   <span style="color:#bd93f9">14300972</span>    TCP *:https <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-httpd       <span style="color:#bd93f9">561</span>    apache    4u     IPv6   <span style="color:#bd93f9">14300967</span>    TCP *:http <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-httpd       <span style="color:#bd93f9">561</span>    apache    6u     IPv6   <span style="color:#bd93f9">14300972</span>    TCP *:https <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-</code></pre></div>
+<h3 id="32-texture对象">3.2 Texture对象</h3>
+<h4 id="321-创建texture对象">3.2.1 创建Texture对象</h4>
+<p>​	下列的方法用于创建并返回一个<code>MTLTexture</code>对象：</p>
+<ul>
+<li>
+<p><code>newTextureWithDescriptor</code> ：新分配内存并创建一个<code>MTLTexture</code>对象，创建时需要传入的MTLTextureDescriptor参数描述了纹理的属性； ⚠️它隶属于<strong>MTLDevice</strong>方法；</p>
+</li>
+<li>
+<p><code>newTextureViewWithPixelFormat</code> ： 该方法创建出来的 <code>MTLTexture</code>新对象和调用源对象共享存储，并重新解释了源纹理对象对应内存的图像格式；调用入参的MTLPixelFormat参数类型必须兼容源纹理对象的图像格式；⚠️它隶属于<strong>MTLTexture</strong>方法;</p>
+</li>
+<li>
+<p><code>newTextureWithDescriptor</code>:offset:bytesPerRow ：创建一个MTLTexture对 象，共享调用源对象的内存，作为它自己的图像数据；⚠️它隶属于<strong>MTLBuffer</strong>方法。</p>
+</li>
+</ul>
+<h4 id="322-纹理描述符texture-descriptors">3.2.2 纹理描述符(Texture Descriptors)</h4>
+<p>​	MTLTextureDescriptor描述用于创建一个MTLTexture对象的各属性。包括图形尺寸(宽，高，深)，像素格式，组合模式(数组或是立方体)还有mipmaps的数量。这些属性都只用在MTLTexture对象的创建过程中。当纹理对象创建完毕，descritor中的值后续再改变也不会影响纹理之前由它创建的对象。指定纹理的维度与组合模式(数组或立方)</p>
+<p>​	Texture Descriptor内容组成以及含义如下图：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">	graph LR
+	MTLTextureDes((MTLTextureDescriptor))---type(textureType)---det0[指定纹理的维度与组合模式:array或cube]
+	MTLTextureDes---type1(width, height, depth)---det1[指定了基层mipmap纹理在各个维度的尺寸]
+	MTLTextureDes---size(pixelFormat)---det2[指定了一个纹理中的每个像素如何存储]
+	MTLTextureDes---type3(arrayLength)---det3[对于MTLTextureType1DArray或MTLTextureType2DArray类型的纹理对象,指定数组中的元素的数量]
+	MTLTextureDes---type4(mipmapLevelCount)---det4[指定mipmap类型纹理的层数]
+	MTLTextureDes---type5(sampleCount)---det5[指定每个像素的样本数]
+	MTLTextureDes---type6(resourceOptions)---det6[指定内存分配的行为方式]
+</code></pre><h4 id="323-创建纹理描述符">3.2.3 创建纹理描述符</h4>
+<p>​	对一个2D纹理或是立方纹理来说，下面的快捷方法可以创建<code>MTLTextureDescriptor</code>对象并且自动设置多个值：</p>
+<ul>
+<li>
+<p><code>texture2DDescriptorWithPixelFormat</code>:width:height:mipmapped: 创建一个描述2D纹理的MTLTextureDescriptor对象，入参width和height定义2D纹理的尺寸， descriptor的type属性自动设置为<code>MTLTextureType2D</code>，属性depth和属性arrayLength自动设置为1；</p>
+</li>
+<li>
+<p><code>textureCubeDescriptorWithPixelFormat</code>:size:mipmapped:  创建一个描述立方纹理的MTLTextureDescriptor对象, 入参size被设置给width和height， type属性自动设置为<code>MTLTextureTypeCube</code>，属性depth和属性arrayLength自动设置为1 。</p>
+<p>上面两个快捷方法都接受一个入参pixelFormat，它定义了纹理的像素格式。这两个方法都接受一个入参mipmapped(值为YES/NO)，它指定纹理是否支持mipmap ；</p>
+</li>
+</ul>
+<h4 id="324-纹理分片slice">3.2.4 纹理分片(slice)</h4>
+<p>​	纹理分片是一个单独纹理数据(可能是1维、 2维或是3维)以及所有和它关联的mipmap。 具有以下特点：</p>
+<ul>
+<li>其基层的mipmap尺寸由MTLTextureDescriptor对象的width , height , depth属性设定；</li>
+<li>mipmap的第 i 层的尺寸是基层的1/2<!-- raw HTML omitted --><strong>i</strong><!-- raw HTML omitted --> ;</li>
+<li><strong>立方cube</strong>(6个2维分片)和<strong>数组array</strong>(每个数组元素对应1个分片)类型的纹理可以有多个分片；一个单独纹理数据(可能是1维、 2维或是3维)只能有1个分片；</li>
+</ul>
+<h4 id="325-copy图像数据进出纹理对象">3.2.5 Copy图像数据进出纹理对象</h4>
+<p>​	以<strong>同步</strong>阻塞式拷贝图像数据进出纹理对象的内存，可以使用如下方法：</p>
+<ul>
+<li><code>replaceRegion</code>:mipmapLevel:slice:withBytes:bytesPerRow:bytesPerImage:  <strong>从</strong>withBytes参数表示的资源对象中<strong>拷贝</strong>指定区域的像素数据<strong>到</strong>一个指定的纹理切片的指定内存区域；</li>
+<li><code>replaceRegion</code>:mipmapLevel:withBytes:bytesPerRow:  和前一个方法类似，只是slice和bytesPerImage设置为0;</li>
+<li><code>getBytes</code>:bytesPerRow:bytesPerImage:fromRegion:mipmapLevel:slice:  获取指定切片的指定区域的像素数据  ;</li>
+<li><code>getBytes</code>:bytesPerRow:fromRegion:mipmapLevel:  和前一个方法类似，只是slice和bytesPerImage设置为0;</li>
+</ul>
+<h4 id="326-纹理mtltexture的像素格式">3.2.6 纹理MTLTexture的像素格式</h4>
+<p>​     MTLTexture对象的MTLPixelFormat属性指定颜色、深度或是模板缓存数据中每一个像素如何组织。有3种像素格式：<strong>原生格式</strong>(ordinary),<strong>紧密填充格式</strong>(packed)和**压缩格式(**compressed):</p>
+<ul>
+<li>
+<p><strong>原生格式</strong> ：只有8、16或是32位颜色值，每个分量以升序内存地址排列，第一个分量处于最低的内存地址处 ；例如<code>MTLPixelFormatRGBA8Unorm</code>是一个32位格式颜色值 ，RGBA都各自占8bit;</p>
+</li>
+<li>
+<p><strong>紧密填充格式</strong> ：把多个颜色分量结合起来从最低位LSB到最高位MSB存放在一个16位或是32位的值中 ；例如 <code>MTLPixelFormatRGB10A2Uint</code>是一个32位的填充格式色值,RGB都各自占8bit, A占2bit；</p>
+</li>
+<li>
+<p><strong>压缩格式</strong> ：用于排列像素块的，每个块的布局被设定为这种像素格式；只能被用于2D、 2D数组或是立方类型的纹理;</p>
+</li>
+<li>
+<p>其他格式：<code>MTLPixelFormatGBGR422</code>和<code>MTLPixelFormatBGRG422</code>是两种特殊的像素格式，用于存储<strong>YUV颜色</strong>空间的像素数据，只支持不含mipmap且width为偶数的2D类型的纹理。</p>
+<p>还有几种支持<strong>sRGB</strong>颜色空间的格式，比如<code>MTLPixelFormatRGBA8Unorm_sRGB</code>和
+<code>MTLPixelFormatETC2_RGB8_sRGB</code> ，<strong>sRGB颜色</strong>空间和<strong>线性颜色</strong>空间可以相互转换。</p>
+</li>
+</ul>
+<h4 id="327-采样器状态sampler-states与纹理">3.2.7 采样器状态(Sampler States)与纹理</h4>
+<p>​	<code>MTLSamplerState</code>对象(采样器状态)包含了用于<em>纹理查找</em> 的属性。</p>
+<p>​    MTLSamplerState定义了寻址、过滤还有其他属性，用于一个图形着⾊色程序或是并行计算着色程序对一个MTLTexture对象实施采样操作。创建一个采样器state对象的步骤如下图：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">	graph TB
+	createDes(创建一个MTLSamplerDescriptor对象定义属性)
+	SetDes[设置descriptor的属性: 过滤操作,寻址模式,最大的异向性,LOD参数等]
+	createSamplerState[调用MTLDevice的newSamplerStateWithDescriptor创建MTLSamplerState]
+	
+	createDes--&gt;SetDes--&gt;createSamplerState
+</code></pre><p>​    ⚠️注意：descriptor的属性值仅在创建MTLSamplerState对象时生效，state对象创建完成后，改变descriptor的属性值不会影响已经创建的state对象。</p>
+<h3 id="33-在cpu内存和gpu内存间保持一致性">3.3 在CPU内存和GPU内存间保持一致性</h3>
+<p>​	CPU和GPU都可以访问同一个<code>MTLResource</code>类型的对象管理的存储数据。但是GPU和CPU的操作是异步进行的，为保持一致性，注意该事项：</p>
+<p>​	当MTLDevice对象执行一个MTLCommandBuffer对象时，它只有在command buffer被提交之前才能观察到由CPU引起的Command-Buffer内存变化，一旦被提交即状态为MTLCommandBufferStatusCommitted ，MTLDevice对象就观察不到这些资源的变化情况了。</p>
+<blockquote>
+<p>参考链接:</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html">Apple-Metal-Programming-Guide</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/MTLBestPracticesGuide/index.html">Metal&rsquo;s Best Practice</a></li>
+</ul>
+
 
                 
 
@@ -290,10 +326,15 @@ httpd       <span style="color:#bd93f9">561</span>    apache    6u     IPv6   <s
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-toggle="tooltip" data-placement="top" title="MetalGuide(1)指令组织和执行模型">&larr;
+                        <a href="/post/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/" data-toggle="tooltip" data-placement="top" title="MetalGuide(3)着色器程序与库">&larr;
                             Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-toggle="tooltip" data-placement="top" title="MetalGuide(1)指令组织和执行模型">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
                 

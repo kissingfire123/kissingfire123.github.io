@@ -213,7 +213,7 @@
                 
                 <h2 id="一-基本概念认知">一 基本概念认知</h2>
 <p>​	<code>Metal</code> 是一个和 <code>OpenGL ES</code> 类似的面向底层的图形编程接口，通过使用相关的API 可以直接操作 GPU。不过不同的是，<code>Metal</code>不具有跨平台特性，只针对苹果的平台系统使用，并且编程开发语言为<code>Objective - C</code>或<code>Swift</code>。</p>
-<p>​	<code>Metal</code>框架支持GPU加速的3D图形渲染和并⾏数据计算，它提供了⼀系列的API用于在<strong>细粒度</strong>和<strong>低层次</strong>上组织、处理、提交图形渲染指令、并⾏计算指令，并管理和这些指令相关联的数据和资源。使用<code>Metal</code>的⼀个主要⽬标是减少GPU执⾏这些计算的开销。</p>
+<p>​	<code>Metal</code>框架支持GPU加速的3D图形渲染和并⾏数据计算，它提供了一系列的API用于在<strong>细粒度</strong>和<strong>低层次</strong>上组织、处理、提交图形渲染指令、并⾏计算指令，并管理和这些指令相关联的数据和资源。使用<code>Metal</code>的一个主要⽬标是减少GPU执⾏这些计算的开销。</p>
 <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
 	concept[ Metal基本认知] --- idea1[一组高效接口]-.作用.-&gt;idea1_detail(管理,提交,执行图形渲染和并行计算操作)
 	concept --- idea2[内存和资源管理机制]-.作用.-&gt;idea2_detail(描述buffer和texture对象)
@@ -221,24 +221,24 @@
 	concept --- idea4[Metal 着色语言]-.作用.-&gt;idea4_detail(支持与app代码一同编译,或runtime编译)
 </code></pre><hr>
 <h2 id="二-指令组织和执行模型">二 指令组织和执行模型</h2>
-<p>​	<strong>⼀个command queue包含了⼀系列command buffers</strong>。command queue用于组织它拥有的各个command buffer按序执行。⼀个command buffers包含多个被编码的指令，这些指令将在⼀个特定的设备上执⾏。⼀个Encoder可以将绘制、计算、位图传输指令推入⼀个command buffer，最后这些command buffer将被提交到设备执⾏。</p>
+<p>​	<strong>一个command queue包含了一系列command buffers</strong>。command queue用于组织它拥有的各个command buffer按序执行。一个command buffers包含多个被编码的指令，这些指令将在一个特定的设备上执⾏。一个Encoder可以将绘制、计算、位图传输指令推入一个command buffer，最后这些command buffer将被提交到设备执⾏。</p>
 <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
 	protocol((相关协议)) === proc1[MTLCommandQueue]-.作用.-proc1_det(提供创建command buffer对象的方法)
 	protocol=== proc2[MTLCommandBuffer]-.作用.-proc2_det(提供了创建Encoder,command buffers排队执行,状态检查等方法)
 	proc2--支持该类型Encoder--- inter3[MTLRenderCommandEncoder]-.作用.-inter3_det(为单个Render Pass编码图形渲染指令)
 	proc2--支持该类型Encoder--- inter4[MTLComputeCommandEncoder]-.作用.-inter4_det(编码并行数据计算任务)
 	proc2--支持该类型Encoder--- inter5[MTLBlitCommandEncoder]-.作用.-inter5_det(支持在缓存和纹理之间简单的拷贝操作)
-</code></pre><p>​	任⼀时刻，只会有一个Encoder是处于激活状态的，它可以向⼀个command buffer提交指令。前⼀个Encoder结束后，另⼀个Encoder才可以被创建并用于同⼀个command buffer。</p>
+</code></pre><p>​	任一时刻，只会有一个Encoder是处于激活状态的，它可以向一个command buffer提交指令。前一个Encoder结束后，另一个Encoder才可以被创建并用于同一个command buffer。</p>
 <p>​	最终，他们的逻辑模型类似于下图：</p>
 <p>
   <img src="https://s2.loli.net/2021/12/26/CdjGoZP6WtTul4I.png" alt="命令架构">
 
 </p>
 <h3 id="21-何为设备">2.1 何为设备</h3>
-<p>​	⼀个<strong>MTLDevice</strong>对象代表⼀个可以执行指令的GPU，该协议包含创建新的command queue的方法、从内存申请缓存的方法、创建纹理对象的方法以及查询设备功能的方法。调用<strong>MTLCreateSystemDefaultDevice</strong>方法获取系统首选的设备对象。</p>
+<p>​	一个<strong>MTLDevice</strong>对象代表一个可以执行指令的GPU，该协议包含创建新的command queue的方法、从内存申请缓存的方法、创建纹理对象的方法以及查询设备功能的方法。调用<strong>MTLCreateSystemDefaultDevice</strong>方法获取系统首选的设备对象。</p>
 <h3 id="22-暂态非暂态non-transient对象">2.2 暂态/非暂态(Non-Transient)对象</h3>
 <p>​	故名思义，两者是按照对象的<strong>生命周期</strong>来区分的。</p>
-<p>在Metal中有些对象被设计成暂态，使用它们⾮常轻量。另外⼀些则要昂贵许多，因此它们应该拥有长的⽣命周期。</p>
+<p>在Metal中有些对象被设计成暂态，使用它们⾮常轻量。另外一些则要昂贵许多，因此它们应该拥有长的生命周期。</p>
 <pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TB
     subgraph Non-Transient[非暂态对象]
     queue(Command Queues)-.特点.-NonTransient_det[在性能相关的代码里应该尽量重用,避免反复创建]
@@ -263,17 +263,17 @@
 </li>
 <li>
 <p><code>newCommandQueueWithMaxCommandBufferCount</code></p>
-<p>⚠️：Command Queue是非暂态对象，是具有长⽣命周期的，不要反复地创建和销毁这种对象。</p>
+<p>⚠️：Command Queue是非暂态对象，是具有长生命周期的，不要反复地创建和销毁这种对象。</p>
 </li>
 </ul>
 <h3 id="24-指令缓存command-buffer">2.4 指令缓存(Command Buffer)</h3>
 <h4 id="241-command-buffer的特点">2.4.1 Command Buffer的特点</h4>
-<p>​	一个command buffer在被GPU执行之前会存储多个被编码的指令。⼀个command buffer可以包含多种类型的编码。</p>
+<p>​	一个command buffer在被GPU执行之前会存储多个被编码的指令。一个command buffer可以包含多种类型的编码。</p>
 <p>​	Command Buffer具有以下特点：</p>
 <ol>
 <li>一帧渲染即使含有多个RenderPass或多个计算处理程序、多个位图操作，都可以被编码到同一个Command Buffer中；</li>
 <li>它是<strong>暂态对象</strong>，不支持重用；一旦被提交等待执行，即进入队列；</li>
-<li>它还代表了app中独⽴的可被追踪的任务单元。</li>
+<li>它还代表了app中独立的可被追踪的任务单元。</li>
 </ol>
 <h4 id="242-创建command-buffer">2.4.2 创建Command Buffer</h4>
 <p>​	如何创建Command Buffer对象，以下的2个方法都是可行的:</p>
@@ -284,7 +284,7 @@
 <h4 id="243-执行指令">2.4.3 执行指令</h4>
 <p>​	MTLCommandBuffer协议使用如下的方法来设定其在指令队列中的执⾏顺序：</p>
 <ul>
-<li><code>enqueue</code>：为⼀个command buffer在command queue中预定⼀个位置，但是不会提交这个command buffer。当这个command buffer最终被提交时，指令队列把它安排在对应的<code>enqueue</code>顺序队列中执行。</li>
+<li><code>enqueue</code>：为一个command buffer在command queue中预定一个位置，但是不会提交这个command buffer。当这个command buffer最终被提交时，指令队列把它安排在对应的<code>enqueue</code>顺序队列中执行。</li>
 <li><code>commit</code>：使得command buffer尽可能快地被执⾏，但还是得等到所有在command queue中的早前排入队列的 其他command buffer被执行完成后才能执⾏。如果commad queue中没有排在前面的command buffer，该方法隐式执⾏<code>enqueue</code>操作。</li>
 </ul>
 <h4 id="244-注册处理程序块register-handler-blocks">2.4.4 注册处理程序块(Register Handler Blocks)</h4>
@@ -297,22 +297,22 @@
 <p><code>waitUntilScheduled</code> :  调用后就开始等待，return时机为所有command buffer被“排定好”而且<code>addScheduledHandler</code>方法注册的处理程序块都执行完毕。</p>
 </li>
 <li>
-<p><code>addCompletedHandler</code> : 注册的处理程序块将在command buffer被执⾏完毕后立即调用；⼀个command buffer对象可以注册多个这样的处理程序块。</p>
+<p><code>addCompletedHandler</code> : 注册的处理程序块将在command buffer被执⾏完毕后立即调用；一个command buffer对象可以注册多个这样的处理程序块。</p>
 </li>
 <li>
 <p><code>waitUntilCompleted</code> :  调用后就开始等待，return时机为所有command buffer都执行完而且<code>addCompletedHandler</code>注册的处理程序块都执行完毕。</p>
 </li>
 <li>
-<p><code>presentDrawable</code> :  较为便捷，它用于当command buffer处于“排定好”时呈现⼀个可显示资源 (CAMetalDrawable类型对象)的内容。</p>
+<p><code>presentDrawable</code> :  较为便捷，它用于当command buffer处于“排定好”时呈现一个可显示资源 (CAMetalDrawable类型对象)的内容。</p>
 </li>
 </ul>
 <p>执行完毕后，需要关注以下2种Command Buffer的<strong>属性</strong>：</p>
 <ul>
 <li>
-<p><strong>status</strong>: 只读属性，包含了⼀个<code>MTLCommandBufferStatus</code>类型的枚举值，它反映了command buffer在其⽣命周期中处于哪个阶段。</p>
+<p><strong>status</strong>: 只读属性，包含了一个<code>MTLCommandBufferStatus</code>类型的枚举值，它反映了command buffer在其生命周期中处于哪个阶段。</p>
 </li>
 <li>
-<p><strong>error</strong>：如果command buffer成功执⾏，值为nil。如果有异常发⽣，值为“Command Buffer Error Codes”类型。且status属性被设 置为MTLCommandBufferStatusError。</p>
+<p><strong>error</strong>：如果command buffer成功执⾏，值为nil。如果有异常发生，值为“Command Buffer Error Codes”类型。且status属性被设 置为MTLCommandBufferStatusError。</p>
 </li>
 </ul>
 <h3 id="25-指令编码command-encoder">2.5 指令编码(Command Encoder)</h3>
@@ -320,33 +320,33 @@
 <p>​		Command Encoder用来编码渲染和计算指令，然后被推入到一个command buffer并最终在GPU上执行。它具有以下特点：</p>
 <ul>
 <li>它有多个<code>对象方法</code>可以往Command Buffer里追加指令；</li>
-<li>当⼀个Encoder是激活状态时，就可以调用<code>endEncoding</code>方法向它所属的command buffer推送指令；</li>
-<li>推送完成后要写入更多的指令，就创建⼀个新的 Encoder。</li>
+<li>当一个Encoder是激活状态时，就可以调用<code>endEncoding</code>方法向它所属的command buffer推送指令；</li>
+<li>推送完成后要写入更多的指令，就创建一个新的 Encoder。</li>
 </ul>
 <h4 id="252-创建command-encoder">2.5.2 创建Command Encoder</h4>
 <p>​	MTLCommandBuffer协议中的若干方法都可以创建Command Encoder对象，这些对象可以向对应的command buffer推送指令。具体地，以下的4个方法都是可行的:</p>
 <ul>
 <li>
-<p><code>renderCommandEncoderWithDescriptor</code> ：创建⼀个MTLRenderCommandEncoder类型的Encoder实现图形渲染，图形绘制用到的attachment附件由那个MTLRenderPassDescriptor类型的入参对象指定；</p>
+<p><code>renderCommandEncoderWithDescriptor</code> ：创建一个MTLRenderCommandEncoder类型的Encoder实现图形渲染，图形绘制用到的attachment附件由那个MTLRenderPassDescriptor类型的入参对象指定；</p>
 </li>
 <li>
-<p><code>computeCommandEncoder</code> ：创建⼀个MTLComputeCommandEncoder类型的Encoder来实现并行数据计算；</p>
+<p><code>computeCommandEncoder</code> ：创建一个MTLComputeCommandEncoder类型的Encoder来实现并行数据计算；</p>
 </li>
 <li>
-<p><code>blitCommandEncoder</code> ：创建⼀个MTLBlitCommandEncoder类型的Encoder来实现内存操作；</p>
+<p><code>blitCommandEncoder</code> ：创建一个MTLBlitCommandEncoder类型的Encoder来实现内存操作；</p>
 </li>
 <li>
-<p><code>parallelRenderCommandEncoderWithDescriptor</code> ：创建⼀个MTLParallelRenderCommandEncoder类型的Encoder，它用于支持多个MTLRenderCommandEncoder类型的⼦Encoder同时在<strong>不同的线程</strong>中运⾏，依然把所有绘制结果写入同一个attachment中，该attachment由MTLRenderPassDescriptor类型的入参指定。</p>
+<p><code>parallelRenderCommandEncoderWithDescriptor</code> ：创建一个MTLParallelRenderCommandEncoder类型的Encoder，它用于支持多个MTLRenderCommandEncoder类型的⼦Encoder同时在<strong>不同的线程</strong>中运⾏，依然把所有绘制结果写入同一个attachment中，该attachment由MTLRenderPassDescriptor类型的入参指定。</p>
 </li>
 </ul>
 <h4 id="253-多种用途的command-encoder">2.5.3 多种用途的Command Encoder</h4>
 <p>​		<strong><!-- raw HTML omitted --><em>a. 用于渲染的Command Encoder</em><!-- raw HTML omitted --></strong></p>
-<p>​			图形渲染可以被描述为⼀系列的Render Pass，⼀个<code>MTLRenderCommandEncoder</code>对象表示和⼀个Render Pass相关联的渲染状态和渲染命令。这个Encoder对象需要⼀个相关联的MTLRenderPassDescriptor对象，在这个descriptor对象中包含颜⾊、深度、模板等依赖信息。</p>
+<p>​			图形渲染可以被描述为一系列的Render Pass，一个<code>MTLRenderCommandEncoder</code>对象表示和一个Render Pass相关联的渲染状态和渲染命令。这个Encoder对象需要一个相关联的MTLRenderPassDescriptor对象，在这个descriptor对象中包含颜⾊、深度、模板等依赖信息。</p>
 <p>​			<code>MTLRenderCommandEncoder</code>拥有各类方法可以完成以下事项：</p>
 <p>​			设定图形资源，比如缓存和纹理对象，这些对象包含着顶点⽚元和纹理数据；</p>
 <p>​			设定固定图形渲染管线状态，包括视口，三角形填充模式，裁剪矩形，深度测试和模板测试等等。</p>
 <p>​		<!-- raw HTML omitted --><em><strong>b. 用于并行计算的Command Encoder</strong></em><!-- raw HTML omitted --></p>
-<p>​			使用<code>MTLCommandBuffer</code>的<code>computeCommandEncoder</code>方法可以创建⼀个并行计算用的Command Encoder。</p>
+<p>​			使用<code>MTLCommandBuffer</code>的<code>computeCommandEncoder</code>方法可以创建一个并行计算用的Command Encoder。</p>
 <p>​			对于并⾏数据计算，<code>MTLComputeCommandEncoder</code>协议提供了方法来编码计算指令，以此设定计算程序和参数，调度计算程序执⾏。</p>
 <p>​		<strong><!-- raw HTML omitted --><em>c. 用于位图操作的Command Encoder</em><!-- raw HTML omitted --></strong></p>
 <p>​			使用<code>MTLCommandBuffer</code>协议的<code>blitCommandEncoder</code>方法可以创建一个<code>MTLBlitCommandEncoder</code>。</p>
@@ -354,21 +354,33 @@
 <p>​			该协议还提供了用一种颜⾊填充纹理的方法，以及创建mipmap的方法。</p>
 <p>​</p>
 <h3 id="26-多线程与command-buffer-以及command-encoder">2.6 多线程与Command Buffer 以及Command Encoder</h3>
-<p>​	很多的应用程序只是用<strong>一个线程</strong>来编码绘制指令到⼀个command buffer来绘制⼀帧画面。在每帧绘制的末尾， 提交commad buffer，如此可以排定和开始指令的执行。</p>
-<p>​	如果希望并行地让command buffer执⾏指令编码，那么可以同时创建多个command buffer，使用多个线程，每个线程单独为⼀个command buffer编码指令。</p>
+<p>​	很多的应用程序只是用<strong>一个线程</strong>来编码绘制指令到一个command buffer来绘制一帧画面。在每帧绘制的末尾， 提交commad buffer，如此可以排定和开始指令的执行。</p>
+<p>​	如果希望并行地让command buffer执⾏指令编码，那么可以同时创建多个command buffer，使用多个线程，每个线程单独为一个command buffer编码指令。</p>
 <p>​	如果事先知道command buffer应该以什么顺序执⾏，那么 MTLCommandBuffer的enqueue方法可以在command queue中声明执⾏行顺序，⽽不必等待执⾏编码和提交操作。否则只能等到command buffer被提交，这时在command queue中它就被指定了一个位置，顺序位于之前提交的 command buffer后面。</p>
-<p>​	任⼀时刻只有⼀个GPU线程在访问command buffer，多线程的应用可以为每个command buffer准备⼀个线程，如此实现并⾏创建多个command buffer。</p>
-<p>​	下图示例了⼀个3线程应用，每个线程都操作一个command buffer，每个线程中，任一时刻只有一个Encoder在访问它对应的command buffer。当你完成了编码，调用Encoder的<code>endEncoding</code>方法，然后一个新的Encoder才可以为command buffer编码指令。</p>
+<p>​	任一时刻只有一个GPU线程在访问command buffer，多线程的应用可以为每个command buffer准备一个线程，如此实现并⾏创建多个command buffer。</p>
+<p>​	下图示例了一个3线程应用，每个线程都操作一个command buffer，每个线程中，任一时刻只有一个Encoder在访问它对应的command buffer。当你完成了编码，调用Encoder的<code>endEncoding</code>方法，然后一个新的Encoder才可以为command buffer编码指令。</p>
 <p>
   <img src="https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Art/Cmd-Model-threads_2x.png" alt="MultiThread Command Buffer.jpg">
 
 </p>
+<blockquote>
+<p>参考链接:</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html">Apple-Metal-Programming-Guide</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/MTLBestPracticesGuide/index.html">Metal&rsquo;s Best Practice</a></li>
+</ul>
 
 
                 
 
                 <hr>
                 <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-toggle="tooltip" data-placement="top" title="MetalGuide(2)资源与对象">&larr;
+                            Previous Post</a>
+                    </li>
                     
                     
                     <li class="next">
@@ -415,7 +427,15 @@
                         
                         
                         
+                        <a href="/tags/metal" title="metal">
+                            metal
+                        </a>
                         
+                        
+                        
+                        <a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93" title="图形渲染">
+                            图形渲染
+                        </a>
                         
                         
                         

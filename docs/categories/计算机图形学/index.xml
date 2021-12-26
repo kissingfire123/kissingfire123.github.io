@@ -16,5 +16,23 @@
       <description>一 基本概念认知 ​ Metal 是一个和 OpenGL ES 类似的面向底层的图形编程接口，通过使用相关的API 可以直接操作 GPU。不过不同的是，Metal不具有跨平台特性</description>
     </item>
     
+    <item>
+      <title>MetalGuide(2)资源与对象</title>
+      <link>https://kissingfire123.github.io/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid>
+      <description>三 资源对象[Buffers和Textures] ​ MTLBuffer它表示一块非格式化的内存可以存放任何类型的数据。它通常用于存放顶点数据、着</description>
+    </item>
+    
+    <item>
+      <title>MetalGuide(3)着色器程序与库</title>
+      <link>https://kissingfire123.github.io/post/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/post/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</guid>
+      <description>4.1 如何创建Metal库(MTLLibrary) Case A. 从已编译的代码中创建Library 为了提升性能，可以利用xcode工具在app的创建过程中</description>
+    </item>
+    
   </channel>
 </rss>

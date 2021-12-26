@@ -15,15 +15,15 @@
     
 
     
-    <meta name="title" content="10个容易遗忘但好用的Linux命令" />
-    <meta property="og:title" content="10个容易遗忘但好用的Linux命令" />
-    <meta property="twitter:title" content="10个容易遗忘但好用的Linux命令" />
+    <meta name="title" content="MetalGuide(3)着色器程序与库" />
+    <meta property="og:title" content="MetalGuide(3)着色器程序与库" />
+    <meta property="twitter:title" content="MetalGuide(3)着色器程序与库" />
     
 
     
-    <meta name="description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。">
-    <meta property="og:description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。" />
-    <meta property="twitter:description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。" />
+    <meta name="description" content="MetalGuide系列第二部分">
+    <meta property="og:description" content="MetalGuide系列第二部分" />
+    <meta property="twitter:description" content="MetalGuide系列第二部分" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="Wenyao, Benjamin-Lee, Benjamin-Lee, Wenyao的网络日志, Wenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C&#43;&#43;,图形渲染,OpenGL,Metal">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>10个容易遗忘但好用的Linux命令-Wenyao的博客 | Benjamin-Lee Blog</title>
+    <title>MetalGuide(3)着色器程序与库-Wenyao的博客 | Benjamin-Lee Blog</title>
 
-    <link rel="canonical" href="/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">
+    <link rel="canonical" href="/post/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 
@@ -155,7 +155,7 @@
 
 <style type="text/css">
     header.intro-header {
-        background-image: url('/img/wallhaven-%e5%a4%aa%e7%a9%ba_header.png')
+        background-image: url('/img/metal-plane.png')
     }
 </style>
 
@@ -167,16 +167,16 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8" title="系统应用">
-                            系统应用
+                        <a class="tag" href="/tags/metal" title="Metal">
+                            Metal
                         </a>
                         
-                        <a class="tag" href="/tags/linux" title="linux">
-                            linux
+                        <a class="tag" href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93" title="图形渲染">
+                            图形渲染
                         </a>
                         
                     </div>
-                    <h1>10个容易遗忘但好用的Linux命令</h1>
+                    <h1>MetalGuide(3)着色器程序与库</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         
@@ -211,89 +211,94 @@
                 post-container">
 
                 
-                <h3 id="1---pgrep">1)   pgrep</h3>
-<p>​	pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ pgrep -u  username_xx
-</code></pre></div><p>​	这个命令相当于：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">##效果待定,awk命令不熟悉(逃</span>
-ps -ef | egrep <span style="color:#f1fa8c">&#39;^username_xx&#39;</span> | awk <span style="color:#f1fa8c">&#39;{print $2}&#39;</span>   
-</code></pre></div><h3 id="2pstree">2）pstree</h3>
-<p>​	这个命令可以用树形的方式列出进程。</p>
-<h3 id="3bc">3）bc</h3>
-<p>​	这个命令主要是做一个精度比较高的数学运算的。比如开平方根等。下面是一个我们利用bc命令写的一个脚本（文件名：square.sh）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">#!/bin/bash
-</span><span style="color:#ff79c6"></span><span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#8be9fd;font-style:italic">$#</span> <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">]</span>
-<span style="color:#ff79c6">then</span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;Usage: sqrt number&#39;</span>    
-	<span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">1</span>
-<span style="color:#ff79c6">else</span>    
-	<span style="color:#8be9fd;font-style:italic">echo</span> -e <span style="color:#f1fa8c">&#34;sqrt(</span><span style="color:#8be9fd;font-style:italic">$1</span><span style="color:#f1fa8c">)\nquit\n&#34;</span> | bc -q -i
-<span style="color:#ff79c6">fi</span>
-<span style="color:#6272a4">#运行方式：./squar.sh   或者 ./square.sh  10.00</span>
-</code></pre></div><h3 id="4split">4）split</h3>
-<p>​	把一个很大的文件分割成一些小的文件，注意，split执行后源文件仍然在的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#例如把上文的square.sh分割成多个文件,先查看大小，发现是124字节</span>
-ls -al 
-<span style="color:#6272a4">#sqx_为前缀，会得到3个文件:sqx_aa,sqx_ab,sqx_ac</span>
-split  -b   <span style="color:#bd93f9">50</span>  square.sh   sqx_  
-<span style="color:#6272a4">#把文件重新合并，使用cat命令即可</span>
-cat  sqx_*  &gt; square.sh.new
-</code></pre></div><h3 id="5nl">5）nl</h3>
-<p>​	nl命令其它和cat命令很像，只不过它会打上行号。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#不加后续的head命令也可以</span>
-liwenyao@ubuntu:~$ nl square.sh | head -n <span style="color:#bd93f9">5</span>
-     1	<span style="color:#6272a4">#!/bin/bash</span>
-     2	<span style="color:#ff79c6">if</span> <span style="color:#ff79c6">[</span> <span style="color:#8be9fd;font-style:italic">$#</span> <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">]</span>
-     3	<span style="color:#ff79c6">then</span>    <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#39;Usage: sqrt number&#39;</span>    
-     4		<span style="color:#8be9fd;font-style:italic">exit</span> <span style="color:#bd93f9">1</span>
-     5	<span style="color:#ff79c6">else</span> 
-</code></pre></div><h3 id="6mkfifo">6）mkfifo</h3>
-<p>​	mkfifo的作用是创建一个有名管道，平时使用的较多的是无名管道，例如“ls | grep txt”.</p>
-<p>​	有名管道创建后可以像文件一样存在文件夹中，像是一个缓存区。</p>
-<p>​	使用举例如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#在终端窗口1执行如下命令，ls没有输出内容</span>
-mkfifo  pipex
-ls  &gt;  pipex
-
-<span style="color:#6272a4">#打开终端窗口2执行如下命，会看到 ls 命令输出的内容</span>
-cat  &lt;   pipex 
-</code></pre></div><p><strong>拓展：常用的管道命令有</strong>==&gt;</p>
+                <h3 id="41-如何创建metal库mtllibrary">4.1 如何创建Metal库(MTLLibrary)</h3>
+<p><strong>Case A. 从已编译的代码中创建Library</strong></p>
+<p>为了提升性能，可以利用xcode工具在app的创建过程中就把Metal-Shader源代码编译打包到一个库文件中，如
+此避免了在app的运行时编译着色程序代码的开销。从已编译的二进制库中创建一个<code>MTLLibrary</code>对象，可以使
+用如下的<code>MTLDevice</code>方法 ：</p>
 <ul>
-<li>cut、grep、sort、wc、uniq</li>
-<li>tee：重定向，既能在屏幕输出，又能保存到文件中</li>
-<li>tr、col、join、paste、expand、split</li>
+<li><code>newDefaultLibrary</code>  : 会return一个MTLLibrary，包含了渲染shader和app所需的并行计算程序；</li>
+<li><code>newLibraryWithFile</code>:error :  它将返回一个MTLLibrary对象，从指定的库文件路径加载这个库文
+件中的所有shader程序；</li>
+<li><code>newLibraryWithData</code>:error  :它将返回一一个MTLLibrary对象，从指定的二进制数据块对象加载数据块中的所有shader程序.</li>
 </ul>
-<h3 id="7ldd">7）ldd</h3>
-<p>​	这个命令可以知道你的一个可执行文件所使用了动态链接库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">###假设有个文件calc.so,命令后接文件名即可，具体参数选项可参照命令help内容</span>
-ldd calc.so
-</code></pre></div><h3 id="8col">8）col</h3>
-<p>​	Linux col命令用于过滤控制字符。</p>
-<p>​	在许多UNIX说明文件里，都有RLF控制字符。当我们运用shell特殊字符&quot;&gt;&ldquo;和&rdquo;&raquo;&quot;，把说明文件的内容输出成纯文本文件时，控制字符会变成乱码，col指令则能有效滤除这些控制字符。</p>
-<p>​	下面以 man 命令帮助文档为例，讲解col 命令的使用。</p>
-<p>​	将man 命令的帮助文档保存为man_help，使用-b 参数过滤所有控制字符。在终端中使用如下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#man命令用法，man + linux命令</span>
-man man | col -b &gt; man_help 
-</code></pre></div><h3 id="9xmlwf">9）xmlwf</h3>
-<p>​	这个命令可以让你检查一下一个XML文档是否是所有的tag都是正常的。</p>
-<h3 id="10lsof">10）lsof</h3>
-<p>​	这个命令可以列出打开了的文件。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#ff79c6">[</span>root@RHELSVR5 ~<span style="color:#ff79c6">]</span><span style="color:#6272a4"># lsof | grep TCP</span>
-httpd       <span style="color:#bd93f9">548</span>    apache    4u     IPv6   <span style="color:#bd93f9">14300967</span>    TCP *:http <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-httpd       <span style="color:#bd93f9">548</span>    apache    6u     IPv6   <span style="color:#bd93f9">14300972</span>    TCP *:https <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-httpd       <span style="color:#bd93f9">561</span>    apache    4u     IPv6   <span style="color:#bd93f9">14300967</span>    TCP *:http <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-httpd       <span style="color:#bd93f9">561</span>    apache    6u     IPv6   <span style="color:#bd93f9">14300972</span>    TCP *:https <span style="color:#ff79c6">(</span>LISTEN<span style="color:#ff79c6">)</span>
-</code></pre></div>
+<p>**Case B. 从源代码中创建Library  **</p>
+<p>从包含有Metal-Shader代码编写的多个着色程序的字符串中创建MTLLibrary对象，这些方法将在MTLLibrary对象创建时编译源代码，具体的可以参考如下
+MTLDevice方法 ：</p>
+<ul>
+<li><code>newLibraryWithSource</code>:options:error:  属于<strong>同步阻塞调用</strong> ,它编译输入字符串里的源代码创建多个
+MTLFunction对象，最后返回一个包含这些MTLFunction对象的MTLLibrary对象；</li>
+<li><code>newLibraryWithSource</code>:options:completionHandler: 属于<strong>异步调用</strong>，和上一个方法不同的是多了参数代码block块&mdash;completionHandler，block将在MTLLibrary对象创建完成后被调用 .</li>
+</ul>
+<h3 id="42-mtlfunction细节探究">4.2 MTLFunction细节探究</h3>
+<p>​     如何从Library中获取Function ，可以用下述方法进行获取：</p>
+<p>​     <code>newFunctionWithName</code>: 属于MTLLibrary的方法, 返回一个名字为输入参数的MTLFunction对象。如果在library中没有
+找到一个方法其修饰名字匹配输入参数，那么该函数返回nil。</p>
+<h4 id="421-在运行时决定function的细节">4.2.1 在运行时决定Function的细节</h4>
+<p>​     一个MTLFunction对象被定义为图形shader程序或是并行计算程序，它的实质内容在这个对象被创建前
+就编译好了，而且shader程序的源代码不能直接被app使用.不过，可以在运行时查询下面的MTLFunction属性：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+mtlFuncProper((MTLFunction属性))
+name(name: 是一个表示shader程序名字的字符串)
+functionType(functionType: 类型是顶点,还是片元,还是并行计算shader)
+vertexAttributes(vertexAttributes: MTLVertexAttribute对象数组,描述如何组织以及如何映射)
+mtlFuncProper-.-name
+mtlFuncProper-.-functionType
+mtlFuncProper-.-vertexAttributes
+</code></pre><h4 id="422-相关的reflection对象">4.2.2 相关的Reflection对象</h4>
+<p>​     <code>MTLFunction</code>不提供访问shader程序参数的方法。但在pipeline state创建过程中，可以获得用于展示shader程序参数细节reflection对象(根据command encoder的类型不同， reflection对象分为<code>MTLRenderPipelineReflection</code>类型或
+<code>MTLComputePipelineReflection</code>类型 )。</p>
+<p>​      一个reflection对象包含了一个MTLArgument数组，视其关联的Encoder不同而不同：</p>
+<ul>
+<li>MTLRenderPipelineReflection：关联<code>MTLRenderCommandEncoder</code> ,包含的Arguments数组有vertexArguments和fragmentArguments 这2个属性；</li>
+<li>MTLComputePipelineReflection ：关联<code>MTLComputeCommandEncoder</code> ，包含的Argument数组表征并行计算程序的参数。</li>
+</ul>
+<p>​	不是所有的shader程序的参数都在reflection对象中表示，一个reflection对象仅包含那些引用了相应资源的参数，通
+过<strong>shader修饰符</strong>[[stage_in]]、 [[vertex_id]]、 [[attribute_id]]修饰的参数不会被包含在reflection对象中。</p>
+<h4 id="423-mtlargument对象">4.2.3 MTLArgument对象</h4>
+<p>​	MTLArgument类型对象表示一个shader程序方法的入参细节：</p>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph LR
+mtlargument(MTLArgument基本组成)
+name(name:参数名字)
+active(active:bool值,表示参数是否可以被忽略)
+index(index:参数列表下标,从0开始)
+access(access:访问限制,读写权限)
+type(type:shader修饰符类型,buffer,texture,sampler,local等)
+mtlargument-.-name
+mtlargument-.-active
+mtlargument-.-index
+mtlargument-.-access
+mtlargument-.-type
+</code></pre><p>​    上述的属性type还决定了哪些其他MTLArgument属性是相关的，type类型不同，相关的属性也有所区别：</p>
+<ul>
+<li><code>MTLArgumentTypeTexture</code>   : <code>textureType</code>属性表征纹理类型(可能为texture1d_array，
+texture2d_ms， texturecube); <code>textureDataType</code>属性表征其分量数据类型(可能为half， float，
+int， uint）;</li>
+<li><code>MTLArgumentTypeThreadgroupMemory</code>  : 说明threadgroupMemoryAlignment和
+threadgroupMemoryDataSize这两个属性相关；</li>
+<li><code>MTLArgumentTypeBuffer</code>  : 说明bufferAlignment, bufferDataSize, bufferDataType,
+bufferStructType这几个属性相关 。</li>
+</ul>
+<p>​	例如：如果bufferDataType的值是MTLDataTypeStruct ，那么bufferStructType属性含有一个MTLStructType类型的值 ,同时bufferDataSize属性表示这个结构体的长度 (bytes数量); 如果缓存Argument是数组，那么bufferDataType属性则表征的是数组元素的类型，同时bufferDataSize属性表示的也只是数组中一个元素的长度。</p>
+<blockquote>
+<p>参考链接:</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html">Apple-Metal-Programming-Guide</a></li>
+<li><a href="https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/MTLBestPracticesGuide/index.html">Metal&rsquo;s Best Practice</a></li>
+</ul>
+
 
                 
 
                 <hr>
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-toggle="tooltip" data-placement="top" title="MetalGuide(1)指令组织和执行模型">&larr;
-                            Previous Post</a>
-                    </li>
                     
+                    <li class="next">
+                        <a href="/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/" data-toggle="tooltip" data-placement="top" title="MetalGuide(2)资源与对象">Next
+                            Post &rarr;</a>
+                    </li>
                     
                 </ul>
                 
