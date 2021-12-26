@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>系统应用 on Wenyao Blog</title>
+    <link>https://kissingfire123.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/</link>
+    <description>Recent content in 系统应用 on Wenyao Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10个容易遗忘但好用的Linux命令</title>
+      <link>https://kissingfire123.github.io/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</guid>
+      <description>1) pgrep ​ pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。 $ pgrep -u username_xx ​ 这个命令相当于： ##</description>
+    </item>
+    
+  </channel>
+</rss>

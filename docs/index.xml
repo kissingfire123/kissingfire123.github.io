@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Liwenyao的Blog</title>
+    <title>Wenyao Blog</title>
     <link>https://kissingfire123.github.io/</link>
-    <description>Recent content on Liwenyao的Blog</description>
+    <description>Recent content on Wenyao Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh</language>
-    <lastBuildDate>Sat, 25 Dec 2021 23:01:39 +0800</lastBuildDate><atom:link href="https://kissingfire123.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Archive</title>
+      <title>10个容易遗忘但好用的Linux命令</title>
+      <link>https://kissingfire123.github.io/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</guid>
+      <description>1) pgrep ​ pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。 $ pgrep -u username_xx ​ 这个命令相当于： ##</description>
+    </item>
+    
+    <item>
+      <title>归档</title>
       <link>https://kissingfire123.github.io/top/archive/</link>
       <pubDate>Sat, 25 Dec 2021 23:01:39 +0800</pubDate>
       
@@ -17,21 +26,12 @@
     </item>
     
     <item>
-      <title>About</title>
+      <title>关于我</title>
       <link>https://kissingfire123.github.io/top/about/</link>
       <pubDate>Sat, 25 Dec 2021 23:01:12 +0800</pubDate>
       
       <guid>https://kissingfire123.github.io/top/about/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>10个Linux容易被遗忘但好用的指令</title>
-      <link>https://kissingfire123.github.io/posts/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E8%A2%AB%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4/</link>
-      <pubDate>Thu, 23 Dec 2021 16:29:59 +0800</pubDate>
-      
-      <guid>https://kissingfire123.github.io/posts/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E8%A2%AB%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4/</guid>
-      <description>1) pgrep ​ pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。 $ pgrep -u username_xx ​ 这个命令相当于： ##</description>
+      <description>About Me 某985小硕，焊过板子，写过嵌入式和Qt桌面应用,现从事于图形学C++相关的开发工作。 在图像渲染领域还是个菜鸟，希望遇到志同道合的朋友多</description>
     </item>
     
   </channel>
