@@ -47,7 +47,7 @@ graph LR
 
 ​	最终，他们的逻辑模型类似于下图：
 
-![命令架构](https://upload-images.jianshu.io/upload_images/3691932-8293051abb08b922.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200)
+![命令架构](https://s2.loli.net/2021/12/26/CdjGoZP6WtTul4I.png)
 
 ### 2.1 何为设备
 
