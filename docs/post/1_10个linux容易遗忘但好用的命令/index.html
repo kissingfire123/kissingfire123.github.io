@@ -310,7 +310,7 @@ httpd       <span style="color:#bd93f9">561</span>    apache    6u     IPv6   <s
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
                     <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
+                        <a class="catalog-toggle" href="#">目录</a>
                     </h5>
                     <ul class="catalog-body"></ul>
                 </div>
@@ -540,5 +540,12 @@ httpd       <span style="color:#bd93f9">561</span>    apache    6u     IPv6   <s
 </script>
 
 
+//src source:https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.13.7/mermaid.min.js
+<script src="/js/mermaid.min.js"></script>
+  <script>
+        Array.from(document.getElementsByClassName('language-mermaid')).forEach(el => {
+        el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`
+    })
+</script>
 </body>
 </html>

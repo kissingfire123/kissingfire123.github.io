@@ -231,7 +231,7 @@
 </code></pre><p>​	任⼀时刻，只会有一个Encoder是处于激活状态的，它可以向⼀个command buffer提交指令。前⼀个Encoder结束后，另⼀个Encoder才可以被创建并用于同⼀个command buffer。</p>
 <p>​	最终，他们的逻辑模型类似于下图：</p>
 <p>
-  <img src="https://upload-images.jianshu.io/upload_images/3691932-8293051abb08b922.png?imageMogr2/auto-orient/strip%7cimageView2/2/w/1200" alt="命令架构">
+  <img src="https://s2.loli.net/2021/12/26/CdjGoZP6WtTul4I.png" alt="命令架构">
 
 </p>
 <h3 id="21-何为设备">2.1 何为设备</h3>
@@ -391,7 +391,7 @@
                 <div class="side-catalog">
                     <hr class="hidden-sm hidden-xs">
                     <h5>
-                        <a class="catalog-toggle" href="#">CATALOG</a>
+                        <a class="catalog-toggle" href="#">目录</a>
                     </h5>
                     <ul class="catalog-body"></ul>
                 </div>
@@ -621,5 +621,12 @@
 </script>
 
 
+//src source:https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.13.7/mermaid.min.js
+<script src="/js/mermaid.min.js"></script>
+  <script>
+        Array.from(document.getElementsByClassName('language-mermaid')).forEach(el => {
+        el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`
+    })
+</script>
 </body>
 </html>
