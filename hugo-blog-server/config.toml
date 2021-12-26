@@ -1,6 +1,6 @@
 baseURL = 'https://kissingfire123.github.io'
-languageCode = 'zh'
-title = 'Liwenyao的Blog'
+languageCode = 'zh-CN'
+title = 'Wenyao Blog'
 theme = "cleanwhite"
 publishDir="../docs"
 
@@ -15,11 +15,11 @@ hasCJKLanguage = true
 home = ["HTML", "RSS", "Algolia"]
 
 [params]
-  header_image = "img/wallhaven.jpg"
-  SEOTitle = "Liwenyao的博客 | Benjamin-Lee Blog"
-  description = "Liwenyao，程序员, C++爱好者,图形学,音视频渲染初学者 | 这里是 Liwenyao 的博客，与你一起分享技术与生活的点滴。"
-  keyword = "Liwenyao, Benjamin-Lee, Benjamin-Lee, , Liwenyao的网络日志, Liwenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C++,图形渲染,OpenGL,Metal"
-  slogan = "噢，我的老伙计！祝你今天能拥有愉快的一天~"
+  header_image = "img/wallhaven-太空_header.png"
+  SEOTitle = "Wenyao的博客 | Benjamin-Lee Blog"
+  description = "Wenyao,程序员, C++爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。"
+  keyword = "Wenyao, Benjamin-Lee, Benjamin-Lee, Wenyao的网络日志, Wenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C++,图形渲染,OpenGL,Metal"
+  slogan = "噢，我的老伙计！祝你又能拥有愉快的一天~"
 
   image_404 = "img/404-bg.jpg"
   title_404 = "你来到了没有知识的荒原 :("
@@ -31,7 +31,7 @@ home = ["HTML", "RSS", "Algolia"]
   leancloud_app_key = ""
 
   # algolia site search
-  algolia_search = true
+  algolia_search = false
   algolia_appId = ""
   algolia_indexName = ""
   algolia_apiKey = ""
@@ -39,7 +39,7 @@ home = ["HTML", "RSS", "Algolia"]
   # Sidebar settings
   sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
   #sidebar_avatar = "img/avatar-Benjamin-Lee.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_avatar = "img/avatar_zoro.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_avatar = "img/路飞.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
   featured_tags = true 
   featured_condition_size = 1 
@@ -57,7 +57,7 @@ home = ["HTML", "RSS", "Algolia"]
   twikoo_env_id = ""
 
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
-  reward = true 
+  reward = false 
   # reward_guide = "如果这篇文章对你有用,请随意打赏" 
 
   friends = true
@@ -75,11 +75,11 @@ home = ["HTML", "RSS", "Algolia"]
   #googleplus    = "full profile url in googleplus"
   #twitter       = "full profile url in twitter"
   #linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
-  stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  #stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
   github         = "https://github.com/kissingfire123"
   #wechat         = "img/lwy_wechat.jpg"
-#  medium         = "full profile url in medium"
+  #medium         = "full profile url in medium"
   #pinterest     = "full profile url in pinterest"
   #reddit        = "full profile url in reddit"
   #gitlab        = "full profile url in gitlab"
@@ -105,14 +105,14 @@ home = ["HTML", "RSS", "Algolia"]
   title = "unsplash"
   href = "https://unsplash.com"
   
+  #[[params.addtional_menus]]
+  #title =  "BOOKS"
+  #href =  "/top/books/"
   [[params.addtional_menus]]
-  title =  "BOOKS"
-  href =  "/top/books/"
-  [[params.addtional_menus]]
-  title =  "ARCHIVE"
+  title =  "归档"
   href =  "/top/archive/"
   [[params.addtional_menus]]
-  title =  "ABOUT"
+  title =  "关于"
   href =  "/top/about/"
 
 [outputFormats.Algolia]
