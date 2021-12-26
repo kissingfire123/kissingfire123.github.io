@@ -2,19 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kissingfire123.github.io/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://kissingfire123.github.io/categories/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kissingfire123.github.io/tags/linux/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://kissingfire123.github.io/tags/metal/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://kissingfire123.github.io/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://kissingfire123.github.io/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</loc>
@@ -35,12 +26,6 @@
     <loc>https://kissingfire123.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://kissingfire123.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://kissingfire123.github.io/categories/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url><url>
@@ -52,5 +37,41 @@
   </url><url>
     <loc>https://kissingfire123.github.io/top/about/</loc>
     <lastmod>2021-12-25T23:01:12+08:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/tags/github-page/</loc>
+    <lastmod>2021-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/tags/hugo/</loc>
+    <lastmod>2021-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/post/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2021-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2021-12-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/post/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/tags/linux/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/post/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/tags/shell%E8%84%9A%E6%9C%AC/</loc>
+    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/categories/c&#43;&#43;/</loc>
+    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/post/6_effective-c&#43;&#43;%E4%B9%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://kissingfire123.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2021-12-12T00:00:00+00:00</lastmod>
   </url>
 </urlset>

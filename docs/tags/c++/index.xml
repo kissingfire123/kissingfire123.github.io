@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on Wenyao Blog</title>
+    <link>https://kissingfire123.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on Wenyao Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 12 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Effective C&#43;&#43;(第三版)阅读笔记(一)</title>
+      <link>https://kissingfire123.github.io/post/6_effective-c&#43;&#43;%E4%B9%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/post/6_effective-c&#43;&#43;%E4%B9%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid>
+      <description>0.序言 这本C++的经典之作，作者是大佬Scott Meyers👉大佬主页，还写过其他几本影响深远的C++经典，例如《Effective STL</description>
+    </item>
+    
+  </channel>
+</rss>

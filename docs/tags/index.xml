@@ -8,15 +8,6 @@
     <language>zh-CN</language>
     <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>linux</title>
-      <link>https://kissingfire123.github.io/tags/linux/</link>
-      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kissingfire123.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Metal</title>
       <link>https://kissingfire123.github.io/tags/metal/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
@@ -35,11 +26,56 @@
     </item>
     
     <item>
-      <title>系统应用</title>
-      <link>https://kissingfire123.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/</link>
-      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      <title>Github Page</title>
+      <link>https://kissingfire123.github.io/tags/github-page/</link>
+      <pubDate>Sun, 19 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://kissingfire123.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/</guid>
+      <guid>https://kissingfire123.github.io/tags/github-page/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://kissingfire123.github.io/tags/hugo/</link>
+      <pubDate>Sun, 19 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://kissingfire123.github.io/tags/linux/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell脚本</title>
+      <link>https://kissingfire123.github.io/tags/shell%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/tags/shell%E8%84%9A%E6%9C%AC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://kissingfire123.github.io/tags/c&#43;&#43;/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>程序设计</title>
+      <link>https://kissingfire123.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sun, 12 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://kissingfire123.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</guid>
       <description></description>
     </item>
     
