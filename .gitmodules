@@ -4,4 +4,4 @@
 	branch =  master
 [submodule "hugo-blog-server/themes/cleanwhite"]
 	path = hugo-blog-server/themes/cleanwhite
-	url = https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
+	url = https://github.com/kissingfire123/hugo-theme-cleanwhite.git

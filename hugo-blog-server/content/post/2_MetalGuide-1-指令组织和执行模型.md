@@ -18,13 +18,13 @@ categories:  ["计算机图形学" ]
 
 ​	`Metal`框架支持GPU加速的3D图形渲染和并⾏数据计算，它提供了⼀系列的API用于在**细粒度**和**低层次**上组织、处理、提交图形渲染指令、并⾏计算指令，并管理和这些指令相关联的数据和资源。使用`Metal`的⼀个主要⽬标是减少GPU执⾏这些计算的开销。
 
-{{< mermaid >}}
+```mermaid
 graph LR
 	concept[ Metal基本认知] --- idea1[一组高效接口]-.作用.->idea1_detail(管理,提交,执行图形渲染和并行计算操作)
 	concept --- idea2[内存和资源管理机制]-.作用.->idea2_detail(描述buffer和texture对象)
 	concept --- idea3[对图形渲染和并行计算统一支持]-.作用.->idea3_detail(使用统一的接口,数据结构,资源)
 	concept --- idea4[Metal 着色语言]-.作用.->idea4_detail(支持与app代码一同编译,或runtime编译)
-{{< /mermaid >}}
+``` 
 
 
 
