@@ -10,7 +10,8 @@ categories:  ["计算机图形学" ]
 ---
 
 
-## 三 资源对象[Buffers和Textures]
+# 0.资源对象
+   资源对象，主要包含为缓存Buffers和纹理Textures。
 
 ​	**MTLBuffer**它表示一块非格式化的内存可以存放任何类型的数据。它通常用于存放顶点数据、着色程序和计算状态数据。
 
@@ -18,9 +19,9 @@ categories:  ["计算机图形学" ]
 
 ​	**MTLSamplerState**，虽然采样器不是资源，但它总是用于纹理对象的查找计算。
 
-### 3.1 Buffer对象
+# 1. 有关Buffer对象
 
-#### 3.1.1创建Buffer对象
+## 1.1 创建Buffer对象
 
 ​	一个`MTLBuffer`对象表示了一个可以装载任何类型数据的内存片段。
 
@@ -33,16 +34,16 @@ graph LR
   Protocol--支持创建---withBytesNocopy(newBufferWithBytesNoCopy:length:options:deallocator)-.功能.-det2(创建MTLBuffer对象,不分配新内存而是使用一个已存在的内存)
 ```
 
-#### 3.1.2 Buffer的对象方法
+## 1.2 Buffer的对象方法
 
 ​	Buffer缓存对象有2种方法：
 
 - `contents`: 返回缓存对象对应内存的CPU地址;
 - `newTextureWithDescriptor`:offset:bytesPerRow: 创建某种特定类型的纹理。
 
-### 3.2 Texture对象
+# 2.Texture对象
 
-#### 3.2.1 创建Texture对象
+## 2.1 创建Texture对象
 
 ​	下列的方法用于创建并返回一个`MTLTexture`对象：
 
@@ -58,24 +59,25 @@ graph LR
 
   
 
-#### 3.2.2 纹理描述符(Texture Descriptors)
+## 2.2 纹理描述符
 
-​	MTLTextureDescriptor描述用于创建一个MTLTexture对象的各属性。包括图形尺寸(宽，高，深)，像素格式，组合模式(数组或是立方体)还有mipmaps的数量。这些属性都只用在MTLTexture对象的创建过程中。当纹理对象创建完毕，descritor中的值后续再改变也不会影响纹理之前由它创建的对象。指定纹理的维度与组合模式(数组或立方)
+​	MTLTextureDescriptor(纹理描述符)描述用于创建一个MTLTexture对象的各属性。包括图形尺寸(宽，高，深)，像素格式，组合模式(数组或是立方体)还有mipmaps的数量。
+
+这些属性都只用在MTLTexture对象的创建过程中。当纹理对象创建完毕，descritor中的值后续再改变也不会影响纹理之前由它创建的对象。指定纹理的维度与组合模式(数组或立方)
 
 ​	Texture Descriptor内容组成以及含义如下图：
-
 ```mermaid
 	graph LR
 	MTLTextureDes((MTLTextureDescriptor))---type(textureType)---det0[指定纹理的维度与组合模式:array或cube]
 	MTLTextureDes---type1(width, height, depth)---det1[指定了基层mipmap纹理在各个维度的尺寸]
 	MTLTextureDes---size(pixelFormat)---det2[指定了一个纹理中的每个像素如何存储]
-	MTLTextureDes---type3(arrayLength)---det3[对于MTLTextureType1DArray或MTLTextureType2DArray类型的纹理对象,指定数组中的元素的数量]
+	MTLTextureDes---type3(arrayLength)---det3[指定数组中的元素的数量]
 	MTLTextureDes---type4(mipmapLevelCount)---det4[指定mipmap类型纹理的层数]
 	MTLTextureDes---type5(sampleCount)---det5[指定每个像素的样本数]
 	MTLTextureDes---type6(resourceOptions)---det6[指定内存分配的行为方式]
 ```
 
-#### 3.2.3 创建纹理描述符
+## 2.3 创建纹理描述符
 
 ​	对一个2D纹理或是立方纹理来说，下面的快捷方法可以创建`MTLTextureDescriptor`对象并且自动设置多个值：  
 
@@ -89,7 +91,7 @@ graph LR
 
   上面两个快捷方法都接受一个入参pixelFormat，它定义了纹理的像素格式。这两个方法都接受一个入参mipmapped(值为YES/NO)，它指定纹理是否支持mipmap ；
 
-#### 3.2.4 纹理分片(slice)
+## 2.4 纹理分片(slice)
 
 ​	纹理分片是一个单独纹理数据(可能是1维、 2维或是3维)以及所有和它关联的mipmap。 具有以下特点：
 
@@ -97,7 +99,7 @@ graph LR
 - mipmap的第 i 层的尺寸是基层的1/2<sup>**i**</sup> ;
 - **立方cube**(6个2维分片)和**数组array**(每个数组元素对应1个分片)类型的纹理可以有多个分片；一个单独纹理数据(可能是1维、 2维或是3维)只能有1个分片；
 
-#### 3.2.5 Copy图像数据进出纹理对象
+## 2.5 Copy图像数据进出纹理对象
 
 ​	以**同步**阻塞式拷贝图像数据进出纹理对象的内存，可以使用如下方法：  
 
@@ -106,7 +108,7 @@ graph LR
 * `getBytes`:bytesPerRow:bytesPerImage:fromRegion:mipmapLevel:slice:  获取指定切片的指定区域的像素数据  ;
 * `getBytes`:bytesPerRow:fromRegion:mipmapLevel:  和前一个方法类似，只是slice和bytesPerImage设置为0;  
 
-#### 3.2.6 纹理MTLTexture的像素格式  
+## 2.6 纹理MTLTexture像素格式  
 
 ​     MTLTexture对象的MTLPixelFormat属性指定颜色、深度或是模板缓存数据中每一个像素如何组织。有3种像素格式：**原生格式**(ordinary),**紧密填充格式**(packed)和**压缩格式(**compressed):  
 
@@ -129,7 +131,7 @@ graph LR
 
 
 
-#### 3.2.7 采样器状态(Sampler States)与纹理
+## 2.7 采样器状态(Sampler States)与纹理
 
 ​	`MTLSamplerState`对象(采样器状态)包含了用于*纹理查找* 的属性。 
 
@@ -146,7 +148,7 @@ graph LR
 
 ​    ⚠️注意：descriptor的属性值仅在创建MTLSamplerState对象时生效，state对象创建完成后，改变descriptor的属性值不会影响已经创建的state对象。 
 
-### 3.3 在CPU内存和GPU内存间保持一致性  
+# 3. CPU/GPU内存一致性  
 
 ​	CPU和GPU都可以访问同一个`MTLResource`类型的对象管理的存储数据。但是GPU和CPU的操作是异步进行的，为保持一致性，注意该事项：
 

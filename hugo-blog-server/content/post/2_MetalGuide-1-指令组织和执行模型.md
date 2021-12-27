@@ -12,7 +12,7 @@ categories:  ["计算机图形学" ]
 
 
 
-## 一 基本概念认知
+# 1. 基本概念认知
 
 ​	`Metal` 是一个和 `OpenGL ES` 类似的面向底层的图形编程接口，通过使用相关的API 可以直接操作 GPU。不过不同的是，`Metal`不具有跨平台特性，只针对苹果的平台系统使用，并且编程开发语言为`Objective - C`或`Swift`。
 
@@ -30,7 +30,7 @@ graph LR
 
 ------
 
-## 二 指令组织和执行模型
+# 2. 指令组织和执行模型
 
 ​	**一个command queue包含了一系列command buffers**。command queue用于组织它拥有的各个command buffer按序执行。一个command buffers包含多个被编码的指令，这些指令将在一个特定的设备上执⾏。一个Encoder可以将绘制、计算、位图传输指令推入一个command buffer，最后这些command buffer将被提交到设备执⾏。	 
 
@@ -49,13 +49,13 @@ graph LR
 
 ![命令架构](https://s2.loli.net/2021/12/26/CdjGoZP6WtTul4I.png)
 
-### 2.1 何为设备
+## 2.1 何为设备
 
 ​	一个**MTLDevice**对象代表一个可以执行指令的GPU，该协议包含创建新的command queue的方法、从内存申请缓存的方法、创建纹理对象的方法以及查询设备功能的方法。调用**MTLCreateSystemDefaultDevice**方法获取系统首选的设备对象。
 
 
 
-### 2.2 暂态/非暂态(Non-Transient)对象
+## 2.2 暂态/非暂态(Non-Transient)对象
 
 ​	故名思义，两者是按照对象的**生命周期**来区分的。
 
@@ -82,7 +82,7 @@ graph TB
     		encoder(Command Encoders)-.特点.-Transient_det
     end
 ```
-### 2.3 指令队列(Command Queue)
+## 2.3 指令队列(Command Queue)
 
 ​	一个command queue管理着一个在GPU上即将执⾏的command buffer有序队列。同一个队列的所有command buffer都会被按照入队的次序执⾏。通常，command queue是线程安全的，允许多个command buffer 同时编码。
 
@@ -96,9 +96,9 @@ graph TB
   
   
 
-### 2.4 指令缓存(Command Buffer)
+## 2.4 指令缓存(Command Buffer)
 
-#### 2.4.1 Command Buffer的特点
+### 2.4.1 Command Buffer的特点
 
 ​	一个command buffer在被GPU执行之前会存储多个被编码的指令。一个command buffer可以包含多种类型的编码。
 
@@ -107,21 +107,21 @@ graph TB
 2. 它是**暂态对象**，不支持重用；一旦被提交等待执行，即进入队列；
 3. 它还代表了app中独立的可被追踪的任务单元。
 
-#### 2.4.2 创建Command Buffer
+### 2.4.2 创建Command Buffer
 
 ​	如何创建Command Buffer对象，以下的2个方法都是可行的:
 
 - `commandBuffer`：数据是强引用的，一个MTLCommandBuffer对象只能提交给创建它的那个command queue。
 - `commandBufferWithUnretainedReferences`：数据不是强引用的，在可以保证和command buffer相关数据在其被执⾏时都有引用计数的情况下，又极端需要提升性能，才会使用该方法。使用时需要格外注意引用计数。
 
-#### 2.4.3 执行指令
+### 2.4.3 执行指令
 
 ​	MTLCommandBuffer协议使用如下的方法来设定其在指令队列中的执⾏顺序：
 
 - `enqueue`：为一个command buffer在command queue中预定一个位置，但是不会提交这个command buffer。当这个command buffer最终被提交时，指令队列把它安排在对应的`enqueue`顺序队列中执行。
 - `commit`：使得command buffer尽可能快地被执⾏，但还是得等到所有在command queue中的早前排入队列的 其他command buffer被执行完成后才能执⾏。如果commad queue中没有排在前面的command buffer，该方法隐式执⾏`enqueue`操作。
 
-#### 2.4.4 注册处理程序块(Register Handler Blocks)
+### 2.4.4 注册处理程序块(Register Handler Blocks)
 
 ​	下列的MTLCommandBuffer的方法可以**监视指令的执⾏**。使用了这些方法注册处理程序块，那么在某个线程中，这些处理程序块会按照执⾏顺序被调用。这些处理程序块应该是迅速可被执⾏完成的，如果有开销⼤的造成阻塞的任务，那么应该将它们安排到其他线程执⾏行。     		
 
@@ -145,9 +145,9 @@ graph TB
 
   
 
-### 2.5 指令编码(Command Encoder)
+## 2.5 指令编码(Command Encoder)
 
-#### 2.5.1 Command Encoder的特点
+### 2.5.1 Command Encoder的特点
 
 ​		Command Encoder用来编码渲染和计算指令，然后被推入到一个command buffer并最终在GPU上执行。它具有以下特点：
 
@@ -155,7 +155,7 @@ graph TB
 - 当一个Encoder是激活状态时，就可以调用`endEncoding`方法向它所属的command buffer推送指令；
 - 推送完成后要写入更多的指令，就创建一个新的 Encoder。
 
-#### 2.5.2 创建Command Encoder
+### 2.5.2 创建Command Encoder
 
 ​	MTLCommandBuffer协议中的若干方法都可以创建Command Encoder对象，这些对象可以向对应的command buffer推送指令。具体地，以下的4个方法都是可行的:
 
@@ -173,7 +173,7 @@ graph TB
 
    - `parallelRenderCommandEncoderWithDescriptor` ：创建一个MTLParallelRenderCommandEncoder类型的Encoder，它用于支持多个MTLRenderCommandEncoder类型的⼦Encoder同时在**不同的线程**中运⾏，依然把所有绘制结果写入同一个attachment中，该attachment由MTLRenderPassDescriptor类型的入参指定。
 
-#### 2.5.3 多种用途的Command Encoder
+### 2.5.3 多种用途的Command Encoder
 
 ​		**<u>*a. 用于渲染的Command Encoder*</u>**
 
@@ -201,7 +201,7 @@ graph TB
 
 ​				
 
-### 2.6 多线程与Command Buffer 以及Command Encoder
+## 2.6 多线程与Command Buffer/Command Encoder
 
 ​	很多的应用程序只是用**一个线程**来编码绘制指令到一个command buffer来绘制一帧画面。在每帧绘制的末尾， 提交commad buffer，如此可以排定和开始指令的执行。
 

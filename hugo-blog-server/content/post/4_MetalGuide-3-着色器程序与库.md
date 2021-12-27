@@ -10,7 +10,7 @@ categories:  ["计算机图形学" ]
 ---
 
 
-### 4.1 如何创建Metal库(MTLLibrary)
+# 1 如何创建Metal库(MTLLibrary)
 
 **Case A. 从已编译的代码中创建Library**  
 
@@ -25,7 +25,7 @@ categories:  ["计算机图形学" ]
 
 
 
-**Case B. 从源代码中创建Library  **  
+**Case B. 从源代码中创建Library**  
 
    从包含有Metal-Shader代码编写的多个着色程序的字符串中创建MTLLibrary对象，这些方法将在MTLLibrary对象创建时编译源代码，具体的可以参考如下
 MTLDevice方法 ：
@@ -34,14 +34,14 @@ MTLDevice方法 ：
   MTLFunction对象，最后返回一个包含这些MTLFunction对象的MTLLibrary对象；
 - `newLibraryWithSource`:options:completionHandler: 属于**异步调用**，和上一个方法不同的是多了参数代码block块---completionHandler，block将在MTLLibrary对象创建完成后被调用 .
 
-### 4.2 MTLFunction细节探究  
+# 2 MTLFunction细节探究  
 
 ​     如何从Library中获取Function ，可以用下述方法进行获取：
 
 ​     `newFunctionWithName`: 属于MTLLibrary的方法, 返回一个名字为输入参数的MTLFunction对象。如果在library中没有
 找到一个方法其修饰名字匹配输入参数，那么该函数返回nil。  
 
-#### 4.2.1 在运行时决定Function的细节 
+## 2.1 在运行时决定Function的细节 
 ​     一个MTLFunction对象被定义为图形shader程序或是并行计算程序，它的实质内容在这个对象被创建前
 就编译好了，而且shader程序的源代码不能直接被app使用.不过，可以在运行时查询下面的MTLFunction属性：  
 
@@ -57,7 +57,7 @@ mtlFuncProper-.-functionType
 mtlFuncProper-.-vertexAttributes
 ```
 
-#### 4.2.2 相关的Reflection对象
+## 2.2 相关的Reflection对象
 
 ​     `MTLFunction`不提供访问shader程序参数的方法。但在pipeline state创建过程中，可以获得用于展示shader程序参数细节reflection对象(根据command encoder的类型不同， reflection对象分为`MTLRenderPipelineReflection`类型或
 `MTLComputePipelineReflection`类型 )。
@@ -72,7 +72,7 @@ mtlFuncProper-.-vertexAttributes
 ​	不是所有的shader程序的参数都在reflection对象中表示，一个reflection对象仅包含那些引用了相应资源的参数，通
 过**shader修饰符**[[stage_in]]、 [[vertex_id]]、 [[attribute_id]]修饰的参数不会被包含在reflection对象中。
 
-#### 4.2.3 MTLArgument对象
+## 2.3 MTLArgument对象
 
 ​	MTLArgument类型对象表示一个shader程序方法的入参细节：  
 
