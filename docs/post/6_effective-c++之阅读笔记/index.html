@@ -34,7 +34,7 @@
     <meta name="keyword"  content="Wenyao, Benjamin-Lee, Benjamin-Lee, Wenyao的网络日志, Wenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C&#43;&#43;,图形渲染,OpenGL,Metal">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Effective C&#43;&#43;(第三版)阅读笔记(一)-Wenyao Blog</title>
+    <title>Effective C&#43;&#43;(第三版)阅读笔记(一)-Wenyao 博客</title>
 
     <link rel="canonical" href="/post/6_effective-c&#43;&#43;%E4%B9%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
 
@@ -219,35 +219,35 @@
 <p>这本C++的经典之作，作者是大佬<code>Scott Meyers</code>👉<a href="https://www.aristeia.com/books.html">大佬主页</a>，还写过其他几本影响深远的C++经典，例如<code>《Effective STL》</code>,<code>《More Effective C++》</code>,<code>《Effective Mordern C++》</code>,<code>《Overview of the New C++(C++11/14)》</code>等等。本书笔者看的是中文版，侯捷老师翻译的,以前做的笔记是在自己的纸质笔记本上，现在挪到博客上来吧。</p>
 <p>关于Effective C++，全书55个C++条款，许多人都做了笔记类的博客，大家视角不同可能侧重也不同，各花入各眼了。(PS:本文主干目录和原书一致，另外，由于原书在C++11之前写成，所以会根据本人开发经验新增一些个人感悟👉<code>小声bb</code>环节)</p>
 <blockquote>
-<p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~3章，关于Rule01~17)。</p>
+<p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~3章，内容范围Rule01~17。为方便书写，<strong>Rule01简写为R01</strong>)。</p>
 </blockquote>
 <p><code>废话不多说，直接进入正题。</code></p>
 <h2 id="一让自己习惯c">一.让自己习惯C++</h2>
-<h3 id="01-视c为一个语言联邦">01 视C++为一个语言联邦</h3>
-<h3 id="02-尽量以constenuminline替换define">02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></h3>
-<h3 id="03-尽可能用const">03 尽可能用const</h3>
-<h3 id="04-确定对象使用前先初始化">04 确定对象使用前先初始化</h3>
+<h3 id="r01-视c为一个语言联邦">R01 视C++为一个语言联邦</h3>
+<h3 id="r02-尽量以constenuminline替换define">R02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></h3>
+<h3 id="r03-尽可能用const">R03 尽可能用const</h3>
+<h3 id="r04-确定对象使用前先初始化">R04 确定对象使用前先初始化</h3>
 <h2 id="二构造析构赋值运算">二.构造/析构/赋值运算</h2>
-<h3 id="05-了解c默认编写并调用哪些函数">05 了解C++默认编写并调用哪些函数</h3>
+<h3 id="r05-了解c默认编写并调用哪些函数">R05 了解C++默认编写并调用哪些函数</h3>
 <p>编译器可以暗自为Class创建default构造函数，copy构造函数(复制构造)，copy assigment(赋值构造)操作符，以及default析构函数。</p>
-<h3 id="06-不想编译器的自动生成的函数明确拒绝">06 不想编译器的自动生成的函数,明确拒绝</h3>
+<h3 id="r06-不想编译器的自动生成的函数明确拒绝">R06 不想编译器的自动生成的函数,明确拒绝</h3>
 <p>如果不想编译器自动生成那几个函数，比如不想要复制构造或赋值构造，就明确在代码中禁止，也防止外部用户使用。</p>
 <ul>
 <li>技巧1：可以声明为private函数但是不给出实现，让编译器报错；</li>
 <li>技巧2：可以设立基类Base，让复制构造和赋值构造都为private函数，让目标类继承于Base类。</li>
 </ul>
-<h3 id="07-为多态基类声明virtual析构函数">07 为多态基类声明<code>virtual</code>析构函数</h3>
-<h3 id="08-别让异常逃离析构函数">08 别让异常逃离析构函数</h3>
-<h3 id="09-绝不在构造和析构过程中调用virtual函数">09 绝不在构造和析构过程中调用<code>virtual</code>函数</h3>
-<h3 id="10-令operator返回一个reference-to-this">10 令<code>operator=</code>返回一个reference to *this</h3>
-<h3 id="11-在operator中处理自我赋值">11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
-<h3 id="12-复制对象时别忘记其每一个成分">12 复制对象时别忘记其每一个成分</h3>
+<h3 id="r07-为多态基类声明virtual析构函数">R07 为多态基类声明<code>virtual</code>析构函数</h3>
+<h3 id="r08-别让异常逃离析构函数">R08 别让异常逃离析构函数</h3>
+<h3 id="r09-绝不在构造和析构过程中调用virtual函数">R09 绝不在构造和析构过程中调用<code>virtual</code>函数</h3>
+<h3 id="r10-令operator返回一个reference-to-this">R10 令<code>operator=</code>返回一个reference to *this</h3>
+<h3 id="r11-在operator中处理自我赋值">R11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
+<h3 id="r12-复制对象时别忘记其每一个成分">R12 复制对象时别忘记其每一个成分</h3>
 <h2 id="三资源管理">三.资源管理</h2>
-<h3 id="13-以对象管理资源">13 以对象管理资源</h3>
-<h3 id="14-在资源管理类中小心coping行为">14 在资源管理类中小心coping行为</h3>
-<h3 id="15-在资源管理类提供对原始资源的访问">15 在资源管理类提供对原始资源的访问</h3>
-<h3 id="16-成对使用newdelete时要采取相同形式">16 成对使用new/delete时要采取相同形式</h3>
-<h3 id="17-以独立语句将newed对象置于只能指针">17 以独立语句将newed对象置于只能指针</h3>
+<h3 id="r13-以对象管理资源">R13 以对象管理资源</h3>
+<h3 id="r14-在资源管理类中小心coping行为">R14 在资源管理类中小心coping行为</h3>
+<h3 id="r15-在资源管理类提供对原始资源的访问">R15 在资源管理类提供对原始资源的访问</h3>
+<h3 id="r16-成对使用newdelete时要采取相同形式">R16 成对使用new/delete时要采取相同形式</h3>
+<h3 id="r17-以独立语句将newed对象置于只能指针">R17 以独立语句将newed对象置于只能指针</h3>
 
 
                 
