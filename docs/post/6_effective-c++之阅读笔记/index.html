@@ -222,32 +222,32 @@
 <p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~3章，关于Rule01~17)。</p>
 </blockquote>
 <p><code>废话不多说，直接进入正题。</code></p>
-<h2 id="1让自己习惯c">1.让自己习惯C++</h2>
-<h3 id="rule01-视c为一个语言联邦">Rule01 视C++为一个语言联邦</h3>
-<h3 id="rule02-尽量以constenuminline替换define">Rule02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></h3>
-<h3 id="rule03-尽可能用const">Rule03 尽可能用const</h3>
-<h3 id="rule04-确定对象在使用前先被初始化">Rule04 确定对象在使用前先被初始化</h3>
-<h2 id="2构造析构赋值运算">2.构造/析构/赋值运算</h2>
-<h3 id="rule05-了解c默认编写并调用哪些函数">Rule05 了解C++默认编写并调用哪些函数</h3>
+<h2 id="一让自己习惯c">一.让自己习惯C++</h2>
+<h3 id="01-视c为一个语言联邦">01 视C++为一个语言联邦</h3>
+<h3 id="02-尽量以constenuminline替换define">02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></h3>
+<h3 id="03-尽可能用const">03 尽可能用const</h3>
+<h3 id="04-确定对象使用前先初始化">04 确定对象使用前先初始化</h3>
+<h2 id="二构造析构赋值运算">二.构造/析构/赋值运算</h2>
+<h3 id="05-了解c默认编写并调用哪些函数">05 了解C++默认编写并调用哪些函数</h3>
 <p>编译器可以暗自为Class创建default构造函数，copy构造函数(复制构造)，copy assigment(赋值构造)操作符，以及default析构函数。</p>
-<h3 id="rule06-不想编译器的自动生成的函数明确拒绝">Rule06 不想编译器的自动生成的函数,明确拒绝</h3>
+<h3 id="06-不想编译器的自动生成的函数明确拒绝">06 不想编译器的自动生成的函数,明确拒绝</h3>
 <p>如果不想编译器自动生成那几个函数，比如不想要复制构造或赋值构造，就明确在代码中禁止，也防止外部用户使用。</p>
 <ul>
 <li>技巧1：可以声明为private函数但是不给出实现，让编译器报错；</li>
 <li>技巧2：可以设立基类Base，让复制构造和赋值构造都为private函数，让目标类继承于Base类。</li>
 </ul>
-<h3 id="rule07-为多态基类声明virtual析构函数">Rule07 为多态基类声明<code>virtual</code>析构函数</h3>
-<h3 id="rule08-别让异常逃离析构函数">Rule08 别让异常逃离析构函数</h3>
-<h3 id="rule09-绝不在构造和析构过程中调用virtual函数">Rule09 绝不在构造和析构过程中调用<code>virtual</code>函数</h3>
-<h3 id="rule10-令operator返回一个reference-to-this">Rule10 令<code>operator=</code>返回一个reference to *this</h3>
-<h3 id="rule11-在operator中处理自我赋值">Rule11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
-<h3 id="rule12-复制对象时别忘记其每一个成分">Rule12 复制对象时别忘记其每一个成分</h3>
-<h2 id="3资源管理">3.资源管理</h2>
-<h3 id="rule13-以对象管理资源">Rule13 以对象管理资源</h3>
-<h3 id="rule14-在资源管理类中小心coping行为">Rule14 在资源管理类中小心coping行为</h3>
-<h3 id="rule15-在资源管理类提供对原始资源的访问">Rule15 在资源管理类提供对原始资源的访问</h3>
-<h3 id="rule16-成对使用newdelete时要采取相同形式">Rule16 成对使用new/delete时要采取相同形式</h3>
-<h3 id="rule17-以独立语句将newed对象置于只能指针">Rule17 以独立语句将newed对象置于只能指针</h3>
+<h3 id="07-为多态基类声明virtual析构函数">07 为多态基类声明<code>virtual</code>析构函数</h3>
+<h3 id="08-别让异常逃离析构函数">08 别让异常逃离析构函数</h3>
+<h3 id="09-绝不在构造和析构过程中调用virtual函数">09 绝不在构造和析构过程中调用<code>virtual</code>函数</h3>
+<h3 id="10-令operator返回一个reference-to-this">10 令<code>operator=</code>返回一个reference to *this</h3>
+<h3 id="11-在operator中处理自我赋值">11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
+<h3 id="12-复制对象时别忘记其每一个成分">12 复制对象时别忘记其每一个成分</h3>
+<h2 id="三资源管理">三.资源管理</h2>
+<h3 id="13-以对象管理资源">13 以对象管理资源</h3>
+<h3 id="14-在资源管理类中小心coping行为">14 在资源管理类中小心coping行为</h3>
+<h3 id="15-在资源管理类提供对原始资源的访问">15 在资源管理类提供对原始资源的访问</h3>
+<h3 id="16-成对使用newdelete时要采取相同形式">16 成对使用new/delete时要采取相同形式</h3>
+<h3 id="17-以独立语句将newed对象置于只能指针">17 以独立语句将newed对象置于只能指针</h3>
 
 
                 
