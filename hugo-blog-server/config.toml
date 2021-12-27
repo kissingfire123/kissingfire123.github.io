@@ -16,7 +16,7 @@ home = ["HTML", "RSS", "Algolia"]
 
 [params]
   header_image = "img/wallhaven-太空_header.png"
-  SEOTitle = "Wenyao Blog"
+  SEOTitle = "Wenyao 博客"
   description = "Wenyao,程序员, C++爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。"
   keyword = "Wenyao, Benjamin-Lee, Benjamin-Lee, Wenyao的网络日志, Wenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C++,图形渲染,OpenGL,Metal"
   slogan = "噢，我的老伙计！祝你又能拥有愉快的一天~"
