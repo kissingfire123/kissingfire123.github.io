@@ -1,7 +1,7 @@
 ---
 title:       "利用Hugo和Github-Pages搭建免费的个人博客"
 subtitle:    ""
-description: ""
+description: "Hugo,Github Pages,个人博客"
 date:        2021-12-19
 author:      "liwenyao"
 image:       "img/tools.jpeg"

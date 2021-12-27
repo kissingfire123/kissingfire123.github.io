@@ -1,8 +1,8 @@
 ---
 title:       "MetalGuide(2)资源与对象"
-subtitle:    ""
-description: "MetalGuide系列第二部分"
-date:        2021-12-26
+subtitle:    "MetalGuide系列第二部分"
+description: "Metal,资源,对象,总结"
+date:        2021-12-25
 author:      "liwenyao"
 image:       "img/metal-plane.png"
 tags:        ["Metal","图形渲染"]

@@ -1,7 +1,7 @@
 ---
 title:       "10个容易遗忘但好用的Linux命令"
 subtitle:    ""
-description: ""
+description: "Linux命令,博客"
 date:        2021-12-18
 author:      "liwenyao"
 image:       "img/tools.jpeg"
