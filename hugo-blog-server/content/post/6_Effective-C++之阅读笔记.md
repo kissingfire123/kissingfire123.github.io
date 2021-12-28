@@ -4,7 +4,7 @@ subtitle:    "改善程序与设计的55个具体做法(Rule01-17)"
 description: ""
 date:        2021-12-12
 author:      "liwenyao"
-image:       "img/effective-C++.png"
+image:       "img/effective-C++.webp"
 tags:        ["C++", "程序设计"]
 categories:  ["C++"]
 ---

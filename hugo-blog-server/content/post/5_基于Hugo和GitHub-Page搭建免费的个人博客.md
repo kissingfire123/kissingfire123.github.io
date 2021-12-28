@@ -4,7 +4,7 @@ subtitle:    ""
 description: "Hugo,Github Pages,个人博客"
 date:        2021-12-19
 author:      "liwenyao"
-image:       "img/tools.jpeg"
+image:       "img/tools.webp"
 tags:        ["Hugo", "Github Page"]
 categories:  ["工具" ]
 ---

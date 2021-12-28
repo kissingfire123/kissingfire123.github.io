@@ -4,7 +4,7 @@ subtitle:    ""
 description: "Linux命令,博客"
 date:        2021-12-18
 author:      "liwenyao"
-image:       "img/tools.jpeg"
+image:       "img/tools.webp"
 tags:        ["shell脚本", "linux"]
 categories:  ["工具" ]
 ---
