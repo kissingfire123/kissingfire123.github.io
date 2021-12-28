@@ -7,6 +7,7 @@ author:      "liwenyao"
 image:       "img/metal-plane.webp"
 tags:        ["Metal","图形渲染"]
 categories:  ["计算机图形学" ]
+mermaid:     true
 ---
 
 
