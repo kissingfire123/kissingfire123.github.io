@@ -68,7 +68,6 @@
     
     
 
-    
 </head>
 
 
@@ -217,12 +216,60 @@
 
                 
                 <h1 id="0为什么选hugogithub-page">0.为什么选Hugo+Github-Page</h1>
-<p>说起博客，除了用个人vps+wordPress这种麻烦但diy程度高的方式，比较流行的应该就是CSDN和博客园，以及GithubPage(同类还有GiteePage)。因为可以对自己博客的完全掌控性，以及管理便利性，权衡后，GitHubPage搭建静态网页的格式越来越受欢迎，与之配合的静态博客框架有<code>jekyll</code>、<code>hexo</code>和<code>hugo</code>。</p>
-<p>有博主对3种框架进行过简单的测试对比，<code>编译速度</code>应该是Hugo&gt;Hexo&gt;Jekyll。现在使用人数最多的是Hexo，主题齐全，功能稳定。</p>
+<p>说起博客，除了用个人vps+wordPress这种麻烦但diy程度高的方式，比较流行的应该就是CSDN，博客园和简书，以及GithubPage(同类还有GiteePage)。因为可以对自己博客的完全掌控性，以及管理便利性，大多数博主各方面权衡后，选择了GitHubPage搭建静态网页的形式，与之配合的静态博客框架有<code>jekyll</code>、<code>hexo</code>和<code>hugo</code>。</p>
+<p>有博主对3种框架进行过简单的测试对比，<code>编译速度</code>应该是Hugo&gt;Hexo&gt;Jekyll。</p>
+<p>Jekyll由Ruby开发，是Github Page默认原生支持的框架，本人了解不多。</p>
+<p>Hexo由Node.js开发，应该是使用人数最多的，主题齐全美观，功能稳定，部署和配置比Hugo稍微麻烦些。</p>
+<p>而Hugo，由GO语言开发，号称是最快的静态网站部署框架(200篇博文编译大概1秒)，现在也有不少人从Hexo迁移到Hugo，所以还是选Hugo吧。</p>
+<p><strong>简述过程</strong>：</p>
+<p><code>Github Page</code>，可以用来免费部署静态网站，使用效果也很直接，创建一个代码仓库，然后将上述的静态网站框架包含的文件拖进去，选择主题配置好，然后本地编译后得到静态网页内容，一起Push到远端仓库，Github Page会帮你部署好网站，假设<strong>username</strong>是你的Github账号，那么进入域名https://username.github.io 就可以打开你的博客了(当然这个域名可以后续自己折腾换成其他，这是后话了)。</p>
 <h1 id="1准备工作">1.准备工作</h1>
-<h1 id="2github-page的开通">2.Github-Page的开通</h1>
+<ul>
+<li>
+<p>拥有一个Github账号，参考<a href="https://cloud.tencent.com/developer/article/1487508">腾讯云：一步一步教你注册GitHub账号及简单使用.</a>
+(邮箱建议不要用qq邮箱，虽然用了后面也有办法换，但在后续CDN加速的时候qq邮箱可能有问题)</p>
+</li>
+<li>
+<p>电脑安装Git，下载安装地址：<a href="https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git">安装 Git.</a></p>
+</li>
+<li>
+<p>电脑安装Hugo</p>
+<p><code>最简单的办法</code>，就是直接下载二进制免安装包，安装包下载地址<a href="https://github.com/gohugoio/hugo/releases">Hugo-Release</a>,选择最新的安装包，解压到本地某目录，并添加一下环境变量<code>PATH</code>即可。</p>
+<p>如果是mac系统，也可以选择命令行，相信你已经有了<code>brew</code>程序，直接执行<code>brew  install  hugo</code>即可完成安装。</p>
+<p>如果是Windows系统想要命令行安装，则<strong>管理员身份证运行</strong>终端，执行:</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell"><span style="color:#6272a4"># 如果有chocolatey，就直接执行</span>
+choco install hugo -confirm
+<span style="color:#6272a4"># 如果没有chocolatey，就先安装一下</span>
+powershell -NoProfile -ExecutionPolicy unrestricted -Command <span style="color:#f1fa8c">&#34;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&#34;</span>
+<span style="color:#6272a4"># 设置环境变量</span>
+<span style="color:#8be9fd;font-style:italic">SET </span>PATH=<span style="color:#ff79c6">%</span>PATH%;<span style="color:#ff79c6">%</span>ALLUSERSPROFILE%\chocolatey\bin
+</code></pre></div><h1 id="2github-page的开通">2.Github-Page的开通</h1>
+<p>官方写了很好的Quick Start，图文并茂的，直接贴链接吧，<a href="https://pages.github.com/">Github Page:Websites for you and your projects.</a></p>
+<p>成功之后，作为<strong>username</strong>的你会得到一个形如<code>https://github.com/username/username.github.io.git</code>的新仓库。</p>
+<p>虽然这个免费的服务有一些限制：项目大小最大为1GB，每月带宽使用不超过100GB，每小时最多构建10个版本。对于个人博客网站，是绰绰有余了，所以不用担心。</p>
 <h1 id="3hugo-site新建与部署">3.Hugo site新建与部署</h1>
-<h1 id="4关联hugo-site与github-repo">4.关联Hugo-site与Github-Repo</h1>
+<p>对于Windows系统，以下命令行都建议在<strong>Git-Bash</strong>中运行。
+将第2步得到Clone到电脑本地某文件夹，比如在D盘&quot;<code>/d/Files/username.github.io</code>&quot;.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#6272a4">#cd到git仓库的目录</span>
+<span style="color:#8be9fd;font-style:italic">cd</span> /d/Files/username.github.io
+<span style="color:#6272a4">#确认关联到了远端仓库https://github.com/username/username.github.io.git</span>
+git branch -v
+<span style="color:#6272a4"># 新建hugo站点,起个英文site名，比如MyHugoBlog</span>
+hugo new site MyHugoBlog
+<span style="color:#6272a4">##文件夹下会生成如下</span>
+<span style="color:#6272a4">#   MyHugoBlog</span>
+<span style="color:#6272a4">#     ├─archetypes</span>
+<span style="color:#6272a4">#     ├─content   (markdown内容存放处,一般是content/post/hello.md)</span>
+<span style="color:#6272a4">#     ├─data</span>
+<span style="color:#6272a4">#     ├─layouts</span>
+<span style="color:#6272a4">#     ├─static     (站点静态资源存放处,比如image,js,css)</span>
+<span style="color:#6272a4">#     ├─themes     </span>
+<span style="color:#6272a4">#     └─config.toml  (站点最重要的配置文件)</span>
+      
+
+</code></pre></div><h1 id="4关联hugo-site与github-repo">4.关联Hugo-site与Github-Repo</h1>
 <h1 id="5配置theme相关的config">5.配置theme相关的Config</h1>
 <blockquote>
 <p>参考链接：</p>
@@ -515,6 +562,22 @@
 
 
 
+<script src="/js/mermaid.min.js"></script>
+  <script>
+        Array.from(document.getElementsByClassName('language-mermaid')).forEach(el => {
+        el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`
+    })
+</script>
 
+<script>
+MathJax = {
+    tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+};
+</script>
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
 </body>
 </html>

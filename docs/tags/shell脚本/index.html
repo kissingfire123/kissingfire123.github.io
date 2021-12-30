@@ -68,7 +68,6 @@
     
     
 
-    
 </head>
 
 
@@ -520,6 +519,22 @@
 
 
 
+<script src="/js/mermaid.min.js"></script>
+  <script>
+        Array.from(document.getElementsByClassName('language-mermaid')).forEach(el => {
+        el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`
+    })
+</script>
 
+<script>
+MathJax = {
+    tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+};
+</script>
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
 </body>
 </html>

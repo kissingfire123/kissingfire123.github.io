@@ -68,7 +68,6 @@
     
     
 
-    
 </head>
 
 
@@ -225,7 +224,23 @@
 <p><code>废话不多说，直接进入正题。</code></p>
 <h2 id="一让自己习惯c">一.让自己习惯C++</h2>
 <h3 id="r01-视c为一个语言联邦">R01 视C++为一个语言联邦</h3>
+<p>如今的C++已经是个多重范式(multiparadigm)语言,同时支持面向过程形式、面向对象形式、函数形式、泛型形式、元编程形式。
+要理解这么多特性，可以简单的归结为<code>四种次语言</code>(sublanguage)组成：</p>
+<ul>
+<li><strong>C语言</strong>：<code>C++仍以C为基础</code>。C++是C的超集，区块 、语句、预处理、内置数据类型、数组、指针等全部来自于C语言；</li>
+<li><strong>Object-Oriented C++</strong>: 面向对象特性。构造、析构、封装(encapsulation)、继承(inheritance)、多态(polymorhpism)、virtual函数(动态绑定)等；</li>
+<li><strong>Template C++</strong>:C++的泛型(generic)编程的部分，也带来了黑魔法-模板元编程(TMP,Metaprogramming)；</li>
+<li><strong>STL</strong>：STL(Standard Temlate Library)即标准模板库，它是template程序库。封装了各类容器(container)、配置器(allocator)、迭代器(iterator)、算法以及常用对象。</li>
+</ul>
 <h3 id="r02-尽量以constenuminline替换define">R02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></h3>
+<ul>
+<li>
+<p>对于宏定义的常量，建议用const常量替换</p>
+</li>
+<li>
+<p>对于宏定义的函数，建议用内联inline函数替换</p>
+</li>
+</ul>
 <h3 id="r03-尽可能用const">R03 尽可能用const</h3>
 <h3 id="r04-确定对象使用前先初始化">R04 确定对象使用前先初始化</h3>
 <h2 id="二构造析构赋值运算">二.构造/析构/赋值运算</h2>
@@ -526,6 +541,22 @@
 
 
 
+<script src="/js/mermaid.min.js"></script>
+  <script>
+        Array.from(document.getElementsByClassName('language-mermaid')).forEach(el => {
+        el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`
+    })
+</script>
 
+<script>
+MathJax = {
+    tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+};
+</script>
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
 </body>
 </html>
