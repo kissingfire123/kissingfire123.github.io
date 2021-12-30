@@ -20,7 +20,16 @@ categories:  ["C++"]
 
 ## 一.让自己习惯C++
 ###  R01 视C++为一个语言联邦
+如今的C++已经是个多重范式(multiparadigm)语言,同时支持面向过程形式、面向对象形式、函数形式、泛型形式、元编程形式。
+要理解这么多特性，可以简单的归结为`四种次语言`(sublanguage)组成：
+- **C语言**：`C++仍以C为基础`。C++是C的超集，区块 、语句、预处理、内置数据类型、数组、指针等全部来自于C语言；
+- **Object-Oriented C++**: 面向对象特性。构造、析构、封装(encapsulation)、继承(inheritance)、多态(polymorhpism)、virtual函数(动态绑定)等；
+- **Template C++**:C++的泛型(generic)编程的部分，也带来了黑魔法-模板元编程(TMP,Metaprogramming)；
+- **STL**：STL(Standard Temlate Library)即标准模板库，它是template程序库。封装了各类容器(container)、配置器(allocator)、迭代器(iterator)、算法以及常用对象。
 ###  R02 尽量以`const`,`enum`,`inline`替换`#define`
+- 对于宏定义的常量，建议用const常量替换
+
+- 对于宏定义的函数，建议用内联inline函数替换
 ###  R03 尽可能用const
 ###  R04 确定对象使用前先初始化
 ## 二.构造/析构/赋值运算
