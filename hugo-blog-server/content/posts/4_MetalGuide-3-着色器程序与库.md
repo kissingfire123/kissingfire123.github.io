@@ -3,8 +3,8 @@ title:       "MetalGuide(3)着色器程序与库"
 subtitle:    "MetalGuide系列第三部分"
 description: "Metal,总结,着色器程序,库文件"
 date:        2021-12-26
-author:      "liwenyao"
-image:       "img/metal-plane.webp"
+author:      "Benjamin Lee"
+featuredImage:       "/img/Metal-Pic/Metal-wallhaven-Part3.webp"
 tags:        ["Metal","图形渲染"]
 categories:  ["计算机图形学" ]
 mermaid:     true

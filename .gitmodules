@@ -5,3 +5,6 @@
 [submodule "hugo-blog-server/themes/cleanwhite"]
 	path = hugo-blog-server/themes/cleanwhite
 	url = https://github.com/kissingfire123/hugo-theme-cleanwhite.git
+[submodule "hugo-blog-server/themes/LoveIt"]
+	path = hugo-blog-server/themes/LoveIt
+	url = https://github.com/kissingfire123/LoveIt.git

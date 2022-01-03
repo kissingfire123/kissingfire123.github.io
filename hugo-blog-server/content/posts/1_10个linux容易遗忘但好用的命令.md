@@ -3,12 +3,12 @@ title:       "10个容易遗忘但好用的Linux命令"
 subtitle:    ""
 description: "Linux命令,博客"
 date:        2021-12-18
-author:      "liwenyao"
-image:       "img/tools.webp"
+author:      "Benjamin Lee"
+featuredImage:       "/img/Script-Pic/linux-commandLine.webp"
 tags:        ["shell脚本", "linux"]
-categories:  ["工具" ]
+categories:  ["脚本" ]
+lightgallery:  true
 ---
-
 
 
 ### 1)   pgrep

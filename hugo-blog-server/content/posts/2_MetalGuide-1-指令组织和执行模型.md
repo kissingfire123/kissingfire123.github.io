@@ -3,11 +3,12 @@ title:       "MetalGuide(1)指令组织和执行模型"
 subtitle:    "MetalGuide系列第一部分"
 description: "Metal,指令,总结"
 date:        2021-12-18
-author:      "liwenyao"
-image:       "img/metal-plane.webp"
+author:      "Benjamin Lee"
+featuredImage:       "/img/Metal-Pic/Metal-PipeLine-Part1.webp"
 tags:        ["Metal","图形渲染"]
 categories:  ["计算机图形学" ]
 mermaid:     true
+lightgallery:  true
 ---
 
 

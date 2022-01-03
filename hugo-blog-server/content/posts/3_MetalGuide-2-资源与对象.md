@@ -3,8 +3,8 @@ title:       "MetalGuide(2)资源与对象"
 subtitle:    "MetalGuide系列第二部分"
 description: "Metal,资源,对象,总结"
 date:        2021-12-25
-author:      "liwenyao"
-image:       "img/metal-plane.webp"
+author:      "Benjamin Lee"
+featuredImage: "/img/Metal-Pic/Metal-plane-Part2.webp"
 tags:        ["Metal","图形渲染"]
 categories:  ["计算机图形学" ]
 mermaid:     true

@@ -1,12 +1,12 @@
 ---
-title:       "Effective C++(第三版)阅读笔记(一)"
+title:       "Effective C++(第三版)学习总结(一)"
 subtitle:    "改善程序与设计的55个具体做法(Rule01-17)"
 description: ""
 date:        2021-12-12
-author:      "liwenyao"
-image:       "img/effective-C++.webp"
+author:      "Benjamin Lee"
+featuredImage: "/img/C++-Pic/effective-C++.webp"
 tags:        ["C++", "程序设计"]
-categories:  ["C++"]
+categories:  ["C++"] 
 ---
 
 ## 0.序言
