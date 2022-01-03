@@ -1,20 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hugo on Wenyao Blog</title>
-    <link>https://kissingfire123.github.io/tags/hugo/</link>
-    <description>Recent content in Hugo on Wenyao Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>利用Hugo和Github-Pages搭建免费的个人博客</title>
-      <link>https://kissingfire123.github.io/post/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Sun, 19 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://kissingfire123.github.io/post/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>0.为什么选Hugo+Github-Page 说起博客，除了用个人vps+wordPress这种麻烦但diy程度高的方式，比较流行的应该就是C</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hugo - 标签 - Benjamin自留地</title>
+        <link>https://wenyao.vercel.app/tags/hugo/</link>
+        <description>Hugo - 标签 - Benjamin自留地</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 19 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wenyao.vercel.app/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>利用Hugo和Github-Pages搭建免费的个人博客</title>
+    <link>https://wenyao.vercel.app/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+    <pubDate>Sun, 19 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://wenyao.vercel.app/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/Chore-Pic/hugo-static.webp" referrerpolicy="no-referrer">
+            </div>0.为什么选Hugo+Github-Page 说起博客，除了用个人vps+wordPress这种麻烦但diy程度高的方式，比较流行的应该就是C]]></description>
+</item></channel>
 </rss>

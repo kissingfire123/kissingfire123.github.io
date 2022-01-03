@@ -1,654 +1,206 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-	<meta name="generator" content="Hugo 0.90.1" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="zh-cn">
+    <head>
+	<meta name="generator" content="Hugo 0.91.2" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Benjamin自留地</title><meta name="Description" content="Benjamin的技术自留地"><meta property="og:title" content="Benjamin自留地" />
+<meta property="og:description" content="Benjamin的技术自留地" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://wenyao.vercel.app/" />
 
-    
-    <meta property="og:site_name" content="Wenyao Blog">
-    <meta property="og:type" content="article">
-
-    
-    <meta property="og:image" content="https://kissingfire123.github.io/img/wallhaven-header.webp">
-    <meta property="twitter:image" content="https://kissingfire123.github.io/img/wallhaven-header.webp" />
-    
-
-    
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
-    
-
-    
-    <meta name="description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。">
-    <meta property="og:description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。" />
-    <meta property="twitter:description" content="Wenyao,程序员, C&#43;&#43;爱好者,图形学,音视频渲染初学者 | 这里是 Wenyao 的博客，与你一起分享技术与生活的点滴。" />
-    
-
-    
-    <meta property="twitter:card" content="summary" />
-    
-    
-
-    <meta name="keyword"  content="Wenyao, Benjamin-Lee, Benjamin-Lee, Wenyao的网络日志, Wenyao的博客, Benjamin-Lee Blog, 博客, 个人网站, 图形学, C&#43;&#43;,图形渲染,OpenGL,Metal">
-    <link rel="shortcut icon" href="/img/favicon.ico">
-
-    <title>Wenyao Blog-Wenyao 博客</title>
-
-    <link rel="canonical" href="/">
-
-    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
-
-    
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    
-    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
-
-    
-    <link rel="stylesheet" href="/css/zanshang.css">
-
-    
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css">
-
-    
-    
-
-    
-    
-    <script src="/js/jquery.min.js"></script>
-
-    
-    <script src="/js/bootstrap.min.js"></script>
-
-    
-    <script src="/js/hux-blog.min.js"></script>
-
-    
-    
-
-</head>
-
-
-
-
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-
-    <div class="container-fluid">
-        
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Wenyao Blog</a>
-        </div>
-
-        
-        
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    
-                        
-                        <li>
-                            <a href="/categories/c&#43;&#43;">c&#43;&#43;</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/%E5%B7%A5%E5%85%B7">工具</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6">计算机图形学</a>
-                        </li>
-                        
-                    
-                    
-		    
-                        <li><a href="/top/archive/">归档</a></li>
-                    
-                        <li><a href="/top/about/">关于</a></li>
-                    
-
-                    
-                </ul>
-            </div>
-        </div>
-        
-    </div>
-    
-</nav>
-<script>
-    
-    
-    
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
-        if ($navbar.className.indexOf('in') > 0) {
-        
-            $navbar.className = " ";
-            
-            setTimeout(function(){
-                
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        }else{
-        
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Benjamin自留地"/>
+<meta name="twitter:description" content="Benjamin的技术自留地"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://wenyao.vercel.app/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="Benjamin自留地">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="Benjamin自留地"><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "https:\/\/wenyao.vercel.app\/","inLanguage": "zh-cn","author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "Benjamin的技术自留地","name": "Benjamin自留地"
     }
-</script>
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-
-
-<header class="intro-header" style="background-image: url('/img/wallhaven-header.webp')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Wenyao Blog </h1>
-                    
-		    <span class="subheading">噢，我的老伙计！祝你又能拥有愉快的一天~</span>
-                </div>
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin自留地">Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
             </div>
         </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin自留地">Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
     </div>
 </header>
-
-
-
-  
-<div class="container">
-    <div class="row">
-        
-        
-   	    <div class="
-            col-lg-8 col-lg-offset-1
-            col-md-8 col-md-offset-1
-            col-sm-12
-            col-xs-12
-            post-container
-        ">
-            
-
-<div class="post-preview">
-    <a href="https://kissingfire123.github.io/post/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/">
-        <h2 class="post-title">
-            Fundamentals of Computer Graphics学习总结_第2章(杂项数学)
-        </h2>
-	
-        <h3 class="post-subtitle">
-            计算机图形学-虎书,原版,第2章
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            Fundamentals of Computer Graphics,博客,第2章
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     &#34;liwenyao&#34;  Monday, December 27, 2021
-        
-        
-    
-    </p>
-
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
 </div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://kissingfire123.github.io/top/archive/">
-        <h2 class="post-title">
-            归档
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            历史发布的文章
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted byWenyao Blog  Monday, December 27, 2021
-        
-        
-    
-    </p>
-
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
 </div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://kissingfire123.github.io/post/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/">
-        <h2 class="post-title">
-            MetalGuide(3)着色器程序与库
-        </h2>
-	
-        <h3 class="post-subtitle">
-            MetalGuide系列第三部分
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            Metal,总结,着色器程序,库文件
-        
+<main class="main">
+                <div class="container"><div class="page home" posts><div class="home-profile"><div class="home-avatar"><a href="/posts/" title="所有文章"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/OnePiece-Luffy.webp"
+        data-srcset="/img/OnePiece-Luffy.webp, /img/OnePiece-Luffy.webp 1.5x, /img/OnePiece-Luffy.webp 2x"
+        data-sizes="auto"
+        alt="/img/OnePiece-Luffy.webp"
+        title="/img/OnePiece-Luffy.webp" /></a></div><h1 class="home-title">Benjamin的技术自留地</h1><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/kissingfire123" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="mailto:lwy13697320205@163.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Script-Pic/linux-commandLine.webp"
+        data-srcset="/img/Script-Pic/linux-commandLine.webp, /img/Script-Pic/linux-commandLine.webp 1.5x, /img/Script-Pic/linux-commandLine.webp 2x"
+        data-sizes="auto"
+        alt="/img/Script-Pic/linux-commandLine.webp"
+        title="/img/Script-Pic/linux-commandLine.webp" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/">常用Git命令行总结</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2022-01-02">2022-01-02</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div><div class="content">前言 添加与撤回 拉取 提交 查看diff与Log 推送 变基 子模块 删除一个子模块 子模块的删除并非像添加时那么简单轻松，注意按下述顺序操作： 回退.git</div><div class="post-footer">
+        <a href="/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/">阅读全文</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp"
+        data-srcset="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp, /img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp 1.5x, /img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp 2x"
+        data-sizes="auto"
+        alt="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp"
+        title="Fundamentals of Computer Graphics,博客,第2章" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/">Fundamentals of Computer Graphics学习总结_第2章(杂项数学)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-12-27">2021-12-27</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div><div class="content">序言：看原书第二章后做的笔记，关键术语留有英文注解, 有些内容补充了自己的理解，并非直接翻译原文。 本人水平有限，若有不当之处，欢迎交流与指正，</div><div class="post-footer">
+        <a href="/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/">图形学基础</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Metal-Pic/Metal-wallhaven-Part3.webp"
+        data-srcset="/img/Metal-Pic/Metal-wallhaven-Part3.webp, /img/Metal-Pic/Metal-wallhaven-Part3.webp 1.5x, /img/Metal-Pic/Metal-wallhaven-Part3.webp 2x"
+        data-sizes="auto"
+        alt="/img/Metal-Pic/Metal-wallhaven-Part3.webp"
+        title="Metal,总结,着色器程序,库文件" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/">MetalGuide(3)着色器程序与库</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-12-26">2021-12-26</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div><div class="content">1 如何创建Metal库(MTLLibrary) Case A. 从已编译的代码中创建Library 为了提升性能，可以利用xcode工具在app的创建过程中</div><div class="post-footer">
+        <a href="/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/metal/">Metal</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Metal-Pic/Metal-plane-Part2.webp"
+        data-srcset="/img/Metal-Pic/Metal-plane-Part2.webp, /img/Metal-Pic/Metal-plane-Part2.webp 1.5x, /img/Metal-Pic/Metal-plane-Part2.webp 2x"
+        data-sizes="auto"
+        alt="/img/Metal-Pic/Metal-plane-Part2.webp"
+        title="Metal,资源,对象,总结" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/">MetalGuide(2)资源与对象</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-12-25">2021-12-25</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div><div class="content">0.资源对象 资源对象，主要包含为缓存Buffers和纹理Textures。 ​ MTLBuffer它表示一块非格式化的内存可以存放任何类型的数据</div><div class="post-footer">
+        <a href="/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/metal/">Metal</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Chore-Pic/hugo-static.webp"
+        data-srcset="/img/Chore-Pic/hugo-static.webp, /img/Chore-Pic/hugo-static.webp 1.5x, /img/Chore-Pic/hugo-static.webp 2x"
+        data-sizes="auto"
+        alt="/img/Chore-Pic/hugo-static.webp"
+        title="Hugo,Github Pages,个人博客" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">利用Hugo和Github-Pages搭建免费的个人博客</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-12-19">2021-12-19</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>折腾</a></span></div><div class="content">0.为什么选Hugo+Github-Page 说起博客，除了用个人vps+wordPress这种麻烦但diy程度高的方式，比较流行的应该就是C</div><div class="post-footer">
+        <a href="/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hugo/">Hugo</a>,&nbsp;<a href="/tags/github-page/">Github Page</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Script-Pic/linux-commandLine.webp"
+        data-srcset="/img/Script-Pic/linux-commandLine.webp, /img/Script-Pic/linux-commandLine.webp 1.5x, /img/Script-Pic/linux-commandLine.webp 2x"
+        data-sizes="auto"
+        alt="/img/Script-Pic/linux-commandLine.webp"
+        title="Linux命令,博客" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">10个容易遗忘但好用的Linux命令</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2021-12-18">2021-12-18</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div><div class="content">1) pgrep ​ pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。 1 $ pgrep -u username_xx ​ 这个命令相当于： 1</div><div class="post-footer">
+        <a href="/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shell%E8%84%9A%E6%9C%AC/">shell脚本</a>,&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><ul class="pagination"><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/2/">2</a>
+                    </span>
+                </li></ul></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     &#34;liwenyao&#34;  Sunday, December 26, 2021
-        
-        
-    
-    </p>
+    </footer></div>
 
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://kissingfire123.github.io/post/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/">
-        <h2 class="post-title">
-            MetalGuide(2)资源与对象
-        </h2>
-	
-        <h3 class="post-subtitle">
-            MetalGuide系列第二部分
-        </h3>
-	
-        <div class="post-content-preview">
-	
-            Metal,资源,对象,总结
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     &#34;liwenyao&#34;  Saturday, December 25, 2021
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="https://kissingfire123.github.io/post/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-        <h2 class="post-title">
-            利用Hugo和Github-Pages搭建免费的个人博客
-        </h2>
-	
-        <div class="post-content-preview">
-	
-            Hugo,Github Pages,个人博客
-        
-        </div>
-    </a>
-    <p class="post-meta">
-    
-        Posted by     &#34;liwenyao&#34;  Sunday, December 19, 2021
-        
-        
-    
-    </p>
-
-</div>
-<hr>
-
-
-            
-
-
-<ul class="pager">
-    
-    
-    <li class="next">
-        <a href="/page/2/">Older Posts &rarr;</a>
-    </li>
-    
-</ul>
-
-
-       	</div>
-        
-
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
-        <div class="tags">
-            
-            
-               
-            
-               
-            
-               
-            
-               
-            
-               
-                    <a href="/tags/metal" title="metal">
-                        metal
-                    </a>
-               
-            
-               
-            
-               
-            
-               
-                    <a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93" title="图形渲染">
-                        图形渲染
-                    </a>
-               
-            
-               
-            
-        </div>
-    </section>
-    
-
-    
-	
-    <section class="visible-md visible-lg">
-	<hr><h5><a href="/top/about">ABOUT ME</a></h5>
-        <div class="short-about">
-            
-            <a href="/top/about">
-               <img src="/img/OnePiece-Luffy.webp" alt="avatar" style="cursor: pointer" />
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
             </a>
-            
-            
-                <p>Software Developer, Open Source Enthusiast and Life Adventurer</p>
-            
-           
-           <ul class="list-inline">
-               
-               <li>
-                   <a href='/index.xml' rel="alternate" type="application/rss+xml" title="Wenyao Blog" >
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-               
-               <li>
-                   <a target="_blank" href="https://github.com/kissingfire123">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               
-               
-               
-               
-               
-               
-            
-            
-               
-               
-               
-               
-                </ul>
-            </div>
-    </section>
-	
-    
-    
-    <section>
-        <hr class="hidden-sm hidden-xs">
-        <h5>FRIENDS</h5>
-        <ul class="list-inline">
-            
-            <li><a target="_blank" href="https://www.cnblogs.com/KissingFire123/">Kissingfire123的CnBlog</a></li>
-            
-        </ul>
-    </section>
-    
-
-    
-    
-</div>
-
-	</div>
-</div>
-
-
-
-
-
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                   
-                   <li>
-                       <a href='/index.xml' rel="alternate" type="application/rss+xml" title="Wenyao Blog" >
-                           <span class="fa-stack fa-lg">
-                               <i class="fas fa-circle fa-stack-2x"></i>
-                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-                           </span>
-                       </a>
-                   </li>
-                   
-                    
-                    <li>
-                        <a href="mailto:lwy13697320205@163.com">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		    
-
-                    
-                    
-                    
-
-                    
-
-		    
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/kissingfire123">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-            
-            
-            
-                </ul>
-		<p class="copyright text-muted">
-                    Copyright &copy; Wenyao Blog 2021
-                    <br>
-                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="100px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
-                    </iframe>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-
-
-<script>
-    function loadAsync(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-
-
-
-
-
-
-<script>
-    
-    if($('#tag_cloud').length !== 0){
-        loadAsync("/js/jquery.tagcloud.js",function(){
-            $.fn.tagcloud.defaults = {
-                
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
-
-
-<script>
-    loadAsync("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-    function generateCatalog(selector) {
-
-        
-        
-        
-        
-            _containerSelector = 'div.post-container'
-        
-
-        
-        var P = $(_containerSelector), a, n, t, l, i, c;
-        a = P.find('h1,h2,h3,h4,h5,h6');
-
-        
-        $(selector).html('')
-
-        
-        a.each(function () {
-            n = $(this).prop('tagName').toLowerCase();
-            i = "#" + $(this).prop('id');
-            t = $(this).text();
-            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
-            l = $('<li class="' + n + '_nav"></li>').append(c);
-            $(selector).append(l);
-        });
-        return true;
-    }
-
-    generateCatalog(".catalog-body");
-
-    
-    $(".catalog-toggle").click((function (e) {
-        e.preventDefault();
-        $('.side-catalog').toggleClass("fold")
-    }))
-
-    
-
-
-    loadAsync("\/js\/jquery.nav.js", function () {
-        $('.catalog-body').onePageNav({
-            currentClass: "active",
-            changeHash: !1,
-            easing: "swing",
-            filter: "",
-            scrollSpeed: 700,
-            scrollOffset: 0,
-            scrollThreshold: .2,
-            begin: null,
-            end: null,
-            scrollChange: null,
-            padding: 80
-        });
-    });
-</script>
-
-
-
-<script src="/js/mermaid.min.js"></script>
-  <script>
-        Array.from(document.getElementsByClassName('language-mermaid')).forEach(el => {
-        el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`
-    })
-</script>
-
-<script>
-MathJax = {
-    tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-    }
-};
-</script>
-<script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
-</body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/typeit.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"潜心砥砺，功不唐捐。"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
