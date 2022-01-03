@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>C&#43;&#43; - 分类 - Benjamin自留地</title>
-        <link>https://wenyao.vercel.app/categories/c&#43;&#43;/</link>
+        <link>https://kissingfire123.github.io/categories/c&#43;&#43;/</link>
         <description>C&#43;&#43; - 分类 - Benjamin自留地</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wenyao.vercel.app/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/categories/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
     <title>Effective C&#43;&#43;(第三版)学习总结(一)</title>
-    <link>https://wenyao.vercel.app/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</link>
+    <link>https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</link>
     <pubDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://wenyao.vercel.app/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</guid>
+    <guid>https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp" referrerpolicy="no-referrer">
             </div>0.序言 这本C++的经典之作，作者是大佬Scott Meyers👉大佬主页，还写过其他几本影响深远的C++经典，例如《Effective STL]]></description>

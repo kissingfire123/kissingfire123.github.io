@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>图形学基础 - 标签 - Benjamin自留地</title>
-        <link>https://wenyao.vercel.app/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/</link>
+        <link>https://kissingfire123.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/</link>
         <description>图形学基础 - 标签 - Benjamin自留地</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Mon, 27 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://wenyao.vercel.app/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Mon, 27 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="self" type="application/rss+xml" /><item>
     <title>Fundamentals of Computer Graphics学习总结_第2章(杂项数学)</title>
-    <link>https://wenyao.vercel.app/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</link>
+    <link>https://kissingfire123.github.io/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</link>
     <pubDate>Mon, 27 Dec 2021 00:00:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://wenyao.vercel.app/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</guid>
+    <guid>https://kissingfire123.github.io/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp" referrerpolicy="no-referrer">
             </div>序言：看原书第二章后做的笔记，关键术语留有英文注解, 有些内容补充了自己的理解，并非直接翻译原文。 本人水平有限，若有不当之处，欢迎交流与指正，]]></description>
