@@ -12,7 +12,7 @@
     <guid>https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
-            </div>前言 添加与撤回 拉取 提交 查看diff与Log 推送 变基 子模块 删除一个子模块 子模块的删除并非像添加时那么简单轻松，注意按下述顺序操作： 回退.git]]></description>
+            </div>前言 添加与撤回 Git有工作区(也就是本地文件)&ndash;&gt; 暂存区(staged) &ndash;&gt; 仓库，如下图所示： 拉取 提交 查看diff与Log 推]]></description>
 </item><item>
     <title>10个容易遗忘但好用的Linux命令</title>
     <link>https://kissingfire123.github.io/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
