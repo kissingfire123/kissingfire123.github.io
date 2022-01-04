@@ -362,10 +362,10 @@ hasCJKLanguage = true
         clientSecret = ""
       # Valine 评论系统设置
       [params.page.comment.valine]
-        enable = false
-        appId = ""
-        appKey = ""
-        placeholder = ""
+        enable = true
+        appId = "6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz"
+        appKey = "OPVQ1v39BIWr9GX8biOyPD8V"
+        placeholder = "欢迎评论..."
         avatar = "mp"
         meta= ""
         pageSize = 10
