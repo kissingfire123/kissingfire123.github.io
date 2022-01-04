@@ -16,7 +16,7 @@ Hexo由Node.js开发，应该是使用人数最多的，主题齐全美观，功
 **简述过程**：
 
 `Github Page`，可以用来免费部署静态网站，使用效果也很直接，创建一个代码仓库，然后将上述的静态网站框架包含的文件拖进去，选择主题配置好，然后本地编译后得到静态网页内容，一起Push到远端仓库，Github Page会帮你部署好网站，假设**usernamexxx**是你的Github账号，那么进入域名https://usernamexxx.github.io 就可以打开你的博客了(当然这个域名可以后续自己折腾换成其他，这是后话了)。
-# 准备工作
+# 1.准备工作
 * 拥有一个Github账号，参考[腾讯云：一步一步教你注册GitHub账号及简单使用.](https://cloud.tencent.com/developer/article/1487508)
   (邮箱建议不要用qq邮箱，虽然用了后面也有办法换，但在后续CDN加速的时候qq邮箱可能有问题)
 * 电脑安装Git，下载安装地址：[安装 Git.](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)
@@ -38,7 +38,7 @@ Hexo由Node.js开发，应该是使用人数最多的，主题齐全美观，功
   SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
   ```
   安装成功后，命令行执行 **`hugo version`** 检查hugo版本，能正确打印版本信息即表示正常安装。
-# 开通Github-Page
+# 2.开通Github-Page
 不太熟悉Github的朋友，官方写了很好的Quick Start，图文并茂的，直接贴链接吧，[Github Page:Websites for you and your projects.](https://pages.github.com/)
 
 熟悉Github的朋友，直接新建一个public的仓库，如果用户名为**usernamexxx**仓库名为`usernamexxx.github.io`。
@@ -66,7 +66,7 @@ git config --global credential.helper store
 ```
 
 虽然这个免费的服务有一些限制：项目大小最大为1GB，每月带宽使用不超过100GB，每小时最多构建10个版本。对于个人博客网站，是绰绰有余了，所以不用担心。
-# 新建hugo site站点
+# 3.新建hugo site站点
 对于Windows系统，以下命令行都建议在**Git-Bash**中运行。
 如上一节所述，我们的仓库在路径"`/d/Files/usernamexxx.github.io`".
 ```shell
@@ -90,7 +90,7 @@ hugo new site MyHugoBlog
 cd MyHugoBlog
 ```
 
-# 设置主题
+# 4.设置主题
 Hugo支持非常多简洁又美观的主题，可以在[Hugo中文站的主题列表](https://www.gohugo.org/theme/)里或者[Hugo官方站的主题列表](https://themes.gohugo.io/)挑选，看个人喜好了。这里可以不用太纠结，可以先随便选一个，让站点运行起来先，可以很方便就换掉的(配置文件里的`theme`选项)。
 
 举例，看中了[`Even`主题](https://themes.gohugo.io/themes/hugo-theme-even/),Github地址为：https://github.com/olOwOlo/hugo-theme-even ，不要直接下载或直接clone，考虑到后续可能想有自定义修改，去Github界面fork到你自己仓库，然后再添加为子模块：
@@ -100,7 +100,7 @@ cd /d/Files/usernamexxx.github.io
 git submodule add https://github.com/usernamexxx/hugo-theme-even  MyHugoBlog/theme/even
 ```
 
-# 创建hugo新文章
+# 5.创建hugo新文章
 hugo的新文章在content/post目录，或者content/posts目录，看个人习惯而定，试用了几个主题，不同主题默认位置可能是二者其一。例如，执行下述hugo命令：
 ```shell
 cd /d/Files/usernamexxx.github.io/MyHugoBlog
@@ -149,15 +149,18 @@ git commit -m "compiled results"
 git push -u origin
 ```
 **至此，就完成了Hugo + Github Page**的搭建工作，不难发现，现在的站点有一点简陋(主题对应的特定选项还没配)，继续往下看，就是美化过程。
-# 配置theme相关的Config
+# 6.配置theme相关的Config
 每个主题都有Github仓库，除了ReadMe内容，还可以看看Issue，你遇到的问题可能别人也遇到过，还有就是参考主题的exampleSite，看看图片是怎么设置路径的、SEO优化、评论插件等等内容。
 中英文的官方站加起来有300个左右的主题，我尝试了6个主题，推荐3个比较喜欢的吧：
 - [LoveIt主题](https://github.com/dillonzq/LoveIt)
 - [CleanWhite主题](https://github.com/zhaohuabing/hugo-theme-cleanwhite)
 - [Ananke主题](https://github.com/theNewDynamic/gohugo-theme-ananke.git)
 
-# 关于加速
-众所周知，Github-Page在国内访问大部分时候比较慢，这时加速访问就很有必要了。除了花RMB在腾讯云阿里云买CDN加速服务，也有免费方案。Vercel,Cloudflare和Netlify都是不错的选择，我选了vercel进行加速(还送免费的二级域名)，网络资料很多，就不赘述了。
+# 7.关于加速
+众所周知，Github-Page在国内访问大部分时候比较慢，这时加速访问就很有必要了。除了花RMB在腾讯云阿里云买CDN加速服务，也有免费方案。`Vercel`,`Cloudflare`和`Netlify`都是不错的选择，我选了[vercel-site](https://vercel.com/)进行加速(还可以拥有免费的二级域名vercel.app)，网络资料很多，就不赘述了。
+
+关于网站访问速度的评估，有个输入你网址就能分析访问性能的网站，网址为: [PageSpeed](https://pagespeed.web.dev)。可以很方便地看到一些明显的问题，例如图片过大或者过多(推荐用webp格式的图,可以用ffmpeg等工具转换格式)，以及js代码负载过大等问题。
+
 
 > 遇到问题欢迎留言与沟通，Enjoy~
 
