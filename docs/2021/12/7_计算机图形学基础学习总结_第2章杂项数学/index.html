@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/"
-        },"genre": "posts","keywords": "图形学基础, 图形渲染","wordcount":  10092 ,
+        },"genre": "posts","keywords": "图形学基础, 图形渲染","wordcount":  10106 ,
         "url": "https:\/\/kissingfire123.github.io\/2021\/12\/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/","datePublished": "2021-12-27T00:00:00+00:00","dateModified": "2021-12-27T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,7 +104,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Fundamentals of Computer Graphics学习总结_第2章(杂项数学)</h1><h2 class="single-subtitle">计算机图形学-虎书,原版,第2章</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-27">2021-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10092 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-27">2021-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10106 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -739,7 +739,7 @@ $$p=(1-\beta -\gamma)a+\beta b+\gamma c$$
 三角形$abc$，三条边对应3个比例$\alpha,\beta,\gamma$,则对于三角形内任意点$p$:
 $$\alpha =\frac{Area_{pbc}}{Area_{abc}}=\frac{\lVert (c-b)\times(p-b) \rVert} {\lVert (b-a)\times(c-a) \rVert}$$
 令$\vec n=(b-a)\times(c-a)$,$\vec n_a =(c-b)\times(p-b)$，因为<code>两者平行且同向</code>($\vec n \cdot \vec n_a=||\vec n|| \cdot ||\vec n_a||$),则上式可化简：
-$$\alpha =\frac{\lVert \vec{n_a} \rVert}{\lVert \vec{n} \rVert}= \frac{\lVert \vec{n_a} \rVert \cdot \lVert \vec{n} \rVert}{\lVert \vec{n} \rVert \cdot \lVert \vec{n} \rVert} =\frac{\vec{n} \cdot \vec {n_a}}{{\lVert \vec{n} \rVert}^2}$$
+$$\alpha =\frac{\lVert \vec n_a  \rVert}{\lVert \vec n  \rVert }= \frac{\lVert \vec n_a  \rVert \cdot \lVert \vec n  \rVert }{\lVert \vec n  \rVert \cdot \lVert \vec n  \rVert } =\frac{\vec n  \cdot \vec  n_a }{{\lVert \vec n \rVert }^2 }$$
 同理可得$\beta, \gamma$的值：
 $$\beta =\frac{\vec n \cdot \vec n_b}{{\lVert \vec n \rVert}^2}$$
 $$\gamma =\frac{\vec n \cdot \vec n_c}{{\lVert \vec n \rVert}^2}$$

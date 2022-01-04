@@ -529,7 +529,7 @@ $$p=(1-\beta -\gamma)a+\beta b+\gamma c$$
 三角形$abc$，三条边对应3个比例$\alpha,\beta,\gamma$,则对于三角形内任意点$p$:
 $$\alpha =\frac{Area_{pbc}}{Area_{abc}}=\frac{\lVert (c-b)\times(p-b) \rVert} {\lVert (b-a)\times(c-a) \rVert}$$
 令$\vec n=(b-a)\times(c-a)$,$\vec n_a =(c-b)\times(p-b)$，因为`两者平行且同向`($\vec n \cdot \vec n_a=||\vec n|| \cdot ||\vec n_a||$),则上式可化简：
-$$\alpha =\frac{\lVert \vec{n_a} \rVert}{\lVert \vec{n} \rVert}= \frac{\lVert \vec{n_a} \rVert \cdot \lVert \vec{n} \rVert}{\lVert \vec{n} \rVert \cdot \lVert \vec{n} \rVert} =\frac{\vec{n} \cdot \vec {n_a}}{{\lVert \vec{n} \rVert}^2}$$
+$$\alpha =\frac{\lVert \vec n_a  \rVert}{\lVert \vec n  \rVert \}= \frac{\lVert \vec n_a  \rVert \cdot \lVert \vec n  \rVert \}{\lVert \vec n  \rVert \cdot \lVert \vec n  \rVert \} =\frac{\vec n  \cdot \vec  n_a \}{{\lVert \vec n \rVert \}^2 }$$
 同理可得$\beta, \gamma$的值：
 $$\beta =\frac{\vec n \cdot \vec n_b}{{\lVert \vec n \rVert}^2}$$
 $$\gamma =\frac{\vec n \cdot \vec n_c}{{\lVert \vec n \rVert}^2}$$
