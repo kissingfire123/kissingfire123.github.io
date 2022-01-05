@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "D:/Lwy_Documents/Github_Blog/kissingfire123.github.io/hugo-blog-server",
+	"sourceRoot": "D:/Lwy_Documents/Github_Blog/PrivateBlogSite",
 	"sources": [
 		"themes/LoveIt/assets/css/style.scss",
 		"themes/LoveIt/assets/css/_variables.scss",
