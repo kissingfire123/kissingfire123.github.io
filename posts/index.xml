@@ -58,14 +58,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-PipeLine-Part1.webp" referrerpolicy="no-referrer">
             </div>1. 基本概念认知 ​ Metal 是一个和 OpenGL ES 类似的面向底层的图形编程接口，通过使用相关的API 可以直接操作 GPU。不过不同的是，Metal不具有跨平台特性]]></description>
-</item><item>
-    <title>Effective C&#43;&#43;(第三版)学习总结(一)</title>
-    <link>https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</link>
-    <pubDate>Sun, 12 Dec 2021 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp" referrerpolicy="no-referrer">
-            </div>0.序言 这本C++的经典之作，作者是大佬Scott Meyers👉大佬主页，还写过其他几本影响深远的C++经典，例如《Effective STL]]></description>
 </item></channel>
 </rss>
