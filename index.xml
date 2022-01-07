@@ -14,7 +14,7 @@
     <guid>https://kissingfire123.github.io/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics.webp" referrerpolicy="no-referrer">
-            </div>序言：看原书第二章后做的笔记，关键术语留有英文注解, 有些内容补充了自己的理解，并非直接翻译原文。 本人水平有限，若有不当之处，欢迎交流与指正，]]></description>
+            </div>摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结]]></description>
 </item><item>
     <title>MetalGuide(3)着色器程序与库</title>
     <link>https://kissingfire123.github.io/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</link>
@@ -23,7 +23,7 @@
     <guid>https://kissingfire123.github.io/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-wallhaven-Part3.webp" referrerpolicy="no-referrer">
-            </div>1 如何创建Metal库(MTLLibrary) Case A. 从已编译的代码中创建Library 为了提升性能，可以利用xcode工具在app的创建过程中]]></description>
+            </div>摘要：Metal官方文档MetalGuide系列第三部分 -> Metal有关的Shader着色器程序,以及MetalLib库文件的生成与使用]]></description>
 </item><item>
     <title>MetalGuide(2)资源与对象</title>
     <link>https://kissingfire123.github.io/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link>
@@ -32,7 +32,7 @@
     <guid>https://kissingfire123.github.io/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-plane-Part2.webp" referrerpolicy="no-referrer">
-            </div>0.资源对象 资源对象，主要包含为缓存Buffers和纹理Textures。 ​ MTLBuffer它表示一块非格式化的内存可以存放任何类型的数据]]></description>
+            </div>摘要：Metal官方文档MetalGuide系列第二部分 -> Metal资源与对象，即纹理Texture和Buffer]]></description>
 </item><item>
     <title>利用Hugo和Github-Pages搭建免费的个人博客</title>
     <link>https://kissingfire123.github.io/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
@@ -41,7 +41,7 @@
     <guid>https://kissingfire123.github.io/2021/12/5_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Chore-Pic/hugo-static.webp" referrerpolicy="no-referrer">
-            </div>0.为什么选Hugo+Github-Page 说起博客，除了用个人vps+wordPress这种麻烦但diy程度高的方式，比较流行的应该就是C]]></description>
+            </div>摘要：基于Hugo框架和Github-Page搭建个人博客]]></description>
 </item><item>
     <title>10个容易遗忘但好用的Linux命令</title>
     <link>https://kissingfire123.github.io/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
@@ -50,7 +50,7 @@
     <guid>https://kissingfire123.github.io/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
-            </div>1) pgrep ​ pgrep名字前有个p，我们可以猜到这是进程相关的grep命令。不过，这个命令主要是用来列举进程ID的。 1 $ pgrep -u username_xx ​ 这个命令相当于： 1]]></description>
+            </div>摘要：10个简单好用的Linux命令]]></description>
 </item><item>
     <title>MetalGuide(1)指令组织和执行模型</title>
     <link>https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/</link>
@@ -59,6 +59,6 @@
     <guid>https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-PipeLine-Part1.webp" referrerpolicy="no-referrer">
-            </div>1. 基本概念认知 ​ Metal 是一个和 OpenGL ES 类似的面向底层的图形编程接口，通过使用相关的API 可以直接操作 GPU。不过不同的是，Metal不具有跨平台特性]]></description>
+            </div>摘要：Metal官方文档MetalGuide系列第一部分 -> 基本的指令和执行模型]]></description>
 </item></channel>
 </rss>
