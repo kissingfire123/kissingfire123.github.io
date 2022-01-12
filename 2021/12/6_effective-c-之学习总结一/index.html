@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Effective C&#43;&#43;(第三版)学习总结(一) - Benjamin的网络日志</title><meta name="Description" content="摘要：Effective C&#43;&#43;(第三版)内容 前1/3 的总结"><meta property="og:title" content="Effective C&#43;&#43;(第三版)学习总结(一)" />
+<meta property="og:description" content="摘要：Effective C&#43;&#43;(第三版)内容 前1/3 的总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-12T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Effective C&#43;&#43;(第三版)学习总结(一)"/>
+<meta name="twitter:description" content="摘要：Effective C&#43;&#43;(第三版)内容 前1/3 的总结"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><link rel="next" href="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Effective C++(第三版)学习总结(一)",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/"
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  2449 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2021-12-12T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "     \"Benjamin Lee\""
+            },"description": "摘要：Effective C++(第三版)内容 前1/3 的总结"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin的网络日志"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的网络日志"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)学习总结(一)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule01-17)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2449 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)学习总结(一)">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp"
+        data-srcset="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp, /img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp 1.5x, /img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp 2x"
+        data-sizes="auto"
+        alt="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp"
+        title="摘要：Effective C&#43;&#43;(第三版)内容 前1/3 的总结" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#0序言">0.序言</a></li>
+        <li><a href="#一让自己习惯c">一.让自己习惯C++</a>
+          <ul>
+            <li><a href="#r01-视c为一个语言联邦">R01 视C++为一个语言联邦</a></li>
+            <li><a href="#r02-尽量以constenuminline替换define">R02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></a></li>
+            <li><a href="#r03-尽可能用const">R03 尽可能用const</a></li>
+            <li><a href="#r04-确定对象使用前先初始化">R04 确定对象使用前先初始化</a></li>
+          </ul>
+        </li>
+        <li><a href="#二构造析构赋值运算">二.构造/析构/赋值运算</a>
+          <ul>
+            <li><a href="#r05-了解c默认编写并调用哪些函数">R05 了解C++默认编写并调用哪些函数</a></li>
+            <li><a href="#r06-不想编译器的自动生成的函数明确拒绝">R06 不想编译器的自动生成的函数,明确拒绝</a></li>
+            <li><a href="#r07-为多态基类声明virtual析构函数">R07 为多态基类声明<code>virtual</code>析构函数</a></li>
+            <li><a href="#r08-别让异常逃离析构函数">R08 别让异常逃离析构函数</a></li>
+            <li><a href="#r09-绝不在构造和析构过程中调用virtual函数">R09 绝不在构造和析构过程中调用<code>virtual</code>函数</a></li>
+            <li><a href="#r10-令operator返回一个reference-to-this">R10 令<code>operator=</code>返回一个reference to *this</a></li>
+            <li><a href="#r11-在operator中处理自我赋值">R11 在<code>operator=</code>中处理&quot;自我赋值&quot;</a></li>
+            <li><a href="#r12-复制对象时别忘记其每一个成分">R12 复制对象时别忘记其每一个成分</a></li>
+          </ul>
+        </li>
+        <li><a href="#三资源管理">三.资源管理</a>
+          <ul>
+            <li><a href="#r13-以对象管理资源">R13 以对象管理资源</a></li>
+            <li><a href="#r14-在资源管理类中小心coping行为">R14 在资源管理类中小心coping行为</a></li>
+            <li><a href="#r15-在资源管理类提供对原始资源的访问">R15 在资源管理类提供对原始资源的访问</a></li>
+            <li><a href="#r16-成对使用newdelete时要采取相同形式">R16 成对使用new/delete时要采取相同形式</a></li>
+            <li><a href="#r17-以独立语句将newed对象置于只能指针">R17 以独立语句将newed对象置于只能指针</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="0序言">0.序言</h2>
+<p>这本C++的经典之作，作者是大佬<code>Scott Meyers</code>👉<a href="https://www.aristeia.com/books.html" target="_blank" rel="noopener noreffer">大佬主页</a>，还写过其他几本影响深远的C++经典，例如<code>《Effective STL》</code>,<code>《More Effective C++》</code>,<code>《Effective Mordern C++》</code>,<code>《Overview of the New C++(C++11/14)》</code>等等。本书笔者看的是中文版，侯捷老师翻译的,以前做的笔记是在自己的纸质笔记本上，现在挪到博客上来吧。</p>
+<p>关于Effective C++，全书55个C++条款，许多人都做了笔记类的博客，大家视角不同可能侧重也不同，各花入各眼了。(PS:本文主干目录和原书一致，另外，由于原书在C++11之前写成，所以会根据本人开发经验新增一些个人感悟👉<code>小声bb</code>环节)</p>
+<blockquote>
+<p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~3章，内容范围Rule01~17。为方便书写，<strong>Rule01简写为R01</strong>)。</p>
+</blockquote>
+<p><code>废话不多说，直接进入正题。</code></p>
+<h2 id="一让自己习惯c">一.让自己习惯C++</h2>
+<h3 id="r01-视c为一个语言联邦">R01 视C++为一个语言联邦</h3>
+<p>如今的C++已经是个多重范式(multiparadigm)语言,同时支持面向过程形式、面向对象形式、函数形式、泛型形式、元编程形式。
+要理解这么多特性，可以简单的归结为<code>四种次语言</code>(sublanguage)组成：</p>
+<ul>
+<li><strong>C语言</strong>：<code>C++仍以C为基础</code>。C++是C的超集，区块 、语句、预处理、内置数据类型、数组、指针等全部来自于C语言；</li>
+<li><strong>Object-Oriented C++</strong>: 面向对象特性。构造、析构、封装(encapsulation)、继承(inheritance)、多态(polymorhpism)、virtual函数(动态绑定)等；</li>
+<li><strong>Template C++</strong>:C++的泛型(generic)编程的部分，也带来了黑魔法-模板元编程(TMP,Metaprogramming)；</li>
+<li><strong>STL</strong>：STL(Standard Temlate Library)即标准模板库，它是template程序库。封装了各类容器(container)、配置器(allocator)、迭代器(iterator)、算法以及常用对象。</li>
+</ul>
+<h3 id="r02-尽量以constenuminline替换define">R02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></h3>
+<ul>
+<li>
+<p>对于宏定义的常量，建议用const常量或者枚举enum替换</p>
+<p>这样做的好处是方便调试，因为宏报错就是个常数值，没有符号表；并且宏不具有封装性(宏的作用域是在编译时是其定义之事)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 举例：MAX_DATA_COUNT在预处理阶段就会被替换，编译器不会见到它，所以一旦有相关报错，给的是100这个值
+</span><span class="c1"></span><span class="cp">#define MAX_DATA_COUNT   100
+</span><span class="cp"></span><span class="k">const</span>  <span class="kt">int</span> <span class="n">MAX_DATA_COUNT</span> <span class="o">=</span> <span class="mi">100</span> <span class="p">;</span><span class="c1">//常量只有一份，宏会导致多份常量值
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Buffer</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span><span class="c1">//...类其他部分省略
+</span><span class="c1"></span>    <span class="k">static</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">factor_</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">;</span><span class="c1">//常量声明，&#34;in-class初值设定&#34;，旧式编译器需要在实现文件初始化
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+    <span class="k">static</span> <span class="k">const</span>  <span class="kt">int</span> <span class="n">ArrLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="n">ArrLength</span><span class="p">];</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果编译器不允许声明时&quot;in-class初值设定&quot;,如果是整形常量，可以让枚举值来替代，而且<code>枚举值不能被取地址</code>。</p>
+</li>
+<li>
+<p>对于宏定义的函数，建议用内联inline函数替换</p>
+<p>宏函数没办法单行debug调试，而内联函数可以；</p>
+<p>宏的写法即使小心翼翼的加好了括号，也可能造成意想不到的<code>宏函数重复计算</code>的问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#define  CALL_WITH_MAX(a,b)   f((a)&gt;(b) ? (a) :(b))
+</span><span class="cp"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">CALL_WITH_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>    <span class="c1">// a累加二次
+</span><span class="c1"></span><span class="n">CALL_WITH_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// a累加一次
+</span><span class="c1">// 定义个inline函数就不会有这个问题,(a,b)作为函数入参就只会计算一次
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="r03-尽可能用const">R03 尽可能用const</h3>
+<p>说起const，先复习个面试高频题😁</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//类型char在哪里没关系，关键看const和*的相对位置：const在*左边，指针所指物为常量; const在*右边，指针为常量；
+</span><span class="c1"></span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 指针p所指的字符串为常量，但是p可以修改
+</span><span class="c1"></span><span class="kt">char</span><span class="o">*</span> <span class="k">const</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 指针p是常量，指向的字符串可修改
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>const修饰函数返回值时的防御性</p>
+<p>const修饰函数的返回值，可以避免一些错误，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">const</span> <span class="n">Rational</span> <span class="k">operator</span><span class="o">*</span> <span class="p">(</span><span class="k">const</span> <span class="n">Rational</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span><span class="k">const</span> <span class="n">Rational</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">);</span>
+<span class="c1">//存在Rational a,b,c;
+</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="c1">//例如手误 &#34;==&#34;打成了&#34;=&#34;，编译器会直接报错
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>const成员函数</p>
+<p>const成员函数有2个好处：明确理解函数是否修改对象内容；使“操作const对象”成为可能。</p>
+<p>可以通过const特性让对象自动调用正确的版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">  <span class="k">class</span> <span class="nc">TextBlock</span><span class="p">{</span><span class="c1">//...类其他部分省略
+</span><span class="c1"></span>      <span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">{</span> <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">];}</span>
+      <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">];}</span>
+  <span class="k">private</span><span class="o">:</span> 
+      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">Text</span><span class="o">&amp;</span> <span class="n">ctb</span><span class="p">){</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ctb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">;</span><span class="c1">//根据const特性，调用 const TextBlock::operator[]
+</span><span class="c1"></span>  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="r04-确定对象使用前先初始化">R04 确定对象使用前先初始化</h3>
+<h2 id="二构造析构赋值运算">二.构造/析构/赋值运算</h2>
+<h3 id="r05-了解c默认编写并调用哪些函数">R05 了解C++默认编写并调用哪些函数</h3>
+<p>编译器可以暗自为Class创建default构造函数，copy构造函数(复制构造)，copy assigment(赋值构造)操作符，以及default析构函数。</p>
+<h3 id="r06-不想编译器的自动生成的函数明确拒绝">R06 不想编译器的自动生成的函数,明确拒绝</h3>
+<p>如果不想编译器自动生成那几个函数，比如不想要复制构造或赋值构造，就明确在代码中禁止，也防止外部用户使用。</p>
+<ul>
+<li>技巧1：可以声明为private函数但是不给出实现，让编译器报错；</li>
+<li>技巧2：可以设立基类Base，让复制构造和赋值构造都为private函数，让目标类继承于Base类。</li>
+</ul>
+<h3 id="r07-为多态基类声明virtual析构函数">R07 为多态基类声明<code>virtual</code>析构函数</h3>
+<ul>
+<li>针对<code>Base* pBase= new DerivedObj()</code>，释放pBase时，如果Base基类的析构函数<code>None-Virtual</code>，则会导致Derived的析构函数不会被调用，造成<code>内存不完全释放</code>；</li>
+<li>Non-Virtual的Class不要做基类；</li>
+<li>如果不做基类，就不要声明析构函数为virtual函数，避免虚表为其分配vptr造成浪费；</li>
+<li>如果想要抽象类，又暂时没有合适接口，可以让先虚析构成为纯虚函数，例如：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">    <span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
+        <span class="k">public</span><span class="o">:</span>
+            <span class="k">virtual</span> <span class="o">~</span><span class="n">RawData</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="c1">// 这里特殊的是，需要为这个纯虚函数提供定义
+</span><span class="c1"></span>    <span class="o">~</span><span class="n">RawData</span><span class="o">::</span><span class="n">RawData</span><span class="p">(){}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="r08-别让异常逃离析构函数">R08 别让异常逃离析构函数</h3>
+<h3 id="r09-绝不在构造和析构过程中调用virtual函数">R09 绝不在构造和析构过程中调用<code>virtual</code>函数</h3>
+<h3 id="r10-令operator返回一个reference-to-this">R10 令<code>operator=</code>返回一个reference to *this</h3>
+<h3 id="r11-在operator中处理自我赋值">R11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
+<h3 id="r12-复制对象时别忘记其每一个成分">R12 复制对象时别忘记其每一个成分</h3>
+<h2 id="三资源管理">三.资源管理</h2>
+<h3 id="r13-以对象管理资源">R13 以对象管理资源</h3>
+<h3 id="r14-在资源管理类中小心coping行为">R14 在资源管理类中小心coping行为</h3>
+<h3 id="r15-在资源管理类提供对原始资源的访问">R15 在资源管理类提供对原始资源的访问</h3>
+<h3 id="r16-成对使用newdelete时要采取相同形式">R16 成对使用new/delete时要采取相同形式</h3>
+<h3 id="r17-以独立语句将newed对象置于只能指针">R17 以独立语句将newed对象置于只能指针</h3></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-12-12</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-hashtags="C&#43;&#43;,程序设计"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-image="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-description="摘要：Effective C&#43;&#43;(第三版)内容 前1/3 的总结"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-description="摘要：Effective C&#43;&#43;(第三版)内容 前1/3 的总结"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" class="next" rel="next" title="MetalGuide(1)指令组织和执行模型">MetalGuide(1)指令组织和执行模型<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0-DEV">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"欢迎评论...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
