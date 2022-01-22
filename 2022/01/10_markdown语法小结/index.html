@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-11T14:43:05+08:00" />
-<meta property="article:modified_time" content="2022-01-16T23:30:32+08:00" />
+<meta property="article:modified_time" content="2022-01-22T16:01:48+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Markdown语法总结"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93\/"
-        },"genre": "posts","keywords": "markdown, 脚本, 工具","wordcount":  5762 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93\/","datePublished": "2022-01-11T14:43:05+08:00","dateModified": "2022-01-16T23:30:32+08:00","publisher": {
+        },"genre": "posts","keywords": "markdown, 脚本, 工具","wordcount":  5763 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93\/","datePublished": "2022-01-11T14:43:05+08:00","dateModified": "2022-01-22T16:01:48+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +116,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Markdown语法总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-11">2022-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5762 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-11">2022-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5763 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" class="leancloud_visitors" data-flag-title="Markdown语法总结">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -383,31 +383,68 @@
 </blockquote>
 <h2 id="插入图片">插入图片</h2>
 <p>markdown使用 <code>![图片描述](图片链接)</code> 的形式来展示一张图片。<br>
-这个链接<strong>可以是本地链接，也可以是网络链接</strong>。<br>
-如果是只在本地看，可以使用本地链接，分为本地全路径和本地相对路径：</p>
+这个链接<strong>可以是本地链接，也可以是网络链接</strong>。</p>
+<ul>
+<li>
+<p>如果是只在本地看，可以使用本地链接，分为本地全路径和本地相对路径：</p>
 <ol>
 <li>本地全路径：有一张图在<code>D:\Cat.png</code>,那么可以在markdown中引入图片<code>![小猫](D:\Cat.png)</code> ;</li>
 <li>本地相对路径：本md文档同目录有个Pic目录，里面有张<code>Cat.png</code>,那么可以在markdown中引入图片<code>![小猫](./Pic/Cat.png)</code> ;</li>
 </ol>
-<p>如果是需要发布到网络博客，那么就需要使用图片的网络链接了，如果是想引用某官网图片，<code>鼠标右键复制图片链接地址</code>, 就是我们需要的图片链接了。举例，去 <em><a href="https://www.markdownguide.org/getting-started/" target="_blank" rel="noopener noreffer">markdown-guide</a></em> 的官网，“Get Started”页面的第一张图,复制到链接后，输入如下内容插入图片：</p>
+</li>
+<li>
+<p>如果是需要发布到网络博客，那么就需要使用图片的网络链接了<br>
+想引用网页的某张图，<code>鼠标右键复制图片链接地址</code>, 就是我们需要的图片链接了。举例，去 <em><a href="https://www.runoob.com/cplusplus/cpp-tutorial.html" target="_blank" rel="noopener noreffer">菜鸟教程C++</a></em> 的主页，主页Logo复制到链接后，输入如下内容插入图片：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">![what-is-markdown图片](https://mdg.imgix.net/assets/images/vscode.png?auto=format&amp;fit=clip&amp;q=40&amp;w=1080)
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">![C++ programming](https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png)
 </code></pre></td></tr></table>
 </div>
-</div><p>渲染后，图片则自动显示如下：
+</div><p>渲染后，图片则自动显示如下：<br>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://mdg.imgix.net/assets/images/vscode.png?auto=format&amp;fit=clip&amp;q=40&amp;w=1080"
-        data-srcset="https://mdg.imgix.net/assets/images/vscode.png?auto=format&amp;fit=clip&amp;q=40&amp;w=1080, https://mdg.imgix.net/assets/images/vscode.png?auto=format&amp;fit=clip&amp;q=40&amp;w=1080 1.5x, https://mdg.imgix.net/assets/images/vscode.png?auto=format&amp;fit=clip&amp;q=40&amp;w=1080 2x"
+        data-src="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png"
+        data-srcset="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png, https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png 1.5x, https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png 2x"
         data-sizes="auto"
-        alt="https://mdg.imgix.net/assets/images/vscode.png?auto=format&amp;fit=clip&amp;q=40&amp;w=1080"
-        title="what-is-markdown图片" /></p>
-<p>那么，如果我们自己的制作的截图想要上传的网络呢？通常的做法是自己备份在Gitee或Github，更简便的办法是采用 <strong><code>图床</code></strong> ,推荐个好用的开源工具<code>PicGo</code>，奉上👉   <em><a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener noreffer">PicGO-Github-Release链接</a></em>。</p>
+        alt="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png"
+        title="C&#43;&#43; programming" /></p>
+</li>
+</ul>
+<p>那么，如果我们自己的制作的图片想要上传到网络呢？<br>
+最常见的是写博客和云笔记，除了某些云笔记软件自带图床，更通常的做法是自己备份在Gitee或Github，更简便的办法是采用 <strong><code>图床</code></strong> ,推荐个好用的开源工具<code>PicGo</code>，奉上👉   <em><a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener noreffer">PicGO-Github-Release链接</a></em>。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>图片排版<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>首先，markdown插入图片都是左对齐的，有时想要<strong>图片居中</strong>，只能动用html排版了，具体用法如下(<em>图片显示尺寸width字段可以省略不写</em> )： <br>
+输入内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">align </span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span>  <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png&#34;</span>
+      <span class="na">width </span><span class="o">=</span> <span class="s">&#34;120&#34;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果：</p>
+<div align =center>
+<img  src="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png"
+      width = "120"/>
+</div>
+</div>
+        </div>
+    </div>
 <h2 id="插入url超链接">插入URL超链接</h2>
 <p>markdown 使用 <code>[超链接描述](链接地址)</code> ，适用场景：比如想给出某链接的地址，浏览者鼠标点击即可浏览器跳转。<br>
 比如输入内容：</p>
@@ -759,7 +796,7 @@ cfm
 clojure
 cmake
 coffee-script, coffeescript, coffee
-cpp - C++
+cpp
 cs
 csharp
 css
@@ -919,8 +956,8 @@ yaml
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-16&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/061611d0b8f04f97d10c7da9a80426fc758abac8" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 061611d0b8f04f97d10c7da9a80426fc758abac8: 补充posts/6_Effective-C&#43;&#43;(一)">
-                                    <i class="fas fa-hashtag fa-fw"></i>061611d</a></span>
+                <span>更新于 2022-01-22&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1cedf75f2ddde451480edeb5dc3d0e5d7c99ae53" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 1cedf75f2ddde451480edeb5dc3d0e5d7c99ae53: 补充effective-C&#43;&#43;(1)，和markdown小节">
+                                    <i class="fas fa-hashtag fa-fw"></i>1cedf75</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

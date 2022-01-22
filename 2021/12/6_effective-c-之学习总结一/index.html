@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-17T23:49:56+08:00" />
+<meta property="article:modified_time" content="2022-01-22T16:01:48+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective C&#43;&#43;(第三版)学习总结(一)"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/"
-        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  4091 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-01-17T23:49:56+08:00","publisher": {
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  4714 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-01-22T16:01:48+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,8 +116,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)学习总结(一)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule01-12)</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4091 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)学习总结(一)">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4714 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)学习总结(一)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -163,7 +163,7 @@
 </nav></div>
             </div><div class="content" id="content"><h2 id="0序言">0.序言</h2>
 <p>这本C++的经典之作，作者是大佬<code>Scott Meyers</code>👉<a href="https://www.aristeia.com/books.html" target="_blank" rel="noopener noreffer">大佬主页</a>，还写过其他几本影响深远的C++经典，例如<code>《Effective STL》</code>,<code>《More Effective C++》</code>,<code>《Effective Mordern C++》</code>,<code>《Overview of the New C++(C++11/14)》</code>等等。本人看的是中文版，侯捷老师翻译的,以前做的笔记是在自己的纸质笔记本上，现在挪到博客上来吧。</p>
-<p>关于Effective C++，全书55个C++条款，许多人都做了笔记类的博客，大家视角不同可能侧重也不同，各花入各眼了。(PS:本文主干目录和原书一致，另外，由于原书在C++11之前写成，所以会根据本人开发经验新增一些个人感悟👉<code>小声bb</code>环节)</p>
+<p>关于Effective C++，全书55个C++条款，许多人都做了笔记类的博客，大家视角不同可能侧重也不同，各花入各眼了。(PS:本文主干目录和原书一致，另外，由于原书在C++11之前写成，所以会根据本人<code>开发经验</code>新增一些个人感悟👉<code>小声bb</code>环节)</p>
 <blockquote>
 <p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~3章，内容范围Rule01~17。为方便书写，<strong>Rule01简写为R01</strong>)。</p>
 </blockquote>
@@ -400,7 +400,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">EmptyClass</span><span class="p">{};</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">EmptyClass</span><span class="p">{};</span>
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>等价于👇</strong></p>
@@ -415,7 +415,7 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">EmptyClass</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">EmptyClass</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="n">EmptyClass</span><span class="p">()</span> <span class="p">{}</span>        <span class="c1">// default构造函数
 </span><span class="c1"></span>    <span class="n">EmptyClass</span><span class="p">(</span><span class="k">const</span> <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{}</span><span class="c1">//copy构造函数
@@ -441,7 +441,7 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">  <span class="k">class</span> <span class="nc">NameObject</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">  <span class="k">class</span> <span class="nc">NameObject</span> <span class="p">{</span>
   <span class="k">public</span><span class="o">:</span>
       <span class="n">NameObject</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span><span class="n">nameValue_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">objectVal_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span>
   <span class="k">private</span><span class="o">:</span>
@@ -478,7 +478,7 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>  
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>  
 <span class="k">public</span><span class="o">:</span>  
     <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>  
     <span class="n">A</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>  
@@ -494,8 +494,7 @@
 <li>针对<code>Base* pBase= new DerivedObj()</code>，释放pBase时，如果Base基类的析构函数<code>None-Virtual</code>，则会导致Derived的析构函数不会被调用，造成<code>内存不完全释放</code>，即内存泄漏；</li>
 <li>Non-Virtual的Class不要做基类；</li>
 <li>如果不做基类，就不要声明析构函数为virtual函数，避免虚表为其分配vptr造成浪费；</li>
-<li>如果想要抽象类，又暂时没有合适接口，可以让先虚析构成为纯虚函数，例如：</li>
-</ul>
+<li>如果想要抽象类，又暂时没有合适接口，可以让先虚析构成为纯虚函数，例如：
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -506,7 +505,7 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">    <span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">    <span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
         <span class="k">public</span><span class="o">:</span>
             <span class="k">virtual</span> <span class="o">~</span><span class="n">RawData</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">};</span>
@@ -514,7 +513,9 @@
 </span><span class="c1"></span>    <span class="o">~</span><span class="n">RawData</span><span class="o">::</span><span class="n">RawData</span><span class="p">(){}</span>
 </code></pre></td></tr></table>
 </div>
-</div><hr>
+</div></li>
+</ul>
+<hr>
 <h3 id="r08-别让异常逃离析构函数">R08 别让异常逃离析构函数</h3>
 <ul>
 <li>
@@ -528,8 +529,80 @@
 </ul>
 <hr>
 <h3 id="r09-绝不在构造和析构过程中调用virtual函数">R09 绝不在构造和析构过程中调用<code>virtual</code>函数</h3>
+<ul>
+<li>在Derived-Class的Base-Class构造期间，对象的类型是Base-Class，而非Derived，即使<code>dynamic_cast</code>也是这样认为的，因为此时virtual函数不会下降到Derived-Class的阶层；换句话说==&gt; &ldquo;<em><code>在Base-Class构造期间，virtual函数不是virtual函数</code></em>&rdquo; ；</li>
+<li>在析构的时候也是类似道理，也不要在析构函数中调用virtual函数，间接调用也不行(比如non-Virtual-&gt;virtual)；</li>
+<li>那么<strong>替代方案</strong>是？<br>
+如果有这样一种情况，希望在子类构造时能调用父类的foo函数(下方logTransaction函数)，那么将foo改为non-Virtual函数，并且子类构造时调用父类构造函数，有参数时一并传过去；
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Transaction</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">explict</span> <span class="n">Transaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">,</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span><span class="o">:</span><span class="n">id_</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">logTransaction</span><span class="p">(</span><span class="n">info</span><span class="p">);</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">logTransaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">info</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span> <span class="p">}</span><span class="c1">//non-Virtual函数
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span> 
+    <span class="kt">int</span> <span class="n">id_</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">BuyTransaction</span> <span class="o">:</span><span class="k">public</span> <span class="n">Transaction</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>  <span class="c1">//将log信息传递给 基类Transaction构造函数； 并初始化了基类成员
+</span><span class="c1"></span>    <span class="n">BuyTransaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="o">:</span><span class="n">Transaction</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span><span class="cm">/**/</span><span class="p">}</span>
+<span class="p">};</span> 
+</code></pre></td></tr></table>
+</div>
+</div><div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>小声bb<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">上述代码中，如果有几个Base构造函数，就得写几个Derived构造函数传参。为了简化这一步骤，
+在现代C++11，推出了继承构造函数(Inheriting Constructor)，子类可以一个都不用写，直接写一句using声明即可，如下👇<br>
+<code>using Transaction::Transaction;</code></div>
+        </div>
+    </div></li>
+</ul>
 <hr>
 <h3 id="r10-令operator返回一个reference-to-this">R10 令<code>operator=</code>返回一个reference to *this</h3>
+<ul>
+<li>关于赋值操作符<em>operator=</em> ，主流做法是：
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Widget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Widget</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
 <hr>
 <h3 id="r11-在operator中处理自我赋值">R11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
 <hr>
@@ -537,8 +610,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-17&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/be9420665d5329faca9ada647b6b519e7c4d76bb" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) be9420665d5329faca9ada647b6b519e7c4d76bb: append effective c&#43;&#43;">
-                                    <i class="fas fa-hashtag fa-fw"></i>be94206</a></span>
+                <span>更新于 2022-01-22&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1cedf75f2ddde451480edeb5dc3d0e5d7c99ae53" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 1cedf75f2ddde451480edeb5dc3d0e5d7c99ae53: 补充effective-C&#43;&#43;(1)，和markdown小节">
+                                    <i class="fas fa-hashtag fa-fw"></i>1cedf75</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
