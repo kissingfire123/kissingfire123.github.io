@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-22T16:01:48+08:00" />
+<meta property="article:modified_time" content="2022-01-22T23:48:28+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective C&#43;&#43;(第三版)学习总结(一)"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/"
-        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  4714 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-01-22T16:01:48+08:00","publisher": {
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  5390 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-01-22T23:48:28+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,8 +116,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)学习总结(一)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule01-12)</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4714 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)学习总结(一)">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5390 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)学习总结(一)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -441,16 +441,16 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">  <span class="k">class</span> <span class="nc">NameObject</span> <span class="p">{</span>
-  <span class="k">public</span><span class="o">:</span>
-      <span class="n">NameObject</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span><span class="n">nameValue_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">objectVal_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span>
-  <span class="k">private</span><span class="o">:</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">nameValue_</span><span class="p">;</span>
-      <span class="k">const</span> <span class="kt">int</span> <span class="n">objectVal_</span><span class="p">;</span>
-  <span class="p">};</span><span class="c1">//考虑以下应用代码
-</span><span class="c1"></span>  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">(</span><span class="s">&#34;Mike&#34;</span><span class="p">),</span> <span class="n">name2</span><span class="p">(</span><span class="s">&#34;Nicky&#34;</span><span class="p">);</span>
-  <span class="n">NameObject</span> <span class="nf">nObj</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span> <span class="n">nObj2</span><span class="p">(</span><span class="n">name2</span><span class="p">,</span><span class="mi">33</span><span class="p">);</span>
-  <span class="n">nObj2</span> <span class="o">=</span> <span class="n">nObj</span><span class="p">;</span><span class="c1">//这一句会导致编译失败，因为引用不能指向2个对象，且const不可改
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">NameObject</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">NameObject</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span><span class="n">nameValue_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">objectVal_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">nameValue_</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">objectVal_</span><span class="p">;</span>
+<span class="p">};</span><span class="c1">//考虑以下应用代码
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">(</span><span class="s">&#34;Mike&#34;</span><span class="p">),</span> <span class="n">name2</span><span class="p">(</span><span class="s">&#34;Nicky&#34;</span><span class="p">);</span>
+<span class="n">NameObject</span> <span class="nf">nObj</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span> <span class="n">nObj2</span><span class="p">(</span><span class="n">name2</span><span class="p">,</span><span class="mi">33</span><span class="p">);</span>
+<span class="n">nObj2</span> <span class="o">=</span> <span class="n">nObj</span><span class="p">;</span><span class="c1">//这一句会导致编译失败，因为引用不能指向2个对象，且const不可改
 </span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -505,12 +505,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">    <span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
-        <span class="k">public</span><span class="o">:</span>
-            <span class="k">virtual</span> <span class="o">~</span><span class="n">RawData</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">};</span>
-    <span class="c1">// 这里特殊的是，需要为这个纯虚函数提供定义
-</span><span class="c1"></span>    <span class="o">~</span><span class="n">RawData</span><span class="o">::</span><span class="n">RawData</span><span class="p">(){}</span>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>
+        <span class="k">virtual</span> <span class="o">~</span><span class="n">RawData</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// 这里特殊的是，需要为这个纯虚函数提供定义
+</span><span class="c1"></span><span class="o">~</span><span class="n">RawData</span><span class="o">::</span><span class="n">RawData</span><span class="p">(){}</span>
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -574,7 +574,7 @@
         </div>
         <div class="details-content">
             <div class="admonition-content">上述代码中，如果有几个Base构造函数，就得写几个Derived构造函数传参。为了简化这一步骤，
-在现代C++11，推出了继承构造函数(Inheriting Constructor)，子类可以一个都不用写，直接写一句using声明即可，如下👇<br>
+在现代C++11，推出了继承构造函数(Inheriting Constructor)，子类可以一个都不用写，直接写一句using声明即可，使用<code>using BaseClass::BaseClass</code>的形式，如下👇<br>
 <code>using Transaction::Transaction;</code></div>
         </div>
     </div></li>
@@ -591,27 +591,91 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span> <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
     <span class="n">Widget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Widget</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">//... do some thing
+</span><span class="c1"></span>        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div>上述做法不局限于operator=，还有operator += ,-=,*=,/=等其他赋值运算符。<br>
+该主流协议/做法不是强制性的，只是个建议，因为这样可以允许<strong>连续赋值</strong>($x=y=z$的形式)。<br>
+该协议被内置类型，以及STL的类型(如string,vector,complex,shared_ptr)共同遵守。</li>
+</ul>
+<hr>
+<h3 id="r11-在operator中处理自我赋值">R11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
+<p>一个对象赋值给自己，这种看起来有点傻的做法，有时候会比较难以发觉。比如：<code>a[i] = a[j]</code>，如果 $i$ 和 $j$ 相等，就是“自我赋值”的经典场景了。<br>
+所以，我们需要一个尽量完备的赋值操作符函数🤔。 <br>
+考虑如下类<code>MapWidget</code>，内有数据裸指针<code>BitMap *pb_</code>，在赋值时同时考虑<strong>异常安全</strong>和 <strong>“自我赋值”</strong> 安全(认同测试保障自我赋值安全)，是一个相对不错的实现。但是，认同测试会降低运行效率，根据实际工程实践情况(<em>自我赋值概率极低</em> )可以酌情去掉。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">BitMap</span> <span class="p">{</span><span class="cm">/*省略类声明&amp;实现*/</span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">MapWidget</span> <span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">BitMap</span> <span class="o">*</span> <span class="n">pb_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">explicit</span> <span class="n">MapWidget</span><span class="p">(</span><span class="n">BitMap</span> <span class="o">*</span><span class="n">pb</span><span class="p">)</span> <span class="o">:</span><span class="n">pb_</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">//这一句为认同测试(identity test)
+</span><span class="c1"></span>        <span class="n">BitMap</span> <span class="o">*</span><span class="n">pOrig</span> <span class="o">=</span> <span class="n">pb_</span><span class="p">;</span><span class="c1">//不要一上来就delete，而是保存this-&gt;pb_
+</span><span class="c1"></span>        <span class="n">pb_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BitMap</span><span class="p">(</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">pb_</span><span class="p">);</span><span class="c1">//因为这一句可能抛异常
+</span><span class="c1"></span>        <span class="k">delete</span> <span class="n">pOrig</span><span class="p">;</span>
         <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
+</div><ul>
+<li>Copy and Swap技术
+上文中保障<strong>异常安全</strong>和 <strong>“自我赋值”</strong> 安全的技术手段，另外一个办法，就是Copy and Swap技术。这个技术的关键在于“<em>修改对象数据的副本，然后在一个不抛异常的函数中将修改的数据和原件置换</em> ”。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">MapWidget</span><span class="o">::</span><span class="n">Swap</span><span class="p">(</span><span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">){</span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">pb_</span><span class="p">,</span><span class="n">pb_</span><span class="p">);}</span>
+<span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">MapWidget</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">MapWidget</span> <span class="nf">temp</span><span class="p">(</span><span class="n">rhs</span><span class="p">);</span>
+    <span class="n">Swap</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
 </div></li>
 </ul>
-<hr>
-<h3 id="r11-在operator中处理自我赋值">R11 在<code>operator=</code>中处理&quot;自我赋值&quot;</h3>
 <hr>
 <h3 id="r12-复制对象时别忘记其每一个成分">R12 复制对象时别忘记其每一个成分</h3></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-22&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1cedf75f2ddde451480edeb5dc3d0e5d7c99ae53" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 1cedf75f2ddde451480edeb5dc3d0e5d7c99ae53: 补充effective-C&#43;&#43;(1)，和markdown小节">
-                                    <i class="fas fa-hashtag fa-fw"></i>1cedf75</a></span>
+                <span>更新于 2022-01-22&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/6d8f66ed9a88f5d83d352746c6a140da711c3584" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 6d8f66ed9a88f5d83d352746c6a140da711c3584: 补充effective-C&#43;&#43;(1)的内容">
+                                    <i class="fas fa-hashtag fa-fw"></i>6d8f66e</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
