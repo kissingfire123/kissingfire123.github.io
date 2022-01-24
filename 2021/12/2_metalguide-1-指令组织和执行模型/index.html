@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-18T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-23T22:10:05+08:00" />
+<meta property="article:modified_time" content="2022-01-24T17:47:54+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MetalGuide(1)指令组织和执行模型"/>
@@ -26,7 +26,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B\/"
         },"genre": "posts","keywords": "Metal, 图形渲染","wordcount":  4523 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B\/","datePublished": "2021-12-18T00:00:00+00:00","dateModified": "2022-01-23T22:10:05+08:00","publisher": {
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B\/","datePublished": "2021-12-18T00:00:00+00:00","dateModified": "2022-01-24T17:47:54+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -123,10 +123,10 @@
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/img/Metal-Pic/Metal-PipeLine-Part1.webp"
-        data-srcset="/img/Metal-Pic/Metal-PipeLine-Part1.webp, /img/Metal-Pic/Metal-PipeLine-Part1.webp 1.5x, /img/Metal-Pic/Metal-PipeLine-Part1.webp 2x"
+        data-src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Metal-PipeLine-Part1.webp"
+        data-srcset="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Metal-PipeLine-Part1.webp, https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Metal-PipeLine-Part1.webp 1.5x, https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Metal-PipeLine-Part1.webp 2x"
         data-sizes="auto"
-        alt="/img/Metal-Pic/Metal-PipeLine-Part1.webp"
+        alt="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Metal-PipeLine-Part1.webp"
         title="摘要：Metal官方文档MetalGuide系列第一部分 -&gt; 基本的指令和执行模型" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -224,8 +224,8 @@
 <h3 id="243-执行指令">2.4.3 执行指令</h3>
 <p>​	MTLCommandBuffer协议使用如下的方法来设定其在指令队列中的执⾏顺序：</p>
 <ul>
-<li><code>enqueue</code>：为一个command buffer在command queue中预定一个位置，但是不会提交这个command buffer。当这个command buffer最终被提交时，指令队列把它安排在对应的<code>enqueue</code>顺序队列中执行。</li>
-<li><code>commit</code>：使得command buffer尽可能快地被执⾏，但还是得等到所有在command queue中的早前排入队列的 其他command buffer被执行完成后才能执⾏。如果commad queue中没有排在前面的command buffer，该方法隐式执⾏<code>enqueue</code>操作。</li>
+<li><code>enqueue</code>：为一个command buffer在command queue中预定一个位置，但是不会提交这个command buffer。当这个command buffer最终被提交时，指令队列把它安排在对应的enqueue顺序队列中执行。</li>
+<li><code>commit</code>：使得command buffer尽可能快地被执⾏，但还是得等到所有在command queue中的早前排入队列的 其他command buffer被执行完成后才能执⾏。如果commad queue中没有排在前面的command buffer，该方法隐式执⾏enqueue操作。</li>
 </ul>
 <h3 id="244-注册处理程序块register-handler-blocks">2.4.4 注册处理程序块(Register Handler Blocks)</h3>
 <p>​	下列的MTLCommandBuffer的方法可以<strong>监视指令的执⾏</strong>。使用了这些方法注册处理程序块，那么在某个线程中，这些处理程序块会按照执⾏顺序被调用。这些处理程序块应该是迅速可被执⾏完成的，如果有开销⼤的造成阻塞的任务，那么应该将它们安排到其他线程执⾏行。</p>
@@ -234,13 +234,13 @@
 <p><code>addScheduledHandler</code> : 注册的处理程序块将在command buffer被“排定好”(scheduled)时调用。“排定好”一般是指，MTLCommandBuffer对象或系统API提交的所有任务之间的依赖关系都能被满⾜。</p>
 </li>
 <li>
-<p><code>waitUntilScheduled</code> :  调用后就开始等待，return时机为所有command buffer被“排定好”而且<code>addScheduledHandler</code>方法注册的处理程序块都执行完毕。</p>
+<p><code>waitUntilScheduled</code> :  调用后就开始等待，return时机为所有command buffer被“排定好”而且addScheduledHandler方法注册的处理程序块都执行完毕。</p>
 </li>
 <li>
 <p><code>addCompletedHandler</code> : 注册的处理程序块将在command buffer被执⾏完毕后立即调用；一个command buffer对象可以注册多个这样的处理程序块。</p>
 </li>
 <li>
-<p><code>waitUntilCompleted</code> :  调用后就开始等待，return时机为所有command buffer都执行完而且<code>addCompletedHandler</code>注册的处理程序块都执行完毕。</p>
+<p><code>waitUntilCompleted</code> :  调用后就开始等待，return时机为所有command buffer都执行完而且addCompletedHandler注册的处理程序块都执行完毕。</p>
 </li>
 <li>
 <p><code>presentDrawable</code> :  较为便捷，它用于当command buffer处于“排定好”时呈现一个可显示资源 (CAMetalDrawable类型对象)的内容。</p>
@@ -286,10 +286,10 @@
 <p>​			设定图形资源，比如缓存和纹理对象，这些对象包含着顶点⽚元和纹理数据；</p>
 <p>​			设定固定图形渲染管线状态，包括视口，三角形填充模式，裁剪矩形，深度测试和模板测试等等。</p>
 <p>​		<u><em><strong>b. 用于并行计算的Command Encoder</strong></em></u></p>
-<p>​			使用<code>MTLCommandBuffer</code>的<code>computeCommandEncoder</code>方法可以创建一个并行计算用的Command Encoder。</p>
+<p>​			使用MTLCommandBuffer的<code>computeCommandEncoder</code>方法可以创建一个并行计算用的Command Encoder。</p>
 <p>​			对于并⾏数据计算，<code>MTLComputeCommandEncoder</code>协议提供了方法来编码计算指令，以此设定计算程序和参数，调度计算程序执⾏。</p>
 <p>​		<strong><u><em>c. 用于位图操作的Command Encoder</em></u></strong></p>
-<p>​			使用<code>MTLCommandBuffer</code>协议的<code>blitCommandEncoder</code>方法可以创建一个<code>MTLBlitCommandEncoder</code>。</p>
+<p>​			使用MTLCommandBuffer协议的<code>blitCommandEncoder</code>方法可以创建一个MTLBlitCommandEncoder。</p>
 <p>​			<code>MTLBlitCommandEncoder</code>协议提供了方法用来在缓存(MTLBuffer) 和纹理(MTLTexture)之间进⾏拷贝。</p>
 <p>​			该协议还提供了用一种颜⾊填充纹理的方法，以及创建mipmap的方法。</p>
 <p>​</p>
@@ -312,15 +312,15 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-23&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/007f35a3d7a088f571638d5244eb75b74218348b" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 007f35a3d7a088f571638d5244eb75b74218348b: metal-Guide的mermaid图替换为draw.io绘制">
-                                    <i class="fas fa-hashtag fa-fw"></i>007f35a</a></span>
+                <span>更新于 2022-01-24&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/a894ac6dab74c0a1f499ef5e05facd8f0058aea8" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) a894ac6dab74c0a1f499ef5e05facd8f0058aea8: 将文章的预览图都切换为gitee图床">
+                                    <i class="fas fa-hashtag fa-fw"></i>a894ac6</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-hashtags="Metal,图形渲染"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-hashtag="Metal"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-image="/img/Metal-Pic/Metal-PipeLine-Part1.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-description="摘要：Metal官方文档MetalGuide系列第一部分 -&gt; 基本的指令和执行模型"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-description="摘要：Metal官方文档MetalGuide系列第一部分 -&gt; 基本的指令和执行模型"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-hashtags="Metal,图形渲染"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-hashtag="Metal"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-image="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Metal-PipeLine-Part1.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-description="摘要：Metal官方文档MetalGuide系列第一部分 -&gt; 基本的指令和执行模型"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型" data-description="摘要：Metal官方文档MetalGuide系列第一部分 -&gt; 基本的指令和执行模型"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" data-title="MetalGuide(1)指令组织和执行模型"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -339,7 +339,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0-DEV">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
