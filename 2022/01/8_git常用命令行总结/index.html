@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>常用Git命令行总结 - Benjamin的网络日志</title><meta name="Description" content="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><meta property="og:title" content="常用Git命令行总结" />
+<meta property="og:description" content="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-02T10:50:54+08:00" />
+<meta property="article:modified_time" content="2022-01-26T00:26:57+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常用Git命令行总结"/>
+<meta name="twitter:description" content="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" /><link rel="prev" href="https://kissingfire123.github.io/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" /><link rel="next" href="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "常用Git命令行总结",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/"
+        },"genre": "posts","wordcount":  3099 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-01-26T00:26:57+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin的网络日志"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的网络日志"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">常用Git命令行总结</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3099 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="常用Git命令行总结">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Script-Pic/git-flow.webp"
+        data-srcset="/img/Script-Pic/git-flow.webp, /img/Script-Pic/git-flow.webp 1.5x, /img/Script-Pic/git-flow.webp 2x"
+        data-sizes="auto"
+        alt="/img/Script-Pic/git-flow.webp"
+        title="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#新建">新建</a></li>
+    <li><a href="#克隆">克隆</a></li>
+    <li><a href="#添加与撤回">添加与撤回</a></li>
+    <li><a href="#节点回退">节点回退</a></li>
+    <li><a href="#分支管理">分支管理</a></li>
+    <li><a href="#查看repo信息">查看Repo信息</a></li>
+    <li><a href="#获取拉取">获取/拉取</a></li>
+    <li><a href="#提交">提交</a></li>
+    <li><a href="#查看log">查看Log</a></li>
+    <li><a href="#摘取">摘取</a></li>
+    <li><a href="#推送">推送</a></li>
+    <li><a href="#变基">变基</a></li>
+    <li><a href="#子模块">子模块</a>
+      <ul>
+        <li><a href="#新增子模块">新增子模块</a></li>
+        <li><a href="#删除子模块">删除子模块</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p>众所周知，<strong><code>Git</code></strong> 是程序员们重度使用的工具，以下对开发过程中常用命令做个总结备忘，也会谈一些简单的技巧使Git更好用。</p>
+<p>以下所有命令行不区分平台，windows建议使用GitBash，Linux/MacOS建议使用原生或第三方Terminal。</p>
+<h1 id="配置">配置</h1>
+<p>使用<code>git config</code>命令尽心git的配置，常用命令如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git config --list</code></td>
+<td>打印出当前环境的git配置信息，<br>接<code>--global</code>可以打印全局配置</td>
+</tr>
+<tr>
+<td><code>git config user.name benjamin </code></td>
+<td>git配置username为benjamin,可后接<code>--global</code></td>
+</tr>
+<tr>
+<td><code>git config user.email xxx@gxx.com </code></td>
+<td>git配置email为xxx@gxx.com,可后接<code>--global</code></td>
+</tr>
+<tr>
+<td><code>git config --global core.autocrlf false</code></td>
+<td>windows总提示CR/LF的警告，设置后可去除</td>
+</tr>
+<tr>
+<td><code>git config --global credential.helper store</code></td>
+<td>终端环境保存https的密钥，避免每次都要密码</td>
+</tr>
+<tr>
+<td><code>git config --global core.quotepath false</code></td>
+<td>用来解决<em>git status</em> 显示中文乱码的问题<br>git-bash需要鼠标右键,<br/>找到<code>选项-&gt;文本-&gt;本地Locale</code>，<br/>设置为<code>zh_CN</code>，而旁边的字符集选框选为<code>UTF-8</code></td>
+</tr>
+</tbody>
+</table>
+<p>当然，除了命令行配置，还可以直接编辑文件<code>~/.gitconfig</code>文件，但是请清楚修改的具体含义，避免出现git后续使用的不必要的错误。</p>
+<h1 id="新建">新建</h1>
+<p>如果不依赖任何远端仓库，而是自行本地新建仓库并初始化，使用<code>git init</code>即可。</p>
+<p>示例如下，创建一个名为 <strong>MyGitRepo</strong>的仓库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Documents
+mkdir MyGitRepo
+<span class="nb">cd</span> MyGitRepo
+git init
+</code></pre></td></tr></table>
+</div>
+</div><p>在<em>git init</em> 执行后，执行<code>ls -a</code>可以看到多了一个 <strong>.git</strong> 文件夹，这就是git的主干文件了。</p>
+<p>接下来就可以新建文件，然后添加了，以及后续上传到远端。</p>
+<h1 id="克隆">克隆</h1>
+<p>不论是Github,还是Gitlab，拿到一个远程git仓库地址后，第一件事就是克隆(下载)到本地主机，<code>git clone</code>命令的作用正在于此，假如现在想克隆Facebook的C++开源库 <strong><code>folly</code></strong> ，仓库地址为：https://github.com/facebook/folly.git,在一个本地目录打开命令行，执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Downloads
+git clone https://github.com/facebook/folly.git
+</code></pre></td></tr></table>
+</div>
+</div><p>命令执行完成后即可(如果因为网络失败，则可能需要git加速，或者代理加速了)。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>By the way<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>如果<strong>因为网络的原因</strong>，clone的速度太慢，或者报错。有2种方法可以尝试:</p>
+<ul>
+<li>
+<p>Github的镜像站进行加速</p>
+<p>只需要把<code>https://github.com</code>替换成<code>https://hub.fastgit.org</code>即可。</p>
+<p>上述命令变为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone https://hub.fastgit.org/facebook/folly.git
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Git加速工具
+<code>Dev-SideCar</code>工具，Gitee地址：<a href="https://gitee.com/docmirror/dev-sidecar.git" target="_blank" rel="noopener noreffer">Gitee dev-sidecar</a></p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h1 id="添加与撤回">添加与撤回</h1>
+<p>Git操作一个新文件的流程为：工作区(也就是本地文件)&ndash;&gt; 暂存区(staged)  &ndash;&gt; 仓库，如下图所示：</p>
+<div align=center>
+<img src="https://camo.githubusercontent.com/174838ee47136e1be0c8281019169593462ea4c16b47ddea634377bf9762b0a6/68747470733a2f2f7777772e6c69616f78756566656e672e636f6d2f66696c65732f6174746163686d656e74732f3931393032303033373437303532382f30">
+</div>
+直接基于已有的仓库操作，上文的Folly仓库，新增一个文件，假如是我们学习Folly的笔记。
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> <span class="nb">cd</span> ~/Downloads/folly
+touch Learn.md
+<span class="nb">echo</span> <span class="s2">&#34;# MultiThread Content&#34;</span> &gt;&gt; Learn.md                <span class="c1">#手动写点内容</span>
+git status        <span class="c1">#Git提示：Learn.md 是&#34;Untracked files&#34;,颜色是红色</span>
+git add Learn.md  <span class="c1">#add到暂寸区</span>
+git status        <span class="c1">#Git提示：Learn.md 是&#34;Changes to be committed&#34;,颜色是绿色</span>
+git commit  -m  <span class="s2">&#34;new lesson note&#34;</span>  <span class="c1"># Git提示：1 file changed, 1 insertion(+),进入仓库</span>
+git status        <span class="c1">#没有文件提示，会说明当前分支和远端分支的关系</span>
+git log -3        <span class="c1">#可以看到刚才的一笔提交，处于最前面</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>有时候，git add想要排除一些文件，除了add之后restore，还可以在添加的时候就排除。示例：  <code>git add --all -- ':!filename1' ':!*.txt'</code></p>
+</blockquote>
+<p>说了添加，接下来说下几种程度的撤回，以前都是用checkout，但是后来引入了新词 restore，更能准确体现含义。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git restore &lt;file/dir&gt;</code></td>
+<td>回退掉<strong>还没有add</strong>的untracked file；<br>后接文件或目录,一个点表示当前目录所有，<code>慎用</code></td>
+</tr>
+<tr>
+<td><code>git restore --staged  &lt;file/dir&gt;</code></td>
+<td>回退掉<strong>已经add,但还没有commit</strong>的tracked file；<br/>后接文件或目录,一个点表示当前目录所有</td>
+</tr>
+</tbody>
+</table>
+<h1 id="节点回退">节点回退</h1>
+<p><code>git reset</code>承担着节点回退的功能，命令示范如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git rest  HEAD~n</code></td>
+<td>回退掉当前n个节点，回到没有add 的untracked状态(红色);<br>注意，其实是隐藏了<code>--mixed</code>的参数了，默认就是它;<br>n一般取1，HEAD~n也可以换成一个具体的commit-ID</td>
+</tr>
+<tr>
+<td><code>git rest --soft HEAD~n</code></td>
+<td>和&ndash;mixed的区别是，是回到已经add，但是没有commit的状态(绿色)</td>
+</tr>
+<tr>
+<td><code>git rest --hard HEAD~n</code></td>
+<td>回退的最彻底，连untracked的本地修改也没了，<code>慎用</code>;<br>如果误用，可以使用<code>git reflog </code>show出历史，然后找回</td>
+</tr>
+</tbody>
+</table>
+<h1 id="分支管理">分支管理</h1>
+<p><code>git branch</code>,<code>git checkout</code>,以及<code>git switch</code>承担着分支管理的一部分作用，命令示范如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git branch </code></td>
+<td>查看本地所有分支，(当前所处分支会绿色高亮)</td>
+</tr>
+<tr>
+<td><code>git branch -va</code></td>
+<td>查看仓库所有分支(包括本地和远端)</td>
+</tr>
+<tr>
+<td><code>git branch -vv</code></td>
+<td>查看当前分支关联的远程分支</td>
+</tr>
+<tr>
+<td><code>git branch --set-upstream=origin/main</code></td>
+<td>设置当前分支与远端的origin/main分支关联</td>
+</tr>
+<tr>
+<td><code>git branch  my1.1   V1.1</code></td>
+<td>基于名为V1.1的tag创建一个本地分支my1.1</td>
+</tr>
+<tr>
+<td><code>git branch -D my1.0</code></td>
+<td>删掉名为my1.0的分支</td>
+</tr>
+<tr>
+<td><code>git checkout -b  tmpMain  origin/main</code></td>
+<td>基于origin/main，创建一个名为tmp的本地分支<br>origin/main可以不写，则默认基于本地当前分支</td>
+</tr>
+<tr>
+<td><code>git switch feature2</code></td>
+<td>切换到名为feature2 的分支</td>
+</tr>
+</tbody>
+</table>
+<h1 id="查看repo信息">查看Repo信息</h1>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git remote -v</code></td>
+<td>查看仓库的远端地址</td>
+</tr>
+<tr>
+<td><code>git name-rev  &lt;commit-id&gt;</code></td>
+<td>根据一个commit-ID确定该节点来自于哪个分支，ID可取前9位</td>
+</tr>
+</tbody>
+</table>
+<h1 id="获取拉取">获取/拉取</h1>
+<p><code>git fetch</code>为获取，目的为拿到远端的改动，存在仓库，不对本地文件和分支做任何改动。</p>
+<p><code>git pull</code>为拉取，实际动作为<code>git fetch</code> <strong>+</strong> <code>git merge</code>,会拉取到远端改动并合并到当前本地分支。如果有冲突，需要解决冲突。</p>
+<h1 id="提交">提交</h1>
+<p><code>git commit</code>即为提交，作用为将已经add到暂存区的文件进行提交，使用方式为<code>git commit -m &quot;commit信息描述&quot;，</code>这里要说的是commit的其他参数：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git commit --amend </code></td>
+<td>针对最新的这笔commit，追加内容，形成新的commit</td>
+</tr>
+<tr>
+<td><code>git commit --author=&quot;user&lt;email-addr&gt;&quot;</code></td>
+<td>这个是针对某笔commit，可以修改作者;<br>多个账号提交错误时可以挽救</td>
+</tr>
+<tr>
+<td><code>git commit -am &quot;commit信息描述&quot;</code></td>
+<td>针对还没add的文件，相当于 <em>add+commit</em> 一步到位</td>
+</tr>
+</tbody>
+</table>
+<h1 id="查看log">查看Log</h1>
+<p><code>git log</code>的参数实在是多，这里简单的列出常用的几条：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git log -n &lt;branch_name&gt; </code></td>
+<td>查看指定分支log，最新n条修改<br>不接分支名，都是默认当前本地分支</td>
+</tr>
+<tr>
+<td><code>git log -n --oneline</code></td>
+<td>每条commit只打印一行信息，方便查看，查看前n条</td>
+</tr>
+<tr>
+<td><code>git log -n --author=&lt;author_name&gt;</code></td>
+<td>查看指定作者, 查看满足条件的前n条</td>
+</tr>
+<tr>
+<td><code>git log -n  --  &lt;path_or_file&gt;</code></td>
+<td>查看某个指定的文件/文件夹,  查看前n条</td>
+</tr>
+<tr>
+<td><code>git log -n --grep=&quot;your_key_words&quot; </code></td>
+<td>搜索指定的commit信息关键词,  查看满足条件的前n条</td>
+</tr>
+<tr>
+<td><code>git log -n --graph --abbrev-commit  </code></td>
+<td>查看最新n条提交，以树形图列出，且commit-id为前几位</td>
+</tr>
+<tr>
+<td><code>git log --name-status  </code></td>
+<td>每次修改的文件列表, 显示状态(新增为A,修改为M)</td>
+</tr>
+<tr>
+<td><code>git log --name-only</code></td>
+<td>只显示每次修改的文件列表，不显示修改状态</td>
+</tr>
+<tr>
+<td><code>git log --stat</code></td>
+<td>每次修改的文件列表, 及文件修改的统计(修改了多少行)</td>
+</tr>
+</tbody>
+</table>
+<p><code>git log</code> 还有其他的很多参数，可以将常用的写作系统alias，或者用<strong>git的alias</strong>，我习惯用前者，在 <em>~/.bash_profile</em> 最后追加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias gitlo=&#39;git log --graph --oneline --decorate  --pretty=format:&#34;%C(yellow)%h %Cgreen%ad%Cred %an %Creset%s&#34;  --date=format:&#34;%Y-%m-%d %H:%M:%S&#34; &#39;
+alias gitlh=&#39;git log --graph --abbrev-commit &#39;
+</code></pre></td></tr></table>
+</div>
+</div><p>使用的时候直接执行<code>gitlh  -3</code>即可。</p>
+<p>如果使用git的alias，应该是执行<code>git config --global alias.lh 'log --graph --abbrev-commit'</code>,使用的时候执行<code>git lh -3</code>(注意alias定义时单引号紧贴命令，而使用时git和lh之间有空格)</p>
+<h1 id="摘取">摘取</h1>
+<h1 id="推送">推送</h1>
+<h1 id="变基">变基</h1>
+<h1 id="子模块">子模块</h1>
+<h2 id="新增子模块">新增子模块</h2>
+<h2 id="删除子模块">删除子模块</h2>
+<p>子模块的删除并非像添加时那么简单轻松，注意按下述顺序操作：</p>
+<ul>
+<li>回退.gitmodules文件的修改,<code>git restore</code>回退之后<code>git add</code>暂存；</li>
+<li>删除目录树和索引文件，执行: <code>git rm --cached path_to_submodule</code>,(path_to_submodule替换成实际路径);</li>
+<li>删除.git目录的文件记录，执行：<code>rm -rf .git/modules/path_to_submodule</code>;</li>
+<li>删除本地文件：<code>rm -rf path_to_submodule</code>，最后<code>git commit</code>上述修改即可完全删除子模块 。</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-01-26&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/5f4f766956fdb7226143e593966e443cd780108c" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 5f4f766956fdb7226143e593966e443cd780108c: 新增git 命令总结">
+                                    <i class="fas fa-hashtag fa-fw"></i>5f4f766</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-image="/img/Script-Pic/git-flow.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-description="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-description="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" class="prev" rel="prev" title="Fundamentals of Computer Graphics学习总结_第2章(杂项数学)"><i class="fas fa-angle-left fa-fw"></i>Fundamentals of Computer Graphics学习总结_第2章(杂项数学)</a>
+            <a href="/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" class="next" rel="next" title="Markdown语法总结">Markdown语法总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0-DEV">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"欢迎评论...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
