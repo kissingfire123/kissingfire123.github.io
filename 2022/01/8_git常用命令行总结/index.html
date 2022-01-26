@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-02T10:50:54+08:00" />
-<meta property="article:modified_time" content="2022-01-26T00:26:57+08:00" />
+<meta property="article:modified_time" content="2022-01-27T00:06:54+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常用Git命令行总结"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/"
-        },"genre": "posts","wordcount":  3099 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-01-26T00:26:57+08:00","publisher": {
+        },"genre": "posts","keywords": "git, 工具链","wordcount":  5102 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-01-27T00:06:54+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,8 +116,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">常用Git命令行总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3099 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="常用Git命令行总结">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5102 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="常用Git命令行总结">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -144,13 +144,16 @@
     <li><a href="#查看repo信息">查看Repo信息</a></li>
     <li><a href="#获取拉取">获取/拉取</a></li>
     <li><a href="#提交">提交</a></li>
-    <li><a href="#查看log">查看Log</a></li>
+    <li><a href="#view-log">查看Log</a></li>
     <li><a href="#摘取">摘取</a></li>
     <li><a href="#推送">推送</a></li>
     <li><a href="#变基">变基</a></li>
+    <li><a href="#压缩提交">压缩提交</a></li>
     <li><a href="#子模块">子模块</a>
       <ul>
         <li><a href="#新增子模块">新增子模块</a></li>
+        <li><a href="#更新子模块">更新子模块</a></li>
+        <li><a href="#改动子模块">改动子模块</a></li>
         <li><a href="#删除子模块">删除子模块</a></li>
       </ul>
     </li>
@@ -216,6 +219,7 @@ git init
 </div><p>在<em>git init</em> 执行后，执行<code>ls -a</code>可以看到多了一个 <strong>.git</strong> 文件夹，这就是git的主干文件了。</p>
 <p>接下来就可以新建文件，然后添加了，以及后续上传到远端。</p>
 <h1 id="克隆">克隆</h1>
+<p>然而大多数时候，我们并不需要自己新建，而是需要从远端Git仓库获取已经有的仓库。</p>
 <p>不论是Github,还是Gitlab，拿到一个远程git仓库地址后，第一件事就是克隆(下载)到本地主机，<code>git clone</code>命令的作用正在于此，假如现在想克隆Facebook的C++开源库 <strong><code>folly</code></strong> ，仓库地址为：https://github.com/facebook/folly.git,在一个本地目录打开命令行，执行：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -332,6 +336,7 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 </tr>
 </tbody>
 </table>
+<p>注意：回退的过程最容易丢代码，虽然 <em>reflog</em> 是一大利器，但是不是永久保存，只有90天的记录。</p>
 <h1 id="分支管理">分支管理</h1>
 <p><code>git branch</code>,<code>git checkout</code>,以及<code>git switch</code>承担着分支管理的一部分作用，命令示范如下：</p>
 <table>
@@ -422,7 +427,7 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 </tr>
 </tbody>
 </table>
-<h1 id="查看log">查看Log</h1>
+<h1 id="view-log">查看Log</h1>
 <p><code>git log</code>的参数实在是多，这里简单的列出常用的几条：</p>
 <table>
 <thead>
@@ -484,10 +489,199 @@ alias gitlh=&#39;git log --graph --abbrev-commit &#39;
 </div><p>使用的时候直接执行<code>gitlh  -3</code>即可。</p>
 <p>如果使用git的alias，应该是执行<code>git config --global alias.lh 'log --graph --abbrev-commit'</code>,使用的时候执行<code>git lh -3</code>(注意alias定义时单引号紧贴命令，而使用时git和lh之间有空格)</p>
 <h1 id="摘取">摘取</h1>
+<p><code>git cherry-pick</code>可以摘取其他分支的一个commit，假设commit-ID为 <em>845fead232</em> ,则执行 <code>git cherry-pick 845fead232</code>即可，如果有文件冲突，那么需要执行<code>git mergetool</code>调用解决冲突的工具，比如Meld,BeyondCompare之类的带UI的工具手动解决，解决冲突后<code>git cherry-pick --continue</code>,至此，已经完成一次成功的commit节点的摘取。</p>
+<p><strong>注意</strong> ：如果需要摘取多个，建议要按照commit从老到新的顺序摘取，如果commit之间毫无依赖，顺序才可以交换。如果可以压缩，建议压缩后再摘取。</p>
 <h1 id="推送">推送</h1>
+<p><code>git push origin</code>可以推送当前分支的commit修改到同名的远端分支；</p>
+<p><code>git push origin newBranchxx:newBranchxx</code>  可以推送本地一个新建分支到远端，并在远端新建该同名分支；</p>
+<p><code>git push -f origin</code> 可以强行推送本地分支，覆盖远端，一般用于个人随意支配的feature分支，<strong><code>慎用</code></strong>。</p>
 <h1 id="变基">变基</h1>
+<p><code>git rebase</code>的英文描述是 <em>&ldquo;Reapply commits on top of another base tip&rdquo;</em>,可以理解为&quot;将分支的基础从一个提交改为另一个提交&quot;，和merge相比最大的特点就是可以让分支流更简洁；另外，如果团队中有code-review的开发规范，rebase也是必不可少的，减少代码reviewer的负担。</p>
+<p>适用场景：从mater分支某个节点A分出了feature分支，然后各自都向前走了几个commit节点，现在feature想要获取master的新修改，这时候可以merge，也可以rebase。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">  D --- E  feature
+ /
+A --- B ---C master
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>如果是merge</strong>，则是如下效果(其中F是merge节点):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">  D --- E --- F --- G (feature/master)
+ /           /
+A --- B --- C 
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>如果是rebase</strong>，则是如下效果:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">A --- B --- C --- D&#39; --- E&#39;
+          master       feature
+</code></pre></td></tr></table>
+</div>
+</div><p>上述D'，E&rsquo;是表示rebase后commit-ID会变，如果有冲突还得解决。</p>
+<p>可以rebase到别的分支(可以是本地或远端，最常用master)，比如执行<code>git rebase origin/master</code> ，或者<code>git rebase commit-ID-xx</code>选择rebase到某个分支的某个commit节点。</p>
+<p>解决冲突时，执行<code>git mergetool </code>调用工具手动解决，解决后<code>git rebase --continue</code>,至此，就完成了一次成功的commit。如果中途想放弃rebase，<code>git rebase --abort</code>即可。</p>
+<h1 id="压缩提交">压缩提交</h1>
+<p>有时候开发一个功能，需要分步骤多次commit临时修改，最后压缩在一起。</p>
+<p><code>git rebase -i HEAD~n</code>，其中n为数字可以用于压缩最新的n个提交为1个提交，其中<code>HEAD~n</code>可以替换为那个节点具体的commit值。</p>
+<p>下方例子为step1,2,3这3个节点压缩陈一个。执行<code> git log -5 --oneline</code>，查看最新5条修改，想合并最新3条。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -5 --oneline
+476a993ee <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Step3: add const static
+2aa0cd976 Step2: add marco
+0db8784df step1: new Function.cpp
+d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</span> import or backport reinterpret_pointer_cast
+1583ff067 Regen github actions <span class="o">(</span><span class="c1">#1614)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>执行<code>git rebase -i HEAD~3</code>,则自动跳出vim编辑界面，内容如下(大量#号内容都是注释，不影响commit-msg)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pick 0db8784df step1: new Function.cpp
+pick 2aa0cd976 Step2: add marco
+pick 476a993ee Step3: add const static
+
+<span class="c1"># Rebase d6610d607..476a993ee onto d6610d607 (3 commands)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>vim的操作不多说，第一个pick不要改，把后面的2个pick改成字母<code>'s'</code>,表示squash:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pick 0db8784df step1: new Function.cpp
+s 2aa0cd976 Step2: add marco
+s 476a993ee Step3: add const static
+</code></pre></td></tr></table>
+</div>
+</div><p>vim保存后<code>:wq</code>退出，会跳出第二个vim界面，需要编辑commit-msg信息，默认是3条commit-msg都在，#号注释的就不会算在最终commit-msg中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># This is the 1st commit message:
+
+step1: new Function.cpp
+
+# This is the commit message #2:
+
+Step2: add marco
+
+# This is the commit message #3:
+
+Step3: add const static
+</code></pre></td></tr></table>
+</div>
+</div><p>注释掉多余的，留下想要的msg，<code>:wq</code>再次退出后即可,此时3条commit压缩成了一个，commit-msg也只有一条。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -3 --oneline
+13a004b52 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> add Function.cpp and support marco,const static
+d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</span> import or backport reinterpret_pointer_cast
+1583ff067 Regen github actions <span class="o">(</span><span class="c1">#1614)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>至此，已压缩成功。</p>
 <h1 id="子模块">子模块</h1>
 <h2 id="新增子模块">新增子模块</h2>
+<p>执行<code>git submodule add &lt;remote-URL&gt;  &lt;local_path&gt;</code>可以添加一个子模块到本仓库，local_path 如果省略，则是添加到当前目录。</p>
+<p>🎈注意： local_path的结尾最好是和子模块的仓库名同名，不然仍旧会创建一个子仓库同名的目录。</p>
+<p>还是针对上述的folly库，给他手动新增一个第三方图像库作为子模块，添加后自动克隆。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Downloads/folly
+git submodule add  https://github.com/nothings/stb.git 3rdImg/stb
+</code></pre></td></tr></table>
+</div>
+</div><p>根目录下<code>.gitmodules</code>文件的内容自动发生改动：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cat .gitmodules
+<span class="o">[</span>submodule <span class="s2">&#34;3rdImg/stb&#34;</span><span class="o">]</span>
+        <span class="nv">path</span> <span class="o">=</span> 3rdImg/stb
+        <span class="nv">url</span> <span class="o">=</span> https://github.com/nothings/stb.git
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="更新子模块">更新子模块</h2>
+<p>有时候，子模块是远程仓库自带的，第一次克隆下来后需要手动 <strong>初始化+同步</strong> ，执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rm -rf  3rdImg/stb/     <span class="c1">#试验一下，将已有的先删除</span>
+git submodule update --init --recursive    <span class="c1">#这时发现文件又全都回来了</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果不是第一次同步子模块，可以不需要<code>--init</code>参数。</p>
+<h2 id="改动子模块">改动子模块</h2>
+<p>子模块其实和文件类似，只是在仓库中，它的修改，是它的commit节点来记录和判别的。</p>
+<p>如果子模块向前更新了，主仓库要添加这笔改动的话，像普通文件一样，<code>git add --&gt; git commit --&gt; git push</code>，一套流程带走子模块。</p>
 <h2 id="删除子模块">删除子模块</h2>
 <p>子模块的删除并非像添加时那么简单轻松，注意按下述顺序操作：</p>
 <ul>
@@ -495,25 +689,31 @@ alias gitlh=&#39;git log --graph --abbrev-commit &#39;
 <li>删除目录树和索引文件，执行: <code>git rm --cached path_to_submodule</code>,(path_to_submodule替换成实际路径);</li>
 <li>删除.git目录的文件记录，执行：<code>rm -rf .git/modules/path_to_submodule</code>;</li>
 <li>删除本地文件：<code>rm -rf path_to_submodule</code>，最后<code>git commit</code>上述修改即可完全删除子模块 。</li>
-</ul></div><div class="post-footer" id="post-footer">
+</ul>
+<blockquote>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://www.waynerv.com/posts/git-rebase-intro/" target="_blank" rel="noopener noreffer">Git Rebase的原理详解</a></li>
+</ul>
+</blockquote></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-26&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/5f4f766956fdb7226143e593966e443cd780108c" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 5f4f766956fdb7226143e593966e443cd780108c: 新增git 命令总结">
-                                    <i class="fas fa-hashtag fa-fw"></i>5f4f766</a></span>
+                <span>更新于 2022-01-27&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/aaff480652f8d2f245f0a1be31a3dc9817a59039" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) aaff480652f8d2f245f0a1be31a3dc9817a59039: 完善Git常用命令">
+                                    <i class="fas fa-hashtag fa-fw"></i>aaff480</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-image="/img/Script-Pic/git-flow.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-description="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-description="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-hashtags="git,工具链"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-hashtag="git"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-image="/img/Script-Pic/git-flow.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-description="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结" data-description="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" data-title="常用Git命令行总结"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/git/">git</a>,&nbsp;<a href="/tags/%E5%B7%A5%E5%85%B7%E9%93%BE/">工具链</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
@@ -526,7 +726,7 @@ alias gitlh=&#39;git log --graph --abbrev-commit &#39;
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0-DEV">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
