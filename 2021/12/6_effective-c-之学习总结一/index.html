@@ -5,28 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Effective C&#43;&#43;(第三版)学习总结(一) - Benjamin的网络日志</title><meta name="Description" content="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"><meta property="og:title" content="Effective C&#43;&#43;(第三版)学习总结(一)" />
+        <title>Effective C&#43;&#43;(第三版)阅读总结(一) - Benjamin的网络日志</title><meta name="Description" content="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"><meta property="og:title" content="Effective C&#43;&#43;(第三版)阅读总结(一)" />
 <meta property="og:description" content="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-01-23T22:10:05+08:00" />
+<meta property="article:modified_time" content="2022-02-13T23:03:39+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Effective C&#43;&#43;(第三版)学习总结(一)"/>
+<meta name="twitter:title" content="Effective C&#43;&#43;(第三版)阅读总结(一)"/>
 <meta name="twitter:description" content="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"/>
 <meta name="application-name" content="Benjamin的博客">
 <meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><link rel="next" href="https://kissingfire123.github.io/2021/12/2_metalguide-1-%E6%8C%87%E4%BB%A4%E7%BB%84%E7%BB%87%E5%92%8C%E6%89%A7%E8%A1%8C%E6%A8%A1%E5%9E%8B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Effective C++(第三版)学习总结(一)",
+        "headline": "Effective C++(第三版)阅读总结(一)",
         "inLanguage": "zh-cn",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/"
-        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  5847 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-01-23T22:10:05+08:00","publisher": {
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  5849 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-02-13T23:03:39+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -114,19 +114,19 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)学习总结(一)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule01-12)</h2><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)阅读总结(一)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule01-12)</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5847 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)学习总结(一)">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5849 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)阅读总结(一)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp"
-        data-srcset="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp, /img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp 1.5x, /img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp 2x"
+        data-src="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part1.webp"
+        data-srcset="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part1.webp, /img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part1.webp 1.5x, /img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part1.webp 2x"
         data-sizes="auto"
-        alt="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp"
+        alt="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part1.webp"
         title="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -136,8 +136,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#0序言">0.序言</a></li>
-        <li><a href="#一让自己习惯c">一.让自己习惯C++</a>
+        <li><a href="#序言">序言</a></li>
+        <li><a href="#ch1让自己习惯c">CH1.让自己习惯C++</a>
           <ul>
             <li><a href="#r01-视c为一个语言联邦">R01 视C++为一个语言联邦</a></li>
             <li><a href="#r02-尽量以constenuminline替换define">R02 尽量以<code>const</code>,<code>enum</code>,<code>inline</code>替换<code>#define</code></a></li>
@@ -145,7 +145,7 @@
             <li><a href="#r04-确定对象使用前先初始化">R04 确定对象使用前先初始化</a></li>
           </ul>
         </li>
-        <li><a href="#二构造析构赋值运算">二.构造/析构/赋值运算</a>
+        <li><a href="#ch2构造析构赋值运算">CH2.构造/析构/赋值运算</a>
           <ul>
             <li><a href="#r05-了解c默认编写并调用哪些函数">R05 了解C++默认编写并调用哪些函数</a></li>
             <li><a href="#r06-不想编译器的自动生成的函数明确拒绝">R06 不想编译器的自动生成的函数,明确拒绝</a></li>
@@ -161,14 +161,14 @@
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="0序言">0.序言</h2>
+            </div><div class="content" id="content"><h2 id="序言">序言</h2>
 <p>这本C++的经典之作，作者是大佬<code>Scott Meyers</code>👉<a href="https://www.aristeia.com/books.html" target="_blank" rel="noopener noreffer">大佬主页</a>，还写过其他几本影响深远的C++经典，例如<code>《Effective STL》</code>,<code>《More Effective C++》</code>,<code>《Effective Mordern C++》</code>,<code>《Overview of the New C++(C++11/14)》</code>等等。本人看的是中文版，侯捷老师翻译的,以前做的笔记是在自己的纸质笔记本上，现在挪到博客上来吧。</p>
 <p>关于Effective C++，全书55个C++条款，许多人都做了笔记类的博客，大家视角不同可能侧重也不同，各花入各眼了。(PS:本文主干目录和原书一致，另外，由于原书在C++11之前写成，所以会根据本人<code>开发经验</code>新增一些个人感悟👉<code>By the way</code>环节)</p>
 <blockquote>
-<p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~3章，内容范围Rule01~12。为方便书写，<strong>Rule01简写为R01</strong>)。</p>
+<p>(本文为<strong>Effective-C++笔记系列的第一部分</strong>，涉及原书第1~2章，内容范围Rule01~12。为方便书写，<strong>Rule01简写为R01</strong>)。</p>
 </blockquote>
 <p><code>废话不多说，直接进入正题。</code></p>
-<h2 id="一让自己习惯c">一.让自己习惯C++</h2>
+<h2 id="ch1让自己习惯c">CH1.让自己习惯C++</h2>
 <h3 id="r01-视c为一个语言联邦">R01 视C++为一个语言联邦</h3>
 <p>如今的C++已经是个多重范式(multiparadigm)语言,同时支持面向过程形式、面向对象形式、函数形式、泛型形式、元编程形式。
 要理解这么多特性，可以简单的归结为<code>四种次语言</code>(sublanguage)组成：</p>
@@ -392,7 +392,7 @@
 <strong>解决办法</strong>是将这样的变量放回函数体内，成为<code>local static</code>，因为C++确保在函数被调用时一定会初始化这个static变量。</li>
 </ol>
 <hr>
-<h2 id="二构造析构赋值运算">二.构造/析构/赋值运算</h2>
+<h2 id="ch2构造析构赋值运算">CH2.构造/析构/赋值运算</h2>
 <h3 id="r05-了解c默认编写并调用哪些函数">R05 了解C++默认编写并调用哪些函数</h3>
 <p>编译器可以暗自为Class创建default构造函数，copy构造函数(复制构造)，copy assigment(赋值构造)操作符，以及default析构函数。</p>
 <div class="highlight"><div class="chroma">
@@ -663,8 +663,9 @@
 </code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>Copy and Swap技术
-上文中保障<strong>异常安全</strong>和 <strong>“自我赋值”</strong> 安全的技术手段，另外一个办法，就是Copy and Swap技术。这个技术的关键在于“<em>修改对象数据的副本，然后在一个不抛异常的函数中将修改的数据和原件置换</em> ”。
+<li>
+<p>Copy and Swap技术
+上文中保障<strong>异常安全</strong>和 <strong>“自我赋值”</strong> 安全的技术手段，另外一个办法，就是Copy and Swap技术。这个技术的关键在于“<em>修改对象数据的副本，然后在一个不抛异常的函数中将修改的数据和原件置换</em> ”。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -757,15 +758,15 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-23&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/007f35a3d7a088f571638d5244eb75b74218348b" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 007f35a3d7a088f571638d5244eb75b74218348b: metal-Guide的mermaid图替换为draw.io绘制">
-                                    <i class="fas fa-hashtag fa-fw"></i>007f35a</a></span>
+                <span>更新于 2022-02-13&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/9399be920ccc060a5667cbc79a046373f1d51ddd" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 9399be920ccc060a5667cbc79a046373f1d51ddd: 补充Effective-C&#43;&#43;的内容">
+                                    <i class="fas fa-hashtag fa-fw"></i>9399be9</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-hashtags="C&#43;&#43;,程序设计"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-image="/img/C&#43;&#43;-Pic/effective-C&#43;&#43;.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-description="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)" data-description="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)学习总结(一)"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)" data-hashtags="C&#43;&#43;,程序设计"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)" data-image="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part1.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)" data-description="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)" data-description="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" data-title="Effective C&#43;&#43;(第三版)阅读总结(一)"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
