@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-02T10:50:54+08:00" />
-<meta property="article:modified_time" content="2022-01-27T11:19:30+08:00" />
+<meta property="article:modified_time" content="2022-02-14T22:04:26+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常用Git命令行总结"/>
@@ -26,7 +26,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/"
         },"genre": "posts","keywords": "git, 工具链","wordcount":  5445 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-01-27T11:19:30+08:00","publisher": {
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-02-14T22:04:26+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -396,7 +396,7 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 <td>查看仓库的远端地址</td>
 </tr>
 <tr>
-<td><code>git name-rev  &lt;commit-id&gt;</code></td>
+<td><code>git name-rev &lt;commit-id&gt;</code></td>
 <td>根据一个commit-ID确定该节点来自于哪个分支，ID可取前9位</td>
 </tr>
 </tbody>
@@ -451,7 +451,7 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 <td>查看指定作者, 查看满足条件的前n条</td>
 </tr>
 <tr>
-<td><code>git log -n  --  &lt;path_or_file&gt;</code></td>
+<td><code>git log -n --  &lt;path_or_file&gt;</code></td>
 <td>查看某个指定的文件/文件夹,  查看前n条</td>
 </tr>
 <tr>
@@ -676,7 +676,7 @@ git push origin :refs/tags/0.1.3
 </div>
 </div><h1 id="子模块">子模块</h1>
 <h2 id="新增子模块">新增子模块</h2>
-<p>执行<code>git submodule add &lt;remote-URL&gt;  &lt;local_path&gt;</code>可以添加一个子模块到本仓库，local_path 如果省略，则是添加到当前目录。</p>
+<p>执行<code>git submodule add &lt;remote-URL&gt; &lt;local_path&gt;</code>可以添加一个子模块到本仓库，local_path 如果省略，则是添加到当前目录。</p>
 <p>🎈注意： local_path的结尾最好是和子模块的仓库名同名，不然仍旧会创建一个子仓库同名的目录。</p>
 <p>还是针对上述的folly库，给他手动新增一个第三方图像库作为子模块，添加后自动克隆。</p>
 <div class="highlight"><div class="chroma">
@@ -736,8 +736,8 @@ git submodule update --init --recursive    <span class="c1">#这时发现文件�
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-01-27&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/dc9ec3768347715546e31d861abf181aa7d41a9d" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) dc9ec3768347715546e31d861abf181aa7d41a9d: 新增了1篇草稿，开始准备记录GAMES101">
-                                    <i class="fas fa-hashtag fa-fw"></i>dc9ec37</a></span>
+                <span>更新于 2022-02-14&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/166a7c59963dd81810a9af2806688bcb274ae20b" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 166a7c59963dd81810a9af2806688bcb274ae20b: 补充Effective-C&#43;&#43;（2）内容，新增C&#43;&#43;（三）">
+                                    <i class="fas fa-hashtag fa-fw"></i>166a7c5</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -756,7 +756,7 @@ git submodule update --init --recursive    <span class="c1">#这时发现文件�
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" class="prev" rel="prev" title="Fundamentals of Computer Graphics学习总结_第2章(杂项数学)"><i class="fas fa-angle-left fa-fw"></i>Fundamentals of Computer Graphics学习总结_第2章(杂项数学)</a>
+    <div class="post-nav"><a href="/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" class="prev" rel="prev" title="Fundamentals of Computer Graphics第2章总结_(杂项数学)"><i class="fas fa-angle-left fa-fw"></i>Fundamentals of Computer Graphics第2章总结_(杂项数学)</a>
             <a href="/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" class="next" rel="next" title="Markdown语法总结">Markdown语法总结<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
