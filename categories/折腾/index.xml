@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>折腾 - 分类 - Benjamin的网络日志</title>
+        <title>折腾 - 分类 - Benjamin的求知旅记</title>
         <link>https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/</link>
-        <description>折腾 - 分类 - Benjamin的网络日志</description>
+        <description>折腾 - 分类 - Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
             <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 19 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
     <title>利用Hugo和Github-Pages搭建免费的个人博客</title>
