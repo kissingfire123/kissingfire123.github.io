@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-18T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-02-17T21:53:28+08:00" />
+<meta property="article:modified_time" content="2022-03-08T21:52:08+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="10个容易遗忘但好用的Linux命令"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4\/"
-        },"genre": "posts","keywords": "shell脚本, linux","wordcount":  1286 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4\/","datePublished": "2021-12-18T00:00:00+00:00","dateModified": "2022-02-17T21:53:28+08:00","publisher": {
+        },"genre": "posts","keywords": "shell脚本, linux","wordcount":  1429 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4\/","datePublished": "2021-12-18T00:00:00+00:00","dateModified": "2022-03-08T21:52:08+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +116,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">10个容易遗忘但好用的Linux命令</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-18">2021-12-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1286 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-18">2021-12-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1429 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="10个容易遗忘但好用的Linux命令">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -339,12 +339,30 @@ nginx     <span class="m">40322</span> benjamin    8u  IPv4 0x37a9d32411      0t
 
 </code></pre></td></tr></table>
 </div>
+</div><p>杀死占用指定端口的进程：</p>
+<p>比如hugo服务的默认预览端口1313被占用了,执行下方指令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo lsof -i :1313
+<span class="c1"># 输出端口相关的进程列表，第一列就是command,比如说是nginx</span>
+ps -ef <span class="p">|</span> grep hugo 
+<span class="c1"># 输出所有nginx的进程,第二列就是PID，找到对应的那个nginx进程PID,比如4366</span>
+sudo <span class="nb">kill</span>  -9  <span class="m">4366</span>
+</code></pre></td></tr></table>
+</div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-02-17&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/f249ae320fa9a7fb480f4c1e25caed43f0f7da1e" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) f249ae320fa9a7fb480f4c1e25caed43f0f7da1e: 继续补充Effective-C&#43;&#43;(二)内容">
-                                    <i class="fas fa-hashtag fa-fw"></i>f249ae3</a></span>
+                <span>更新于 2022-03-08&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/99d2b8fc72d09657b7a1c60cd9eacba770906993" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 99d2b8fc72d09657b7a1c60cd9eacba770906993: 完善Effective-C&#43;&#43;(三）">
+                                    <i class="fas fa-hashtag fa-fw"></i>99d2b8f</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Effective C&#43;&#43;(第三版)精读总结(三) - Benjamin的求知旅记</title><meta name="Description" content="摘要：Effective C&#43;&#43;(第三版)内容第五、第六章的总结"><meta property="og:title" content="Effective C&#43;&#43;(第三版)精读总结(三)" />
+<meta property="og:description" content="摘要：Effective C&#43;&#43;(第三版)内容第五、第六章的总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-14T10:12:42+08:00" />
+<meta property="article:modified_time" content="2022-03-13T19:27:00+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Effective C&#43;&#43;(第三版)精读总结(三)"/>
+<meta name="twitter:description" content="摘要：Effective C&#43;&#43;(第三版)内容第五、第六章的总结"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" /><link rel="prev" href="https://kissingfire123.github.io/2022/01/11_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%8C/" /><link rel="next" href="https://kissingfire123.github.io/2022/02/18_%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8Fkatex%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Effective C++(第三版)精读总结(三)",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/02\/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89\/"
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  13985 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/02\/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89\/","datePublished": "2022-02-14T10:12:42+08:00","dateModified": "2022-03-13T19:27:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：Effective C++(第三版)内容第五、第六章的总结"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)精读总结(三)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule26-40)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-14">2022-02-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 13985 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 28 分钟&nbsp;<span id="/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)精读总结(三)">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp"
+        data-srcset="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp, /img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp 1.5x, /img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp 2x"
+        data-sizes="auto"
+        alt="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp"
+        title="摘要：Effective C&#43;&#43;(第三版)内容第五、第六章的总结" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#ch5-实现">CH5. 实现</a>
+      <ul>
+        <li><a href="#r26-尽可能延后变量定义式的出现时间">R26 尽可能延后变量定义式的出现时间</a></li>
+        <li><a href="#r27-尽量少做转型动作">R27 尽量少做转型动作</a></li>
+        <li><a href="#r28-避免返回handles指向对象内部成分">R28 避免返回handles指向对象内部成分</a></li>
+        <li><a href="#r29-为异常安全而努力是值得的">R29 为“异常安全”而努力是值得的</a>
+          <ul>
+            <li><a href="#异常安全的3个等级">异常安全的3个等级</a></li>
+            <li><a href="#使用copy-and-swap保障异常安全">使用copy-and-swap保障异常安全</a></li>
+            <li><a href="#异常安全的连带影响side-effects">异常安全的连带影响(side effects)</a></li>
+          </ul>
+        </li>
+        <li><a href="#r30-透彻了解inline的里里外外">R30 透彻了解inline的里里外外</a></li>
+        <li><a href="#r31-将文件间的编译依赖关系降至最低">R31 将文件间的编译依赖关系降至最低</a></li>
+      </ul>
+    </li>
+    <li><a href="#ch6-继承与面向对象设计">CH6. 继承与面向对象设计</a>
+      <ul>
+        <li><a href="#r32-确定你的public继承塑造出is-a关系">R32 确定你的public继承塑造出<strong>is-a</strong>关系</a></li>
+        <li><a href="#r33-避免遮掩由继承得来的名称">R33 避免遮掩由继承得来的名称</a></li>
+        <li><a href="#r34-区分接口继承和实现继承">R34 区分接口继承和实现继承</a></li>
+        <li><a href="#r35-考虑virtual函数的替代选择">R35 考虑virtual函数的替代选择</a></li>
+        <li><a href="#r36-绝不重新定义继承而来的non-virtual函数">R36 绝不重新定义继承而来的non-virtual函数</a></li>
+        <li><a href="#r37-绝不重新定义继承而来的缺省入参值">R37 绝不重新定义继承而来的缺省入参值</a></li>
+        <li><a href="#r38-通过复合塑造出has-a或根据某物实现出">R38 通过复合塑造出<strong>has-a</strong>或&quot;根据某物实现出&rdquo;</a></li>
+        <li><a href="#r39-明智而审慎地使用private继承">R39 明智而审慎地使用private继承</a></li>
+        <li><a href="#r40-明智而审慎地使用多重继承">R40 明智而审慎地使用多重继承</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<blockquote>
+<p>Effective-C++总结系列分为四部分，本文为<strong>第三部分</strong>，涉及原书第5~6章，内容范围Rule26~40。为方便书写，<strong>Rule26简写为R26</strong>。</p>
+</blockquote>
+<p>由于原书在C++11之前写成，有些现代C++特性不会提及，所以会根据本人<code>开发经验</code>新增一些个人感悟👉<code>By the way</code>环节。</p>
+<hr>
+<h1 id="ch5-实现">CH5. 实现</h1>
+<h2 id="r26-尽可能延后变量定义式的出现时间">R26 尽可能延后变量定义式的出现时间</h2>
+<ul>
+<li>
+<p>尽可能延后变量定义式的出现，可增加程序清晰度和效率</p>
+<ol>
+<li>
+<p>定义后，在使用前就遭遇抛异常</p>
+<p>这种情况，如果是定义了对象<code>ObjectA a</code>，便白白地浪费了对象a的构造和析构成本。</p>
+</li>
+<li>
+<p>不只是延后变量定义到使用时，而是尽量延后到能给它初值时</p>
+<p>结合上述第1，2点，考虑以下代码的合理性：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">encryptPassword</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">password</span><span class="p">){</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">password</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">){</span>
+        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">logic_error</span><span class="p">(</span><span class="s">&#34;Password is too short&#34;</span><span class="p">);</span>
+	<span class="p">}</span><span class="c1">// 考虑1：在异常之后定义变量
+</span><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">encrypted</span><span class="p">(</span><span class="n">password</span><span class="p">);</span><span class="c1">//考虑2：定义延后至变量能赋初值的时机
+</span><span class="c1"></span>    <span class="n">encrypt</span><span class="p">(</span><span class="n">encrypted</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">encrypted</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>思考变量定义<strong>是否</strong>该在循环内</p>
+<table>
+    <tr>
+        <td >方法A：定义于循环外</td> 
+        <td >方法B：定义于循环内</td>
+    </tr>
+    <tr>
+        <td>
+            Widget w;  <br> 
+            for(int i = 0 ; i< n; ++i){ <br>
+              &emsp; &emsp;   w = foo(i);       <br>        
+              &emsp; &emsp;// other...<br> 
+            }
+        </td>
+        <td>
+            for(int i = 0 ; i< n; ++i){ <br>
+             &emsp; &emsp; Widget w(foo(i));    <br> 
+             &emsp; &emsp;// other...<br>  
+            }
+        </td>
+    </tr>
+    <tr>
+        <td rowspan = "1">1个构造+1个析构+n个赋值</td>
+        <td rowspan = "1">n个构造+n个析构</td>
+    </tr>
+</table>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>究竟是A还是B</strong>方法好，取决于 <code>一个赋值</code>成本和<code>一组构造+析构</code>成本，这2者之间，如果是赋值成本低，那么A更好，否则B更好。</p>
+<hr>
+<h2 id="r27-尽量少做转型动作">R27 尽量少做转型动作</h2>
+<p>通常的转型是可能会这样写：函数风格的<code>int(expression)</code>或者C风格的<code>(int)expression</code>，这都被成为“<em>旧式转型</em> ”。</p>
+<ul>
+<li>
+<p>在C++中，有4种新式转型操作符：</p>
+<ol>
+<li>
+<p><strong>const_cast<T> (expression)</strong></p>
+<p>作用是移除变量的常量性(cast away the constness)，是唯一有此能力的操作符。</p>
+</li>
+<li>
+<p><strong>dynamic_cast<T>(expression)</strong></p>
+<p>作用是“安全向下转型”(safe downcasting)，决定某个对象是否属于某继承体系。耗费重大运行成本（原因：需要查询RTTI信息，而且不同编译器实现的方法和效率有所不同）。</p>
+</li>
+<li>
+<p><strong>reinterpret_cast<T>(expression)</strong></p>
+<p>执行低级转型，实际结果取决于编译器，移植性差。（比如int* 转为int）要清楚自己在做什么，慎用。</p>
+</li>
+<li>
+<p><strong>static_cast<T>(expression)</strong></p>
+<p>强迫隐式类型转换，代替C风格的&quot;旧式转换&quot;。也可以给变量加上const特性。</p>
+</li>
+</ol>
+<p>新式转换的好处：很容易在代码找到“类型系统在何处转变或破坏”；对const特性的严控，让类型系统更健壮。</p>
+</li>
+<li>
+<p>派生类里直接调用基类成员函数时，不要用转型</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">SpecialWindow</span><span class="o">:</span><span class="k">public</span> <span class="n">Window</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">onResize</span><span class="p">(){</span>
+      <span class="n">Window</span><span class="o">::</span><span class="n">onResize</span><span class="p">();</span><span class="c1">//不要使用 static_cast&lt;Window&gt;(*this).onResize();
+</span><span class="c1"></span>  <span class="p">}</span>  
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>关于dynamic_cast需要注意的</p>
+<ol>
+<li>
+<p>如何替代和避免</p>
+<p>一般是持有一个<code>Base *pBase</code>，但是指向的是DerivedObj，于是转型为<code>pDerived</code>。可以这样修改：</p>
+<p>修改设计，窄化类型，持有一个pDerived即可；或者将想做的事放到虚函数中，利用多态去完成。</p>
+</li>
+<li>
+<p>避免串联</p>
+<p>避免下方这样的代码，一连串的dynamic_cast：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Window</span><span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+<span class="c1">// 定义子类 SpecialWindow1,SpecalWindow2,SpecialWindow3
+</span><span class="c1"></span><span class="n">Window</span><span class="o">*</span> <span class="n">winPtr</span><span class="p">;</span>
+<span class="c1">// 省略winPtr的其他操作 ... 
+</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">SpecialWindow1</span> <span class="o">*</span><span class="n">psw1</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">SpecialWindow1</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">winPtr</span><span class="p">)){</span> <span class="p">...</span> <span class="p">}</span>
+<span class="k">else</span>  <span class="nf">if</span><span class="p">(</span><span class="n">SpecialWindow2</span> <span class="o">*</span><span class="n">psw2</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">SpecialWindow2</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">winPtr</span><span class="p">)){</span> <span class="p">...</span> <span class="p">}</span>
+<span class="k">else</span>  <span class="nf">if</span><span class="p">(</span><span class="n">SpecialWindow3</span> <span class="o">*</span><span class="n">psw3</span> <span class="o">=</span> <span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">SpecialWindow3</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">winPtr</span><span class="p">)){</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样的代码又大又慢，每次继承体系有所改变，代码就需要重新检阅判断。这样的代码应该用“基于virtual函数调用”取代它。</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="r28-避免返回handles指向对象内部成分">R28 避免返回handles指向对象内部成分</h2>
+<p>这里的<strong>handles（号码牌）包括</strong>指向对象内部的<strong>指针</strong>、<strong>迭代器</strong>、<strong>引用</strong>。</p>
+<p>以下讲述当返回对象内部的handles时，存在的2个问题：</p>
+<ul>
+<li>
+<p>可能会破坏封装性</p>
+<p>考虑一个场景：public函数返回一个private成员的非const引用，就让外界有了修改private的机会，破坏了封装性。</p>
+<p>此时，需要将非const引用改为const引用，只读属性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">Pixel</span><span class="p">{</span>
+    <span class="kt">float</span> <span class="n">r</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">class</span> <span class="nc">Image</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>  <span class="c1">//注意：后面这const只保证成员变量vPixPtrs_不改
+</span><span class="c1"></span>    <span class="n">Pixel</span><span class="o">&amp;</span> <span class="n">GetThePixel</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">)</span> <span class="k">const</span><span class="p">{</span>  
+        <span class="k">return</span>  <span class="n">vPixPtrs_</span><span class="p">[</span><span class="n">i</span><span class="p">];}</span><span class="c1">//隐患：其实外部调用者仍能直接修改Pixel的rgb值
+</span><span class="c1"></span>    <span class="c1">// 上一句的返回值应该改为 &#34;const Pixel&amp;&#34;
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Pixel</span><span class="o">&gt;&gt;</span> <span class="n">vPixPtrs_</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可能会引起“空悬handles”</p>
+<p>即使用const解决了封装性的问题，因为很容易出现“<strong>handles比其所指对象更长寿</strong>”，可能存在对象已析构，但handles还留存的问题。尤其是临时变量的析构，不太容易察觉。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">SceneGraph</span><span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+<span class="k">const</span> <span class="n">Image</span> <span class="nf">CaptureImage</span><span class="p">(</span><span class="k">const</span> <span class="n">SceneGraph</span><span class="o">&amp;</span> <span class="n">graph</span><span class="p">);</span>
+<span class="c1">//那么调用方可能会这样使用
+</span><span class="c1"></span><span class="n">SceneGraph</span> <span class="n">Grap</span><span class="p">;</span>
+<span class="c1">//下面这句之后，Image临时对象被销毁，pPix指向一个不存在的对象
+</span><span class="c1"></span><span class="k">const</span> <span class="n">Pixel</span> <span class="o">*</span><span class="n">pPix</span> <span class="o">=</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">CaptureImage</span><span class="p">(</span><span class="n">Grap</span><span class="p">).</span><span class="n">GetThePixel</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注意，CaptureImage的确能返回一个临时Image对象，能成功调用GetThePixel，但这句结束后，临时对象立马会被销毁，造成空悬现象，或叫虚吊(dangling) ！</p>
+</li>
+</ul>
+<hr>
+<h2 id="r29-为异常安全而努力是值得的">R29 为“异常安全”而努力是值得的</h2>
+<p>“<strong>异常安全</strong>”是指，当异常抛出时，代码依然能做到如下2点：</p>
+<ol>
+<li>
+<p>不泄露任何资源</p>
+<p>包括内存资源，锁资源。</p>
+</li>
+<li>
+<p>不允许数据败坏</p>
+<p>不会因为异常而导致空悬指针等未定义行为。</p>
+</li>
+</ol>
+<p>考虑下方的示例代码，（如果<code>new Image</code>抛<code>std::bad_alloc</code>异常）则会同时违背了上述2条：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">PrettyMenu</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">Mutex</span> <span class="n">mutex_</span><span class="p">;</span> <span class="c1">//互斥器
+</span><span class="c1"></span>    <span class="n">Image</span><span class="o">*</span> <span class="n">bgImage_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">imageChangeCnt_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>
+	<span class="kt">void</span> <span class="n">PrettyMenu</span><span class="o">::</span><span class="n">changeBackground</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">&amp;</span> <span class="n">imgSrc</span><span class="p">){</span>
+        <span class="n">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex_</span><span class="p">);</span><span class="c1">// 这个可以改为RAII的锁，来保证异常安全
+</span><span class="c1"></span>        <span class="k">delete</span> <span class="n">bgImage_</span><span class="p">;</span>
+        <span class="o">++</span><span class="n">imageChangeCnt_</span><span class="p">;</span>
+        <span class="c1">//这里new Image抛异常，导致无法解锁；且bgImage_指向资源已经释放，空悬指针
+</span><span class="c1"></span>        <span class="n">bgImage_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Image</span><span class="p">(</span><span class="n">imageSrc_</span><span class="p">);</span>
+        <span class="n">unlock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex_</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="异常安全的3个等级">异常安全的3个等级</h3>
+<p>异常安全的函数，有<strong>3个等级</strong>的异常安全保证，会满足<strong>三者之一</strong>：</p>
+<ul>
+<li>
+<p><strong>基本承诺</strong></p>
+<p>如果异常被抛出，程序内的任何事务仍然保持在有效状态下，也没有任何数据败坏。比如上例中如果抛异常，会另外添加实现，使bgImage_持有某个默认图像，或保持原值，让程序继续<strong>有效运行</strong>。</p>
+</li>
+<li>
+<p><strong>强烈保证</strong></p>
+<p>如果异常被抛出，程序状态不改变。这样的函数要么成功，要么退回到执行前的状态。</p>
+<p>上述案例则应该会被修改成如下形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">PrettyMenu</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span> <span class="n">bgImage_</span><span class="p">;</span> <span class="c1">//RAII避免了异常发生时的资源泄漏和数据败坏
+</span><span class="c1"></span>    <span class="c1">//... 省略其他成员
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+	<span class="kt">void</span> <span class="n">PrettyMenu</span><span class="o">::</span><span class="n">changeBackground</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">&amp;</span> <span class="n">imgSrc</span><span class="p">){</span>
+        <span class="n">CLock</span> <span class="nf">ml</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex_</span><span class="p">);</span><span class="c1">//RAII封装的Lock类，详细可参考 阅读总结(二)-Rule14
+</span><span class="c1"></span>        <span class="n">bgImage_</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Image</span><span class="p">(</span><span class="n">imgSrc</span><span class="p">));</span><span class="c1">//若new失败，则不会reset
+</span><span class="c1"></span>        <span class="o">++</span><span class="n">imageChangeCnt_</span><span class="p">;</span><span class="c1">//把事情做完再++count
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>不抛异常</strong></p>
+<p>在原书中，这个“No Throw”不是绝对不抛异常，而是一旦意外抛异常，就会调用unexpected函数进而abort（例如<code>int doSomething()  throw();//空白的异常明细</code>）。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>By the way<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<p>原书中例子的 <strong>throw()</strong> 在不同编译器表现不一致，现在已经 <strong>不推荐使用</strong>。</p>
+<p>更详细资料可参考<a href="http://gotw.ca/publications/mill22.htm" target="_blank" rel="noopener noreffer">A Pragmatic Look at Exception Specifications</a>和<a href="https://stackoverflow.com/questions/88573/should-i-use-an-exception-specifier-in-c" target="_blank" rel="noopener noreffer">Should I use an exception specifier in C++</a></p>
+</li>
+<li>
+<p>在C++11中，有了更可靠有效的关键字<code>noexcept</code>，使用也很简单，有操作符和异常提示符两种作用，下方展示简单用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">f</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span> <span class="c1">// 函数 f() 不会抛出
+</span><span class="c1"></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)()</span> <span class="k">noexcept</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span> <span class="c1">// fp 指向可能会抛出的函数
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">g</span><span class="p">(</span><span class="kt">void</span> <span class="n">pfa</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">);</span>  <span class="c1">// g 接收指向不会抛出的函数的指针
+</span><span class="c1">// typedef int (*pf)() noexcept; // 错误
+</span></code></pre></td></tr></table>
+</div>
+</div><p>更详细的<code>noexcept</code>介绍可以访问<a href="https://zh.cppreference.com/w/cpp/language/noexcept" target="_blank" rel="noopener noreffer">cppreference：noexcept操作符</a>和<a href="https://zh.cppreference.com/w/cpp/language/noexcept_spec" target="_blank" rel="noopener noreffer">cppreference：noexcept异常说明符</a></p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+</li>
+</ul>
+<h3 id="使用copy-and-swap保障异常安全">使用copy-and-swap保障异常安全</h3>
+<p><code>copy-and-swap</code>技术：<strong>先拷贝一份想修改的对象，等修改彻底完成后（过程中不抛异常），再与原对象交换</strong>。</p>
+<p>为了更形象展示这一过程，使用pIml手法对bgImage_封装一下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">ImgPimpl</span><span class="p">{</span> <span class="c1">//选用struct而非Class：方便；最后被private成员形式使用，封装性不用担心
+</span><span class="c1"></span>   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Image</span><span class="o">&gt;</span> <span class="n">bgImage_</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">imageChangeCnt_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么PrettyMenu类可以改为如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">PrettyMenu</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">Mutex</span> <span class="n">mutex_</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ImgPimpl</span><span class="o">&gt;</span> <span class="n">pImpl_</span><span class="p">;</span>
+<span class="k">public</span><span class="o">:</span>  <span class="c1">//构造略
+</span><span class="c1"></span>	<span class="kt">void</span> <span class="n">PrettyMenu</span><span class="o">::</span><span class="n">changeBackground</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="o">&amp;</span> <span class="n">imgSrc</span><span class="p">){</span>
+        <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">;</span>   <span class="c1">//参考 阅读总结(二)-Rule25
+</span><span class="c1"></span>        <span class="n">CLock</span> <span class="nf">ml</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mutex_</span><span class="p">);</span><span class="c1">//RAII封装的Lock类，详细可参考总结(二)-Rule14
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ImgPimpl</span><span class="o">&gt;</span> <span class="n">pNewCopy</span><span class="p">(</span><span class="k">new</span> <span class="n">ImgPimpl</span><span class="p">(</span><span class="o">*</span><span class="n">pImpl_</span><span class="p">));</span>
+        <span class="n">pNewCopy</span><span class="o">-&gt;</span><span class="n">bgImage_</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span> <span class="n">Image</span><span class="p">(</span><span class="n">imgSrc</span><span class="p">));</span> <span class="c1">//修改副本
+</span><span class="c1"></span>        <span class="o">++</span><span class="n">pNewCopy</span><span class="o">-&gt;</span><span class="n">imageChangeCnt_</span><span class="p">;</span> 
+        
+        <span class="n">swap</span><span class="p">(</span><span class="n">pImpl_</span><span class="p">,</span><span class="n">pNewCopy</span><span class="p">);</span><span class="c1">//改完之后swap
+</span><span class="c1"></span>    <span class="p">}</span>    
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="异常安全的连带影响side-effects">异常安全的连带影响(side effects)</h3>
+<p>函数提供的“异常安全保证等级”只<strong>取决于</strong>其调用的<strong>各个子函数的“最不安全者”</strong>。</p>
+<p>考虑以下函数SomeFunc代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">SomeFunc</span><span class="p">{</span>
+    <span class="p">...</span> <span class="c1">// 对local状态做一份副本
+</span><span class="c1"></span>    <span class="n">f1</span><span class="p">();</span>
+    <span class="n">f2</span><span class="p">();</span>
+    <span class="p">...</span>  <span class="c1">//将修改后的状态置换过来
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>分析</code>：显然copy-and-swap在尽力强烈保证异常安全，但是，f1或者f2的异常安全如果比较低，那么可能需要单独对f1，f2进行copy-and-swap，来尝试保证“强烈异常安全”；即使如此，如果f1能成功做了修改，但是f2修改失败了并回退，那么<strong>f1、f2整体</strong>看起来还是“<strong>改了一部分</strong>”。</p>
+<p><strong><code>这也告诫我们</code></strong>，如果引入了异常不安全的旧代码，那么这种特性会波及其他代码。</p>
+<p>就设计者而言，只能根据实际情况，尽可能保证“异常安全”，选择3个异常安全等级之一实施。</p>
+<hr>
+<h2 id="r30-透彻了解inline的里里外外">R30 透彻了解inline的里里外外</h2>
+<p><code>inline</code>是C++的关键字，表示内联函数。<code>直接在对应位置展开代码</code>，免去函数调用的开销，难以避免 “<strong>代码膨胀</strong>”问题。</p>
+<p>使用inline时应该注意以下问题：</p>
+<ul>
+<li>
+<p><strong>inline只是对编译器的申请</strong></p>
+<p>inline只是对编译器的申请/建议，不是强制命令，<strong>编译器有权利</strong> 对其认为不适合inline的函数<strong>拒绝</strong>inline。 （原书说：如果编译器拒绝，通常它会给出warning信息。实际本人实测VS2017没看到）</p>
+<p><em>inline有2种申请方式</em> ：</p>
+<ol>
+<li>在<em>函数定义</em> 时使用关键字inline<strong>显式强调</strong></li>
+<li>实现在Class内的成员函数或friend函数，属于<strong>隐式inline</strong></li>
+</ol>
+</li>
+<li>
+<p><strong>inline和Template没有任何必然联系</strong></p>
+<p>虽然有不少简短的Template函数是带有inline（例如下方的<code>std::max</code>），但不是必然为之，<strong>两者没有因果关系</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span> <span class="c1">//可以申请inline，但不是必须申请
+</span><span class="c1"></span>    <span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">?</span> <span class="nl">b</span> <span class="p">:</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>编译器拒绝复杂函数进行inline</strong></p>
+<p>复杂函数的inline会带来较严重的“代码膨胀”问题，并且可能会更慢，因为增加了运行时的“额外换页”行为，降低了指令cache命中率。</p>
+<ol>
+<li>
+<p><em>inline函数内不要出现循环或递归</em></p>
+</li>
+<li>
+<p>虚函数也不适合做inline</p>
+<p>因为inline是编译期间决定的事，而虚函数是运行时决定的事，两者就不是同一个场景的。</p>
+</li>
+<li>
+<p><em>构造/析构函数也不适合做inline</em></p>
+</li>
+</ol>
+<p>​        编译器可能会在构造/析构函数内部做精妙复杂的异常处理；以及在继承体系下，Base类函数体到处inline膨胀。</p>
+</li>
+<li>
+<p><strong>以函数指针形式的调用通常不能inline</strong></p>
+<p>对绝大多数编译器而言，是否inline是compile阶段决定的事情，少数编译器放到了link阶段。</p>
+<p>讨论大多数情况：需要在编译时得知inline的本体，而函数指针办不到，示例代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kr">inline</span> <span class="kt">void</span> <span class="nf">f</span><span class="p">()</span> <span class="p">{...}</span> <span class="c1">//假设编译器有意愿inline “对f的调用”
+</span><span class="c1"></span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span> <span class="n">pf</span><span class="p">)()</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span><span class="c1">//pf 执行f
+</span><span class="c1"></span><span class="p">...</span>
+<span class="n">f</span><span class="p">();</span>     <span class="c1">//这个调用将被inlined，因为是个正常调用
+</span><span class="c1"></span><span class="n">pf</span><span class="p">();</span>     <span class="c1">//这个很可能不被inlined
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>过度inline对调试和发布带来困难</strong></p>
+<p>inline是代码嵌入与展开，而非函数调用，所以某些编译器不支持inline的单步Debug（就像宏展开一样不支持调试）；另外，inline只要已修改，涉及调用它的代码全都要编译，如果是non-inline则可能只需要重新link即可。</p>
+</li>
+</ul>
+<hr>
+<h2 id="r31-将文件间的编译依赖关系降至最低">R31 将文件间的编译依赖关系降至最低</h2>
+<p>C++的Class定义式包括了成员变量，假设某成员变量是类对象<code>ClassObjA a</code>，如果ClassObjA类的内部实现发生了改变（<em>哪怕这个<code>ClassObjA.h</code>内只在某处加了一个空格</em> ），那么include了<code>ClassObjA.h</code>的所有.h文件.cpp文件都会<strong>重新编译</strong>。</p>
+<p>👆这就是由“<strong>编译依赖</strong>”关系带来的问题。</p>
+<p>使用 <strong><code>PIMPL</code></strong> 手法(pointer to implementation)可以很好地分离声明和定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//Person.h文件  不需要include &#34;PersonImpl.h&#34;和&#34;BirthDay.h&#34;
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">PersonImpl</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">BirthDay</span><span class="p">;</span><span class="c1">// 前置声明代替include
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Person</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span><span class="c1">// 构造函数这里放实现无所谓，因为是函数指针，不需知道PersonImpl本体实现
+</span><span class="c1"></span>    <span class="n">Person</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PersonImpl</span><span class="o">&gt;&amp;</span> <span class="n">pImpl</span><span class="p">);</span><span class="c1">//构造函数的实现也放到cpp里去
+</span><span class="c1"></span>    <span class="k">const</span> <span class="n">BirthDay</span><span class="o">&amp;</span> <span class="n">GetBirthDay</span><span class="p">();</span><span class="c1">// 注意：这里只声明，把实现部分放到cpp里
+</span><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetName</span><span class="p">();</span><span class="c1">//实现细节由pImpl_转发实现
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">PersonImpl</span><span class="o">&gt;</span> <span class="n">pImpl_</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">//Person.cpp文件  
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;PersonImpl.h&#34; //在&#34;PersonImpl.h&#34;文件内include那个&#34;BirthDay.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;Person.h&#34;</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注意：<em>Impl用法，相关的头文件里不要放置任何函数实现代码</em> 。</p>
+<p>上述做法可以让使用Person类的客户不需要再关心PersonImpl以及BirthDay的实现细节了，做到了“接口与实现分离”，关键点在于把“定义的依赖性” 换成 $\Rightarrow$ “<strong>声明的依赖性</strong>”。</p>
+<p>这里突出了如何<strong>最小化编译依赖</strong>性的本质：<code>让头文件尽可能自我满足</code>，如果不行，也要依赖于其他文件的声明式而非定义式。</p>
+<p>具体到设计策略上，有以下几种做法：</p>
+<ul>
+<li>
+<p>如果能用object references 或 object pointers完成任务，就别用objects</p>
+<p>如果要定义某类型的objects，就要使用定义式，指针和应用则可以只用声明式。</p>
+</li>
+<li>
+<p>尽量以class声明式替换class定义式</p>
+<p>函数声明种的Class类型可以只用声明式，即使以by-object-value形式传值也是如此。</p>
+</li>
+<li>
+<p>为声明式和定义式提供不同的文件</p>
+<p>比如Date类，分为只包含声明式的&quot;Datefwd.h&quot;和包含定义式的&quot;Date.h&quot;，那么使用时用声明式头文件代替前置声明，在需要应用代码client.cpp里include定义式头文件。这种方式在<strong>标准库里采用较多</strong>，参考&lt;iosfwd&gt;和&lt;sstream&gt;,&lt;fstream&gt;,&lt;streambuf&gt;等。</p>
+</li>
+</ul>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>By the way<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>
+<p>C/C++可以使用编译器预处理指令<code>#pragma message</code>，打印出该文件是否参与此次编译，以及参与编译时被哪个文件所依赖。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//比如可以在 testEffective.h 文件内加上这句，就能在编译输出信息里看到打印信息，观察到依赖关系
+</span><span class="c1"></span><span class="cp">#pragma message(&#34;testEffective.h 参与重新编译&#34;)
+</span><span class="cp"></span><span class="c1">//还可以用于测试某些宏是否真的生效，有时IDE的高亮显示不准确而令人生疑。
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>关于头文件include的其他编写规范，可以参考：<a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/headers/#" target="_blank" rel="noopener noreffer"><em>Google-C++风格指南：1.头文件</em></a></p>
+</li>
+</ul>
+</div>
+        </div>
+    </div>
+<p>使用 <strong><code>Interface Class</code></strong> 也能做到接口和实现的真正分离：</p>
+<p>这种方式常见于输出动态库给到客户使用，客户能见到接口定义和使用，但无法看到内部实现。</p>
+<p>用法较为常见，不赘述，直接<strong>show-code</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//VirtualPerson.h   //和 lib文件一起提供给到客户
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">VirtualPerson</span> <span class="p">{</span> 
+<span class="k">public</span><span class="o">:</span> <span class="c1">//create的返回值还可以根据需求，换成RAII的智能指针
+</span><span class="c1"></span>    <span class="k">static</span> <span class="n">VirtualPerson</span> <span class="o">*</span> <span class="n">create</span><span class="p">(</span><span class="kt">int</span> <span class="n">level</span><span class="p">,</span> <span class="kt">int</span> <span class="n">salary</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Level</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Salary</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">VirtualPerson</span><span class="p">();</span><span class="c1">// avoid memory leak 
+</span><span class="c1"></span><span class="p">};</span>
+<span class="c1">//VirtualPerson.cpp  //源码不提供给客户，而是编译好的二进制 lib文件
+</span><span class="c1"></span><span class="n">VirtualPerson</span><span class="o">*</span> <span class="n">VirtualPerson</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="kt">int</span> <span class="n">level</span><span class="p">,</span> <span class="kt">int</span> <span class="n">salary</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">level</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//工厂方法，还可以生成其他子类
+</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="nf">Engineer</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">salary</span><span class="p">);</span> 
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">VirtualPerson</span><span class="o">::~</span><span class="n">VirtualPerson</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="c1">// Engineer.h  //Engineer也是参与编译到 lib文件中
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Engineer</span><span class="o">:</span> <span class="k">public</span> <span class="n">VirtualPerson</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">Engineer</span><span class="p">(</span><span class="kt">int</span> <span class="n">level</span><span class="p">,</span><span class="kt">int</span> <span class="n">salary</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Level</span><span class="p">()</span> <span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">Salary</span><span class="p">()</span> <span class="p">;</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">level_</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">salary_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h1 id="ch6-继承与面向对象设计">CH6. 继承与面向对象设计</h1>
+<h2 id="r32-确定你的public继承塑造出is-a关系">R32 确定你的public继承塑造出<strong>is-a</strong>关系</h2>
+<p>原书标题：<em><strong>Make sure public inheritance models &ldquo;is-a&rdquo;</strong></em>. 侯捷老师翻译为“塑模”，我个人更愿意称为“塑造”。</p>
+<ul>
+<li>
+<p><strong>“public继承”意味着is-a</strong></p>
+<p>is-a，即“<strong>是一种</strong>”，就是说，适用于Base Class身上的每一件事，也一定适用于Derived Class身上。</p>
+</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>By the way<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>面向设计对象的设计有著名的5大原则， <strong><code>SOLID</code></strong> 原则，每个字母分别代表一种原则：</p>
+<ul>
+<li>
+<p>S&ndash;单一责任原则(SRP) &ndash;Single Responsibility Principle</p>
+</li>
+<li>
+<p>O&ndash;开放封闭原则(OCP)&ndash; Open-Closed  Principle</p>
+</li>
+<li>
+<p>L&ndash;里式替换原则(LSP)&ndash; Liskov Substitution Principle</p>
+</li>
+<li>
+<p>I –- 接口分离原则(ISP)&ndash;Interface Segregation Principle</p>
+</li>
+<li>
+<p>D–-依赖倒置原则(DIP)&ndash; Dependency Inversion Principle</p>
+</li>
+</ul>
+<p>更详细的叙述可以参考：<a href="https://cloud.tencent.com/developer/article/1503629" target="_blank" rel="noopener noreffer"><em>腾讯云：SOLID原则</em></a></p>
+</div>
+        </div>
+    </div>
+<p>本节条款的中心思想即<em>里氏替换原则</em> ：<strong>一个对象出现的地方都可以由其子类代替并且不会出错</strong>。</p>
+<p>继承关系有时候听起来很好理解，比如 <code>Class Student: public Person</code>  理所应当，但有时也会导致误解。比如企鹅属于鸟类，但企鹅不会飞，那么基类<code>Bird::Fly</code>方法又当如何处理，下方满足设计意图：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Bird</span><span class="p">{</span>   <span class="c1">//... 不声明Fly()方法
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">FylingBird</span><span class="o">:</span><span class="k">public</span> <span class="n">Bird</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span> <span class="k">virtual</span> <span class="kt">void</span> <span class="n">Fly</span><span class="p">();</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Penguin</span><span class="o">:</span> <span class="k">public</span> <span class="n">Bird</span><span class="p">{</span> <span class="c1">//... 不声明Fly()方法
+</span><span class="c1"></span><span class="p">};</span>
+<span class="c1">// 注：如果Bird类以及子类都不考虑Fly()方法，那么Penguin直接继承于Bird即可
+</span></code></pre></td></tr></table>
+</div>
+</div><p>还有另一种场景，父类和子类对于同一个方法的数据修改规则不同，导致了继承体系的缺陷。</p>
+<p>比如<code>Class Square:public Rectangle</code> $\rightarrow$ 正方形继承于长方形，但是考虑这样一个<strong>类外方法</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">makeBigger</span><span class="p">(</span><span class="n">Rectangle</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">){</span>  <span class="c1">//普通非成员函数
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">oldHeight</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">height</span><span class="p">();</span>
+    <span class="n">r</span><span class="p">.</span><span class="n">setWidth</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">width</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span><span class="c1">//如果r是Squqre，可能内部自动就长宽一起变了
+</span><span class="c1"></span>    <span class="n">assert</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">height</span><span class="p">()</span> <span class="o">==</span> <span class="n">oldHeight</span><span class="p">);</span><span class="c1">//这个assert对于正方形就不合适了,贸然去除又违背设计本意
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>应对上述这样的情况，就需要修改设计或修改继承体系了。</p>
+<hr>
+<h2 id="r33-避免遮掩由继承得来的名称">R33 避免遮掩由继承得来的名称</h2>
+<p>首先，什么是名称的遮掩，通俗地说，是指由于作用域不同带来的变量名覆盖。考虑下方代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">someFunc</span><span class="p">(){</span>
+    <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;x is&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// local作用域找到了x，直接覆盖全局的x，输出0.1
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么如果将继承体系考虑进来呢：<strong>Derived的作用域会覆盖Base的作用域</strong>，包括virtual和non-virtual。考虑下方代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">mf1</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">mf1</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base::mf1():x =&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">mf2</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base::mf2()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">mf3</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base::mf3()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">mf3</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Base::mf3():x =&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">Base</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Derived</span> <span class="o">:</span><span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">mf1</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived::mf1()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">mf3</span><span class="p">(){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Derived::mf3()</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>很明显存在名称遮掩的问题，Derived的mf1，mf3会遮掩子类的所有同名函数，测试结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Derived</span> <span class="n">d</span><span class="p">;</span>
+<span class="n">d</span><span class="p">.</span><span class="n">mf1</span><span class="p">();</span>      <span class="c1">//OK，输出: Derived::mf1()
+</span><span class="c1">//d.mf1(100);  编译报错，因为名称被遮掩
+</span><span class="c1"></span><span class="n">d</span><span class="p">.</span><span class="n">mf2</span><span class="p">();</span>      <span class="c1">//OK，输出: Base::mf2()
+</span><span class="c1"></span><span class="n">d</span><span class="p">.</span><span class="n">mf3</span><span class="p">();</span>      <span class="c1">//OK，输出: Derived::mf3()
+</span><span class="c1">//d.mf3(300);  编译报错，同理
+</span><span class="c1"></span><span class="n">d</span><span class="p">.</span><span class="n">Base</span><span class="o">::</span><span class="n">mf3</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span> <span class="c1">//OK，输出: Base::mf3():x =300 . 但是不太建议这么写，丑！！
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>为解决上述问题，可以采用using声明式或转发函数</p>
+<ol>
+<li>
+<p>using 声明式</p>
+<p>可以使用using声明式，让Derived可以忽略名称遮掩，看到Base作用域内的函数。可以让上方代码的“编译报错”消失，正常调用d.mf1(100)和d.mf3(300)。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Derived</span> <span class="o">:</span><span class="k">public</span> <span class="n">Base</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span> <span class="c1">//修改本节内容中上方代码的Derived类的声明
+</span><span class="c1"></span>    <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">mf1</span><span class="p">;</span>
+    <span class="k">using</span> <span class="n">Base</span><span class="o">::</span><span class="n">mf3</span><span class="p">;</span> <span class="c1">//这2个using使得Base类作用域内所有mf1,mf3函数都可见
+</span><span class="c1"></span>    <span class="c1">// ... 其他，略
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>转发函数(forwarding function)</p>
+<p>应用场景：在private继承下，强调的是继承实现而非继承接口，如果想在子类的成员中调用父类函数，此时可以通过<strong>函数转发</strong>来实现。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span> <span class="k">private</span> <span class="n">Base</span><span class="p">{</span> <span class="c1">//改写本节上方代码，注意，是私有继承
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">mf1</span><span class="p">(){</span>
+        <span class="n">Base</span><span class="o">::</span><span class="n">mf1</span><span class="p">();</span> <span class="c1">//拿到了父类的函数实现
+</span><span class="c1"></span>        <span class="c1">// ... 该函数其他部分
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// 应用代码
+</span><span class="c1"></span><span class="n">Derived</span> <span class="n">d</span><span class="p">;</span> 
+<span class="n">d</span><span class="p">.</span><span class="n">mf1</span><span class="p">();</span>    <span class="c1">//调用成功，Derived::mf1
+</span><span class="c1"></span><span class="n">d</span><span class="p">.</span><span class="n">mf1</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>  <span class="c1">//编译失败
+</span></code></pre></td></tr></table>
+</div>
+</div><p>当然，public继承也能使用转发函数，写出<code>d.Base::mf3(300);</code> 这样的代码。但是，一来public继承理应遵循&quot;is-a&quot;规则，using声明拿到所有被遮掩的接口；二来明显代码不美观。</p>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="r34-区分接口继承和实现继承">R34 区分接口继承和实现继承</h2>
+<p>当一个子类Derived继承于父类Base，那么要时刻清楚，对于类中的成员函数，是想继承父类的接口，还是想继承父类的实现。</p>
+<ul>
+<li>
+<p><strong>对于Public继承，接口总是会被继承</strong></p>
+<p>基于“<strong>is-a</strong>”的关系，作用于父类的任何事情也一定要适用于子类。</p>
+</li>
+<li>
+<p><strong>声明纯虚函数(pure-virtual)的目的是让子类只继承函数接口</strong></p>
+<p>对于纯虚函数，子类必须重新实现该接口。注意，<code>父类可以选择性给出纯虚函数的实现</code>，但是一般不会给。</p>
+</li>
+<li>
+<p><strong>隐患：从非纯虚函数(impure-virtual)同时继承接口和缺省实现</strong></p>
+<p>非纯虚函数，可以让子类选择是否重新实现该接口。那么，如果子类是有必要重写，但是<strong>忘记写了</strong>却默默用父类版本，便事与愿违了。</p>
+<p>举例：父类Airplane有子类PlaneModelA、PlaneModelB、PlaneModelC，其中C型飞机不同于AB型，是新式飞机：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Airport</span> <span class="p">{...};</span><span class="c1">//机场类，实现略
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">Airplane</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">fly</span><span class="p">(</span><span class="k">const</span> <span class="n">Airport</span><span class="o">&amp;</span> <span class="n">destination</span><span class="p">);</span><span class="c1">//父类还会给出默认的fly实现
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">PlaneModelA</span><span class="o">:</span> <span class="k">public</span> <span class="n">Airplane</span><span class="p">{</span> <span class="p">...</span> <span class="p">};</span> <span class="c1">// 不重写fly，继承父类的fly实现
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">PlaneModelB</span><span class="o">:</span> <span class="k">public</span> <span class="n">Airplane</span><span class="p">{</span> <span class="p">...</span> <span class="p">};</span> <span class="c1">// B和A一样
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">PlaneModelC</span><span class="o">:</span> <span class="k">public</span> <span class="n">Airplane</span><span class="p">{</span> <span class="p">...</span> <span class="p">};</span> <span class="c1">//新型飞机，本来要重写fly，结果忘了
+</span></code></pre></td></tr></table>
+</div>
+</div><p>那么这个<code>隐患该如何解决</code> 呢，也就是说，在实现C型飞机类时别忘了fly方法？</p>
+<p>核心思想是“切断<code>virtual函数接口</code>和其<code>默认实现</code>之间的连接”。</p>
+<ol>
+<li>
+<p>方法1：设置fly为纯虚函数，并新增一个defaultyFly方法</p>
+<p>注意细节：defaultFly方法要设置为protected属性的non-virtual函数，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Airplane</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">fly</span><span class="p">(</span><span class="k">const</span> <span class="n">Airport</span><span class="o">&amp;</span> <span class="n">destination</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">// 父类不给出实现
+</span><span class="c1"></span><span class="k">protected</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">defaultFly</span><span class="p">(</span><span class="k">const</span> <span class="n">Airport</span><span class="o">&amp;</span> <span class="n">destination</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span><span class="c1">//默认的fly实现
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">PlaneModelA</span><span class="o">:</span> <span class="k">public</span> <span class="n">Airplane</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>   <span class="c1">//纯虚接口,子类必须给出实现
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">fly</span><span class="p">(</span><span class="k">const</span> <span class="n">Airport</span><span class="o">&amp;</span> <span class="n">destination</span><span class="p">){</span>
+        <span class="n">defaultFly</span><span class="p">(</span><span class="n">destination</span><span class="p">);</span> <span class="c1">//调用父类的缺省实现
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span><span class="c1">//PlaneModelB 和 PlaneModelA 类似,略
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">PlaneModelC</span><span class="o">:</span> <span class="k">public</span> <span class="n">Airplane</span><span class="p">{</span> <span class="p">...};</span><span class="c1">// 重写fly方法
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这样写还有个好处：fly()和defaultFly()享有不同的保护级别。</p>
+</li>
+<li>
+<p>方法2： 父类的默认实现塞到纯虚接口fly中</p>
+<p>这样就不需要定义defaultFly方法了，因为子类必须实现fly方法，对于A 型、B型飞机，子类fly()转发一次父类的fly()即可，C类飞机实现新式的fly()。缺点是让原本在defaultFly内的实现内容暴露在外了(指public属性)。</p>
+<blockquote>
+<p>By The Way:</p>
+<p>个人认为，这方法2还有个缺点：它让虚基类的纯虚接口承载了接口实现，不够纯粹(比如需要输出给到客户，应该只继承接口)。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>non-virtual函数具体指定接口继承和强制性实现继承</strong></p>
+<p>如果成员函数是non-virtual，表示它不打算在子类中有不同的行为，或者说，不变性凌驾于特异性。对应地，绝不应该在子类中重写non-virtual函数。</p>
+</li>
+</ul>
+<hr>
+<h2 id="r35-考虑virtual函数的替代选择">R35 考虑virtual函数的替代选择</h2>
+<p>假设这样一个场景：设计一款游戏，不同人物以不同方式计算生命值，那么$\Longrightarrow$ 设计继承体系，子类共同继承父类的public-virtual方法healthValue()，子类各自重新实现healthValue()接口。</p>
+<p>😄很好，<strong>中规中矩</strong>，那么，<strong>有没有其他方式</strong>呢？</p>
+<ul>
+<li>
+<p><strong><code>NVI手法(non-virtual interface)实现Template Method模式</code></strong></p>
+<p>思路就是父类定义个non-virtual的public方法healthValue()，调用virtual的private方法healthValueImpl。子类直接重写healthValueImpl，达到类似模版方法设计模式的效果。</p>
+<p>父类<code>GameCharacter</code>设计如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">GameCharacter</span><span class="p">{</span><span class="c1">//构造函数和虚析构均略去
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">healthValue</span><span class="p">()</span><span class="k">const</span><span class="p">{</span> <span class="c1">//ps:方便展示，而写在了头文件里，成了inline
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">&#34;Do prepare works...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span><span class="c1">//事前，如加锁,写log,验证条件等 
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">retVal</span> <span class="o">=</span> <span class="n">healthValueImpl</span><span class="p">();</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">Do post works...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span><span class="c1">//事后,如解锁,更新数据
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">retVal</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="n">healthValueImpl</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span>
+        <span class="kt">int</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;default caculate process... GetValue:&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">val</span><span class="p">;</span><span class="c1">//随后进行计算，过程略
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>子类<code>GoodGuy</code> 和 <code>BadGuy</code>设计如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">GoodGuy</span><span class="o">:</span><span class="k">public</span> <span class="n">GameCharacter</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="n">healthValueImpl</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span>
+        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;goodGuy caculate ... GetValue: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span><span class="c1">//过程略
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">BadGuy</span><span class="o">:</span><span class="k">public</span> <span class="n">GameCharacter</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="n">healthValueImpl</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span>
+        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;badGuy caculate ... GetValue: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">val</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span><span class="c1">//过程略
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">val</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>应用端代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GameCharacter</span><span class="o">&gt;</span> <span class="n">pGood</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">GoodGuy</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">pGood</span><span class="o">-&gt;</span><span class="n">healthValue</span><span class="p">();</span> <span class="c1">//得到60
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">GameCharacter</span><span class="o">&gt;</span> <span class="n">pBad</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">BadGuy</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">pBad</span><span class="o">-&gt;</span><span class="n">healthValue</span><span class="p">();</span><span class="c1">//得到80
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong><code>用函数指针实现Strategy模式</code></strong></p>
+<p>主体思想是添加一个函数指针为private成员变量pFunc，这个函数通过外部传入，从而实现不同的行为。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">GameCharacter</span><span class="p">;</span><span class="c1">//forward declaration
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">defaultHealthCalc</span><span class="p">(</span><span class="k">const</span> <span class="n">GameCharacter</span><span class="o">&amp;</span> <span class="n">gc</span><span class="p">);</span><span class="c1">//默认算法实现
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">GameCharacter</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">HealthCalcFunc</span><span class="p">)(</span><span class="k">const</span> <span class="n">GameCharacter</span><span class="o">&amp;</span> <span class="n">gc</span><span class="p">);</span>
+  <span class="k">explicit</span> <span class="nf">GameCharacter</span><span class="p">(</span><span class="n">HealthCalcFunc</span> <span class="n">hcf</span> <span class="o">=</span> <span class="n">defaultHealthCalc</span><span class="p">)</span><span class="o">:</span><span class="n">calcFunc_</span><span class="p">(</span><span class="n">hcf</span><span class="p">){}</span><span class="c1">//传入函数指针,自定义实现
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="nf">healthValue</span><span class="p">()</span><span class="k">const</span><span class="p">{</span>
+    <span class="k">return</span> <span class="n">calcFunc_</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+  <span class="n">HealthCalcFunc</span> <span class="n">calcFunc_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个设计有2个有趣的<strong>设计弹性</strong>：</p>
+<ol>
+<li>即使同一个人物类型的不同实体，允许拥有不同的生命值计算方法；</li>
+<li>某个人物对象的生命值计算方法，在其生命期内可以任意修改，只要添加一个set方法即可；</li>
+</ol>
+</li>
+<li>
+<p><strong><code>用std::function实现Strategy模式</code></strong></p>
+<p>private成员变量由上文的函数指针替换成std::function对象，相当于是<code>指向函数的泛化指针</code>。就<code>更具设计弹性</code>了。std::function可以传入函数指针、仿函数、std::bind函数对象。GameCharacter的类实现修改为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">GameCharacter</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">int</span> <span class="p">(</span><span class="k">const</span> <span class="n">GameCharacter</span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span>  <span class="n">healthCalcFunc</span><span class="p">;</span>
+    <span class="k">explicit</span> <span class="nf">GameCharacter</span><span class="p">(</span><span class="n">healthCalcFunc</span> <span class="n">hcf</span> <span class="o">=</span> <span class="n">defaultHealthCalc</span><span class="p">)</span><span class="o">:</span><span class="n">healthValueImpl_</span><span class="p">(</span><span class="n">hcf</span><span class="p">){}</span>
+    <span class="kt">int</span> <span class="nf">healthValue</span><span class="p">()</span><span class="k">const</span><span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">&#34;Do prepare works...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">retVal</span> <span class="o">=</span> <span class="n">healthValueImpl_</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span> <span class="c1">//⚠️ 这里改了
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">Do post works...</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">retVal</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">healthCalcFunc</span> <span class="n">healthValueImpl_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>
+<p>传入函数指针</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"> <span class="n">gameChashort</span> <span class="nf">quickHurtHealthCalc</span><span class="p">(</span><span class="k">const</span> <span class="n">GameCharacter2</span><span class="o">&amp;</span> <span class="n">gc</span><span class="p">);</span><span class="c1">//返回值不是int,可隐式转换;实现略去
+</span><span class="c1">//应用端代码如下：
+</span><span class="c1"></span><span class="n">GameCharacter</span> <span class="nf">quickGuy</span><span class="p">(</span><span class="n">quickHurtHealthCalc</span><span class="p">);</span>
+<span class="n">quickGuy</span><span class="p">.</span><span class="n">healthValue</span><span class="p">();</span><span class="c1">//内部调用quickHurtHealthCalc
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>传入仿函数</p>
+<p>仿函数：即函数对象，而且重载了operator() 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">HealthCalculator</span><span class="p">{</span><span class="c1">//
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="nf">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">GameCharacter2</span><span class="o">&amp;</span> <span class="n">gc</span><span class="p">)</span> <span class="k">const</span><span class="p">{</span>
+        <span class="k">return</span> <span class="mi">180</span><span class="p">;</span><span class="c1">//省略实现
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">//应用端代码如下：
+</span><span class="c1"></span><span class="n">GameCharacter</span> <span class="nf">functorGuy</span><span class="p">(</span> <span class="p">(</span><span class="n">HealthCalculator</span><span class="p">())</span> <span class="p">);</span><span class="c1">//用括号将仿函数括起来
+</span><span class="c1"></span><span class="n">functorGuy</span><span class="p">.</span><span class="n">healthValue</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>传入<code>std::bind</code>函数对象</p>
+<p>std::bind是函数对象模板，接收一个函数指针f和若干函数入参得到fObj，调用fObj等同于调用带参数的f。本例代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">GameLevel</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span> <span class="c1">//用类内函数作为函数指针f
+</span><span class="c1"></span>    <span class="kt">float</span> <span class="n">health</span><span class="p">(</span><span class="k">const</span> <span class="n">GameCharacter</span><span class="o">&amp;</span> <span class="n">gc</span><span class="p">)</span> <span class="k">const</span><span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mf">20.3</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">//应用端代码如下：
+</span><span class="c1"></span><span class="n">GameLevel</span>  <span class="n">curLevel</span><span class="p">;</span>
+<span class="n">GameCharacter</span> <span class="nf">levelGuy</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">GameLevel</span><span class="o">::</span><span class="n">health</span><span class="p">,</span> <span class="n">curLevel</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+<span class="n">levelGuy</span><span class="p">.</span><span class="n">healthValue</span><span class="p">();</span><span class="c1">//内部调用等价于curLevel.health(leveGuy);
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>By the way<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>其实这里传入C++11新增的Lambda表达式作为std::function也是可以的，而且更方便，示例代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp">  <span class="n">GameCharacter</span>  <span class="nf">lamGuy</span><span class="p">([</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span> <span class="n">GameCharacter</span><span class="o">&amp;</span> <span class="n">gc</span><span class="p">){</span>
+     <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">&#34;value is &#34;</span> <span class="o">&lt;&lt;</span> <span class="mi">75</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="c1">//具体计算略
+</span><span class="c1"></span>	   <span class="k">return</span> <span class="mi">75</span><span class="p">;</span>
+	   <span class="p">});</span>
+  <span class="n">lamGuy</span><span class="p">.</span><span class="n">healthValue</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>关于Strategy设计模式更多参考：</p>
+<ul>
+<li><a href="https://refactoringguru.cn/design-patterns/strategy" target="_blank" rel="noopener noreffer">Strategy设计模式-原理讲解</a></li>
+<li><a href="https://refactoringguru.cn/design-patterns/strategy/cpp/example" target="_blank" rel="noopener noreffer">Strategy设计模式-C++代码参考</a></li>
+</ul>
+</div>
+        </div>
+    </div>
+<hr>
+<h2 id="r36-绝不重新定义继承而来的non-virtual函数">R36 绝不重新定义继承而来的non-virtual函数</h2>
+<ul>
+<li>
+<p>由于名称遮掩，不要重新定义继承而来的non-virtual函数</p>
+<p>看个反例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">B</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">mf</span><span class="p">(){</span>
+       <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;B::mf()&#34;</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">class</span> <span class="nc">D</span><span class="o">:</span> <span class="k">public</span> <span class="n">B</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">mf</span><span class="p">(){</span><span class="c1">//重新定义mf()，违反了Rule33
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;D::mf()&#34;</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么看这样的应用代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">D</span> <span class="n">d</span><span class="p">;</span>
+<span class="n">D</span><span class="o">*</span> <span class="n">pD</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">;</span>
+<span class="n">B</span><span class="o">*</span> <span class="n">pB</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">;</span>
+<span class="n">d</span><span class="p">.</span><span class="n">mf</span><span class="p">();</span>    <span class="c1">// 输出 D::mf()
+</span><span class="c1"></span><span class="n">pD</span> <span class="o">-&gt;</span> <span class="n">mf</span><span class="p">();</span><span class="c1">// 输出 D::mf()
+</span><span class="c1"></span><span class="n">pB</span> <span class="o">-&gt;</span> <span class="n">mf</span><span class="p">();</span><span class="c1">// 输出 B::mf()
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这就很诡异了！都通过对象d调用成员函数mf，调用结果应该相同。</p>
+<p>另外一点，出于public继承的“<strong>is-a</strong>”特性，这样重新定义non-virtual函数也是对&quot;<strong>is-a</strong>&ldquo;的<strong>严重违背</strong>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="r37-绝不重新定义继承而来的缺省入参值">R37 绝不重新定义继承而来的缺省入参值</h2>
+<p>这里说的缺省入参，指的是函数入参的默认值，在重写带有<strong>缺省入参的virtual函数</strong>时，不要修改那个默认参数的默认值。</p>
+<p>原因：virtual函数为<code>动态绑定</code>特性，而缺省参数值是<code>静态绑定</code>特性。修改后会造成一些令人费解的现象。</p>
+<p>请看下方<strong>反面教材</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">enum</span> <span class="k">class</span> <span class="nc">Color</span> <span class="p">{</span>
+    <span class="n">RED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">GREEN</span> <span class="p">,</span><span class="n">BLUE</span> 
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>  <span class="c1">// 🎉：父类默认入参是RED
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span><span class="p">(</span><span class="n">Color</span> <span class="n">col</span> <span class="o">=</span> <span class="n">Color</span><span class="o">::</span><span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Shape:col is &#34;</span> <span class="o">&lt;&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">Rectangle</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span><span class="p">{</span> <span class="c1">// 🎉：子类类修改默认入参为GREEN
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">draw</span><span class="p">(</span><span class="n">Color</span> <span class="n">col</span> <span class="o">=</span> <span class="n">Color</span><span class="o">::</span><span class="n">GREEN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Rectangle:col is &#34;</span> <span class="o">&lt;&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么当出现典型应用场景<code>Base* pB=new Derived</code>时，就会造成“父类子类各出一半力”的情形：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">Shape</span> <span class="o">*</span><span class="n">pRec</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Rectangle</span><span class="p">();</span>
+<span class="n">pRec</span><span class="o">-&gt;</span><span class="n">draw</span><span class="p">();</span> <span class="c1">// 输出：Rectangle:col is 0  （0是RED）
+</span></code></pre></td></tr></table>
+</div>
+</div><p>结果确实调用子类draw，但是默认入参取的是基类的 RED，而非子类的GREEN。</p>
+<p>那怎么修改合适呢，都带默认参数，且子类父类相同？带来一个<strong>耦合问题</strong>，如果父类改了，所有子类都得改。</p>
+<p>正如Rule35提到的NVI(non-virtual interface)手法，此处便是绝佳的应用场景$\Longrightarrow$ draw方法改为默认参数的non-virtual，把virtual函数放到private里去，代码修改如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>   <span class="c1">//子类继承该默认入参的non-virtual接口，别重写
+</span><span class="c1"></span>    <span class="kt">void</span> <span class="n">draw</span><span class="p">(</span><span class="n">Color</span> <span class="n">col</span> <span class="o">=</span> <span class="n">Color</span><span class="o">::</span><span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">drawImpl</span><span class="p">(</span><span class="n">col</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span> <span class="c1">//纯虚函数是强制子类重写，看具体情况，impure-virtual也行 
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">drawImpl</span><span class="p">(</span><span class="n">Color</span> <span class="n">col</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="c1">//子类重写这个drawImpl
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="r38-通过复合塑造出has-a或根据某物实现出">R38 通过复合塑造出<strong>has-a</strong>或&quot;根据某物实现出&rdquo;</h2>
+<p>原书标题：<em><strong>Model “has-a” or “is-implemented-in-terms-of” through composition</strong></em>，同Rule32，侯捷老师翻译为“塑模”。</p>
+<p>复合关系（composition）是一种常见的类关系，当某种类型的对象内含有它种类型的对象时，便是此种关系。</p>
+<p>复合关系分为2种：&quot;<code>has-a</code>&quot; 和 &ldquo;<code>is-implemented-in-terms-of</code>&quot;。</p>
+<ul>
+<li>
+<p>“<code>has-a</code>”关系：</p>
+<p>指的是<strong>应用域</strong>部分，不参与内的具体各项实现。是一种单纯的完备对象的包含关系，比如Person类有Address、PhoneNumber、Job等类型的成员变量，又或是Image类有Buffer、Mutexx、SearchTree等类型的成员。</p>
+</li>
+<li>
+<p>&ldquo;<code>is-implemented-in-terms-of</code>&ldquo;关系：<br>
+指的是<strong>实现域</strong>部分，参与类的各类实现，比如数据结构的设计中，想用现有的 std::list来实现Set类，这样可能效率不高(<em>通常更具效率的实现是采用平衡查找树</em> )，但是可行。<br>
+📌：此处不能让Set以public继承于std::list，因为list允许重复元素，而Set不行，不满足“<strong>is-a</strong>”关系。<br>
+正确实现部分代码示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">Set</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">bool</span> <span class="n">contains</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">item</span><span class="p">)</span><span class="k">const</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">rep_</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">rep_</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="n">item</span><span class="p">)</span> <span class="o">!=</span> <span class="n">rep_</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>  
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">item</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">contains</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="n">rep_</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">item</span><span class="p">);</span><span class="c1">// 实现略
+</span><span class="c1"></span>    <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>  <span class="c1">// 实现略
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rep_</span><span class="p">;</span> <span class="c1">//用来表述Set的数据
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="r39-明智而审慎地使用private继承">R39 明智而审慎地使用private继承</h2>
+<p>“明智而审慎”的意思是👉当考虑了其他方案对比后，仍然觉得private继承是最合适的，才使用它。</p>
+<p>首先明确private继承的2个特性：</p>
+<ol>
+<li>编译器不会自动将一个derived-class对象隐式转换为base-class对象(函数入参时)；</li>
+<li>继承而来的成员，在derived-class中都会变成private属性；</li>
+</ol>
+<p>private继承的意义：意味着<strong>implemented-in-terms-of</strong>，在类关系设计上没有太大意义，只看重软件实现。</p>
+<p>考虑以下使用private的2个应用场景：</p>
+<ul>
+<li>
+<p><strong>derived-class想继承base-class的某public接口实现，但又想隐藏此接口</strong></p>
+<p>考虑如下应用场景：对于一个已知的类Widget，想用另一个已知的计时类Timer辅助性能分析，在尽量小改动已有代码的情况下，如何启用Timer？</p>
+<p>private继承做法：让Widget类private继承于Timer，重写父类Timer的onTick函数。</p>
+<p>具体代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Timer</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">explicit</span> <span class="n">Timer</span><span class="p">(</span><span class="kt">int</span> <span class="n">tickFrequency</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">onTick</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span><span class="c1">//定时器滴答一次，自动被调用一次
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">Widget</span><span class="o">:</span><span class="k">private</span> <span class="n">Timer</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span> <span class="c1">//😋 private继承而来的所有成员都是private属性
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">onTick</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span><span class="c1">//查看并记录Widget数据，资源等
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>该问题除了上方的private继承，能不能<strong>用其他方案替代private继承</strong>呢？</p>
+<p>👉 👉“<strong>public继承+复合</strong>”替代private继承：在Widget内部嵌套定义private属性的新类<code>WidgetTimer:private Timer</code>，即可同样启用Timer且隐藏了Timer。代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">class</span> <span class="nc">WidgetTimer</span><span class="o">:</span><span class="k">public</span> <span class="n">Timer</span><span class="p">{</span><span class="c1">// 类内嵌套定义
+</span><span class="c1"></span>    <span class="k">public</span><span class="o">:</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">onTick</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="n">WidgetTimer</span> <span class="n">wTimer_</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>⭐⭐ WidgetTimer也可以不定义在Widget类内,类内只放WidgetTimer* 和WidgetTimer的前置声明，完全解耦合，<strong>降低编译依赖性</strong>。而这样的设计自由度是单纯的private继承不具备的。</p>
+</li>
+<li>
+<p><strong>空白基类最优化</strong>(<code>EBO</code>,empty base optimization)</p>
+<p>⚡值得一提：<strong>空类</strong>(Empty Class)是指不含non-static数据成员和virtual-func的类。</p>
+<p>空类的size会被C++强制要求至少为1，通常是用1个char占位。如果让Empty-Class作为数据成员，因为内存对齐而导致Derived-Class浪费内存。</p>
+<p>示例代码 👇：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Empty</span> <span class="p">{</span> <span class="c1">// 空类，1字节. 不含non-static数据，不含virtual
+</span><span class="c1"></span> 	<span class="kt">void</span> <span class="nf">privteFoo</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;private non-virtual.&#34;</span><span class="p">;</span> 	<span class="p">}</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">typedef</span> <span class="kt">char</span><span class="o">*</span>  <span class="n">pChar</span><span class="p">;</span>
+    <span class="k">typedef</span> <span class="nf">void</span><span class="p">(</span><span class="o">*</span><span class="n">pFuncReadData</span><span class="p">)(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">url</span><span class="p">);</span>
+    <span class="k">enum</span> <span class="k">class</span> <span class="nc">clolr</span> <span class="p">{</span>
+        <span class="n">red</span><span class="p">,</span><span class="n">green</span><span class="p">,</span><span class="n">blue</span>
+    <span class="p">};</span>
+    <span class="kt">void</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;public non-virtual!&#34;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="p">;</span><span class="c1">//static 数据也不属于class实体
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">HoldsIntsAndEmpty</span> <span class="p">{</span> <span class="c1">//内存对齐后12字节
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x_</span><span class="p">;</span>   <span class="c1">// 4字节
+</span><span class="c1"></span>    <span class="n">Empty</span> <span class="n">e_</span><span class="p">;</span> <span class="c1">// 1字节
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">y_</span><span class="p">;</span>   <span class="c1">// 4字节
+</span><span class="c1"></span><span class="p">};</span>
+<span class="k">class</span> <span class="nc">HoldsInts</span><span class="o">:</span><span class="k">private</span> <span class="n">Empty</span> <span class="p">{</span><span class="c1">//使用EBO,类大小8字节
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">x_</span><span class="p">;</span><span class="c1">//4字节
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">y_</span><span class="p">;</span><span class="c1">//4字节
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>EBO优化可以减少Derived-Class的内存大小，注意<code>EBO只适用于单继承</code>。</p>
+</li>
+</ul>
+<hr>
+<h2 id="r40-明智而审慎地使用多重继承">R40 明智而审慎地使用多重继承</h2>
+<p>多重继承(multiple inheritance)是指继承一个以上的父类。但是这些父类应该避免拥有共同的祖父类，会形成比较麻烦的“菱形继承”(或者叫钻石继承)。</p>
+<ul>
+<li>
+<p><strong>多重继承的成本以及副作用</strong></p>
+<p>上面说“菱形继承”比较麻烦，主要原因是如果祖父类如果拥有某个成员变量x，那么2个父类分别public形式继承了x，到了目标子类就有了2份x。</p>
+<p>解决问题的办法是<strong>虚继承</strong>(virtual inheritance)，如此，上述子类只有一份x。为保证虚继承的正确性，编译器在背后需要付出更多代价，可能造成子类内存更大或运行速度更慢。</p>
+<p>👉如果存在菱形继承，那么<em>祖父类尽量不要持有数据成员。</em></p>
+<p>虚继承示例代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">File</span><span class="p">{...};</span>  <span class="c1">//祖父类最好不要持有non-static数据成员
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">InputFile</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">File</span><span class="p">{...};</span>
+<span class="k">class</span> <span class="nc">OutputFile</span><span class="o">:</span> <span class="k">virtual</span> <span class="k">public</span> <span class="n">File</span><span class="p">{...};</span>
+<span class="k">class</span> <span class="nc">IOFile</span><span class="o">:</span><span class="k">public</span> <span class="n">InputFile</span><span class="p">,</span><span class="k">public</span> <span class="n">OutputFile</span><span class="p">{...};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>应用场景：public继承接口+private继承实现</strong></p>
+<p>思考这样的应用场景，PersonBase类是虚基类，RealPerson是目标子类（需要继承接口），但是获取name和birthDate信息的函数在另一个PersonInfo类都有了现成的实现（只需要简单修改该实现）。</p>
+<p>两者结合后，即让RealPerson类public继承于PersonBase，private继承于PersonInfo。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">PersonBase</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">PersonBase</span><span class="p">(){}</span>
+    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">birthDate</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">PersonInfo</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span>  <span class="o">~</span><span class="n">PersonInfo</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="k">explicit</span> <span class="nf">PersonInfo</span><span class="p">(</span><span class="kt">int</span> <span class="n">pID</span><span class="p">)</span><span class="o">:</span><span class="n">id_</span><span class="p">(</span><span class="n">pID</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">theName</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span>
+        <span class="k">static</span> <span class="kt">char</span> <span class="n">value</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+        <span class="k">static</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">exampleName</span> <span class="o">=</span> <span class="s">&#34;Luka&#34;</span><span class="p">;</span><span class="c1">// 计算过程略,用固定字符串替代
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">strcpy</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">valueDelimLeft</span><span class="p">());</span>   <span class="c1">// 获取左界定符
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">strcat</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">exampleName</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">strcat</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">valueDelimRight</span><span class="p">());</span><span class="c1">// 获取右界定符
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">theBirthDate</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&#34;1990-1-1&#34;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">valueDelimLeft</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&#34;[&#34;</span><span class="p">;</span> <span class="p">};</span>
+    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">valueDelimRight</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&#34;]&#34;</span><span class="p">;</span> <span class="p">};</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">id_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>多重继承的代码为👇:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">RealPerson</span> <span class="o">:</span><span class="k">public</span> <span class="n">PersonBase</span><span class="p">,</span> <span class="k">private</span> <span class="n">PersonInfo</span> <span class="p">{</span><span class="c1">//多重继承
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+    <span class="k">explicit</span> <span class="n">RealPerson</span><span class="p">(</span><span class="kt">int</span> <span class="n">pID</span><span class="p">)</span> <span class="o">:</span><span class="n">PersonInfo</span><span class="p">(</span><span class="n">pID</span><span class="p">)</span> <span class="p">{}</span> <span class="c1">// 委托构造
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">()</span> <span class="k">const</span><span class="p">{</span> <span class="c1">//实现必要的虚基类Person的pure-virtual成员函数
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">PersonInfo</span><span class="o">::</span><span class="n">theName</span><span class="p">();</span> 
+    <span class="p">}</span>
+    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">birthDate</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> 
+        <span class="k">return</span> <span class="n">PersonInfo</span><span class="o">::</span><span class="n">theBirthDate</span><span class="p">();</span> 
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">valueDelimLeft</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">;</span> <span class="p">};</span><span class="c1">//重写界定符函数
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">valueDelimRight</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&#34;&#34;</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后应用端代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">RealPerson</span> <span class="nf">rPerson</span><span class="p">(</span><span class="mi">613</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rPerson</span><span class="p">.</span><span class="n">name</span><span class="p">();</span> <span class="c1">//输出Luka ,而不是[Luka]
+</span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，多重继承体系完美解决该问题。</p>
+</li>
+</ul>
+<p>回到本节开头，明智和审慎的意思是👉即使多重继承可以用单继承方案替代解决，思考后，如果多重继承依然是最简洁、最易维护、最合理的做法，那就选择它。</p>
+<hr></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-13&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/f671e3464562eecd5edb9971c66c0d82babf9c58" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) f671e3464562eecd5edb9971c66c0d82babf9c58: 发布文章：Effective-C&#43;&#43; 精读总结三">
+                                    <i class="fas fa-hashtag fa-fw"></i>f671e34</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)" data-hashtags="C&#43;&#43;,程序设计"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-hashtag="C&#43;&#43;"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)" data-image="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)" data-description="摘要：Effective C&#43;&#43;(第三版)内容第五、第六章的总结"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)" data-description="摘要：Effective C&#43;&#43;(第三版)内容第五、第六章的总结"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" data-title="Effective C&#43;&#43;(第三版)精读总结(三)"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/01/11_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%8C/" class="prev" rel="prev" title="Effective C&#43;&#43;(第三版)精读总结(二)"><i class="fas fa-angle-left fa-fw"></i>Effective C&#43;&#43;(第三版)精读总结(二)</a>
+            <a href="/2022/02/18_%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8Fkatex%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/" class="next" rel="next" title="常用数学公式排版KaTex语法总结">常用数学公式排版KaTex语法总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.0-DEV">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"欢迎评论...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

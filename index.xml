@@ -16,7 +16,16 @@
                 <img src="/img/Script-Pic/Katex-Project.webp" referrerpolicy="no-referrer">
             </div>摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法]]></description>
 </item><item>
-    <title>Effective C&#43;&#43;(第三版)阅读总结(二)</title>
+    <title>Effective C&#43;&#43;(第三版)精读总结(三)</title>
+    <link>https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/</link>
+    <pubDate>Mon, 14 Feb 2022 10:12:42 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp" referrerpolicy="no-referrer">
+            </div>摘要：Effective C++(第三版)内容第五、第六章的总结]]></description>
+</item><item>
+    <title>Effective C&#43;&#43;(第三版)精读总结(二)</title>
     <link>https://kissingfire123.github.io/2022/01/11_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%8C/</link>
     <pubDate>Thu, 27 Jan 2022 00:14:39 &#43;0800</pubDate>
     <author>作者</author>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Chore-Pic/hugo-static.webp" referrerpolicy="no-referrer">
             </div>摘要：基于Hugo框架和Github-Page搭建个人博客]]></description>
-</item><item>
-    <title>10个容易遗忘但好用的Linux命令</title>
-    <link>https://kissingfire123.github.io/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</link>
-    <pubDate>Sat, 18 Dec 2021 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2021/12/1_10%E4%B8%AAlinux%E5%AE%B9%E6%98%93%E9%81%97%E5%BF%98%E4%BD%86%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
-            </div>摘要：10个简单好用的Linux命令]]></description>
 </item></channel>
 </rss>
