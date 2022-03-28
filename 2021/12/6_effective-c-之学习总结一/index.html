@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-12T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-03-13T19:27:00+08:00" />
+<meta property="article:modified_time" content="2022-03-28T22:47:24+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective C&#43;&#43;(第三版)精读总结(一)"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/"
-        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  5854 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-03-13T19:27:00+08:00","publisher": {
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  5848 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80\/","datePublished": "2021-12-12T00:00:00+00:00","dateModified": "2022-03-28T22:47:24+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +116,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第三版)精读总结(一)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule01-12)</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c++/"><i class="far fa-folder fa-fw"></i>C++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5854 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-12">2021-12-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5848 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/2021/12/6_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第三版)精读总结(一)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -162,7 +162,7 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="序言">序言</h2>
-<p>这本C++的经典之作，作者是大佬<code>Scott Meyers</code>👉<a href="https://www.aristeia.com/books.html" target="_blank" rel="noopener noreffer">大佬主页</a>，还写过其他几本影响深远的C++经典，例如<code>《Effective STL》</code>,<code>《More Effective C++》</code>,<code>《Effective Mordern C++》</code>,<code>《Overview of the New C++(C++11/14)》</code>等等。本人看的是中文版，侯捷老师翻译的,以前做的笔记是在自己的纸质笔记本上，现在挪到博客上来吧。</p>
+<p>这本C++的经典之作，作者是大佬<code>Scott Meyers</code>👉<a href="https://www.aristeia.com/books.html" target="_blank" rel="noopener noreffer">大佬主页</a>，还写过其他几本影响深远的C++经典，例如<code>《Effective STL》</code>,<code>《More Effective C++》</code>,<code>《Effective Mordern C++》</code>,<code>《Overview of the New C++(C++11/14)》</code>等等。本人看的是中文版，侯捷老师翻译的，精读分析并实践推敲后，整理成博客记录下来吧。</p>
 <p>关于Effective C++，全书55个C++条款，许多人都做了笔记类的博客，大家视角不同可能侧重也不同，各花入各眼了。(PS:本文主干目录和原书一致，另外，由于原书在C++11之前写成，所以会根据本人<code>开发经验</code>新增一些个人感悟👉<code>By the way</code>环节)</p>
 <blockquote>
 <p>(Effective-C++总结系列分为四部分，本文为<strong>第一部分</strong>，涉及原书第1~2章，内容范围Rule01~12。为方便书写，<strong>Rule01简写为R01</strong>)。</p>
@@ -758,8 +758,8 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-03-13&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/f671e3464562eecd5edb9971c66c0d82babf9c58" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) f671e3464562eecd5edb9971c66c0d82babf9c58: 发布文章：Effective-C&#43;&#43; 精读总结三">
-                                    <i class="fas fa-hashtag fa-fw"></i>f671e34</a></span>
+                <span>更新于 2022-03-28&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/40aed0573628b2450022b3b96fd9272e5620537e" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 40aed0573628b2450022b3b96fd9272e5620537e: 发布-16_shell脚本使用技巧">
+                                    <i class="fas fa-hashtag fa-fw"></i>40aed05</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

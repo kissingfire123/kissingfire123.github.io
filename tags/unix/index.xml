@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>unix - 标签 - Benjamin的求知旅记</title>
+        <link>https://kissingfire123.github.io/tags/unix/</link>
+        <description>unix - 标签 - Benjamin的求知旅记</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Thu, 17 Feb 2022 15:40:45 &#43;0800</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/unix/" rel="self" type="application/rss+xml" /><item>
+    <title>Shell脚本实用技巧小结</title>
+    <link>https://kissingfire123.github.io/2022/02/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+    <pubDate>Thu, 17 Feb 2022 15:40:45 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2022/02/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
+            </div>摘要：讨论Shell脚本编写时用到的一些常用&实用技巧]]></description>
+</item></channel>
+</rss>
