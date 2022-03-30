@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Fundamentals of Computer Graphics第3章总结_(光栅化) - Benjamin的求知旅记</title><meta name="Description" content="摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结"><meta property="og:title" content="Fundamentals of Computer Graphics第3章总结_(光栅化)" />
+<meta property="og:description" content="摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-10T22:41:32+08:00" />
+<meta property="article:modified_time" content="2022-03-30T12:34:58+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fundamentals of Computer Graphics第3章总结_(光栅化)"/>
+<meta name="twitter:description" content="摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" /><link rel="prev" href="https://kissingfire123.github.io/2022/01/08_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" /><link rel="next" href="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Fundamentals of Computer Graphics第3章总结_(光栅化)",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96\/"
+        },"genre": "posts","keywords": "图形学基础, 图形渲染, 英文原本","wordcount":  4169 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96\/","datePublished": "2022-01-10T22:41:32+08:00","dateModified": "2022-03-30T12:34:58+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "     \"Benjamin Lee\""
+            },"description": "摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Fundamentals of Computer Graphics第3章总结_(光栅化)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-10">2022-01-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4169 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" class="leancloud_visitors" data-flag-title="Fundamentals of Computer Graphics第3章总结_(光栅化)">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp"
+        data-srcset="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp, /img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp 1.5x, /img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp 2x"
+        data-sizes="auto"
+        alt="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp"
+        title="摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-前言">0. 前言</a></li>
+    <li><a href="#1-光栅化设备">1. 光栅化设备</a>
+      <ul>
+        <li><a href="#11-显示">1.1 显示</a></li>
+        <li><a href="#12-硬拷贝">1.2 硬拷贝</a></li>
+        <li><a href="#13-输入设备">1.3 输入设备</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-图像像素与几何">2. 图像,像素与几何</a>
+      <ul>
+        <li><a href="#21-像素值">2.1 像素值</a></li>
+        <li><a href="#22-显示器强度与gamma校正">2.2 显示器强度与Gamma校正</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-rgb颜色">3. RGB颜色</a></li>
+    <li><a href="#4-透明度混合">4. 透明度混合</a>
+      <ul>
+        <li><a href="#41-图像存储">4.1 图像存储</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="0-前言">0. 前言</h1>
+<blockquote>
+<p>原书第四版pdf下载链接：<a href="https://github.com/t4world/Computer-Graphics/blob/master/Fundamentals-of-Computer-Graphics-Fourth-Edition.pdf" target="_blank" rel="noopener noreffer">Github: t4world/Computer-Graphics</a></p>
+</blockquote>
+<p>本文为原书第3章总结，主要讲述光栅化的一些基本概念，对光栅化设备和一些光栅化流程有个基本的认知。</p>
+<p>光栅这个单词“<code>Raster</code>”在德语/英语中就是“<code>屏幕，栅格</code>”的意思，故名思义，就是将图像显示在屏幕上。现代的通用平板显示器是以<strong>红色，绿色，蓝色</strong>这三种原色以特定的配比，辅以矩阵式的数量庞大的像素(<strong>pixel</strong>,其实来源于picture element的缩写)，显示我们最终需要的图像。</p>
+<p>其实光栅化设备的意义比较宽泛，激光打印机(laser printer)、喷墨式打印机(ink-jet printer)其实也在范畴内，它们是基于扫描原理，没有行列式的栅格。</p>
+<p>大多数图像是有固定的pixel级别尺寸的，比如1920x1080，这就是图像的width*height的尺寸。也有不被pixel-size约束的图，就是<code>有向图</code>(vector image)，是没有分辨率而言的，颜色的区域划分取决于线条和形状，不特指到像素级别，缩放也不会改变清晰度，通常用于文本、流程图、机械图等。</p>
+<blockquote>
+<p>关于有向图，除了网页的svg图标被广泛应用外，流程图也是极力推荐的。</p>
+<p><a href="https://www.diagrams.net/" target="_blank" rel="noopener noreffer">diagrams</a>软件画出来的draw.io流程图可以导出svg有向图，完美保留了清晰度和节约了内存。</p>
+</blockquote>
+<h1 id="1-光栅化设备">1. 光栅化设备</h1>
+<p><strong>光栅化设备</strong>(Raster Devices)可以简单的分为2类：</p>
+<ul>
+<li>输出设备
+<ol>
+<li>用于显示：包含透射式的液晶显示器LCD(liquid crystal display)、和自发光式的LED显示器(light-emitting diode)</li>
+<li>用于硬拷贝：二进制的输出，即喷墨式打印机；或者是连续色域输出的热染料升华打印机(dye sublimation printer)</li>
+</ol>
+</li>
+<li>输入设备
+<ol>
+<li>2维阵列式：数码相机</li>
+<li>1维线性式：平台扫描仪(flatbed scanner)</li>
+</ol>
+</li>
+</ul>
+<h2 id="11-显示">1.1 显示</h2>
+<p>自发光式的<code>LED二极管显示器</code>，通过控制阳极、阴极的电流强度来控制是否发光，以及发光的强度。</p>
+<p>每个像素，都由若干个子像素组成，子像素通常是由RGB这3原色构成，示意图如下：</p>
+<div align=center>
+<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FCG-Chapter3-LED.webp">
+</div>
+<p>而透射式的<code>LCD液晶显示器</code>则需要其他的光源照亮它，也就是俗称的“背光”。</p>
+<p>具体原理是当光透过<code>偏光片1--&gt;液晶板--&gt;偏光片2</code>这样的结构时，中间的液晶块是可以旋转光的偏振方向的(也叫<em>极化方向</em> )。加载的电压不同，旋转的角度不同，最后通过偏光片2的光量就可控了（偏振方向平行于偏光片可全部通过，垂直则全部不通过）。下方示意图是旋转了90度，全部通过的情况：</p>
+<div align=center>
+<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FCG-Chapter3-LCD.webp">
+</div>
+不论是LED还是LCD，成型后，都是由固定尺寸的像素阵列组成的，也就有了固定的分辨率。比如形容一块显示器为1920*1080，是指宽度方向有1920个像素点，高度方向有1080个像素点。
+<h2 id="12-硬拷贝">1.2 硬拷贝</h2>
+<p>常见的<code>喷墨式打印机</code>如下图，打印喷头来回扫描移动，在特定的位置喷洒颜料，只能打印二值图像（all-or-nothing，某个点着色与否，没有中间态）。分辨率（清晰度）取决于喷墨的颜料颗粒大小和纸张移动的精细程度。</p>
+<div align=center>
+<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FoCG-Ch3-ink-jet.webp" alt="FoCG-Ch3-ink-jet.webp" >
+</div>
+<p>常见的<code>热染料打印机</code>如下图，打印头加热燃料升华，附着在打印纸上，因为打印喷头输出的热量是线性连续的，打印的图像可以有颜色深浅区分了（即continuous tone）。打印的分辨率取决于&quot;<em>加热-升华-附着</em> &ldquo;这一过程和打印纸移动速度的比值。</p>
+<div align=center>
+<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FoCG-Ch3-dye-printer.webp" alt="FoCG-Ch3-dye-printer.webp" >
+</div>
+关于打印机的分辨率，理解2个概念：
+<ul>
+<li><strong>ppi</strong> : 即每英寸有多少个像素(pixels per inch)，一般用于描述<strong>连续色调</strong>的热染料打印机，比如300ppi；</li>
+<li><strong>dpi</strong> : 即每英寸有多少个点(dot per inch)，一般用于描述<strong>二值打印</strong>的喷墨式打印机，比如1200dpi.</li>
+</ul>
+<h2 id="13-输入设备">1.3 输入设备</h2>
+<p>图像的输入设备主要为照相机和扫描仪。</p>
+<p>数码相机原理为通过镜头投影光线，透过颜色滤波片，投射到2D阵列式的传感器(CCD或CMOS)，记录每个像素的着色情况（每个像素只着色RGB三者之一）。</p>
+<p>拍照像素的<em>光学分辨率</em> 也是固定尺寸的，比如3000x2000，那么相乘后得到6000000,即6百万像素(6MP, megapixel)。</p>
+<blockquote>
+<p>这里的megapixel，是$10^6$，<strong>而不是</strong>计算机的兆字节(MB, megabytes = $2 ^{10}$ Bytes)。</p>
+</blockquote>
+<hr>
+<h1 id="2-图像像素与几何">2. 图像,像素与几何</h1>
+<p>人们采样像素这一概念对存储于计算机的图像，进行描述和细致的计算。从图像矩形阵列到像素值的映射表示：
+$$
+I(x,y): R \rightarrow V ,
+$$
+其中$R$描述了矩形区域，$V$表示像素的RGB值。</p>
+<p>一个像素，反映的其实是这个点附近一小块区域的RGB颜色平均值。</p>
+<p>如果一张图的尺寸为$n_x$列和$n_y$行，那么起始点坐标为 $(0,0)$，比如左下角为起始点（不同的API的纹理起始点不同，可能是左上角/左下角），右上角坐标为$(n_x -1,n_y -1)$。例如下图为$n_x = 4,n_y = 3$ :</p>
+<div align =center>
+<img  src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Chapter3-像素与坐标.webp" 
+     alt="Chapter3-像素坐标"/>
+</div>
+<p>图像区域内的点坐标的<code>定义域 x 值域</code>为：</p>
+<p>$$ R = [-0.5 , n_x - 0.5] ×  [-0.5, n_y - 0.5]$$</p>
+<hr>
+<h2 id="21-像素值">2.1 像素值</h2>
+<p>像素值的存储格式直接影响内存大小，比如32bit的浮点值和8bit的整型值就是4倍差距。所以像素值的存储格式结合使用场景分成了许多种类，以下是一些经典像素格式和应用类型：</p>
+<table>
+<thead>
+<tr>
+<th>像素格式/bit</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0/1二值图，文本显示或是高分辨率的灰度图</td>
+</tr>
+<tr>
+<td>8</td>
+<td>整型RGB图，共24bits：浏览器、邮件、用户照片</td>
+</tr>
+<tr>
+<td>8 ~ 10</td>
+<td>整型RGB图，共24~30bits：计算机显示器的数字接口</td>
+</tr>
+<tr>
+<td>12 ~ 14</td>
+<td>整型RGB图，共36~42bits：专业相机的原始图</td>
+</tr>
+<tr>
+<td>16</td>
+<td>整型RGB图，共48bits：专业摄影与打印，图像处理的中间结果</td>
+</tr>
+<tr>
+<td>16</td>
+<td>整型灰度图，共16bits：X光与医学影像</td>
+</tr>
+<tr>
+<td>16</td>
+<td>浮点值RGB图，共48bits(half-float)：HDR图像，或实时渲染的中间结果</td>
+</tr>
+<tr>
+<td>32</td>
+<td>浮点值RGB图，共96bits：HDR图像，或软件渲染的中间结果</td>
+</tr>
+</tbody>
+</table>
+<p>Ps：上述整形RGB图在原书中为&quot;fixed-range RGB&rdquo;，其实固定范围是指RGB值处于min~max(比如0~255的unsigned char类型)，一般就是相对浮点值来说的。另外，这里暂不考虑RGBA的Alpha通道。</p>
+<p>像素格式的转变比较常见，如果是<code>像素bit缩减</code>可能有2方面副作用：</p>
+<ol>
+<li>整型RGB图像编码时，超出max范围的会被截断为max；</li>
+<li>有限的精度会带来量化误差，色彩体现就是像色彩带一样颜色跳变，对静止图像无影响，对动画或者视频影响比较明显；</li>
+</ol>
+<h2 id="22-显示器强度与gamma校正">2.2 显示器强度与Gamma校正</h2>
+<p>由于显示器的物理特性，“<strong>输入pixel-value &ndash;&gt; 输出亮度intensity-level</strong>”这一过程<code>并非线性</code>的。</p>
+<p>而且像素值取值范围$[0,1]$，于是人为地映射“pixel-0” $\rightarrow$ &ldquo;min-intensity&rdquo; ，以及“pixel-1” $\rightarrow$ &ldquo;min-intensity&rdquo;。</p>
+<p>使用以下公式可以<strong>近似地</strong>表述这种关系：</p>
+<p>$$displayed \_intensity = (maximum \_intensity)\alpha ^ \gamma$$</p>
+<p>其中$\alpha$是像素值，范围$[0,1]$，$\gamma$(读作<code>gamma</code>)是与显示器有关的属性值，作为这种非线性关系映射的近似值。</p>
+<p>那么这个$\gamma$值如何测量呢，一般是通过“<code>半灰度测试</code>”得来：调节像素值$\alpha$，使得发光强度为一半。</p>
+<p>此时$displayed \_intensity = 0.5(maximum \_intensity)$， 即$0.5=\alpha^{\gamma}$，那么根据计算：$$\gamma = \frac{\ln 0.5}{\alpha}$$</p>
+<p>即可求得$\gamma$值。</p>
+<p>下方就是“半灰度测试”，左图为黑白棋盘格，其实就是0.5亮度参考，右图pixel-value，直到和左图发出的光强基本一致(这个观察通常要距离远一点，棋盘格看起来是全灰图)，记录此时的像素值$\alpha$。</p>
+<div align =center>
+<img  src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Chapter3-halfway gray test.png" 
+     alt="Chapter3-halfway gray test"/>
+</div>
+<p>得到了$\gamma$值后，就需要&quot;<code>gamma校正</code>&ldquo;了，要让“输入pixel &ndash;&gt; 显示强度”之间看起来是线性的。</p>
+<p>只要令:</p>
+<p>$${\alpha}^{'} = {\alpha}^{\frac{1}{\gamma}} $$</p>
+<p>代替输入的像素值$\alpha$，即可得到：</p>
+<p>$$displayed \_intensity = (maximum \_intensity)\alpha$$</p>
+<h1 id="3-rgb颜色">3. RGB颜色</h1>
+<p>现代计算机图形学的光学三原色定为“<strong>红-绿-蓝</strong>”，即<code>RGB</code>，这是典型的增色系(additive color)。</p>
+<blockquote>
+<p>资料拓展💡</p>
+<p>相对地，也有减色系(subtractive color)的三原色，颜料的原色（也是彩色印刷的原色） ，<code>CMYK</code>，青(cyan)-品(magenta)-黄(yellow)。其实就是针对RGB三者的反色：<code>(1，1，1) -(r,g,b)</code>(假设像素值范围$[0,1]$)。</p>
+<p>相减是因为人们看到物体的颜色是反射出来的，被吸收的部分看不见。多出来的<code>K</code>是黑色，是为了减少颜料使用，纯黑更容易调出来。</p>
+</blockquote>
+<p>常见的RGB颜色以及基本调配有：</p>
+<table>
+<thead>
+<tr>
+<th>颜色</th>
+<th>RGB值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>红色(red)</td>
+<td>$(1,0,0)$</td>
+<td></td>
+</tr>
+<tr>
+<td>绿色(green)</td>
+<td>$(0,1,0)$</td>
+<td></td>
+</tr>
+<tr>
+<td>蓝色(blue)</td>
+<td>$(0,0,1)$</td>
+<td></td>
+</tr>
+<tr>
+<td>青色(cyan)</td>
+<td>$(0,1,1)$</td>
+<td>蓝+绿，也叫blue-green</td>
+</tr>
+<tr>
+<td>品红(magenta)</td>
+<td>$(1,0,1)$</td>
+<td>红+蓝，也叫purple</td>
+</tr>
+<tr>
+<td>黄色(yellow)</td>
+<td>$(1,1,0)$</td>
+<td>红+绿</td>
+</tr>
+<tr>
+<td>黑色(black)</td>
+<td>$(0,0,0)$</td>
+<td></td>
+</tr>
+<tr>
+<td>白色(white)</td>
+<td>$(1,1,1)$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>理论上不同的$(r,g,b)$取值组合可以得到所有的RGB颜色，也一定处于下方RGB颜色立方内的某一点（右图为RGB立方的六面展开图）：</p>
+<div align =center>
+<img  src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Chapter3-RGB-颜色立方.png" 
+     alt="Chapter3-RGB-颜色立方.png"/>
+</div>
+<hr>
+<h1 id="4-透明度混合">4. 透明度混合</h1>
+<p>许多场景下，我们不需要完全覆盖像素内容，只需要覆盖一部分，比如全透明、半透明材质、树叶缝隙透光等情况。基于此，建立了“前景-背景-混合mask”这样的模式。假设前景色彩为$C_f$，背景色彩为$C_b$，前景覆盖的比例为$\alpha$（取值范围$[0,1]$），则最终的色彩$C$计算方式：</p>
+<p>$$C = \alpha C_f + (1 - \alpha) C_b$$</p>
+<p>上述的$\alpha$其实就是透明度通道，对于一张图，每个像素都有这个$\alpha$值，存储时可以另外寸一张灰度图作为mask，更常用的是<strong>紧跟RGB数据，形成RGBA</strong>数据。</p>
+<p>一般而言，RGBA数据是默认$\alpha$通道为1，有透明度混合需求才会对其赋值和运算。</p>
+<h2 id="41-图像存储">4.1 图像存储</h2>
+<p>未经压缩的原始图像的内存占用会非常大，考虑一张$1900 \times 1080$ 的RGB-8Bit图，需要内存$1920 \times 1080 \times 3 =6220800 Bytes \approx 6.2MB$ ，如果再考虑8Bit以上或者Alpha通道数据，耗费内存更大，所以突出图片压缩的重要性。</p>
+<p>保留图片所有信息或者解压缩时可还原信息的压缩叫<strong>无损压缩</strong>(lossless compression)，压缩过程中丢失信息且不可恢复的叫<strong>有损压缩</strong>(lossy compression)。</p>
+<p>常用的图片压缩格式列举一部分如下：</p>
+<table>
+<thead>
+<tr>
+<th>图片格式</th>
+<th>压缩类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jpeg</td>
+<td>有损</td>
+<td>基于人类视觉系统压缩，去除那些人眼不铭感的信息</td>
+</tr>
+<tr>
+<td>tiff</td>
+<td>无损</td>
+<td>保存二进制数据或8bit，16bit的无损图</td>
+</tr>
+<tr>
+<td>ppm</td>
+<td>无压缩</td>
+<td>格式非常简单，通常保存8-bit的RGB图</td>
+</tr>
+<tr>
+<td>png</td>
+<td>无损</td>
+<td>分为PNG-8，和PNG-24，前者更常用，后者图像质量更高</td>
+</tr>
+</tbody>
+</table>
+<p>$$\text{&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Chapter3(完结) @2022-2-21 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;}$$</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-30&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/63bfb6afc0dfb8b19fcb7c813a507c461e07f3e8" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 63bfb6afc0dfb8b19fcb7c813a507c461e07f3e8: 完善shell脚本，并修复1~9md文件名">
+                                    <i class="fas fa-hashtag fa-fw"></i>63bfb6a</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)" data-hashtags="图形学基础,图形渲染,英文原本"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-hashtag="图形学基础"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)" data-image="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)" data-description="摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)" data-description="摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" data-title="Fundamentals of Computer Graphics第3章总结_(光栅化)"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/">图形学基础</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a>,&nbsp;<a href="/tags/%E8%8B%B1%E6%96%87%E5%8E%9F%E6%9C%AC/">英文原本</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/01/08_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="常用Git命令行总结"><i class="fas fa-angle-left fa-fw"></i>常用Git命令行总结</a>
+            <a href="/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" class="next" rel="next" title="Markdown语法总结">Markdown语法总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"欢迎评论...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

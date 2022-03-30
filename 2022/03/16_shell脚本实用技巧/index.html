@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Shell脚本实用技巧小结 - Benjamin的求知旅记</title><meta name="Description" content="摘要：讨论Shell脚本编写时用到的一些常用&amp;实用技巧"><meta property="og:title" content="Shell脚本实用技巧小结" />
+<meta property="og:description" content="摘要：讨论Shell脚本编写时用到的一些常用&amp;实用技巧" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-07T15:40:45+08:00" />
+<meta property="article:modified_time" content="2022-03-30T12:34:58+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Shell脚本实用技巧小结"/>
+<meta name="twitter:description" content="摘要：讨论Shell脚本编写时用到的一些常用&amp;实用技巧"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" /><link rel="prev" href="https://kissingfire123.github.io/2022/02/18_%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8Fkatex%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Shell脚本实用技巧小结",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/03\/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7\/"
+        },"genre": "posts","keywords": "shell脚本, unix","wordcount":  6640 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/03\/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7\/","datePublished": "2022-03-07T15:40:45+08:00","dateModified": "2022-03-30T12:34:58+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：讨论Shell脚本编写时用到的一些常用\u0026实用技巧"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Shell脚本实用技巧小结</h1><h2 class="single-subtitle">不够全面，但主要针对于日常工作常用的细节&amp;技巧</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-07">2022-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6640 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="leancloud_visitors" data-flag-title="Shell脚本实用技巧小结">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Script-Pic/linux-commandLine.webp"
+        data-srcset="/img/Script-Pic/linux-commandLine.webp, /img/Script-Pic/linux-commandLine.webp 1.5x, /img/Script-Pic/linux-commandLine.webp 2x"
+        data-sizes="auto"
+        alt="/img/Script-Pic/linux-commandLine.webp"
+        title="摘要：讨论Shell脚本编写时用到的一些常用&amp;实用技巧" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#基本语句结构">基本语句结构</a>
+      <ul>
+        <li><a href="#if">if</a>
+          <ul>
+            <li><a href="#基本用法">基本用法</a></li>
+            <li><a href="#数值判断">数值判断</a></li>
+            <li><a href="#文件属性判断">文件属性判断</a></li>
+            <li><a href="#字符串判断">字符串判断</a></li>
+            <li><a href="#逻辑复合判断">逻辑复合判断</a></li>
+          </ul>
+        </li>
+        <li><a href="#for">for</a>
+          <ul>
+            <li><a href="#数字型for">数字型for</a></li>
+            <li><a href="#字符型for">字符型for</a></li>
+          </ul>
+        </li>
+        <li><a href="#while">while</a></li>
+        <li><a href="#case">case</a></li>
+        <li><a href="#continuebreak">continue/break</a></li>
+      </ul>
+    </li>
+    <li><a href="#遍历文件">遍历文件</a></li>
+    <li><a href="#脚本运行计时">脚本运行计时</a>
+      <ul>
+        <li><a href="#系统time指令">系统time指令</a></li>
+        <li><a href="#脚本内计时">脚本内计时</a></li>
+      </ul>
+    </li>
+    <li><a href="#接收命令行参数">接收命令行参数</a>
+      <ul>
+        <li><a href="#命令行特殊变量">命令行特殊变量</a></li>
+        <li><a href="#命令行参数分析">命令行参数分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符串处理">字符串处理</a>
+      <ul>
+        <li><a href="#字符串截取">字符串截取</a></li>
+        <li><a href="#字符串替换">字符串替换</a></li>
+        <li><a href="#字符串正则">字符串正则</a></li>
+      </ul>
+    </li>
+    <li><a href="#多行注释">多行注释</a>
+      <ul>
+        <li><a href="#空命令接收注释行">空命令接收注释行</a></li>
+        <li><a href="#函数定义式">函数定义式</a></li>
+      </ul>
+    </li>
+    <li><a href="#重要的faqs">重要的FAQs</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p><strong><code>Shell脚本</code></strong> ，故名思义，是“<strong>外壳程序</strong>”，由于用户无法和内核直接对话，给Kernel套了一层外壳语言Shell，通过这个中间层来和系统交互，主要功能是提升各项日常事务的自动化程度，并不像C/C++那般集中于复杂的特定任务计算。</p>
+<p>Shell有很多种，$sh$、$csh$、$ksh$、$bash$、$zsh$ 是比较常见的，可以通过<code>echo $SHELL</code>查看当前使用的Shell是什么，也可以通过<code>chsh</code>命令来管理终端使用的SHELL类别：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#查看系统安装了哪些shell</span>
+chsh -l   
+<span class="c1">#如果有zsh，可以选择切换为zsh</span>
+chsh -s /bin/zsh
+</code></pre></td></tr></table>
+</div>
+</div><p>在Shell脚本的开头，需要指定该脚本使用哪个shell来执行（可以和终端使用的SHELL不同）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span></code></pre></td></tr></table>
+</div>
+</div><p>或者开头加上：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/zsh
+</span></code></pre></td></tr></table>
+</div>
+</div><p>当然，bash是最常用的，建议shell脚本还是用bash，即使在win平台的git-bash，也可以运行bash。</p>
+<p>所以，<strong>本文提及的Shell语法</strong>技巧，是跨平台的，<strong>适用于 Windows/Linux/MacOS</strong>。</p>
+<h1 id="基本语句结构">基本语句结构</h1>
+<h2 id="if">if</h2>
+<h3 id="基本用法">基本用法</h3>
+<p>if语句应该是使用最多的分支结构了，基本结构是<code>if...then...fi</code>，多种情况可插入<code>else</code>和<code>elif</code>。</p>
+<p>注意条件判断的括号可以用中括号<code>[ ]</code>，也可以用 <code>(( ))</code>  ，或者<code>[[ ]]</code> 。</p>
+<p><code>[ ]</code>和<code>[[ ]]</code>  的区别是，前者使用<code>-a</code>，<code>-o</code>表示与、或的逻辑关系，或者用<code>&amp;&amp;</code>和<code>||</code>。</p>
+<p><code>(( ))</code>和<code>[[ ]]</code>  的区别是，前者才可以判断简单数学运算的判断，后者更适合处理字符串比较。</p>
+<p><strong>关于空格</strong>：</p>
+<ul>
+<li><strong>if和括号之间要留空格</strong></li>
+<li><strong>括号和内部表达式之间要有空格</strong></li>
+<li>⚠️<strong>shell脚本里的赋值语句，等号=前后不要留空格</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/sh
+</span><span class="cp"></span><span class="nv">a</span><span class="o">=</span><span class="m">20</span>   <span class="c1">#⚠️等号=前后不要留空格!</span>
+<span class="nv">b</span><span class="o">=</span><span class="m">10</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$a</span> <span class="o">==</span> <span class="nv">$b</span> <span class="o">||</span> <span class="nv">$a</span> &gt; <span class="nv">$b</span> <span class="o">]]</span>  <span class="c1"># 左边的$a和最右边的$b，都和括号至少留有1个空格s </span>
+<span class="k">then</span> <span class="c1"># then语句可以写在第二行</span>
+   <span class="nb">echo</span> <span class="s2">&#34;a is equal or greater than b&#34;</span>
+<span class="k">fi</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$a</span> !<span class="o">=</span> <span class="nv">$b</span> <span class="o">]</span> <span class="p">;</span><span class="k">then</span> <span class="c1">#then语句可以写在同一行，加分号;</span>
+   <span class="nb">echo</span> <span class="s2">&#34;a is not equal to b&#34;</span>
+<span class="k">fi</span>
+<span class="k">if</span> <span class="o">((</span> <span class="nv">$a</span> + <span class="nv">$b</span> &lt; <span class="m">100</span> <span class="o">))</span> <span class="p">;</span> <span class="k">then</span> <span class="c1">#  数学四则运算用这个括号(( ))</span>
+	<span class="nb">echo</span> <span class="s2">&#34;sum of a and b is smaller than 100&#34;</span>
+<span class="k">else</span>
+	<span class="nb">echo</span> <span class="s2">&#34;sum of a and b is greater than 100&#34;</span>
+<span class="k">fi</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>🚀如果有多个分支结构，需要else if的逻辑，那么使用<code>elif ... then</code>即可。</p>
+<h3 id="数值判断">数值判断</h3>
+<p>有2种情况：</p>
+<ul>
+<li>
+<p>写在<code>[ ]</code>或<code>[[ ]]</code>内部</p>
+<p>比较数字表达式的大小要注意，只支持<code>&gt;</code>,<code>&lt;</code>，<code>==</code>，``!=<code>的判断，不支持</code>&gt;=<code>和</code>&lt;=<code>的判断。需要使用</code>-ge<code>和</code>-le<code>来替换。当然，大于、小于、等于、不等于也可以用</code>-gt<code>、</code>-lt<code>、</code>-eq<code>、</code>-ne`来替换。</p>
+<p>📍Ps：gt表示greater than ,ge 表示 greater or equal,lt表示little than,le表示little or equal。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">a</span><span class="o">=</span><span class="m">5</span>
+<span class="nv">b</span><span class="o">=</span><span class="m">6</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$a</span> -le <span class="nv">$b</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+	<span class="nb">echo</span> <span class="s2">&#34;a is little or equal than b&#34;</span>
+<span class="k">fi</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>写在<code>(( ))</code>内部</p>
+<p><code>(( ))</code>内部可以非常完美地支持四则运算，所以关于数字表达式的判断，建议和支持使用这种形式，非常自然地支持<code>&gt;</code>,<code>&lt;</code>,<code>&gt;=</code>,<code>&lt;=</code>四种符号的判断。</p>
+</li>
+</ul>
+<h3 id="文件属性判断">文件属性判断</h3>
+<p>一般是对文件或者文件夹做判断，常用的类型如下几类：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>-e</strong></td>
+<td style="text-align:left">判断文件或目录是否存在</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>-d</strong></td>
+<td style="text-align:left">判断是不是目录，并是否存在</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>-f</strong></td>
+<td style="text-align:left">判断是否是普通文件，并存在</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>-r</strong></td>
+<td style="text-align:left">判断文档是否有读权限</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>-w</strong></td>
+<td style="text-align:left">判断是否有写权限</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>-x</strong></td>
+<td style="text-align:left">判断是否可执行</td>
+</tr>
+</tbody>
+</table>
+<p>使用时的具体格式<strong>举例</strong>为：<code>if [ -e filename ] ; then</code></p>
+<h3 id="字符串判断">字符串判断</h3>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-z</strong></td>
+<td>判断该字符串是否为空(为空返回真)</td>
+</tr>
+<tr>
+<td><strong>-n</strong></td>
+<td>判断该字符串是否为非空(非空返回真)</td>
+</tr>
+<tr>
+<td><strong>==</strong></td>
+<td>字符串1和 字符串2是否相等</td>
+</tr>
+<tr>
+<td><strong>!=</strong></td>
+<td>字符串1和 字符串2是否不同</td>
+</tr>
+<tr>
+<td><strong>=~</strong></td>
+<td>字符串str和正则表达式reg是否匹配</td>
+</tr>
+</tbody>
+</table>
+<h3 id="逻辑复合判断">逻辑复合判断</h3>
+<p>逻辑判断，通常指“与”，“或”，“非”。</p>
+<ul>
+<li>
+<p><strong>与</strong>：即and，用于<code>[ ]</code>内部之间，使用<code>-a</code>表示；用于<code>[[ ]]</code>内部之间，使用<code>&amp;&amp;</code>表示；</p>
+</li>
+<li>
+<p><strong>或</strong>：即or，用于<code>[ ]</code>内部之间，使用<code>-o</code>表示；用于<code>[[ ]]</code>内部之间，使用<code>||</code>表示；</p>
+</li>
+<li>
+<p><strong>非</strong>：即not，使用<code> !</code> 表示。</p>
+</li>
+</ul>
+<p>-a 和 -o 作为测试命令的参数用在测试命令的内部，而 &amp;&amp; 和 || 则用来运算测试的返回值，! 为两者通用。</p>
+<h2 id="for">for</h2>
+<p>for循环分为<strong>数字型</strong>循环和<strong>字符型</strong>循环。基本结构为<code>for ... do ...done</code>。</p>
+<blockquote>
+<p>通常，do是独占一行，也可以与for语句同行，但要使用分号<code>; </code>隔开。</p>
+</blockquote>
+<h3 id="数字型for">数字型for</h3>
+<p>注意注释中另外2种写法建议。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash                                                                                                                                                                                                                                        
+</span><span class="cp"></span><span class="k">for</span><span class="o">((</span><span class="nv">i</span><span class="o">=</span>1<span class="p">;</span>i&lt;<span class="o">=</span>10<span class="p">;</span>i++<span class="o">))</span>  <span class="c1">#可以换成 for i in $(seq 1 10)  或 for i in {1..10} </span>
+<span class="k">do</span>
+	<span class="nb">echo</span> <span class="nv">$i</span>*5-1 <span class="o">=</span>  <span class="k">$(</span>expr <span class="nv">$i</span> <span class="se">\*</span> <span class="m">5</span> - 1<span class="k">)</span><span class="p">;</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="字符型for">字符型for</h3>
+<p>字符型的循环一般用来列表的遍历，或者文件的遍历。</p>
+<p><strong>文件的遍历</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;in current dir,include these files/dirs:&#34;</span>
+<span class="k">for</span> i in <span class="sb">`</span>ls .<span class="sb">`</span>   <span class="c1">#文件的遍历</span>
+<span class="k">do</span> 
+	<span class="nb">echo</span> <span class="nv">$i</span> <span class="c1">#输出的文件/文件夹不带路径</span>
+<span class="k">done</span>
+<span class="c1"># 文件/文件夹的遍历的第二种方法</span>
+<span class="nb">echo</span> <span class="s2">&#34;in director ~/Downloads,has theses files/sub-directories&#34;</span>
+<span class="k">for</span> dir in ~/Downloads/*
+<span class="k">do</span>
+	<span class="nb">echo</span> <span class="nv">$dir</span> <span class="c1">#输出的文件/文件夹是全路径</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>🚥 如果需要递归遍历子目录，需要命令选项-R，即 <code>ls -R</code>。</p>
+<p><strong>字符串的遍历</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;one week,has seven days:&#34;</span>  <span class="c1">#下方列表以空格为间隔符</span>
+<span class="nv">weekDays</span><span class="o">=</span><span class="s2">&#34;Monday Tuesday Wednesday Thursday Friday Saturday Sundat&#34;</span>
+<span class="k">for</span> day in <span class="nv">$weekDays</span>  <span class="c1">#可以换成for param in $* 变成对脚本入参的遍历</span>
+<span class="k">do</span>
+	<span class="nb">echo</span> <span class="nv">$day</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="while">while</h2>
+<p>shell脚本的while循环和其他语言的逻辑判断一致，当条件不符合时跳出循环。基本语句结构是<code>while... do...done</code>。</p>
+<p>同样地，可以让 <code>do</code>语句独立成行，也可以<code>while 判别式; do</code>以分号隔开，实现while和do同一行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">sum</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">echo</span> <span class="s2">&#34;请输入您要累加的数字，按 Ctrl+D 组合键结束读取&#34;</span>
+<span class="k">while</span> <span class="nb">read</span> n
+<span class="k">do</span>
+    <span class="o">((</span><span class="nv">sum</span> <span class="o">+=</span> n<span class="o">))</span> <span class="c1"># (( ))符号内部放置四则运算，支持+=运算</span>
+<span class="k">done</span>
+<span class="nb">echo</span> <span class="s2">&#34;The sum is: </span><span class="nv">$sum</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="case">case</h2>
+<p>case语句对应其他语言的switch-case结构，只是在写法上有所区别。通常用于针对用户的不同输入，作出不同的分支流程。</p>
+<p>举例一个编译脚本需要选择分支，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;想要编译的模式为:r(表示release),d(d表示debug)&#34;</span>
+<span class="nb">read</span> <span class="nb">type</span>
+<span class="k">case</span> <span class="nv">$type</span> in 
+	r<span class="o">)</span>  <span class="c1">#每个case以单个右括号结束，作为界定</span>
+		<span class="nb">echo</span> <span class="s2">&#34;build type is release&#34;</span>
+		<span class="p">;;</span> <span class="c1">#2个连续的分号,;;相当于c语言的每个case需要的break语句</span>
+	d<span class="o">)</span>
+		<span class="nb">echo</span> <span class="s2">&#34;build type is debug&#34;</span>
+		<span class="p">;;</span>
+	*<span class="o">)</span>   <span class="c1"># * 表示default情况，上述情况都没匹配上</span>
+		<span class="nb">echo</span> <span class="s2">&#34;unkown build type&#34;</span>
+		<span class="p">;;</span>
+<span class="k">esac</span>  <span class="c1"># 以esac结尾，其实是case反过来拼写</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="continuebreak">continue/break</h2>
+<p>这2者的用法都是结合for/while循环使用的，意义和其他语言类似，此处不赘述。</p>
+<h1 id="遍历文件">遍历文件</h1>
+<p>有时会有需要对文件夹内每个文件都进行相同的处理，这时遍历文件操作是无法避免的了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#注意shell里的赋值语句，等号左右2边不要留空格</span>
+<span class="nv">ScriptPath</span><span class="o">=</span><span class="sb">`</span>dirname <span class="nv">$0</span><span class="sb">`</span> <span class="c1">#比如想遍历打印脚本所在目录的所有文件</span>
+<span class="k">for</span> file in <span class="sb">`</span>ls <span class="si">${</span><span class="nv">ScriptPath</span><span class="si">}</span><span class="sb">`</span>
+<span class="k">do</span>
+	<span class="nb">echo</span>  file is <span class="nv">$file</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="脚本运行计时">脚本运行计时</h1>
+<h2 id="系统time指令">系统time指令</h2>
+<p>主要使用了<code>time</code>指令，time后接linux指令可以测量指令运行时间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">time</span> ./build.sh
+<span class="c1"># 在build结束后输出:   114.75s user 10.32s system 423% cpu 29.552 total</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>具体time指令的用法，可以参考：[菜鸟教程：time指令 ](./build.sh 114.75s user 10.32s system 423% cpu 29.552 total)</p>
+<h2 id="脚本内计时">脚本内计时</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">startTime</span><span class="o">=</span><span class="k">$(</span>date +%s<span class="k">)</span>
+<span class="c1"># ... 脚本主体内容 ...</span>
+<span class="nv">endTime</span><span class="o">=</span><span class="k">$(</span>date +%s<span class="k">)</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;Cost time:</span><span class="k">$((</span><span class="nv">$endTime</span> <span class="o">-</span> <span class="nv">$startTime</span><span class="k">))</span><span class="s2"> seconds\n&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="接收命令行参数">接收命令行参数</h1>
+<h2 id="命令行特殊变量">命令行特殊变量</h2>
+<p>通常Shell脚本内可以自定义变量，比如<code>buildDir=&quot;build&quot;</code>,<strong>读引用</strong>的时候使用<code>$buildDir</code>或者<code>${buildDir}</code>。</p>
+<p>但还有一类变量不需要定义，每个shell脚本内都可以直接使用，可以理解为built-in 变量。</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$0</code></td>
+<td>当前脚本的文件名</td>
+</tr>
+<tr>
+<td><code>$n</code></td>
+<td>传递给脚本或函数的参数。n 是一个数字，表示第几个参数</td>
+</tr>
+<tr>
+<td><code>$#</code></td>
+<td>传递给脚本或函数的参数个数。</td>
+</tr>
+<tr>
+<td><code>$*</code></td>
+<td>传递给脚本或函数的所有参数。</td>
+</tr>
+<tr>
+<td><code>$@</code></td>
+<td>传递给脚本或函数的所有参数。加双引号<code>&quot;</code>才和<code>$*</code>有区别，引号中返回每个参数。</td>
+</tr>
+<tr>
+<td><code>$?</code></td>
+<td>上个命令的退出状态，或函数的返回值。</td>
+</tr>
+<tr>
+<td><code>$$</code></td>
+<td>当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。</td>
+</tr>
+</tbody>
+</table>
+<p>✳️对比<code>$*</code>和<code>$@</code>的区别（<strong>使用时要加引号&quot;才会体现区别</strong>，不加引号就一样，都是逐个参数多行输出）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="c1"># testParam.sh</span>
+<span class="nb">echo</span> <span class="s2">&#34;-- \$* 演示 ---&#34;</span>
+<span class="k">for</span> i in <span class="s2">&#34;</span><span class="nv">$*</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">do</span>   <span class="c1"># 使用时要加引号&#34;，才会体现区别</span>
+    <span class="nb">echo</span> <span class="nv">$i</span>  <span class="c1"># 若不加引号&#34;，也是逐行单个参数输出</span>
+<span class="k">done</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;-- \$@ 演示 ---&#34;</span>
+<span class="k">for</span> i in <span class="s2">&#34;</span><span class="nv">$@</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">do</span>   <span class="c1"># 使用时要加引号&#34;，才会体现区别</span>
+    <span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果执行<code>./testParam.sh a b 1 2 -x -y</code>,那么输出如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">-- $* 演示 ---
+a b 1 2 -x -y
+-- $@ 演示 ---
+a
+b
+1
+2
+-x
+-y
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="命令行参数分析">命令行参数分析</h2>
+<p>运行一个脚本可能会带有参数，比如 <code>./build.sh -d -arm64</code>的含义可能为“编译arm64架构的debug包”。</p>
+<p>在学会<code>getopts</code>分析之前，我是对<code>$1,$2...$n</code>逐个分析(n为参数个数<code>$#</code>)，然后利用case语句赋值的，写出来的代码比较冗长麻烦且不美观。</p>
+<p>废话不多说，直接看<code>getopts</code>的使用吧：</p>
+<p>while与getops<strong>联合使用</strong>，待选的选项里有2类，<strong>带参数的以冒号:隔开</strong>，<strong>不带参数的不需分隔</strong>，写在一起。示例代码如下所示 ⬇️</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="c1"># build.sh 文件内容</span>
+<span class="k">function</span> usage<span class="o">(){</span>
+	<span class="nb">echo</span> <span class="s2">&#34;-h : print help message&#34;</span>
+	<span class="nb">echo</span> <span class="s2">&#34;-r : build type is release&#34;</span>
+	<span class="nb">echo</span> <span class="s2">&#34;-d : build type is debug&#34;</span>
+	<span class="nb">echo</span> <span class="s2">&#34;-a : architecture type,with value,one of i386/x86_64/arm64&#34;</span>
+	<span class="nb">echo</span> <span class="s2">&#34;-s : compiler sdk version,with value,format like 10.16,no limits about value&#34;</span>
+<span class="o">}</span>
+
+<span class="k">while</span> <span class="nb">getopts</span> <span class="s2">&#34;a:s:hd&#34;</span> o<span class="p">;</span> <span class="k">do</span>
+    <span class="k">case</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">o</span><span class="si">}</span><span class="s2">&#34;</span> in
+        h<span class="o">)</span>
+            usage
+            <span class="p">;;</span>
+        d<span class="o">)</span>
+            <span class="nv">buildDebug</span><span class="o">=</span><span class="nb">true</span>
+            <span class="nb">echo</span> <span class="s2">&#34;build debug version, without optimizations&#34;</span>
+            <span class="p">;;</span>
+        a<span class="o">)</span>
+            <span class="nv">arch</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span>
+            <span class="nb">echo</span> <span class="s2">&#34;Architecture: </span><span class="si">${</span><span class="nv">arch</span><span class="si">}</span><span class="s2">&#34;</span>
+            <span class="p">;;</span>
+        s<span class="o">)</span> 
+            <span class="nv">sdkVersion</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span>
+            <span class="nv">versionFull</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">sdkDir</span><span class="si">}</span><span class="s2">/OSX</span><span class="si">${</span><span class="nv">sdkVersion</span><span class="si">}</span><span class="s2">.sdk&#34;</span>
+            <span class="nb">echo</span> <span class="s2">&#34;==&gt; Now using sdk-root version is : </span><span class="si">${</span><span class="nv">versionFull</span><span class="si">}</span><span class="s2">&#34;</span>
+						<span class="p">;;</span>
+        *<span class="o">)</span>
+            usage
+            <span class="p">;;</span>
+    <span class="k">esac</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>鉴于上述getopts的定义，可以使用<code>./build.sh -h</code>来查看帮助信息，也可以使用<code>./build.sh -r  -a  x86_64  -s  10.15</code>来执行脚本进行build（示例代码略去build脚本其他内容）。</p>
+<h1 id="字符串处理">字符串处理</h1>
+<p>说起字符串，先说个比较常用的，字符串的长度表示为<code>${#str}</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">str</span><span class="o">=</span><span class="s2">&#34;Hello World&#34;</span>
+<span class="nb">echo</span> str<span class="err">&#39;</span>s length is <span class="si">${#</span><span class="nv">str</span><span class="si">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="字符串截取">字符串截取</h2>
+<p>Shell脚本中字符串截取分2种情况：使用数字下标，或使用特定字符标记。</p>
+<ul>
+<li>
+<p><code>数字下标截取</code></p>
+<p>这种方式就是选定一个起始点start-pos，然后按照<strong>从左往右</strong>的阅读顺序截取一段长度为length的子串。</p>
+<ol>
+<li>
+<p>从字符串开头截取</p>
+<p>形式为<code>${originStr:start_pos:length}</code>，起始点为从<strong>左边</strong>第一个字符(下标0)开始数，数到下标为start_pos的字符，<strong>从左往右</strong>截取长度为length的字串，length设置过大则到远串末尾截止。</p>
+</li>
+<li>
+<p>从字符串尾部开始截取</p>
+<p>形式为<code>${originStr:0-start_pos:length}</code>，“0-”是表示从后往前数，起始点为从<strong>右边</strong>第一个字符(下标1，倒着数，从1开始)开始数，数到下标为start_pos的字符，同样<strong>从左往右</strong>截取长度为length的字串，length设置过大则到远串末尾截止。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">从字符串开头截取 <span class="c1">#!/bin/bash</span>
+ <span class="nv">originStr</span><span class="o">=</span><span class="s2">&#34;https://kissingfire123.github.io&#34;</span>
+ <span class="nb">echo</span> <span class="s2">&#34;originStr is </span><span class="nv">$originStr</span><span class="s2">&#34;</span>
+
+ <span class="nv">subStr1</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">:</span><span class="nv">3</span><span class="p">:</span><span class="nv">6</span><span class="si">}</span>    <span class="c1"># 从字符串开头截取</span>
+ <span class="nb">echo</span> <span class="s2">&#34;subStr1 is </span><span class="nv">$subStr1</span><span class="s2">&#34;</span>
+
+ <span class="nv">subStr2</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">:</span><span class="nv">0</span><span class="p">-6:</span><span class="nv">4</span><span class="si">}</span>  <span class="c1"># 从字符串尾部开始截取</span>
+ <span class="nb">echo</span> <span class="s2">&#34;subStr2 is </span><span class="nv">$subStr2</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行后输出如下内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"> originStr is https://kissingfire123.github.io
+ subStr1 is ps://k
+ subStr2 is hub.
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+<li>
+<p><code>特定子串标记</code></p>
+<p>特定字符标记的意思是“遍历字符串，遇到某个目标字符串chars为止，截取其前/其后的部分”。明显，这种方式不能指定长度。</p>
+<p>🤔 这种截取方式的<strong>截取内容</strong>，都<strong>不包括分隔符chars</strong>。</p>
+<ol>
+<li>
+<p><strong>截取左边</strong></p>
+<p>使用<code>%</code>来截取左边的字符串，其中星号<code>*</code> 表示通配符，注意是<code>char*</code>，因为需要左边，所有chars的右边内容我们不关心。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>${originStr%chars*}</code></td>
+<td>遍历originStr，遇到第一个子字符串chars为止，截取左边内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>${originStr%%chars*}</code></td>
+<td>遍历originStr，遇到最后一个子字符串chars为止，截取左边内容</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="nv">originStr</span><span class="o">=</span><span class="s2">&#34;https://kissingfire123.github.io&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;originStr is </span><span class="nv">$originStr</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr1</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">%.*</span><span class="si">}</span>      <span class="c1"># 匹配第一个符号&#39;.&#39;</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr1 is </span><span class="nv">$subStr1</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr2</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">%%.*</span><span class="si">}</span>     <span class="c1"># 匹配最后一个符号&#39;.&#39;</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr2 is </span><span class="nv">$subStr2</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr3</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">%ss*</span><span class="si">}</span>    <span class="c1"># 匹配第一个子字符串&#39;ss&#39;</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr3 is </span><span class="nv">$subStr3</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出内容为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">originStr is https://kissingfire123.github.io
+subStr1 is https://kissingfire123.github
+subStr2 is https://kissingfire123
+subStr3 is https://ki
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>截取右边</strong></p>
+<p>使用<code>#</code>来截取左边的字符串。逻辑和上述左边字串的非常类似，注意是<code>*char</code>，因为需要右边，所有chars的左边内容我们不关心。类似地有下列表格：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${originStr#*chars}</code></td>
+<td>遍历originStr，遇到第一个子字符串chars为止，截取右边内容</td>
+</tr>
+<tr>
+<td><code>${originStr##*chars}</code></td>
+<td>遍历originStr，遇到最后一个子字符串chars为止，截取右边内容</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="nv">originStr</span><span class="o">=</span><span class="s2">&#34;https://kissingfire123.github.io&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;originStr is </span><span class="nv">$originStr</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr1</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">#*i</span><span class="si">}</span>     <span class="c1"># 寻找第一个字符串&#39;i&#39;，保留其右边</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr1 is </span><span class="nv">$subStr1</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr2</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">##*i</span><span class="si">}</span>    <span class="c1"># 寻找最后一个字符串&#39;i&#39;，保留其右边</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr2 is </span><span class="nv">$subStr2</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr3</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">#*ss</span><span class="si">}</span>    <span class="c1"># 寻找第一个字符串&#39;ss&#39;，保留其右边</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr3 is </span><span class="nv">$subStr3</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">originStr is https://kissingfire123.github.io
+subStr1 is ssingfire123.github.io
+subStr2 is o
+subStr3 is ingfire123.github.io
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+</li>
+</ul>
+<h2 id="字符串替换">字符串替换</h2>
+<p>如果说，上一小节是描述substr功能，那么本小节就是描述replace功能了。</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>${originStr/match_str/replace_str}</code></td>
+<td>1个/，表示将匹配到的第一个match_str，替换成replace_str</td>
+</tr>
+<tr>
+<td><code>${originStr//match_str/replace_str}</code></td>
+<td>2个/，表示将匹配到的所有match_str，全替换成replace_str</td>
+</tr>
+</tbody>
+</table>
+<p>示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="nv">originStr</span><span class="o">=</span><span class="s2">&#34;https://kissingfire123.github.io/2022/02/14_Shell语法小结/&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;originStr is </span><span class="nv">$originStr</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr1</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">/s/T</span><span class="si">}</span>    <span class="c1"># 第一个匹配的子字符串&#39;s&#39;，替换为T</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr1 is </span><span class="nv">$subStr1</span><span class="s2">&#34;</span>
+
+<span class="nv">subStr2</span><span class="o">=</span><span class="si">${</span><span class="nv">originStr</span><span class="p">//02/哈哈</span><span class="si">}</span>  <span class="c1"># 所有匹配的子字符串&#39;02&#39;，都替换为&#39;哈哈&#39;</span>
+<span class="nb">echo</span> <span class="s2">&#34;subStr2 is </span><span class="nv">$subStr2</span><span class="s2">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出内容为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">originStr is https://kissingfire123.github.io/2022/02/14_Shell语法小结/
+subStr1 is httpT://kissingfire123.github.io/2022/02/14_Shell语法小结/
+subStr2 is https://kissingfire123.github.io/2哈哈2/哈哈/14_Shell语法小结/
+</code></pre></td></tr></table>
+</div>
+</div><p>⚠️：match_str可以为<strong>正则表达式</strong>，留待下节讲述。</p>
+<h2 id="字符串正则">字符串正则</h2>
+<p>字符串的正则表达式主要用于2处，一处为字符串<strong>比较判断</strong>，另一处为字符串的<strong>正则匹配后替换</strong>。</p>
+<ul>
+<li>
+<p><strong>正则比较判断</strong></p>
+</li>
+<li>
+<p><strong>正则字符替换</strong></p>
+</li>
+</ul>
+<h1 id="多行注释">多行注释</h1>
+<p>多行注释有以下<strong>2种方法</strong>可以做到。</p>
+<h2 id="空命令接收注释行">空命令接收注释行</h2>
+<p>用 <code>“:&lt;&lt;任意字符与数字</code>” + <code>&quot;相同字符与数字&quot;</code>将需要注释的多行内容包裹起来即可。注意，这个字符尽量不要取单引号，双引号，以免和注释内容中的引号提前匹配。</p>
+<p>下方代码取字符为&quot;EOF&quot;，其实换成其他的，比如&quot;Comment&quot;也是一样的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">:<span class="s">&lt;&lt;EOF
+</span><span class="s">被注释的Line1
+</span><span class="s">被注释的Line2
+</span><span class="s">被注释的Line3
+</span><span class="s">EOF</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>值得注意的是，这里是用个空命令来接收注释内容，被注释内容<strong>也确实没有在当前终端执行</strong>，但是“空命令接收”这一动作还是背后有开销的。</p>
+<h2 id="函数定义式">函数定义式</h2>
+<p>对于要注释的多行内容，将其封装成一个函数，这样在脚本运行时完全没有开销。</p>
+<p>还是上述的例子，可以使用函数的形式，只定义，不调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">EofFuncHere<span class="o">(){</span>
+被注释的Line1
+被注释的Line2
+被注释的Line3
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="重要的faqs">重要的FAQs</h1>
+<ol>
+<li>
+<p><strong>echo的常用输出选项？</strong></p>
+<ul>
+<li><code>echo -n</code>: 取消换行符</li>
+<li><code>echo -e</code>:启用反斜杠转义</li>
+</ul>
+</li>
+<li>
+<p><strong>单引号<code>' '</code>和双引号<code>&quot; &quot;</code>的区别？</strong></p>
+<ul>
+<li>单引号：也叫hard quote，关闭所有引用</li>
+<li>双引号：也叫soft quote，保留$引用</li>
+</ul>
+</li>
+<li>
+<p><strong>变量赋值和export差别？</strong></p>
+<ul>
+<li>
+<p>变量赋值：使用等号<code>=</code>赋值，等号前后不能留有空格</p>
+</li>
+<li>
+<p>export变量：如果是在Shell脚本内export，即成为当前Shell脚本运行时的<strong>环境变量</strong>；如果是在终端命令窗口export，有效范围为当前窗口；在<code>~/.bash_profile</code> export，有效范围为当前用户；在<code>/etc/bashrc</code>(Ubuntu为/etc/bash.bashrc)，有效范围为本机所有用户。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>exec和source的差异？</strong></p>
+<p>我们执行一个shell脚本时，实际是先产生一个sub-shell的子进程，然后sub-shell在去产生命令行的子进程。</p>
+<ul>
+<li><code>./test.sh</code>：创建sub-shell执行脚本；</li>
+<li><code>source test.sh</code> ：以当前shell执行；</li>
+<li><code>exec test.sh</code>：当前shell执行后退出；</li>
+</ul>
+</li>
+<li>
+<p><strong>如何实现命令替换和变量替换？</strong></p>
+<ul>
+<li>命令替换：使用圆括号<code>$( )</code>或者反引号**`  `**，将命令包裹其中</li>
+<li>变量替换：使用大括号<code>${ }</code>，将变量包裹其中</li>
+</ul>
+</li>
+<li>
+<p><strong>不同情况下的&rsquo;退出&rsquo;含义?</strong></p>
+<ul>
+<li>break：是提前结束循环</li>
+<li>return：是结束function</li>
+<li>exit：是结束Shell脚本，并给出返回值</li>
+</ul>
+</li>
+<li>
+<p><strong>如何检测脚本是否执行成功？</strong></p>
+<p>第一，当然是打印信息或者直接写result文件了。</p>
+<p>其二，Shell中有个特殊的变量<code>$?</code>，就是上一句命令或者上一个刚执行完的脚本的返回值，只需要<code>echo $?</code>，就能快速查看上一条语句/脚本是否成功了。</p>
+<p>通常来说，脚本执行成功都是约定俗成<strong>返回值0</strong>。</p>
+</li>
+<li>
+<p><strong>Shell脚本的数组怎么使用？</strong></p>
+<p>比如定义一个数组<code>A=(a b c d)</code>，那么如下示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 引用数组</span>
+<span class="si">${</span><span class="nv">A</span><span class="p">[@]</span><span class="si">}</span>
+<span class="si">${</span><span class="nv">A</span><span class="p">[*]</span><span class="si">}</span>
+<span class="c1"># 访问数组成员</span>
+<span class="si">${</span><span class="nv">A</span><span class="p">[0]</span><span class="si">}</span>
+<span class="c1"># 数组长度</span>
+<span class="si">${#</span><span class="nv">A</span><span class="p">[@]</span><span class="si">}</span>
+<span class="si">${#</span><span class="nv">A</span><span class="p">[*]</span><span class="si">}</span>
+<span class="c1"># 数组修改赋值</span>
+A<span class="o">[</span>2<span class="o">]=</span>xyzw
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<blockquote>
+<p>参考链接：</p>
+<p><a href="https://www.runoob.com/linux/linux-shell-passing-arguments.html" target="_blank" rel="noopener noreffer">菜鸟教程：Shell传递参数</a></p>
+<p><a href="http://c.biancheng.net/view/1120.html" target="_blank" rel="noopener noreffer">C语言中文网：Shell字符串阶段</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1914083" target="_blank" rel="noopener noreffer">腾讯云：Shell正则遇到的问题</a></p>
+<p><a href="https://www.cnblogs.com/damahuhu/p/11694054.html" target="_blank" rel="noopener noreffer">博客园：Shell 多行注释</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/54494213" target="_blank" rel="noopener noreffer">知乎：Shell 实现多行注释的几种常用方法</a></p>
+<p><a href="https://mp.weixin.qq.com/s/pnXyj7jhfASBwC72ESdosQ" target="_blank" rel="noopener noreffer">Linux科技：你应该知道的Shell十三问</a></p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-30&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/63bfb6afc0dfb8b19fcb7c813a507c461e07f3e8" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 63bfb6afc0dfb8b19fcb7c813a507c461e07f3e8: 完善shell脚本，并修复1~9md文件名">
+                                    <i class="fas fa-hashtag fa-fw"></i>63bfb6a</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结" data-hashtags="shell脚本,unix"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-hashtag="shell脚本"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结" data-image="/img/Script-Pic/linux-commandLine.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结" data-description="摘要：讨论Shell脚本编写时用到的一些常用&amp;实用技巧"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结" data-description="摘要：讨论Shell脚本编写时用到的一些常用&amp;实用技巧"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" data-title="Shell脚本实用技巧小结"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/shell%E8%84%9A%E6%9C%AC/">shell脚本</a>,&nbsp;<a href="/tags/unix/">unix</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/02/18_%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8Fkatex%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="常用数学公式排版KaTex语法总结"><i class="fas fa-angle-left fa-fw"></i>常用数学公式排版KaTex语法总结</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"欢迎评论...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

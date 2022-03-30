@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Fundamentals of Computer Graphics第2章总结_(杂项数学) - Benjamin的求知旅记</title><meta name="Description" content="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结"><meta property="og:title" content="Fundamentals of Computer Graphics第2章总结_(杂项数学)" />
+<meta property="og:description" content="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-30T12:34:58+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fundamentals of Computer Graphics第2章总结_(杂项数学)"/>
+<meta name="twitter:description" content="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" /><link rel="prev" href="https://kissingfire123.github.io/2021/12/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/" /><link rel="next" href="https://kissingfire123.github.io/2022/01/08_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Fundamentals of Computer Graphics第2章总结_(杂项数学)",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/"
+        },"genre": "posts","keywords": "图形学基础, 图形渲染, 英文原本","wordcount":  10121 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/","datePublished": "2021-12-27T00:00:00+00:00","dateModified": "2022-03-30T12:34:58+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "     \"Benjamin Lee\""
+            },"description": "摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Fundamentals of Computer Graphics第2章总结_(杂项数学)</h1><h2 class="single-subtitle">计算机图形学-虎书,原版,第2章</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-27">2021-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10121 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" class="leancloud_visitors" data-flag-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp"
+        data-srcset="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp, /img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp 1.5x, /img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp 2x"
+        data-sizes="auto"
+        alt="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp"
+        title="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-集合与映射">1 集合与映射</a>
+      <ul>
+        <li><a href="#11-逆映射">1.1 逆映射</a></li>
+        <li><a href="#12-区间">1.2 区间</a></li>
+        <li><a href="#13-对数">1.3 对数</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-求解二次方程">2 求解二次方程</a></li>
+    <li><a href="#3-三角学">3 三角学</a>
+      <ul>
+        <li><a href="#31-角度">3.1 角度</a></li>
+        <li><a href="#32-三角函数">3.2 三角函数</a></li>
+        <li><a href="#33-一些有用的特性">3.3 一些有用的特性</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-向量">4 向量</a>
+      <ul>
+        <li><a href="#41-向量运算">4.1 向量运算</a></li>
+        <li><a href="#42-直角坐标下的向量">4.2 直角坐标下的向量</a></li>
+        <li><a href="#43-点乘">4.3 点乘</a></li>
+        <li><a href="#44-叉乘">4.4 叉乘</a></li>
+        <li><a href="#45-标准正交基与坐标系">4.5 标准正交基与坐标系</a></li>
+        <li><a href="#46-单个向量构造向量基">4.6 单个向量构造向量基</a></li>
+        <li><a href="#47-由两个向量构建向量基">4.7 由两个向量构建向量基</a></li>
+        <li><a href="#48-摆正向量基">4.8 摆正向量基</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-曲线与面">5 曲线与面</a>
+      <ul>
+        <li><a href="#51-2d隐式曲线">5.1 2D隐式曲线</a></li>
+        <li><a href="#52-2d梯度">5.2 2D梯度</a></li>
+        <li><a href="#53-3d隐式曲面">5.3 3D隐式曲面</a></li>
+        <li><a href="#54-隐式曲面的表面法线">5.4 隐式曲面的表面法线</a></li>
+        <li><a href="#55-隐式平面">5.5 隐式平面</a></li>
+        <li><a href="#56-带参数的2d曲线">5.6 带参数的2D曲线</a></li>
+        <li><a href="#57-带参数的3d曲线">5.7 带参数的3D曲线</a></li>
+        <li><a href="#58-带参数的3d曲面">5.8 带参数的3D曲面</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-线性插值">6 线性插值</a></li>
+    <li><a href="#7-三角形">7 三角形</a>
+      <ul>
+        <li><a href="#71-2d三角形">7.1 2D三角形</a></li>
+        <li><a href="#72-3d三角形">7.2 3D三角形</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>序言：看原书第二章后做的笔记，关键术语留有英文注解, 有些内容补充了自己的理解，并非直接翻译原文。</p>
+<ul>
+<li>本人水平有限，若有不当之处，欢迎交流与指正，谢谢。</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>原书第四版pdf下载链接：<a href="https://github.com/t4world/Computer-Graphics/blob/master/Fundamentals-of-Computer-Graphics-Fourth-Edition.pdf" target="_blank" rel="noopener noreffer">Github: t4world/Computer-Graphics</a></li>
+<li>Markdown 数学公式语法参考:  <a href="https://www.zybuluo.com/codeep/note/163962" target="_blank" rel="noopener noreffer">Cmd Markdown 公式指导手册</a></li>
+</ul>
+</blockquote>
+<h1 id="1-集合与映射">1 集合与映射</h1>
+<p>通常，我们所指的函数是映射(mapping)的一种特殊情况。映射是集合A到集合B的一种对应关系。
+笛卡尔积(Cartesian product)$A$x$B$是2个集合的元素的所有可能组合，即a$\epsilon$A, b$\epsilon$B,对所有可能的有序组合(a,b)。$A$ x $A$简写为$A^2$,以下常用符号：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$R$</td>
+<td>实数</td>
+</tr>
+<tr>
+<td>$R^+$</td>
+<td>非负实数</td>
+</tr>
+<tr>
+<td>$R^2$</td>
+<td>2维实数平面</td>
+</tr>
+<tr>
+<td>$R^n$</td>
+<td>n维实数笛卡尔空间</td>
+</tr>
+<tr>
+<td>$Z$</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>$S^2$</td>
+<td>3D单位球面上的点</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>映射的表示方法
+使用冒号和箭头,举例: $f: R \rightarrow Z$
+其中前者为定义域(domain),后者为值域(target).
+从编程语言的角度来看，也可以认为是 参数为$R$，返回值为$Z$。</li>
+</ul>
+<h2 id="11-逆映射">1.1 逆映射</h2>
+<p>通常所说的反函数是一种逆映射。
+对于一个映射 $f: A \rightarrow B$,那么可能存在逆映射 $f^{-1} : B \rightarrow A$. 即 对于 $b = f(a)$,有$f^{-1}(b)=a$.
+存在逆映射的条件是：
+对每一个b$\epsilon$B,存在唯一确定的$a\epsilon A$满足$f(a)=b$.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/09/XQo1yd65Nn2Wt7Y.png"
+        data-srcset="https://s2.loli.net/2021/12/09/XQo1yd65Nn2Wt7Y.png, https://s2.loli.net/2021/12/09/XQo1yd65Nn2Wt7Y.png 1.5x, https://s2.loli.net/2021/12/09/XQo1yd65Nn2Wt7Y.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/09/XQo1yd65Nn2Wt7Y.png"
+        title="reverse-map.png" /></p>
+<p>若在满足逆映射的条件下，此时f是函数，(即 对每一个a$\epsilon$A,有唯一确定的b=f(a)),此时这种特殊的映射关系称为<strong>双射(bijection)</strong>, $f$和$f^{-1}$互为反函数，值域和定义域对调。</p>
+<p>反函数例子: f: R $\rightarrow$ R,函数f(x)=$x^3$ ,反函数$f^{-1}(x)=\sqrt[3]x$</p>
+<h2 id="12-区间">1.2 区间</h2>
+<p>关于是否包含区间边界值，分为开区间和闭区间以及半开区间。
+涉及到图形的表示，注意，例如表示一个单位立方体的3D区间，立方体内的点$x$可以表示为$x \epsilon [0,1]^3$.
+区间还有个方便之处，区间运算，并集(union,符号$\cup$)，交集(intersection,符号$\cap$)，差集(difference,符号-)等。</p>
+<h2 id="13-对数">1.3 对数</h2>
+<p>对数是相对于指数关系而生的，针对一个底数a，求它的多少次方为x.  表现形式如下：
+$$y = \log_a x  \iff  a^y = x $$
+复习几个常用的公式：<br>
+$a^{\log_a (x )} = x$<br>
+$\log_a {(a^x)} = x$<br>
+$\log_a (xy)  = \log_a x +\log_a y$<br>
+$\log_a (x /y) =  \log_a x - \log_a y$<br>
+$\log_a x = \log_a b \cdot  \log_b x$<br>
+有个特殊的底数为$e=2.718&hellip;$,用它作底数，那么对数形式则会简写为：
+$$\ln x \equiv \log_e x$$
+它和指数函数的导数形式分别如下：<br>
+$\frac {d}{dx} \log_a{x}=\frac{1}{x\ln a}$<br>
+$\frac {d}{dx} a^{x} =a^x \ln a$ <br>
+$\text{上述公式当a = e 时}, \ln a = 1.$</p>
+<hr>
+<h1 id="2-求解二次方程">2 求解二次方程</h1>
+<p>复习一下初中数学知识, 一元二次方程的一般形式：
+$$Ax^2 + Bx + C  = 0,$$
+求根判别式(discriminant)为 $\Delta = B^2 - 4 \cdot A \cdot C$，有三种情况:</p>
+<ol>
+<li>$\Delta&lt;0:$ 方程没有根</li>
+<li>$\Delta=0:$ 方程只有一个根, $x_0 =x_1 =\frac{-B}{2A}$</li>
+<li>$\Delta&gt;0:$ 方程有2个根, $x_0= \frac{-B+\sqrt{\Delta}}{2 \cdot A}  ,  x_1= \frac{-B-\sqrt{\Delta}}{2 \cdot A}$</li>
+</ol>
+<p>个人经验：注意, 开方和除法开销昂贵，图形学中为了简化运算，提倡对$x_0,x_1$ ,做简化：<br>
+$\text{令 }\Delta _2 = {(\frac{B}{2})}^2-   A \cdot C$ , 则 $x_0= \frac{-(\frac{B}{2})+\sqrt{\Delta _2}}{A}  ,  x_1= \frac{-(\frac{B}{2})-\sqrt{\Delta _2}}{A}$</p>
+<hr>
+<h1 id="3-三角学">3 三角学</h1>
+<h2 id="31-角度">3.1 角度</h2>
+<p>如下图所示，角度由2条射线(half-line)组成,射线将圆分成了2段弧(arc)，弧线长度即为角度大小,角度有正负之分,<strong>逆时针方向为正</strong>(counterclockwise)，图中的角度 $\Phi$ 即为短的那段弧。按照这样的定义，角度值的取值范围为$[-\pi , \pi]$</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/09/QwdPxT8zUHbXWZ2.png"
+        data-srcset="https://s2.loli.net/2021/12/09/QwdPxT8zUHbXWZ2.png, https://s2.loli.net/2021/12/09/QwdPxT8zUHbXWZ2.png 1.5x, https://s2.loli.net/2021/12/09/QwdPxT8zUHbXWZ2.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/09/QwdPxT8zUHbXWZ2.png"
+        title="三角形-角度" /></p>
+<ul>
+<li>角度制(degrees)和弧度制(radians)的转换，因为整圆是$360^\circ$,也是弧度制的$2\pi$, 所以角度转换如下：
+$$degrees = \frac{180}{\pi} \cdot radians$$</li>
+</ul>
+<h2 id="32-三角函数">3.2 三角函数</h2>
+<p>说起三角函数，先复习<strong>勾股定理</strong>(也叫<em>毕达哥拉斯定理</em>，$Pythagorean-theorem$),如下图所示，简单的证明了斜边(hypotenuse)平方为2条直角边的平方和。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/09/tGf1xiyha7WYnNK.png"
+        data-srcset="https://s2.loli.net/2021/12/09/tGf1xiyha7WYnNK.png, https://s2.loli.net/2021/12/09/tGf1xiyha7WYnNK.png 1.5x, https://s2.loli.net/2021/12/09/tGf1xiyha7WYnNK.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/09/tGf1xiyha7WYnNK.png"
+        title="勾股定理" /></p>
+<p>$$a^2 + o^2 = h^2,$$
+由此定义了<strong>正弦</strong>(sine),反正弦(arc sine),<strong>余弦</strong>(cosine),反余弦(arc cosine),<strong>正切</strong>(tangent),反正切(arc tangent).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">$\sin  \Phi $</th>
+<th style="text-align:center">$\csc  \Phi $</th>
+<th style="text-align:center">$\cos \Phi  $</th>
+<th style="text-align:center">$\sec \Phi $</th>
+<th style="text-align:center">$\tan \Phi $</th>
+<th style="text-align:center">$\cot \Phi $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">值</td>
+<td style="text-align:center">$ o/ h$</td>
+<td style="text-align:center">$ h/ o$</td>
+<td style="text-align:center">$ a/h$</td>
+<td style="text-align:center">$ h/a$</td>
+<td style="text-align:center">$ o/a$</td>
+<td style="text-align:center">$ a/o$</td>
+</tr>
+</tbody>
+</table>
+<p>涉及到图形学中的<strong>方位角</strong>(直角坐标和极坐标的映射)，有个实用的函数$atan2$,它比$atan$的数值更稳定,且值域更广，对于一个笛卡尔(<em>Cartesian</em>)直角坐标$(x,y)$如下所示：</p>
+<p>$$
+atan2(y,x)=
+\begin{cases}
+arctan(\frac {y}{x}), &amp; \text { x &gt; 0} \\
+arctan(\frac {y}{x}) + \pi, &amp; \text{ $y \geq 0$,x&lt;0} \\
+arctan(\frac {y}{x}) - \pi, &amp; \text{  y &lt; 0,x&lt;0} \\
++\frac{ \pi}{2}, &amp; \text{  y &gt; 0,x=0} \\
+-\frac{ \pi}{2}, &amp; \text{  y &lt; 0,x=0} \\
+undefined, &amp; \text{  y = 0,x=0}
+\end{cases}
+$$</p>
+<p>以上的函数定义域和值域如下：<br>
+$asin : [-1,1] \mapsto[- \pi / 2, \pi /2];$<br>
+$acos: [-1,1] \mapsto[0,\pi];$<br>
+$atan:R \mapsto[-\pi/2,\pi/2];$<br>
+$atan2: R^2 \mapsto [-\pi, \pi]$</p>
+<h2 id="33-一些有用的特性">3.3 一些有用的特性</h2>
+<ul>
+<li>
+<p>角度平移特性(高中数学老师说过,&quot;<code>奇变偶不变，符号看象限</code>&quot;)<br>
+$\sin(-A) = - \sin A$<br>
+$\cos(-A) = \cos A$<br>
+$\tan(-A) = - \tan A$<br>
+$\sin(\frac {\pi} {2} - A) =\cos A$<br>
+$\cos(\frac {\pi} {2} -A) = \sin A$<br>
+$\tan(\frac {\pi} {2} -A) = \cot A$</p>
+</li>
+<li>
+<p>勾股定理推导特性
+${\sin}^2 A  +{\cos}^2 A=1$<br>
+${\sec}^2 A  -{\tan}^2 A=1$<br>
+${\csc}^2 A  -{\cot}^2 A=1$</p>
+</li>
+<li>
+<p>加减特性
+$\sin(A +B )=\sin A \cos B + \sin B \cos A$<br>
+$\sin(A -B )=\sin A \cos B - \sin B \cos A$<br>
+$\cos(A +B )=\cos A \cos B - \sin A \sin B$<br>
+$\cos(A -B )=\cos A \cos B + \sin A \sin B$<br>
+$\tan (A+B) =\frac{\tan A + \tan B}{1- \tan A \tan B}$<br>
+$\tan (A-B) =\frac{\tan A - \tan B}{1+ \tan A \tan B}$<br>
+$\sin (2A) = 2 \sin A \cos A$<br>
+$\cos (2A) = \cos ^2 A  -\sin ^2 A$<br>
+$\tan (2A) =\frac {2 \tan A}{1 -\tan ^2 A}$</p>
+</li>
+<li>
+<p>半角特性
+$\sin ^2 (\frac{A}{2})=(1- \cos A)/2$<br>
+$\cos ^2 (\frac{A}{2}) =(1+\cos A)/2$</p>
+</li>
+<li>
+<p>积化和差
+$\sin A \sin B = -\frac {\cos (A+B) -\cos (A-B)}{2}$<br>
+$\sin A \cos B = \frac {\sin (A+B) +\sin (A-B)}{2}$<br>
+$\cos A \cos B = \frac {\cos (A+B)+\cos (A-B)}{2}$</p>
+</li>
+<li>
+<p>三角形特性
+对于任意三角形，假设边长为$a,b,c$,三条边的对角分别为$A,B,C$，那么有以下等式：
+$$\frac{\sin A}{a} =\frac{\sin B}{b} =\frac{\sin C}{c} \text{    (正弦定理)}$$
+$$c^2 = a^2 + b^2 - 2 \cdot a \cdot b \cdot \cos C \text{    (余弦定理)}$$
+$$\frac{a+b}{a-b} = \frac{\tan(\frac{A+B}{2})}{\tan(\frac{A-B}{2})} \text{    (正切定理)}$$
+$$S_ \Delta = \frac {1}{4} \sqrt {(a+b+c)(-a+b+c)(a-b+c)(a-b+c)(a+b-c)} \text{    (海伦－秦九韶面积公式)}$$
+$$\text{或者，令} p = \frac{a+b+c}{2} , S_ \Delta = \sqrt {p(p-a)(p-b)(p-c)}$$</p>
+</li>
+</ul>
+<hr>
+<h1 id="4-向量">4 向量</h1>
+<p>向量，也称为矢量，通常表示为一段<strong>特定长度</strong>和<strong>特定方向</strong>的箭头$\rightarrow$。通常，不会用来表示坐标或位置，而是偏移(offset)或者位移(displacement).</p>
+<h2 id="41-向量运算">4.1 向量运算</h2>
+<p><strong>向量加减</strong>运算符合平行四边形原则(parallelogram rule),<strong>向量加减满足交换律</strong>(commutative property),即 $\vec {a} + \vec {b} = \vec {b} + \vec {a}$ .
+<strong>向量乘法</strong>有多种形式，其中，如果$\vec {a}$与数字$k$相乘，$k$为正数则方向不变，$k$为负数则方向相反，长度则乘以$k$的绝对值.例如 $3.5 \vec{a}$,表示方向不变，长度变为原来的3.5倍.</p>
+<h2 id="42-直角坐标下的向量">4.2 直角坐标下的向量</h2>
+<p>对于一个二维向量$\vec {c}$，可以由任意2个不平行的基础向量组合而成：
+$$\vec {c} = w_a \vec{a} + w_b \vec{b} ,\text{($w_a$,$w_b$是唯一一组常数解)}$$
+那么，如果让这2个基础向量为<strong>直角坐标</strong>系的<strong>横轴</strong>$x$和<strong>纵轴</strong>$y$两个方向上的<code>单位向量</code>,则向量$\vec{a}$表示为：
+$$\vec a =x_a \vec{x} + y_a \vec{y}$$
+通常为了方便，也会直接用直角坐标$(x_a,y_a)$表示这个向量，或者使用一个列矩阵，$\vec a =\begin{bmatrix} x_a \\ y_a \end{bmatrix}$, 为了书写和印刷方便，也会直接写为它的转置形式 ${\vec a} ^ T=\begin{bmatrix} x_a &amp;  y_a \end{bmatrix}$ .</p>
+<h2 id="43-点乘">4.3 点乘</h2>
+<p>向量<strong>点乘得到的为标量积</strong>,向量$\vec{a}$和$\vec{b}$的点乘为两个向量的长度相乘，再乘以夹角$\Phi$的余弦值。表示为：
+$$\vec{a} \cdot \vec{b} =\lVert a \rVert \cdot \lVert b \rVert \cdot \cos \Phi$$
+常用：用于计算2个向量的夹角余弦值，进而推算夹角大小。
+向量点乘遵守<code>结合律</code>(associative property)和<code>分配律</code>(distributive property):
+$$\vec {a} \cdot \vec {b} =\vec{b} \cdot \vec{a}$$
+$$\vec {a} \cdot (\vec {b} + \vec {c})=\vec {a} \cdot \vec {b} +\vec {a} \cdot \vec {c}$$
+$$(k \vec{a})\cdot \vec{b}=\vec{a}\cdot (k\vec{b})=k\vec{a}\cdot \vec{b}$$
+在<code>直角坐标系</code>下，假设有<code>二维向量</code>$\vec{a}=(x_a,y_a)$和$\vec{b}=(x_b,y_b)$，那么两者点乘结果为 $\vec {a} \cdot \vec {b}=x_a x_b + y_a y_b$ .
+类似地，如果是<code>三维向量</code>，那么:  $\vec {a} \cdot \vec {b}=x_a x_b + y_a y_b +z_a z_b$</p>
+<h2 id="44-叉乘">4.4 叉乘</h2>
+<p>向量<strong>叉乘得到的为向量积</strong>，通常用于三维向量。
+$\vec{a} ,\vec{b}$叉乘向量积的模长为这两个向量的模长相乘，再乘以<code>夹角的正弦值</code>,数值正好等于$\vec{a} ,\vec{b}$围成的<code>平行四边形面积</code>。
+$$\lVert \vec{a} \times \vec{b} \rVert=\lVert \vec{a}  \rVert  \lVert \vec{b} \rVert \sin \Phi ,\text{(且方向同时垂直于$\vec{a} ,\vec{b}$)}$$
+<strong>下图为一个右手坐标系</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/09/2lSPZarNXJjTpmk.png"
+        data-srcset="https://s2.loli.net/2021/12/09/2lSPZarNXJjTpmk.png, https://s2.loli.net/2021/12/09/2lSPZarNXJjTpmk.png 1.5x, https://s2.loli.net/2021/12/09/2lSPZarNXJjTpmk.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/09/2lSPZarNXJjTpmk.png"
+        title="叉乘" /></p>
+<p>定义$x,y,z$三轴的单位向量分别为：
+$$\vec{x} =(1,0,0)$$
+$$\vec{y} =(0,1,0)$$
+$$\vec{z} =(0,0,1)$$
+那么$\vec{x} \times \vec{y}$叉乘结果可以为人为规定为$+\vec{z}$或$-\vec{z}$,这里我们采用$+\vec{z}$，则有：
+$$\vec{x} \times \vec{y}=+\vec{z}$$
+$$\vec{y} \times \vec{x}=-\vec{z}$$
+$$\vec{y} \times \vec{z}=+\vec{x}$$
+$$\vec{z} \times \vec{y}=-\vec{x}$$
+$$\vec{z} \times \vec{x}=+\vec{y}$$
+$$\vec{x} \times \vec{z}=-\vec{y}$$
+对<code>右手坐标系</code>的解释：对于$\vec {a} \times \vec{b}$,<code>右手手掌</code>与$\vec{a}$平行，且四指向$\vec{b}$弯曲，此时<code>大拇指</code>所指方向就是叉乘结果$\vec {a} \times \vec{b}$的方向。
+注意：常用的$x-y-z$直角坐标系为右手坐标系，即$\vec{x} \times \vec{y}=+\vec{z}$。</p>
+<p><strong>叉乘</strong>运算<code>满足分配律，结合律(与常数)，但不满足交换律</code>：
+$$\vec{a} \times (\vec{b} + \vec{c} ) = \vec{a} \times \vec{b} + \vec{a} \times \vec{c}$$
+$$\vec{a} \times (k\vec{b})=k(\vec{a} \times \vec{b}) , \text{  (常数可以提取出来)}$$
+$$\vec{a} \times \vec{b} = -(\vec{b} \times \vec{a}), \text{  (一交换则反向)}$$</p>
+<p>现在有向量$\vec{a}=(x_a,y_a,z_a)$,或者表示为$\vec{a}=x_a \vec{x} + y_a \vec{y} + z_a \vec{z}$, 另一个向量 $\vec{b} =(x_b, y_b, z_b)$, 那么：
+$$\vec{a} \times \vec{b} =(x_a \vec{x} + y_a \vec{y} + z_a \vec{z}) \times( x_b \vec{x} + y_b \vec{y} + z_b \vec{z})$$
+$$=(y_a z_b - z_a y_b)\vec{x} + (z_a x_b -x_a z_b)\vec{y} +(x_a y_b - y_a x_b)\vec{z}$$
+<code>最终结果</code>也可写作 $\vec{a} \times \vec{b} =(y_a z_b - z_a y_b,  z_a x_b -x_a z_b ,  x_a y_b - y_a x_b )$ .</p>
+<h2 id="45-标准正交基与坐标系">4.5 标准正交基与坐标系</h2>
+<p><code>标准正交基</code>：在2D平面，有<strong>互相垂直</strong>的一组向量基 $\vec{u} ,\vec{v}$，且都为<strong>单位向量</strong>，即：
+$$\lVert \vec{u} \rVert =\lVert \vec{v} \rVert =1, \text{and, }\vec{u} \cdot \vec{v} =0$$
+如果是3D空间，则这组标准正交基$\vec{u}, \vec{v}, \vec{w}$满足：<br>
+$\text{(1)} \lVert \vec{u} \rVert =\lVert \vec{v} \rVert =\lVert \vec{w} \rVert =1$<br>
+$\text{(2)} \vec{u} \cdot \vec{v} =\vec{v} \cdot \vec{w} =\vec{w} \cdot \vec{u} =0$<br>
+$\text{(3)} \vec{w}=\vec{u} \times \vec{v} \text{   (右手坐标系)}$</p>
+<p>像这样的正交基 $\vec{u} ,\vec{v} , \vec{w}$有无数组，我们通常默认选用<code>直角坐标轴</code>的单位向量$\vec{x}, \vec{y}, \vec{z}$作为正交基，且原点为$O(0,0,0)$,这样的<code>正则坐标系</code>我们称为<code>世界坐标系</code>(world coordinate system)或<code>全局坐标系</code>(global coordinate system).</p>
+<p>有一个<strong>物体坐标系</strong>$u-v-w$ ,该坐标系中有个向量$\vec{a}$,如果要<code>转换为</code>在世界坐标系下的坐标,使用简单的<code>点乘</code> 即可得到，为 $u_a\vec{u} +v_a\vec{v} +w_a \vec{w}$.</p>
+<h2 id="46-单个向量构造向量基">4.6 单个向量构造向量基</h2>
+<p>设想较为常见的一种情形：<code>给定一个向量</code>$\vec{a}$,我们希望能<code>给出3个互相垂直的正交基</code>$\vec{u},\vec{v},\vec{w}$，要求$\vec{w}$和$\vec{a}$同向,并且不关注$\vec{u},\vec{v}$的具体指向。
+<strong>分为3步</strong>：</p>
+<ul>
+<li>取$\vec{a}$的单位向量为$\vec{w}$ ，即: $\vec{w} =\frac{\vec{a}}{\lVert \vec{a} \rVert}$</li>
+<li>任意取一个与$\vec{w}$不共线的向量$\vec{t}$, 两者<code>叉乘后单位化</code>得到$\vec{u}$，即 :   $\vec{u}=\frac{\vec{t} \times \vec{w}}{\lVert \vec{t} \times \vec{w} \rVert}$</li>
+<li>将上述得到的$\vec{w} ,\vec{u}$叉乘得到$\vec{v}$ ，即:   $\vec{v} =\vec{w} \times \vec{u}$</li>
+</ul>
+<p>书中提到这一场景适用于<code>表面着色</code>，因为法线方向很重要(垂直于表面),着色过程垂直于法线的表面向量无关紧要。</p>
+<h2 id="47-由两个向量构建向量基">4.7 由两个向量构建向量基</h2>
+<p>在某些场景需要用2个<code>不共线向量</code>来构建坐标系，比如给定<code>2个互相垂直</code>(perpendicular)的向量$\vec{a}$(指定$\vec{w}$) ,$\vec{b}$(指定$\vec{v}$),则直接叉乘得到第三个向量基$\vec{u}=\vec{b} \times \vec{a}.$</p>
+<p>或者，给定的$\vec{a},\vec{b}$并不是完全垂直，而是<code>近似垂直</code>,比如成$80^\circ$角，采用上一节的方法也可以得到最接近的解：
+$\vec{w} =\frac{\vec{a}}{\lVert \vec{a} \rVert}$,
+$\vec{u}=\frac{\vec{b} \times \vec{w}}{\lVert \vec{b} \times \vec{w} \rVert}$,
+$\vec{v} =\vec{w} \times \vec{u} \text{ ,(向量} \vec{v} \text{ 很接近} \vec{b})$ .</p>
+<p>获得图形学中相机的<code>Look-At</code>  矩阵/向量也可以采用这一方法，向量$\overrightarrow {direction}$是确定的$from$点到$to$点的向量，而$up$向量和$right$向量就看自己选择了(可以指定Right向量，再来确定Up向量)，这一点在<a href="https://learnopengl-cn.readthedocs.io/zh/latest/01%20Getting%20started/09%20Camera/" target="_blank" rel="noopener noreffer">LearnOpenGL-CN</a>中的<code>Camera</code>章节有相关内容。</p>
+<h2 id="48-摆正向量基">4.8 摆正向量基</h2>
+<p>某些场景下可能遇到这样的问题，由于浮点计算精度或者数据保存读取等原因，造成<code>向量基精度丢失</code>，向量基之间<code>不再那么垂直</code>，<strong>如何修正</strong>是个问题：</p>
+<p><strong>可以这样做</strong>：基于已有的$\vec{w}, \vec{v}$得到新的$\vec{u}$,然后再计算$\vec{u}$. 虽然得到了精确垂直的新向量基，但是，这并非最好的办法，因为新的向量基$\vec{w}, \vec{v},\vec{u}$和原向量基之间，这3者的<code>误差是不对等的</code>, $\vec{w}$误差最小，$\vec{u}$误差最大。</p>
+<p>在本书的第五章第<code>5.4.1</code> 节的<strong>奇异值分解</strong>可以很好的解决这一问题。</p>
+<hr>
+<h1 id="5-曲线与面">5 曲线与面</h1>
+<h2 id="51-2d隐式曲线">5.1 2D隐式曲线</h2>
+<p>先理解一下“<strong>隐式</strong>”:在我看来，隐式曲线就是隐函数来表示的曲线。<strong>隐函数</strong>，就是没法用$y=f(x)$来干净清晰的表示函数关系，而是转而使用类似方程$f(x,y)=0$的形式(例如开普勒方程$y-x-\epsilon \sin y=0$,$\epsilon$为常熟)。</p>
+<p>为人所熟知的隐式曲线必然是<strong>圆</strong>了，圆方程$f(x,y)=(x-x_c)^2 + (y-y_c)^2 -r^2$描绘了以$(x_c,y_c)$为圆心，$r$为半径的圆.
+对任意的点$(x,y)$值，都可以计算出$f(x,y)$的值，则有：<br>
+点在圆内：$f(x,y)&lt;0$;<br>
+点在圆曲线上：$f(x,y)=0$;<br>
+点在圆外：$f(x,y)&gt;0$;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/11/qAziwvrJltEY5jM.png"
+        data-srcset="https://s2.loli.net/2021/12/11/qAziwvrJltEY5jM.png, https://s2.loli.net/2021/12/11/qAziwvrJltEY5jM.png 1.5x, https://s2.loli.net/2021/12/11/qAziwvrJltEY5jM.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/11/qAziwvrJltEY5jM.png"
+        title="Chapter2-隐式曲线-圆" /></p>
+<p>从<strong>向量的角度理解</strong>，可以认为圆心$c$,圆上的点为$p$, 则向量$\overrightarrow{cp}$模长正好为圆半径$r$，即:$\lVert \overrightarrow{cp} \rVert =r$。
+从向量的角度来表示，比原来$x,y,z$之类的坐标表示更易懂，更能体现几何关系，也更不容易在写代码时犯错，尽可能用向量的形式来表示隐式关系。</p>
+<h2 id="52-2d梯度">5.2 2D梯度</h2>
+<p>假设函数$f(x,y)$是高度场的函数$height=f(x,y)$,那么<strong>梯度向量</strong>所指的方向就是指向<code>上坡最陡</code>的方向,或者说<code>函数值增长最快</code>的方向。一般是以<strong>偏微分</strong>的形式 $\nabla f(x,y)$ 给出：</p>
+<p>$$\nabla f(x,y)=(\frac {\partial f} {\partial x} \text{ ，}  \frac {\partial f} {\partial y} ) .$$</p>
+<p>so，偏微分复习：$\frac {\partial f} {\partial x} = lim_{\Delta x \to 0} \frac{f(x+\Delta x , y) - f(x,y)}{\Delta x}$</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/11/LIPWc8kxQsr1ogp.png"
+        data-srcset="https://s2.loli.net/2021/12/11/LIPWc8kxQsr1ogp.png, https://s2.loli.net/2021/12/11/LIPWc8kxQsr1ogp.png 1.5x, https://s2.loli.net/2021/12/11/LIPWc8kxQsr1ogp.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/11/LIPWc8kxQsr1ogp.png"
+        title="Chapter2-梯度向量.png" /></p>
+<p><strong>原文图注解</strong>：<code>A surface height = f(x,y) is locally planar near(x,y) = (a,b). The gradient is a projection of the uphill direction onto the height = 0 plane.</code></p>
+<p>如上图，对于二维曲线$f(x,y)=0$的点$p(x,y)$,则此时梯度向量垂直于该点的切向量，<code>梯度向量此时为法线向量</code>。</p>
+<p>换句话说，把二维曲线$f(x,y)=0$看作是三维曲面$f(x,y)=h$ 被$xoy$水平面截出的等高线，这样上山的<code>最陡路径投影在平面上</code>，正好就是二维曲线的<code>法向方向</code>.</p>
+<p>关于这一点，有位知乎答主做了很好的图文并茂的解释，深入理解可以移步$\implies$ <a href="https://zhuanlan.zhihu.com/p/62718992" target="_blank" rel="noopener noreffer">知乎: 形象理解“梯度”与“法向量”的关系</a>
+另外，因为梯度指向了上坡方向(uphill),所以指向的是$f(x,y)&gt;0$的区域。</p>
+<p>那么，<code>为什么梯度和偏微分有关系呢？</code><strong>下图中</strong>，假设在很微小的一个区域，$height=f(x,y)$是一块平面，且向量$\vec{a}$在这个$f$不变的区域移动了一小段距离，即$\vec{a}=(\Delta x,\Delta y)$.因为上坡方向(uphill)垂直于向量$\vec{a}$,即点积为0：</p>
+<p>$$(\nabla f)\cdot \vec{a} \equiv (x_\nabla,y_\nabla)\cdot(x_a,y_a)=x_\nabla \Delta x + y_\nabla \Delta y=0 \text{,    (式2.5.2-a) }$$</p>
+<p>同样地，我们知道$f$的值没有改变，即$\Delta f=0$:</p>
+<p>$$\Delta f = \frac {\partial f} {\partial x} \Delta x +  \frac {\partial f} {\partial y} \Delta y= \frac {\partial f} {\partial x} x_a +  \frac {\partial f} {\partial y} y_a =0$$</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/12/LueG8vJI5scorHO.png"
+        data-srcset="https://s2.loli.net/2021/12/12/LueG8vJI5scorHO.png, https://s2.loli.net/2021/12/12/LueG8vJI5scorHO.png 1.5x, https://s2.loli.net/2021/12/12/LueG8vJI5scorHO.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/12/LueG8vJI5scorHO.png"
+        title="Chapter2-梯度偏微分分析.png" /></p>
+<p>回顾向量知识，如果$(x,y)$ 和 $(x',y')$垂直，则$xx'+yy'=0$，(x',y')可以取值$(y,-x)$.
+那么:
+$$(x_a,y_a)=k(\frac{\partial f}{\partial y} , - \frac{\partial f}{\partial x}) \text{,    (式2.5.2-b) }$$
+根据式子2.5.2-a和2.5.2-b，可以得出:
+$$(x_\nabla, y_\nabla) = m(\frac{\partial f}{\partial x} ,  \frac{\partial f}{\partial y})  \text{,    (式2.5.2-c) }$$
+通常取k&gt;0,且m=1.</p>
+<hr>
+<ul>
+<li><strong>隐式2D直线</strong>(implicit 2D lines)</li>
+</ul>
+<p>考虑使用隐函数形式表达一条直线：$Ax+By+C=0$,这种一般形式包含了垂直于$x$轴没有斜率的情况。假设直线上存在两个<code>不同的点</code>$(x_0,y_0), (x_1,y_1)$，则:</p>
+<p>$$\begin{cases} Ax_0 + By_0+C =0 \\
+Ax_1 + By_1+C =0\\
+\end{cases}$$
+很明显，这是个<code>不定方程</code>。
+梯度为$\nabla f=(A,B)$, 又因为 $\nabla f$垂直于$(\Delta x, \Delta y)$, 则与 (式2.5.2-c)同理，可以令$\nabla f=(y_0 -y_1,x_1-x_0)$. 替换A，B，则有：
+$$(y_0 - y_1)x + (x_1 - x_0)y +C =0 \text{,    (式2.5.2-d)}$$
+对于(式2.5.2-d)，代入$(x_0,y_0)$，则有$C=x_0y_1 - x_1y_0$:
+$$(y_0 - y_1)x + (x_1 - x_0)y + x_0y_1 - x_1y_0=0$$
+那么写成<code>&quot;斜率-截距式&quot;</code>(slope-intercept):
+$$y =\frac{y_1 -y_0}{x_1-x_0}x + \frac{x_1y_0 - x_0y_1}{x_1-x_0}$$</p>
+<p>关于隐式表达式的另外一个有趣的属性是可以用来推算<code>点到直线的有向距离</code>，如下图，平行于直线的$f(x,y)$分布于$\pm$两侧。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/13/EhtUdpmPJD6Y34L.png"
+        data-srcset="https://s2.loli.net/2021/12/13/EhtUdpmPJD6Y34L.png, https://s2.loli.net/2021/12/13/EhtUdpmPJD6Y34L.png 1.5x, https://s2.loli.net/2021/12/13/EhtUdpmPJD6Y34L.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/13/EhtUdpmPJD6Y34L.png"
+        title="隐式直线.png" /></p>
+<p>直线之间的距离为梯度的长度，而梯度为<code>k(A,B)</code>，距离则为：
+$$distance =k \sqrt{A^2 + B^2}\text{,   (式2.5.2-e)}$$
+$Ax + By+C =0$直线上的点$(x_0,y_0)$,则该点的梯度方向有某点$(a,b)=(x_0,y_0)+k(A,B)$,带入计算：
+$$f(a,b)=f(x_0+kA,y_0+kB)=k(A^2 +B^2)\text{,   (式2.5.2-f)}$$
+综合 (式2.5.2-e), (式2.5.2-f)可知，点$(a,b)$到直线$Ax + By+C =0$的距离：
+$$distance=\frac{f(a,b)}{\sqrt{A^2 + B^2}}$$</p>
+<hr>
+<ul>
+<li><strong>隐式二次曲线</strong>(implicit quadric curves)
+对于隐式的2D二次曲线，一般形式可以写作如下：
+$$Ax^2 + Bxy + Cy^2 +Dx + Ey +F =0$$
+该形式包含了椭圆(ellipse)，双曲线(hyperbola)，抛物线(parabola).</li>
+</ul>
+<h2 id="53-3d隐式曲面">5.3 3D隐式曲面</h2>
+<p>和2D隐式曲线类似，3D隐式曲面的表达式记作：
+$$f(x,y,z)=0.$$
+对曲面上任意点$p(x,y,z)$，有$f(p)=0$.</p>
+<h2 id="54-隐式曲面的表面法线">5.4 隐式曲面的表面法线</h2>
+<p>和2D隐式曲线类似，3D隐式曲面上某点$p(x,y,z)$的法线正好就是该点的梯度:
+$$\vec{n}=\nabla f(p)=(\frac {\partial f(p)}{\partial x}, \frac {\partial f(p)}{\partial y} ,\frac {\partial f(p)}{\partial z})$$
+并且法线$\vec n$指向的方向为$f(q)&gt;0$的方向(点$q$不在曲面上).
+需要注意的是，$f(p)=0$和$-f(p)=0$虽然描述的是同一个曲面，但是法线/梯度方向正好相反：$-\nabla f(p) =\nabla(-f(p))$.</p>
+<h2 id="55-隐式平面">5.5 隐式平面</h2>
+<ul>
+<li>平面可以由一个已知的点$a$和已知的法线$\vec n$来描述
+对于平面上任意点$p$：
+$$(p-a) \cdot \vec n=0$$</li>
+<li>平面也可以由3个已知的点$a,b,c$来确定
+法线可以通过叉乘得到$\vec n=(b-a)\times (c-a)$，对于平面上任意点$p$：
+$$(p-a)\cdot ((b-a)\times (c-a))=0$$
+写成行列式(determinant)则如下：</li>
+</ul>
+<p>$$\begin{vmatrix}
+{ x-x_a}  &amp; {y-y_a} &amp; {z-z_a} \\
+{x_b-x_a}  &amp; {y_b-y_a} &amp; {z_b-z_a} \\
+{ x_c-x_a}  &amp; {y_c-y_a}  &amp; {z_c-z_a} \\
+\end{vmatrix}=0$$</p>
+<ul>
+<li><strong><code>3D二次曲面</code></strong>(3D quadric surfaces)
+2D曲线可以用二元二次多项式$(x,y)$来表示，类似地，3D曲面可以用三元二次多项式$(x,y,z)$来表示。
+对于一个球面：
+$$f(p)=(p-c)^2-r^2 =0$$
+对于一个椭球面(ellipsoid)：
+$$f(p)= \frac{(x-x_c)^2}{a^2} + \frac{(y-y_c)^2}{b^2} +\frac{(z-z_c)^2}{c^2} -1=0$$</li>
+<li><strong><code>由曲面构建曲线</code></strong>(3D curves from implicit surfaces)
+如果2个曲面相交，则得到了相交位置的曲线，该曲线的点$p$同时满足：
+$$
+\begin{cases}
+f(p)=0 ,\\
+g(p)=0 .\\
+\end{cases}$$</li>
+</ul>
+<h2 id="56-带参数的2d曲线">5.6 带参数的2D曲线</h2>
+<p>带参数的函数：是指<strong>自变量$x$和因变量$y$都采用参数$t$表达</strong>，点$(x,y)$的位置由$t$来决定，即：
+$$\begin{bmatrix} x \\ y \end{bmatrix} =\begin{bmatrix} g(t) \\ h(t) \end{bmatrix}.$$
+当$t$在连续的改变时，连续函数$g(t),h(t)$也在改变,即点$p(x,y)$在曲线上&quot;移动&quot;了,$t$可以看作是时间，不同$t$区间的(x,y)变化幅度不同，点移动时就会有&quot;速度&quot;的概念。</p>
+<p>带参数函数只看变量$t$的这一特性，给相关的程序编写也带来了很大的便利，只有一个函数入参，Cool.</p>
+<ul>
+<li><strong><code>带参数的2D直线</code></strong>(2D parametric lines)
+2D直线上有2个已知的点$p_0(x_0,y_0),p_1(x_1,y_1)$,那么该直线可表示为：
+$$\begin{bmatrix}
+x \\ y \end{bmatrix} =\begin{bmatrix} x_0+t(x_1-x_0) \\
+y_0+t(y_1-y_0)
+\end{bmatrix}.$$
+或者采用向量的概念：$p(t)=p_0+t(p_1-p_0)$</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/15/sg4PkIx1ZG7XJAY.png"
+        data-srcset="https://s2.loli.net/2021/12/15/sg4PkIx1ZG7XJAY.png, https://s2.loli.net/2021/12/15/sg4PkIx1ZG7XJAY.png 1.5x, https://s2.loli.net/2021/12/15/sg4PkIx1ZG7XJAY.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/15/sg4PkIx1ZG7XJAY.png"
+        title="Chapter2-带参数直线.png" /></p>
+<p>如上图，从几何角度理解为“<code>从p0出发前往p1,具体位置由参数t决定</code>”,且$p(0)=p_0,p(1)=p_1$。所以基于这一点，直线可以表示为从一个定点$origin$出发,移动$t$个单位向量$\vec u$，即：
+$$p(t)=origin + t \cdot \vec u$$
+而这种表示方法，在光线追踪计算时是<code>表示一条光线的绝佳形式</code>。</p>
+<ul>
+<li><strong><code>带参数的2D圆</code></strong>(2D parametric circles)
+一个以$(x_c,y_c)$为圆心,$r$为半径的<strong>圆</strong>，带参数形式可以写作：
+$$\begin{bmatrix}
+x \\ y \end{bmatrix} =\begin{bmatrix} x_c+ r \cos \Phi \\
+y_c+ r \sin \Phi
+\end{bmatrix}. \text{  (其中$\Phi \in [0,2 \pi)$)}$$
+而一个以$(x_c,y_c)$为椭圆中心,$a,b$为长轴、短轴的<strong>椭圆</strong>，带参数形式可以写作：
+$$\begin{bmatrix}
+x \\ y \end{bmatrix} =\begin{bmatrix} x_c+ a \cos \Phi \\
+y_c+ b \sin \Phi
+\end{bmatrix}. \text{  (其中$\Phi \in [0,2 \pi)$)}$$</li>
+</ul>
+<h2 id="57-带参数的3d曲线">5.7 带参数的3D曲线</h2>
+<p>带参数的3D曲线形式如下：
+$$\begin{cases}
+x=f(t) \\
+y=g(t)  \\
+z=h(t) \\
+\end{cases}$$
+例如，绕$z$轴的螺旋线如下：
+$$\begin{cases}
+x= \cos t \\
+y= \sin t  \\
+z=  t \\
+\end{cases}$$
+本章只阐述3D直线，不详细阐述3D曲线，而是在本书的第15章(<code>Chapter15.Curves</code>)详细阐述。</p>
+<ul>
+<li><strong><code>带参数的3D直线</code></strong>(3D parametric lines)
+带参数的3D直线可以记作向量的形式，举例如下：
+$$\begin{cases}
+x= 2+7t \\
+y= 1+2 t  \\
+z=  3-5t\\
+\end{cases} \quad
+\text{向量形式$\implies$}
+\begin{cases}
+origin=(2,1,3)\\
+\overrightarrow {dircetion}= (7,2,-5)  \\
+position = origin + t \cdot \overrightarrow {dircetion} \\
+\end{cases}$$</li>
+</ul>
+<h2 id="58-带参数的3d曲面">5.8 带参数的3D曲面</h2>
+<p>不同于2D曲面，只有一个参数$t$,3D曲面需要2个参数$u,v$，$x,y,z$都可以表示为$(u,v)$有关的带参数形式：</p>
+<p>$$\begin{cases}
+x= f(u,v) \\
+z= h(u,v) \\
+\end{cases} \quad
+\text{向量形式$\implies$}
+\begin{bmatrix} x \\ y \\ z
+\end{bmatrix}=p(u,v)$$
+<strong>举例</strong>：对于一个球面，给定的<code>已知半径</code>$r$，由经度角$\phi$，纬度角$\theta$这2个角度变化确认球面任意点：
+$$\begin{cases}
+x= r \cos \phi \sin \theta \\
+y= r \sin \phi \sin \theta \\
+z= r \cos \theta \\
+\end{cases} \quad
+\text {可以反推}
+\begin{cases}
+\theta= arccos(z / \sqrt{x^2 + y^2 +z^2}) \\
+\phi = atan2(y,x) \\
+\end{cases}$$
+<code>考虑一下曲面的法线呢？</code>
+首先定义函数$q(t)=p(t,v_0)$，此函数<strong>u自由变化且v值固定</strong>为$v_0$,这就定义了在曲面上的一条曲线，也叫“<code>等参曲线</code>”。(下图采用自AutoDesk工具ALIAS介绍，意义相近)
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/19/DZkKhLtuAXO92aC.png"
+        data-srcset="https://s2.loli.net/2021/12/19/DZkKhLtuAXO92aC.png, https://s2.loli.net/2021/12/19/DZkKhLtuAXO92aC.png 1.5x, https://s2.loli.net/2021/12/19/DZkKhLtuAXO92aC.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/19/DZkKhLtuAXO92aC.png"
+        title="Chapter2-等参曲线AutoDesk参考2.png" /></p>
+<p>则q的导数$q'$和曲面相切，$q'$为P的偏微分$P_u$，同样地，还可以得到第二条切线$P_v$，那么该点的法线$\vec n$指向曲面外，且同时垂直于这2条曲面切线：
+$$\vec n = \overrightarrow P_u \times \overrightarrow P_v$$</p>
+<hr>
+<h1 id="6-线性插值">6 线性插值</h1>
+<p>线性插值可能是图形学中最为常见的思想和计算操作了，回顾我们之前的带参数的2D直线，$p(t)=p_0+t(p_1-p_0)$，即$p(t)=(1-t)\cdot p_0+t \cdot p_1$,其实可以认为是在点$p_0,p_1$之间线性插值，权重为$t$.</p>
+<p>更通用的一种情形，有$n+1$个散点，对应的$x$坐标$x_0,x_1 &hellip; x_{n-1},x_n$,对应的y值为$y_0,y_1 &hellip; y_{n-1},y_n$,此时想得到一条<code>连续的函数</code>$f(x)$,就可以通过在<code>相邻的散点插值</code>得到：</p>
+<p>$$f(x)=y_i+\frac{x-x_i}{x_{i+1}-x_i}(y_{i+1}-y_i) \text {,(此时的$t=\frac{x-x_i}{x_{i+1}-x_i}$)}$$</p>
+<hr>
+<h1 id="7-三角形">7 三角形</h1>
+<p>无论是2D三角形还是3D三角形，都是各种图形学程序中的基础模型图元(modeling primitive)。比如三角形的Color图元，只有3个顶点(Vertex)有Color值，三角形内的其他值则通过插值方法得到，通常直接采用<code>重心坐标插值</code>(barycentric coordinates)。</p>
+<p>本节将分别讨论2D和3D三角形。</p>
+<h2 id="71-2d三角形">7.1 2D三角形</h2>
+<p>对于一个2D三角形，三个顶点为$a,b,c$，则可以立马通过<code>向量叉乘</code>($S=\frac {1}{2} \vec{ab} \times \vec{ac}$)得到它的<strong>面积</strong>：
+$$S = \frac {1}{2}
+\left |
+\begin{array}{ccc}
+x_b-x_a    &amp; x_c-x_a\\
+y_b-y_a  &amp; y_c-y_a \\
+\end{array}
+\right |= \frac {1}{2}(x_a y_b+x_b y_c+x_c y_c-x_a y_c-x_b y_a-x_c y_b)$$
+(该公式的推导可以参考本书章节$Chapter5.Linear Algebra-5.3$.注意,考虑到叉乘的方向性，$a,b,c$三个点要成逆时针排列，否则得到面积的相反数.)
+三角形的坐标插值，基本原理还是来自于平行四边形规则的向量合成，<code>即使2个向量不平行，同样可以作为向量基</code>。
+首先，对于三角形<strong>所在平面内的任意点</strong>$p$,满足：
+$$p=a+\beta \vec{ab} + \gamma \vec{ac}=a+\beta (b-a) + \gamma (c-a)=(1-\beta -\gamma)a+\beta b+\gamma c$$
+为方便计算书写，令$\alpha \equiv 1-\beta -\gamma$,则$p(\alpha,\beta,\gamma)=\alpha a + \beta b +\gamma c.$
+注意，点$p$位于<code>三角形内部</code>的充要条件为: $\alpha, \beta,\gamma \in (0,1)$.
+回顾2.5.2节隐式2D直线的内容，平行于直线$f(x,y)=0$的其他直线的函数值$f(x,y)$大于或小于0，分布于$f(x,y)=0$的两侧。如下图所示，我们规定$f_{ac}(x,y)=0$,且点b所在平行线$f_{ac}(x,y)_{\beta}=1$.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/19/iqKwUxBXaGIbrcF.png"
+        data-srcset="https://s2.loli.net/2021/12/19/iqKwUxBXaGIbrcF.png, https://s2.loli.net/2021/12/19/iqKwUxBXaGIbrcF.png 1.5x, https://s2.loli.net/2021/12/19/iqKwUxBXaGIbrcF.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/19/iqKwUxBXaGIbrcF.png"
+        title="Chapter2-三角形插值.png" /></p>
+<p>那么在线段$ab$上的点$(x,y)$，$\beta$值为：
+$$\beta=\frac{f_{ac}(x,y)}{f_{ac}(x_b,y_b)}$$
+基于隐式2D直线章节的内容，ab直线可表示为：
+$f_{ab}(x,y)\equiv (y_a -y_b)x +(x_b-x_a)y + x_a y_b -x_b y_a=0$.
+则相对应的$\gamma$值为：
+$$\gamma =\frac {(y_a -y_b)x +(x_b-x_a)y + x_a y_b -x_b y_a}{(y_a -y_b)x_c +(x_b-x_a)y_c + x_a y_b -x_b y_a}$$
+同理，可计算得到点b对应的$\beta$值,最后$\alpha=1-\beta -\gamma$.
+值得注意的是，$\alpha,\beta,\gamma$值表征的是$f(x,y)的值，隐式地表征$<code>点p到各条边的距离</code>，所以，点p和三个顶点行成的3个<code>小三角形和大三角形的比值</code>其实就是$\alpha,\beta,\gamma$,即如下图所示：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://s2.loli.net/2021/12/19/5nKPVWDadL9wCEN.png"
+        data-srcset="https://s2.loli.net/2021/12/19/5nKPVWDadL9wCEN.png, https://s2.loli.net/2021/12/19/5nKPVWDadL9wCEN.png 1.5x, https://s2.loli.net/2021/12/19/5nKPVWDadL9wCEN.png 2x"
+        data-sizes="auto"
+        alt="https://s2.loli.net/2021/12/19/5nKPVWDadL9wCEN.png"
+        title="Chapter2-三角形插值和面积比例.png" /></p>
+<h2 id="72-3d三角形">7.2 3D三角形</h2>
+<p>对于上一节得到的2D三角形插值公式完全适用于3D三角形$abc$,同样有：
+$$p=(1-\beta -\gamma)a+\beta b+\gamma c$$
+三角形$abc$，三条边对应3个比例$\alpha,\beta,\gamma$,则对于三角形内任意点$p$:
+$$\alpha =\frac{Area_{pbc}}{Area_{abc}}=\frac{\lVert (c-b)\times(p-b) \rVert} {\lVert (b-a)\times(c-a) \rVert}$$
+令$\vec n=(b-a)\times(c-a)$,$\vec n_a =(c-b)\times(p-b)$，因为<code>两者平行且同向</code>($\vec n \cdot \vec n_a=||\vec n|| \cdot ||\vec n_a||$),则上式可化简：</p>
+<p>$$\alpha =\frac{\lVert \vec n_a  \rVert}{\lVert \vec n  \rVert }= \frac{\lVert \vec n_a  \rVert \cdot \lVert \vec n  \rVert }{\lVert \vec n  \rVert \cdot \lVert \vec n  \rVert } =\frac{\vec n  \cdot \vec  n_a }{ { \lVert \vec n \rVert }^2 }$$</p>
+<p>同理可得$\beta, \gamma$的值：</p>
+<p>$$\beta =\frac{\vec n \cdot \vec n_b}{ {\lVert \vec n \rVert }^2}$$
+$$\gamma =\frac{\vec n \cdot \vec n_c}{ {\lVert \vec n \rVert }^2}$$</p>
+<p>其中，$n_b =(a-c)\times(p-c)$，$n_c =(b-a)\times(p-a)$.
+$$\text{&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Chapter2(完结) @2021-12-19 &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;}$$</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-30&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/63bfb6afc0dfb8b19fcb7c813a507c461e07f3e8" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 63bfb6afc0dfb8b19fcb7c813a507c461e07f3e8: 完善shell脚本，并修复1~9md文件名">
+                                    <i class="fas fa-hashtag fa-fw"></i>63bfb6a</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)" data-hashtags="图形学基础,图形渲染,英文原本"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-hashtag="图形学基础"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)" data-image="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)" data-description="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)" data-description="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" data-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80/">图形学基础</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a>,&nbsp;<a href="/tags/%E8%8B%B1%E6%96%87%E5%8E%9F%E6%9C%AC/">英文原本</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2021/12/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/" class="prev" rel="prev" title="MetalGuide(3)着色器程序与库"><i class="fas fa-angle-left fa-fw"></i>MetalGuide(3)着色器程序与库</a>
+            <a href="/2022/01/08_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/" class="next" rel="next" title="常用Git命令行总结">常用Git命令行总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.91.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"欢迎评论...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

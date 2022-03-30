@@ -4,7 +4,16 @@
         <link>https://kissingfire123.github.io/posts/</link>
         <description>所有文章 | Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 20 Feb 2022 22:34:53 &#43;0800</lastBuildDate><atom:link href="https://kissingfire123.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Mon, 07 Mar 2022 15:40:45 &#43;0800</lastBuildDate><atom:link href="https://kissingfire123.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Shell脚本实用技巧小结</title>
+    <link>https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
+    <pubDate>Mon, 07 Mar 2022 15:40:45 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
+            </div>摘要：讨论Shell脚本编写时用到的一些常用&实用技巧]]></description>
+</item><item>
     <title>常用数学公式排版KaTex语法总结</title>
     <link>https://kissingfire123.github.io/2022/02/18_%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8Fkatex%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sun, 20 Feb 2022 22:34:53 &#43;0800</pubDate>
@@ -13,15 +22,6 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Script-Pic/Katex-Project.webp" referrerpolicy="no-referrer">
             </div>摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法]]></description>
-</item><item>
-    <title>Shell脚本实用技巧小结</title>
-    <link>https://kissingfire123.github.io/2022/02/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
-    <pubDate>Thu, 17 Feb 2022 15:40:45 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2022/02/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
-            </div>摘要：讨论Shell脚本编写时用到的一些常用&实用技巧]]></description>
 </item><item>
     <title>Effective C&#43;&#43;(第三版)精读总结(三)</title>
     <link>https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/</link>
@@ -51,46 +51,46 @@
             </div>摘要：对常用的markdown语法(基本语法+扩展语法)做个总结概述，备忘查询]]></description>
 </item><item>
     <title>Fundamentals of Computer Graphics第3章总结_(光栅化)</title>
-    <link>https://kissingfire123.github.io/2022/01/9_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/</link>
+    <link>https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/</link>
     <pubDate>Mon, 10 Jan 2022 22:41:32 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://kissingfire123.github.io/2022/01/9_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/</guid>
+    <guid>https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter3.webp" referrerpolicy="no-referrer">
             </div>摘要：Fundamentals of Computer Graphics第四版，原书第3章Raster Image的总结]]></description>
 </item><item>
     <title>常用Git命令行总结</title>
-    <link>https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/</link>
+    <link>https://kissingfire123.github.io/2022/01/08_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sun, 02 Jan 2022 10:50:54 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://kissingfire123.github.io/2022/01/8_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/</guid>
+    <guid>https://kissingfire123.github.io/2022/01/08_git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%80%BB%E7%BB%93/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Script-Pic/git-flow.webp" referrerpolicy="no-referrer">
             </div>摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你]]></description>
 </item><item>
     <title>Fundamentals of Computer Graphics第2章总结_(杂项数学)</title>
-    <link>https://kissingfire123.github.io/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</link>
+    <link>https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</link>
     <pubDate>Mon, 27 Dec 2021 00:00:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://kissingfire123.github.io/2021/12/7_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</guid>
+    <guid>https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/FoundamentasOfCG-Pic/Foundamentals-of-computer-graphics_Chapter2.webp" referrerpolicy="no-referrer">
             </div>摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结]]></description>
 </item><item>
     <title>MetalGuide(3)着色器程序与库</title>
-    <link>https://kissingfire123.github.io/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</link>
+    <link>https://kissingfire123.github.io/2021/12/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</link>
     <pubDate>Sun, 26 Dec 2021 00:00:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://kissingfire123.github.io/2021/12/4_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</guid>
+    <guid>https://kissingfire123.github.io/2021/12/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-wallhaven-Part3.webp" referrerpolicy="no-referrer">
             </div>摘要：Metal官方文档MetalGuide系列第三部分 -> Metal有关的Shader着色器程序,以及MetalLib库文件的生成与使用]]></description>
 </item><item>
     <title>MetalGuide(2)资源与对象</title>
-    <link>https://kissingfire123.github.io/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link>
+    <link>https://kissingfire123.github.io/2021/12/03_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link>
     <pubDate>Sat, 25 Dec 2021 00:00:00 &#43;0000</pubDate>
     <author>作者</author>
-    <guid>https://kissingfire123.github.io/2021/12/3_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid>
+    <guid>https://kissingfire123.github.io/2021/12/03_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-plane-Part2.webp" referrerpolicy="no-referrer">
             </div>摘要：Metal官方文档MetalGuide系列第二部分 -> Metal资源与对象，即纹理Texture和Buffer]]></description>
