@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-07T15:40:45+08:00" />
-<meta property="article:modified_time" content="2022-04-01T22:47:40+08:00" />
+<meta property="article:modified_time" content="2022-05-04T23:24:11+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Shell脚本实用技巧小结"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/03\/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7\/"
-        },"genre": "posts","keywords": "shell脚本, unix","wordcount":  6640 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/03\/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7\/","datePublished": "2022-03-07T15:40:45+08:00","dateModified": "2022-04-01T22:47:40+08:00","publisher": {
+        },"genre": "posts","keywords": "shell脚本, unix","wordcount":  7057 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/03\/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7\/","datePublished": "2022-03-07T15:40:45+08:00","dateModified": "2022-05-04T23:24:11+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -117,8 +117,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Shell脚本实用技巧小结</h1><h2 class="single-subtitle">不够全面，但主要针对于日常工作常用的细节&amp;技巧</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-07">2022-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6640 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="leancloud_visitors" data-flag-title="Shell脚本实用技巧小结">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-07">2022-03-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7057 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 15 分钟&nbsp;<span id="/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="leancloud_visitors" data-flag-title="Shell脚本实用技巧小结">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -560,7 +560,7 @@ chsh -s /bin/zsh
 <span class="c1"># 在build结束后输出:   114.75s user 10.32s system 423% cpu 29.552 total</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>具体time指令的用法，可以参考：[菜鸟教程：time指令 ](./build.sh 114.75s user 10.32s system 423% cpu 29.552 total)</p>
+</div><p>具体time指令的用法，可以参考：<a href="https://www.runoob.com/linux/linux-comm-time.html" target="_blank" rel="noopener noreffer">菜鸟教程：time指令 </a></p>
 <h2 id="脚本内计时">脚本内计时</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1028,17 +1028,62 @@ subStr2 is https://kissingfire123.github.io/2哈哈2/哈哈/14_Shell语法小结
 </div>
 </div><p>⚠️：match_str可以为<strong>正则表达式</strong>，留待下节讲述。</p>
 <h2 id="字符串正则">字符串正则</h2>
-<p>字符串的正则表达式主要用于2处，一处为字符串<strong>比较判断</strong>，另一处为字符串的<strong>正则匹配后替换</strong>。</p>
+<p>正则表达式，用于<strong>模糊查找匹配</strong> ，本身比较复杂，但掌握后受益良多，详细可参考<a href="https://www.runoob.com/regexp/regexp-tutorial.html" target="_blank" rel="noopener noreffer">菜鸟教程：正则表达式</a>。 Shell 字符串的正则表达式主要用于2处，一处为字符串<strong>比较判断</strong>，另一处为字符串的<strong>正则匹配后替换</strong>。</p>
+<p>Shell 脚本中应用正则表达式的几个常用命令为 <code>grep</code> 、<code>sed</code> 、 <code>cut</code>、 <code>awk</code> ，需要注意的是，具体命令支持的正则功能范围可能是不同的。</p>
 <ul>
 <li>
 <p><strong>正则比较判断</strong></p>
+<p>正则比较判断的比较符号是 <code>=~</code> ，使用原始字符串和匹配正则pattern进行匹配，如果成功匹配返回1，失败返回0，常用于判断字符类型(比如时间、电话号、版本类型等)。关于 if 语句针对 =~ 的应用，可参考<a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Conditional-Constructs" target="_blank" rel="noopener noreffer">GNU-Bash参考手册: 条件表达式</a> 。</p>
 </li>
 <li>
 <p><strong>正则字符替换</strong></p>
+<p>在 sed 指令中使用频繁，在 vim 指令中也可以发挥用武之地，此处不赘述。</p>
 </li>
 </ul>
-<h1 id="多行注释">多行注释</h1>
-<p>多行注释有以下<strong>2种方法</strong>可以做到。</p>
+<p>下方代码使用 if 表达式 和 grep 简单示范上述2者的用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">fullVimStr</span><span class="o">=</span><span class="sb">`</span>vim --version <span class="p">|</span> grep IMproved<span class="sb">`</span> <span class="c1"># 提取Vim版本号的关键行</span>
+<span class="nb">echo</span> fullVimStr is <span class="si">${</span><span class="nv">fullVimStr</span><span class="si">}</span> 
+
+<span class="nv">pattern</span><span class="o">=</span>^.*<span class="o">[</span>0-9<span class="o">]</span><span class="se">\.</span><span class="o">[</span>0-9<span class="o">]</span>.*$  <span class="c1"># 此处正则表达式可以用单引号&#39; 包裹，也可以不用</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$fullVimStr</span> <span class="o">=</span>~ <span class="nv">$pattern</span> <span class="o">]]</span> <span class="p">;</span> <span class="k">then</span>  
+    <span class="nb">echo</span> -e <span class="s2">&#34;match Ok:match a valid version !&#34;</span>
+    <span class="nv">numPattern</span><span class="o">=</span><span class="s1">&#39;[0-9]\.[0-9]&#39;</span>
+    <span class="nv">versionNum</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$fullVimStr</span> <span class="p">|</span> grep -P <span class="nv">$numPattern</span> -o <span class="sb">`</span>
+    <span class="nb">echo</span> <span class="s2">&#34;split Ok: versionNum is </span><span class="nv">$versionNum</span><span class="s2">&#34;</span>
+<span class="k">fi</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述脚本执行后输出如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">fullVimStr is VIM - Vi IMproved 8.2 (2019 Dec 12, compiled Jun 1 2020 06:42:35)
+match Ok:match a valid version !
+split Ok: versionNum is 8.2
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="多行注释">多行注释</h1>
+<p>多行注释有以下<strong>2种方法</strong>可以做到 👇</p>
 <h2 id="空命令接收注释行">空命令接收注释行</h2>
 <p>用 <code>“:&lt;&lt;任意字符与数字</code>” + <code>&quot;相同字符与数字&quot;</code>将需要注释的多行内容包裹起来即可。注意，这个字符尽量不要取单引号，双引号，以免和注释内容中的引号提前匹配。</p>
 <p>下方代码取字符为&quot;EOF&quot;，其实换成其他的，比如&quot;Comment&quot;也是一样的。</p>
@@ -1169,8 +1214,9 @@ A<span class="o">[</span>2<span class="o">]=</span>xyzw
 <blockquote>
 <p>参考链接：</p>
 <p><a href="https://www.runoob.com/linux/linux-shell-passing-arguments.html" target="_blank" rel="noopener noreffer">菜鸟教程：Shell传递参数</a></p>
-<p><a href="http://c.biancheng.net/view/1120.html" target="_blank" rel="noopener noreffer">C语言中文网：Shell字符串阶段</a></p>
+<p><a href="http://c.biancheng.net/view/1120.html" target="_blank" rel="noopener noreffer">C语言中文网：Shell字符串截断</a></p>
 <p><a href="https://cloud.tencent.com/developer/article/1914083" target="_blank" rel="noopener noreffer">腾讯云：Shell正则遇到的问题</a></p>
+<p><a href="https://blog.csdn.net/RadiantJeral/article/details/105209663" target="_blank" rel="noopener noreffer">CSDN：Shell正则表达式</a></p>
 <p><a href="https://www.cnblogs.com/damahuhu/p/11694054.html" target="_blank" rel="noopener noreffer">博客园：Shell 多行注释</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/54494213" target="_blank" rel="noopener noreffer">知乎：Shell 实现多行注释的几种常用方法</a></p>
 <p><a href="https://mp.weixin.qq.com/s/pnXyj7jhfASBwC72ESdosQ" target="_blank" rel="noopener noreffer">Linux科技：你应该知道的Shell十三问</a></p>
@@ -1178,8 +1224,8 @@ A<span class="o">[</span>2<span class="o">]=</span>xyzw
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-04-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1df0b60c072a83ecd129ea39995381056df5dd14" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 1df0b60c072a83ecd129ea39995381056df5dd14: 整理了文件夹，准确分类，方便管理">
-                                    <i class="fas fa-hashtag fa-fw"></i>1df0b60</a></span>
+                <span>更新于 2022-05-04&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/5b56b99650384caccf2e2c9752dc2b988e22fa93" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 5b56b99650384caccf2e2c9752dc2b988e22fa93: 完善effective-c&#43;&#43;(4)至Rule47">
+                                    <i class="fas fa-hashtag fa-fw"></i>5b56b99</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1239,7 +1285,7 @@ A<span class="o">[</span>2<span class="o">]=</span>xyzw
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 84438 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 84855 字 </span>
             </div>
 
             <div class="footer-line">
