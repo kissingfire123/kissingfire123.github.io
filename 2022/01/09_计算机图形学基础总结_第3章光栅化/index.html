@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-10T22:41:32+08:00" />
-<meta property="article:modified_time" content="2022-04-01T22:47:40+08:00" />
+<meta property="article:modified_time" content="2022-06-12T16:22:40+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fundamentals of Computer Graphics第3章总结_(光栅化)"/>
@@ -26,7 +26,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96\/"
         },"genre": "posts","keywords": "图形渲染, 英文原本","wordcount":  4169 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96\/","datePublished": "2022-01-10T22:41:32+08:00","dateModified": "2022-04-01T22:47:40+08:00","publisher": {
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96\/","datePublished": "2022-01-10T22:41:32+08:00","dateModified": "2022-06-12T16:22:40+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -189,22 +189,22 @@
 <p>自发光式的<code>LED二极管显示器</code>，通过控制阳极、阴极的电流强度来控制是否发光，以及发光的强度。</p>
 <p>每个像素，都由若干个子像素组成，子像素通常是由RGB这3原色构成，示意图如下：</p>
 <div align=center>
-<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FCG-Chapter3-LED.webp">
+<img src="/imgBed/FCG-Chapter3-LED.webp">
 </div>
 <p>而透射式的<code>LCD液晶显示器</code>则需要其他的光源照亮它，也就是俗称的“背光”。</p>
 <p>具体原理是当光透过<code>偏光片1--&gt;液晶板--&gt;偏光片2</code>这样的结构时，中间的液晶块是可以旋转光的偏振方向的(也叫<em>极化方向</em> )。加载的电压不同，旋转的角度不同，最后通过偏光片2的光量就可控了（偏振方向平行于偏光片可全部通过，垂直则全部不通过）。下方示意图是旋转了90度，全部通过的情况：</p>
 <div align=center>
-<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FCG-Chapter3-LCD.webp">
+<img src="/imgBed/FCG-Chapter3-LCD.webp">
 </div>
 不论是LED还是LCD，成型后，都是由固定尺寸的像素阵列组成的，也就有了固定的分辨率。比如形容一块显示器为1920*1080，是指宽度方向有1920个像素点，高度方向有1080个像素点。
 <h2 id="12-硬拷贝">1.2 硬拷贝</h2>
 <p>常见的<code>喷墨式打印机</code>如下图，打印喷头来回扫描移动，在特定的位置喷洒颜料，只能打印二值图像（all-or-nothing，某个点着色与否，没有中间态）。分辨率（清晰度）取决于喷墨的颜料颗粒大小和纸张移动的精细程度。</p>
 <div align=center>
-<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FoCG-Ch3-ink-jet.webp" alt="FoCG-Ch3-ink-jet.webp" >
+<img src="/imgBed/FoCG-Ch3-ink-jet.webp" alt="FoCG-Ch3-ink-jet.webp" >
 </div>
 <p>常见的<code>热染料打印机</code>如下图，打印头加热燃料升华，附着在打印纸上，因为打印喷头输出的热量是线性连续的，打印的图像可以有颜色深浅区分了（即continuous tone）。打印的分辨率取决于&quot;<em>加热-升华-附着</em> &ldquo;这一过程和打印纸移动速度的比值。</p>
 <div align=center>
-<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/FoCG-Ch3-dye-printer.webp" alt="FoCG-Ch3-dye-printer.webp" >
+<img src="/imgBed/FoCG-Ch3-dye-printer.webp" alt="FoCG-Ch3-dye-printer.webp" >
 </div>
 关于打印机的分辨率，理解2个概念：
 <ul>
@@ -228,7 +228,7 @@ $$
 <p>一个像素，反映的其实是这个点附近一小块区域的RGB颜色平均值。</p>
 <p>如果一张图的尺寸为$n_x$列和$n_y$行，那么起始点坐标为 $(0,0)$，比如左下角为起始点（不同的API的纹理起始点不同，可能是左上角/左下角），右上角坐标为$(n_x -1,n_y -1)$。例如下图为$n_x = 4,n_y = 3$ :</p>
 <div align =center>
-<img  src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Chapter3-像素与坐标.webp" 
+<img  src="/imgBed/Chapter3-像素与坐标.webp" 
      alt="Chapter3-像素坐标"/>
 </div>
 <p>图像区域内的点坐标的<code>定义域 x 值域</code>为：</p>
@@ -295,7 +295,7 @@ $$
 <p>即可求得$\gamma$值。</p>
 <p>下方就是“半灰度测试”，左图为黑白棋盘格，其实就是0.5亮度参考，右图pixel-value，直到和左图发出的光强基本一致(这个观察通常要距离远一点，棋盘格看起来是全灰图)，记录此时的像素值$\alpha$。</p>
 <div align =center>
-<img  src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Chapter3-halfway gray test.png" 
+<img  src="/imgBed/Chapter3-halfway gray test.png" 
      alt="Chapter3-halfway gray test"/>
 </div>
 <p>得到了$\gamma$值后，就需要&quot;<code>gamma校正</code>&ldquo;了，要让“输入pixel &ndash;&gt; 显示强度”之间看起来是线性的。</p>
@@ -364,7 +364,7 @@ $$
 </table>
 <p>理论上不同的$(r,g,b)$取值组合可以得到所有的RGB颜色，也一定处于下方RGB颜色立方内的某一点（右图为RGB立方的六面展开图）：</p>
 <div align =center>
-<img  src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/Chapter3-RGB-颜色立方.png" 
+<img  src="/imgBed/Chapter3-RGB-颜色立方.png" 
      alt="Chapter3-RGB-颜色立方.png"/>
 </div>
 <hr>
@@ -412,8 +412,8 @@ $$
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-04-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1df0b60c072a83ecd129ea39995381056df5dd14" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 1df0b60c072a83ecd129ea39995381056df5dd14: 整理了文件夹，准确分类，方便管理">
-                                    <i class="fas fa-hashtag fa-fw"></i>1df0b60</a></span>
+                <span>更新于 2022-06-12&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/959fe7eb955f13e24eaf286c727562dd0b74fbe0" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 959fe7eb955f13e24eaf286c727562dd0b74fbe0: gitee图床无法使用，暂时全部放到本站内">
+                                    <i class="fas fa-hashtag fa-fw"></i>959fe7e</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

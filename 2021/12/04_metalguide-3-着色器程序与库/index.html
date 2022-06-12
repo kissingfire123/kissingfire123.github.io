@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-26T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-10T16:44:24+08:00" />
+<meta property="article:modified_time" content="2022-06-12T16:22:40+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MetalGuide(3)着色器程序与库"/>
@@ -26,7 +26,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93\/"
         },"genre": "posts","keywords": "Metal, 图形渲染","wordcount":  1936 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93\/","datePublished": "2021-12-26T00:00:00+00:00","dateModified": "2022-04-10T16:44:24+08:00","publisher": {
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/04_metalguide-3-%E7%9D%80%E8%89%B2%E5%99%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%BA%93\/","datePublished": "2021-12-26T00:00:00+00:00","dateModified": "2022-06-12T16:22:40+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -171,7 +171,7 @@ MTLFunction对象，最后返回一个包含这些MTLFunction对象的MTLLibrary
 <p>​     一个MTLFunction对象被定义为图形shader程序或是并行计算程序，它的实质内容在这个对象被创建前
 就编译好了，而且shader程序的源代码不能直接被app使用.不过，可以在运行时查询下面的MTLFunction属性：</p>
 <div align = center>
-<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/MetalGuide-3-Pic1-MTLFunction.drawio.webp">
+<img src="/imgBed/MetalGuide-3-Pic1-MTLFunction.drawio.webp">
 </div>
 <h2 id="22-相关的reflection对象">2.2 相关的Reflection对象</h2>
 <p>​     <code>MTLFunction</code>不提供访问shader程序参数的方法。但在pipeline state创建过程中，可以获得用于展示shader程序参数细节reflection对象(根据command encoder的类型不同， reflection对象分为<code>MTLRenderPipelineReflection</code>类型或
@@ -186,7 +186,7 @@ MTLFunction对象，最后返回一个包含这些MTLFunction对象的MTLLibrary
 <h2 id="23-mtlargument对象">2.3 MTLArgument对象</h2>
 <p>​	MTLArgument类型对象表示一个shader程序方法的入参细节：</p>
 <div align = center>
-<img src="https://gitee.com/kissingfire123/markdown-picture/raw/master/img/MetalGuide-3-Pic2-MTLArgument.drawio.webp" >
+<img src="/imgBed/MetalGuide-3-Pic2-MTLArgument.drawio.webp" >
 </div>
 <p>​    上述的属性type还决定了哪些其他MTLArgument属性是相关的，type类型不同，相关的属性也有所区别：</p>
 <ul>
@@ -209,8 +209,8 @@ bufferStructType这几个属性相关 。</li>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-04-10&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/e353ac63a20710629ba9a191ecba5dd53301cad5" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) e353ac63a20710629ba9a191ecba5dd53301cad5: &lt;published&gt; 新增友链墙,图床全部切换为gitee的webp">
-                                    <i class="fas fa-hashtag fa-fw"></i>e353ac6</a></span>
+                <span>更新于 2022-06-12&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/959fe7eb955f13e24eaf286c727562dd0b74fbe0" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 959fe7eb955f13e24eaf286c727562dd0b74fbe0: gitee图床无法使用，暂时全部放到本站内">
+                                    <i class="fas fa-hashtag fa-fw"></i>959fe7e</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
