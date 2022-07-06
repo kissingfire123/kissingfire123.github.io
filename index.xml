@@ -4,9 +4,18 @@
         <link>https://kissingfire123.github.io/</link>
         <description>Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Mon, 07 Mar 2022 15:40:45 &#43;0800</lastBuildDate>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Fri, 20 May 2022 22:34:53 &#43;0800</lastBuildDate>
             <atom:link href="https://kissingfire123.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Effective C&#43;&#43;(第3版)精读总结(四)</title>
+    <link>https://kissingfire123.github.io/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/</link>
+    <pubDate>Fri, 20 May 2022 22:34:53 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part4.webp" referrerpolicy="no-referrer">
+            </div>摘要：Effective C++(第三版)内容第七、第八章的总结]]></description>
+</item><item>
     <title>Shell脚本实用技巧小结</title>
     <link>https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</link>
     <pubDate>Mon, 07 Mar 2022 15:40:45 &#43;0800</pubDate>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Metal-Pic/Metal-wallhaven-Part3.webp" referrerpolicy="no-referrer">
             </div>摘要：Metal官方文档MetalGuide系列第三部分 -> Metal有关的Shader着色器程序,以及MetalLib库文件的生成与使用]]></description>
-</item><item>
-    <title>MetalGuide(2)资源与对象</title>
-    <link>https://kissingfire123.github.io/2021/12/03_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</link>
-    <pubDate>Sat, 25 Dec 2021 00:00:00 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2021/12/03_metalguide-2-%E8%B5%84%E6%BA%90%E4%B8%8E%E5%AF%B9%E8%B1%A1/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/Metal-Pic/Metal-plane-Part2.webp" referrerpolicy="no-referrer">
-            </div>摘要：Metal官方文档MetalGuide系列第二部分 -> Metal资源与对象，即纹理Texture和Buffer]]></description>
 </item></channel>
 </rss>
