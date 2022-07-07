@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-20T22:34:53+08:00" />
-<meta property="article:modified_time" content="2022-07-06T23:26:20+08:00" />
+<meta property="article:modified_time" content="2022-07-07T14:32:15+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective C&#43;&#43;(第3版)精读总结(四)"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/05\/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B\/"
-        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  10823 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B\/","datePublished": "2022-05-20T22:34:53+08:00","dateModified": "2022-07-06T23:26:20+08:00","publisher": {
+        },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  10590 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B\/","datePublished": "2022-05-20T22:34:53+08:00","dateModified": "2022-07-07T14:32:15+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -117,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Effective C&#43;&#43;(第3版)精读总结(四)</h1><h2 class="single-subtitle">改善程序与设计的55个具体做法(Rule41-55)</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"><i class="far fa-folder fa-fw"></i>程序设计</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-20">2022-05-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10823 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-20">2022-05-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10590 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 22 分钟&nbsp;<span id="/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" class="leancloud_visitors" data-flag-title="Effective C&#43;&#43;(第3版)精读总结(四)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -138,7 +138,7 @@
     <li><a href="#前言">前言</a></li>
     <li><a href="#ch7-模板与泛型编程">CH7 模板与泛型编程</a>
       <ul>
-        <li><a href="#R41">R41 了解隐式接口和编译器多态</a></li>
+        <li><a href="#R41">R41 了解隐式接口和编译期多态</a></li>
         <li><a href="#R42">R42 了解typename的双重意义</a></li>
         <li><a href="#R43">R43 学习处理模板化基类内的名称</a></li>
         <li><a href="#R44">R44 将与参数无关的代码抽离templates</a></li>
@@ -179,27 +179,28 @@
 <p>💡 <a href="https://kissingfire123.github.io/2021/12/06_effective-c-%e4%b9%8b%e5%ad%a6%e4%b9%a0%e6%80%bb%e7%bb%93%e4%b8%80/" target="_blank" rel="noopener noreffer">Effective C++(第3版)精读总结(一)</a></p>
 <p>💡 <a href="https://kissingfire123.github.io/2022/01/11_effective-c-%e4%b9%8b%e5%ad%a6%e4%b9%a0%e6%80%bb%e7%bb%93%e4%ba%8c/" target="_blank" rel="noopener noreffer">Effective C++(第3版)精读总结(二)</a></p>
 <p>💡 <a href="https://kissingfire123.github.io/2022/02/14_effective-c-%e4%b9%8b%e9%98%85%e8%af%bb%e6%80%bb%e7%bb%93%e4%b8%89/" target="_blank" rel="noopener noreffer">Effective C++(第3版)精读总结(三)</a></p>
+<p>💡 <a href="https://kissingfire123.github.io/2022/05/17_effective-c-%e4%b9%8b%e9%98%85%e8%af%bb%e6%80%bb%e7%bb%93%e5%9b%9b/" target="_blank" rel="noopener noreffer">Effective C++(第3版)精读总结(四)</a></p>
 </div>
         </div>
     </div>
 <p>由于原书在C++11之前写成，有些现代C++特性不会提及，所以会根据本人<code>开发经验</code>新增一些个人感悟👉<code>By the way</code>环节。</p>
 <hr>
 <h1 id="ch7-模板与泛型编程">CH7 模板与泛型编程</h1>
-<h2 id="R41">R41 了解隐式接口和编译器多态</h2>
+<h2 id="R41">R41 了解隐式接口和编译期多态</h2>
 <p>面向对象编程的通常做法：</p>
 <ul>
 <li><strong>显式</strong>定义接口（参数和返回值类型都是确定的，<strong>函数签名</strong> 就是确定的）</li>
 <li>虚函数实现运行时多态</li>
 </ul>
-<p>那么编译器多态呢？在面向对象编程中，我们的答案通常是函数重载。</p>
-<p>在Templates 及泛型编程中，更为注重的是<strong>隐式接口</strong>和<strong>编译器多态</strong>：</p>
+<p>那么编译期多态呢？在面向对象编程中，我们的答案通常是函数重载。</p>
+<p>在Templates 及泛型编程中，更为注重的是<strong>隐式接口</strong>和<strong>编译期多态</strong>：</p>
 <ul>
 <li>
 <p><code>隐式接口</code>：</p>
 <p>Template的接口属于隐式接口，因为它类型不确定，所以是基于有效表达式来区分。再加上运算符重载等特性，隐式接口的自由度非常大。</p>
 </li>
 <li>
-<p><code>编译器多态</code>：</p>
+<p><code>编译期多态</code>：</p>
 <p>Template的多态是通过Template具现化和函数重载决议发生于编译期。</p>
 </li>
 </ul>
@@ -911,7 +912,7 @@ after advance  2 offset: *cIter = 30
 </li>
 <li>
 <p><strong>可以将某些工作从运行期转移到编译期</strong></p>
-<p>可以将运行期的错误提前暴露在编译器，可以获得更小的可执行文件，更快地运行，更少地内存需求，缺点是明显增加编译时间。</p>
+<p>可以将运行期的错误提前暴露在编译期，可以获得更小的可执行文件，更快地运行，更少地内存需求，缺点是明显增加编译时间。</p>
 </li>
 </ol>
 <p>TMP 已被证明是个“<strong>图灵完备</strong>”的机器，意思是它强大到可以计算任何事物。使用 TMP 可以声明变量、执行循环、编写及调用函数&hellip;等等。</p>
@@ -1403,13 +1404,13 @@ after advance  2 offset: *cIter = 30
 <li><strong>杂项</strong>：包括 CRC 校验、日期和时间的处理、文件系统等内容</li>
 </ul>
 <p>总的来说，Boost 是一个社群，也是个网站。致力于免费、源码开放、同行复审的 C++ 程序库开发，非常值得经常访问与学习。</p>
-<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;@完结-2022-7-6@&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- @ 完结-2022-7-6 @ &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</p>
 <hr></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-07-06&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/86d85b8dde395f7d5c44447c1140837264b6e080" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 86d85b8dde395f7d5c44447c1140837264b6e080: 发布effective-c&#43;&#43;(4)">
-                                    <i class="fas fa-hashtag fa-fw"></i>86d85b8</a></span>
+                <span>更新于 2022-07-07&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/020d43f29b6897ca87201b358d22a4e4d60ac4d2" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 020d43f29b6897ca87201b358d22a4e4d60ac4d2: 添加effective-c&#43;&#43;系列list提示">
+                                    <i class="fas fa-hashtag fa-fw"></i>020d43f</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1471,7 +1472,7 @@ after advance  2 offset: *cIter = 30
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 95662 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 95480 字 </span>
             </div>
 
             <div class="footer-line">
