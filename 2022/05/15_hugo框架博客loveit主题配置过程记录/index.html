@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Hugo框架LoveIt博客主题配置过程记录 - Benjamin的求知旅记</title><meta name="Description" content="摘要：LoveIt主题从Github模板到个性化所需要做的重要配置"><meta property="og:title" content="Hugo框架LoveIt博客主题配置过程记录" />
+<meta property="og:description" content="摘要：LoveIt主题从Github模板到个性化所需要做的重要配置" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-01T15:57:31+08:00" />
+<meta property="article:modified_time" content="2022-07-24T22:32:50+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo框架LoveIt博客主题配置过程记录"/>
+<meta name="twitter:description" content="摘要：LoveIt主题从Github模板到个性化所需要做的重要配置"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" /><link rel="prev" href="https://kissingfire123.github.io/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" /><link rel="next" href="https://kissingfire123.github.io/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hugo框架LoveIt博客主题配置过程记录",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/05\/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95\/"
+        },"genre": "posts","keywords": "Hugo, LoveIt","wordcount":  4073 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95\/","datePublished": "2022-05-01T15:57:31+08:00","dateModified": "2022-07-24T22:32:50+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：LoveIt主题从Github模板到个性化所需要做的重要配置"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Hugo框架LoveIt博客主题配置过程记录</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4073 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" class="leancloud_visitors" data-flag-title="Hugo框架LoveIt博客主题配置过程记录">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Chore-Pic/LoveIt-Theme.webp"
+        data-srcset="/img/Chore-Pic/LoveIt-Theme.webp, /img/Chore-Pic/LoveIt-Theme.webp 1.5x, /img/Chore-Pic/LoveIt-Theme.webp 2x"
+        data-sizes="auto"
+        alt="/img/Chore-Pic/LoveIt-Theme.webp"
+        title="摘要：LoveIt主题从Github模板到个性化所需要做的重要配置" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#content-template">默认md内容模版</a></li>
+    <li><a href="#是否发布markdown原文">是否发布markdown原文</a></li>
+    <li><a href="#文章摘要">文章摘要</a></li>
+    <li><a href="#文章封面图">文章封面图</a></li>
+    <li><a href="#algolia站内搜索">Algolia站内搜索</a></li>
+    <li><a href="#评论系统valine">评论系统Valine</a></li>
+    <li><a href="#自动更新文章修改日期">自动更新文章修改日期</a></li>
+    <li><a href="#seo优化">SEO优化</a>
+      <ul>
+        <li><a href="#baidu收录">Baidu收录</a></li>
+        <li><a href="#bing收录">Bing收录</a></li>
+        <li><a href="#google收录">Google收录</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p>本篇博客记录的配置过程可能不够全面，但主要是本人认为比较重要的部分，或容易引起疑惑之处，单独拿出来记录，希望可以帮到遇到相同问题的其他人。</p>
+<p>Hugo主题的配置，本质就是在配置根目录的 config.toml文件。</p>
+<p>配置LoveIt主题前，可以先将其<code>LoveIt/exampleSite/config.toml</code>对照着<a href="https://hugoloveit.com/zh-cn/theme-documentation-content/" target="_blank" rel="noopener noreffer">LoveIt主题配置文档</a>大致看看各个模块的作用与意义，然后拷贝到自己的根目录并自定义修改。</p>
+<h1 id="content-template">默认md内容模版</h1>
+<p>hugo使用上手后，知道新建一篇博客可以在hugo博客的根目录，命令行执行<code>hugo new posts/new_blog.md</code>，就会在 <code>content/posts</code> 目录下新建一个名为 &lsquo;my_new_blog.md&rsquo; 的 markdown 文件，新文件的默认具体内容我们是可以提前自动配置的。</p>
+<p>只需要编辑<code>archetypes/default.md</code>即可，举例，我的default.md内容如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">---</span>
+<span class="nx">title</span><span class="err">:</span> <span class="s2">&#34;{{ replace .Name &#34;</span><span class="nx">-</span><span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
+<span class="nx">subtitle</span><span class="err">:</span>    <span class="s2">&#34;&#34;</span>
+<span class="nx">description</span><span class="err">:</span> <span class="s2">&#34;摘要：&#34;</span>
+<span class="nx">featuredImage</span><span class="err">:</span> <span class="s2">&#34;/img/&#34;</span>
+<span class="nx">tags</span><span class="err">:</span>        <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">]</span>
+<span class="nx">categories</span><span class="err">:</span>  <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span> <span class="c"># 当前可选分类:计算机图形学,脚本,程序设计,折腾</span>
+<span class="nx">date</span><span class="err">:</span> <span class="p">{{</span> <span class="p">.</span><span class="nx">Date</span> <span class="p">}}</span>
+
+<span class="nx">draft</span><span class="err">:</span> <span class="kc">true</span>
+<span class="nx">---</span>
+
+<span class="err">&lt;!</span><span class="nx">--more--</span><span class="err">&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>表示每篇新建的md文档，都会预先在文章起始位置填写上述内容：其中，title和date是自动获取的，#号表示注释内容。</p>
+<h1 id="是否发布markdown原文">是否发布markdown原文</h1>
+<p>文章的原始文本格式为markdown，在发布时会自动编译出html网页文档，在根目录配置文件<code>config.toml</code>中可以配置是否一起输出markdown，如下注释的设置。</p>
+<p>如果选择一并输出markdown文档，则在博客的末尾左下角，能让读者看到markdown原文。例如LoveIt主题的官方文档<a href="https://hugoloveit.com/zh-cn/theme-documentation-content/#escape-character" target="_blank" rel="noopener noreffer"><em>配置篇</em></a>，左下角有个“<strong>阅读原始文档</strong>”。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># 用于 Hugo 输出文档的设置</span>
+<span class="p">[</span><span class="nx">outputs</span><span class="p">]</span>
+  <span class="c"># </span>
+  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span>
+  <span class="nx">page</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span> <span class="c"># 如果都想输出，则设置为[&#34;HTML&#34;, &#34;MarkDown&#34;]，页面底部有&#34;查看网页原文&#34;</span>
+  <span class="nx">section</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">]</span>
+  <span class="nx">taxonomy</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">]</span>
+  <span class="nx">taxonomyTerm</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我个人是倾向不输出，所以删去了“MarkDown”字段。</p>
+<h1 id="文章摘要">文章摘要</h1>
+<p>文章摘要是用简短的一句话，对标题进行补充解释，让读者在看文章之前就对文章有个大体的印象。</p>
+<p>详细设置部分，可参考<a href="https://hugoloveit.com/zh-cn/theme-documentation-content/#3-%E5%86%85%E5%AE%B9%E6%91%98%E8%A6%81" target="_blank" rel="noopener noreffer"><em>官方文档-摘要部分</em></a> 。</p>
+<p>我选择的手动摘要，做以下步骤：</p>
+<ol>
+<li>在<code>archetypes/default.md</code>文本内新增description字段，以描述为摘要；</li>
+<li>新增摘要分隔符＂<!--more-->＂；（可参考<a href="#content-template" rel="">本文default内容模板章节</a>）</li>
+</ol>
+<p>比如本篇文章的摘要设置如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">description</span><span class="err">:</span> <span class="s2">&#34;摘要：LoveIt主题从Github模板到个性化所需要做的重要配置&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样每篇新建的文章只要填写description字段内容即可，注意，使用纯文本，不要加入代码块、字体加粗格式等富文本，容易引起渲染错误。</p>
+<h1 id="文章封面图">文章封面图</h1>
+<p><a href="https://hugoloveit.com/zh-cn/theme-documentation-basics/" target="_blank" rel="noopener noreffer">LoveIt主题</a>让使用者选择是否设置文章预览图，如果想设置，在markdown文档的最开头的配置部分，填写<code>featuredImage</code>字段，引用的图片可以是网络URL地址的图片，也可以是本博客本地图片。</p>
+<p>我选择的是本地图片的static方式加载(还有asset方式)，资源相对路径的起始位置是<strong>根目录下</strong>的<code>static</code>目录，比如本文的图片目录是<code>static/img/Chore-Pic/LoveIt-Theme.webp</code>，那么这个字段应该填写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">featuredImage</span><span class="err">:</span> <span class="s2">&#34;/img/Chore-Pic/LoveIt-Theme.webp&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>🤔图片的分辨率建议是1000x300或者长宽比相近的分辨率，可以避免预览被裁剪。</p>
+<p>图片格式尽量选择webp格式(或使用ffmpeg等工具将其他图片格式转换为webp)。</p>
+<blockquote>
+<p>webp格式的图是新一代的压缩格式，保证最大原图清晰度的情况下，尽可能地缩小了图片内存占用，加快加载速度。</p>
+</blockquote>
+<h1 id="algolia站内搜索">Algolia站内搜索</h1>
+<p><strong>Algolia</strong>是法国的初创公司，类似于存储云服务，计算云服务，提供的是<strong>搜索云服务</strong>，用户建立应用，接着通过sdk推送数据，然后通过sdk就可以搜索了。个人用户是免费使用，还有个最大的优点是速度快，比LoveIt主题支持的默认站内搜索工具lunar.js快了一个数量级。</p>
+<p>按照以下步骤实施即可：</p>
+<ol>
+<li>
+<p>在<a href="https://www.algolia.com/" target="_blank" rel="noopener noreffer">Algolia官网</a>注册账号后登录，或使用 GitHub、Google 帐号登录；</p>
+</li>
+<li>
+<p>点击左侧边栏的OverView/dashboard，可以看到自动创建了一个App，可以重新命名，我们新建一个Index，比如命名为My_Blog，点击进去，准备上传index.json作为搜索元数据。</p>
+<p>Algolia 为我们提供了三种方式来增加记录：手动添加、上传 json 文件、API自动添加。下面演示自动添加的方式：</p>
+</li>
+<li>
+<p>生成index.json并上传：</p>
+<p>每次更新博客内容并发布时，需要更新index.json，可以做到自动化脚本化，借助第三方工具<a href="https://github.com/chrisdmacrae/atomic-algolia" target="_blank" rel="noopener noreffer">Atomic-Algolia</a>即可。安装方法：</p>
+<ul>
+<li>
+<p>安装node.js后，可以执行npm指令；</p>
+</li>
+<li>
+<p>执行 <code>npm install atomic-algolia</code>，可以安装 atomic-algolia；</p>
+</li>
+<li>
+<p>在hugo根目录修改或新建文件 <strong>package.json</strong> ，添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;algolia&#34;</span><span class="p">:</span> <span class="s2">&#34;atomic-algolia&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>根目录下新建<code>.env</code>文件,添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">ALGOLIA_APP_ID=你的Application</span> <span class="err">ID</span>
+<span class="err">ALGOLIA_INDEX_NAME=你的algolia-index名字</span>
+<span class="err">ALGOLIA_INDEX_FILE=public/index.json</span>
+<span class="err">ALGOLIA_ADMIN_KEY=你的Admin</span> <span class="err">API</span> <span class="err">Key</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述的关键信息 Application ID 和 Admin API Key可以在algolia的DashBoard页面获取，“API Keys”按钮，点进去后，就能看到，前者是大概10位长度的大写英文与数字，后者大概30位的小写英文与数字。</p>
+<p>Index的名字是自己重命名的，index-file的路径指的是你的发布路径和Hugo根目录的相对位置，上述示例是public为发布目录。</p>
+<p>⚠️ <strong>ALGOLIA_ADMIN_KEY</strong>可以用来管理你的索引，所以最好不要提交到公共仓库。</p>
+<blockquote>
+<p>我的做法是Hugo博客内容为Private仓库，发布的仓库kissingfire123.github.io为public，添加为Private仓库的submodule，一来隔离了隐私数据，二来避免每次更新草稿内容都触发page-deploy。</p>
+</blockquote>
+</li>
+<li>
+<p>配置config.toml</p>
+<p>找到 <code>[params.search]</code>模块，至少配置以下几个值(以下略去其他内容)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml">  <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">search</span><span class="p">]</span>
+    <span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>
+    <span class="c"># 搜索引擎的类型 (&#34;lunr&#34;, &#34;algolia&#34;)</span>
+    <span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;algolia&#34;</span>
+      <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">algolia</span><span class="p">]</span>
+        <span class="nx">index</span> <span class="p">=</span> <span class="s2">&#34;Benjamin-Blog&#34;</span> <span class="c"># index-name,这个的确是我的，个人自行命名</span>
+        <span class="nx">appID</span> <span class="p">=</span> <span class="s2">&#34;B45S568G91&#34;</span> <span class="c"># app-id，内容我随意写的</span>
+        <span class="nx">searchKey</span> <span class="p">=</span> <span class="s2">&#34;c00000d11111e22222f444e2333&#34;</span><span class="c">#admin-key，内容此处为演示，随意写的</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>更新索引并自动上传：<code>npm  run algolia</code></p>
+<p>输出类似如下内容，&ldquo;Benjamin-Blog&quot;是我的index-name。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ npm  run algolia
+
+&gt; algolia
+&gt; atomic-algolia
+
+<span class="o">[</span>Algolia<span class="o">]</span> Adding <span class="m">0</span> hits to Benjamin-Blog
+<span class="o">[</span>Algolia<span class="o">]</span> Updating <span class="m">0</span> hits to Benjamin-Blog
+<span class="o">[</span>Algolia<span class="o">]</span> Removing <span class="m">0</span> hits from Benjamin-Blog
+<span class="o">[</span>Algolia<span class="o">]</span> <span class="m">219</span> hits unchanged in Benjamin-Blog
+<span class="o">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>至此，algolia功能启用成功，使用示范如下：</p>
+ <div align =center>
+ <img  src="/imgBed/algolia-search.webp">
+ </div>
+</li>
+</ol>
+<h1 id="评论系统valine">评论系统Valine</h1>
+<p>LoveIt主题支持多种评论系统，例如Disqus，GitTalk，valine，前2者都需要用户登录后评论且数据托管更方便，valine不需要登录且无后端。</p>
+<p>关于valine更详细的介绍，有兴趣的朋友可以看看<a href="https://valine.js.org/" target="_blank" rel="noopener noreffer">valine中文文档</a>。</p>
+<p>下面只说如何在LoveIt主题上用起来这个评论系统：</p>
+<ol>
+<li>
+<p>valine基于<a href="https://console.leancloud.app/#/app" target="_blank" rel="noopener noreffer">LeanCloud</a>登录，<strong>注册并登录</strong>；</p>
+<p>选择<code>国际版</code>，不要选择<code>华北</code>或<code>华东</code>，后面这2个要上传身份证备案的，比较麻烦。(Ps：第一次我就不清楚情况，弄的华北版，各种麻烦，实名认证)</p>
+</li>
+<li>
+<p><strong>新建应用</strong>，比如我的是 Benjamin-Personal-Blog ,然后<strong>获取</strong>2个关键<strong>信息</strong>：<code>AppID</code> 和 <code>AppKey</code>。</p>
+<p>这2个关键信息在侧边栏<strong>设置</strong>==&gt; <strong>应用凭证</strong>。</p>
+</li>
+<li>
+<p><strong>设定博客域名</strong>：位置在 设置 ==&gt; 安全中心  ==&gt; Web 安全域名 ，将博客域名记录在内，可以写多个(比如用vercel部署了的话)；</p>
+</li>
+<li>
+<p><strong>修改</strong> <code>config.toml</code>，修改 [params.page.comment.valine] ，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">valine</span><span class="p">]</span>
+	<span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>
+   	<span class="nx">appId</span> <span class="p">=</span> <span class="s2">&#34;6aYYYY22YY222YYX34rjksex-X4XXXGah9X&#34;</span> <span class="c"># 仅作演示，随意输入的，要换成你自己的</span>
+   	<span class="nx">appKey</span> <span class="p">=</span> <span class="s2">&#34;OOELIDKIddsowhV&#34;</span> <span class="c"># 同上，也是我随意输入的，但是内容长度和形式差不多</span>
+   	<span class="nx">placeholder</span> <span class="p">=</span> <span class="s2">&#34;期待您的评论...&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>域名绑定(非必须)：位置在 设置 ==&gt; 安全中心 ==&gt; API；</p>
+</li>
+</ol>
+<h1 id="自动更新文章修改日期">自动更新文章修改日期</h1>
+<p>每篇文章都有个创建日期，发布后可能会有多次修改，“记录最后修改日期并显示”——这一功能是被LoveIt主题所支持的。开启该功能的方法为修改 <strong>config.toml</strong> ，关键几个值如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># 是否使用 git 信息,必须得是全局配置,配置gitInfo更新lastMod</span>
+<span class="nx">enableGitInfo</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+  <span class="c"># 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效,注意要写publish的发布仓库</span>
+  <span class="c"># 下方示例路径是我的publish仓库，注意要换成自己的</span>
+  <span class="nx">gitRepo</span> <span class="p">=</span> <span class="s2">&#34;https://github.com/kissingfire123/kissingfire123.github.io.git&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>修改好并发布后，可以在每篇文章(包括预览时的draft)的末尾底部左下角，看到一行小字，格式形如 &ldquo;<em>更新于  20xx-mm-dd #SHA值</em> &ldquo;，即表示<strong>修改成功</strong>了。</p>
+<h1 id="seo优化">SEO优化</h1>
+<h2 id="baidu收录">Baidu收录</h2>
+<ol>
+<li>
+<p><strong>Step1</strong> ：访问 <a href="https://ziyuan.baidu.com/dailysubmit/index" target="_blank" rel="noopener noreffer">Baidu搜索资源平台</a>，先认证网站是你的</p>
+<p>进行基本的注册登录后，在网页的提示下，下载认证文件 <code>baidu_verify_code-jXXaXiYJCY.html</code> ,并且放到网站发布的根目录下，并且部署，再点击<strong>认证</strong>，即可完成认证；</p>
+<p>Ps: 上述jXXaXiYJCY是我随意写的，每个站点的verification都不一样。</p>
+</li>
+<li>
+<p><strong>Step2</strong>：让百度知道你站内的所有链接，方便官方收录和爬取</p>
+<p>进入<code>用户中心</code> $\rightarrow$ <code>站点管理</code>  $\rightarrow$ <code>普通收录</code>，进行资源网址的提交，提交的方式有3种：</p>
+<ul>
+<li><em>API提交</em> ：最及时迅速地被官方收录，自行在终端执行命令，注意需要自行准备 urls.txt ，这个可以用脚本处理 sitemap.xml 得到，建议调用成功后可以写进自己的部署脚本；</li>
+<li><em>sitemap提交</em> ：每次hugo编译成功后，都会在发布文件夹的根目录更新文件 sitemap.xml ，提交该文件即可。( 比如我的填入 <a href="https://kissingfire123.github.io/sitemap.xml" target="_blank" rel="noopener noreffer">https://kissingfire123.github.io/sitemap.xml</a> )</li>
+<li>手动提交：非常直白，就是一个个的复制粘贴到文本框，一行一个，然后提交</li>
+</ul>
+</li>
+<li>
+<p>关注其他信息：比如网站信息、抓取诊断等。</p>
+</li>
+</ol>
+<h2 id="bing收录">Bing收录</h2>
+<p>访问：<a href="https://www.bing.com/webmasters" target="_blank" rel="noopener noreffer">Bing搜索管理员工具</a> ，操作类似 Baidu 收录。</p>
+<h2 id="google收录">Google收录</h2>
+<p>访问：<a href="https://search.google.com/search-console" target="_blank" rel="noopener noreffer">Google搜索控制台 </a> ，操作类似 Baidu 收录。</p>
+<blockquote>
+<p>参考链接</p>
+<ul>
+<li><a href="https://hugoloveit.com/zh-cn/theme-documentation-basics/" target="_blank" rel="noopener noreffer">LoveIt主题文档 - 基本概念</a></li>
+<li><a href="https://hugoloveit.com/zh-cn/theme-documentation-content/" target="_blank" rel="noopener noreffer">LoveIt主题文档 - 内容配置</a></li>
+<li><a href="https://juejin.cn/post/6871101738431021064" target="_blank" rel="noopener noreffer">掘金：Hugo 集成 Algolia 搜索</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/158120667" target="_blank" rel="noopener noreffer">知乎：LeanCloud-Valine保姆级配置教程</a></li>
+<li><a href="https://lewky.cn/posts/hugo-3.1.html/" target="_blank" rel="noopener noreffer">Lewis个人博客 ：LoveIt主题美化第二章</a></li>
+</ul>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-07-24&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/f124d086aa7abedd36bd0cc19982bf05b83b12f3" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) f124d086aa7abedd36bd0cc19982bf05b83b12f3: 发布 hugo 配置记录">
+                                    <i class="fas fa-hashtag fa-fw"></i>f124d08</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录" data-hashtags="Hugo,LoveIt"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-hashtag="Hugo"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录" data-image="/img/Chore-Pic/LoveIt-Theme.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录" data-description="摘要：LoveIt主题从Github模板到个性化所需要做的重要配置"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录" data-description="摘要：LoveIt主题从Github模板到个性化所需要做的重要配置"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" data-title="Hugo框架LoveIt博客主题配置过程记录"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/hugo/">Hugo</a>,&nbsp;<a href="/tags/loveit/">LoveIt</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/03/16_shell%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/" class="prev" rel="prev" title="Shell脚本实用技巧小结"><i class="fas fa-angle-left fa-fw"></i>Shell脚本实用技巧小结</a>
+            <a href="/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" class="next" rel="next" title="Effective C&#43;&#43;(第3版)精读总结(四)">Effective C&#43;&#43;(第3版)精读总结(四)<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 100062 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
