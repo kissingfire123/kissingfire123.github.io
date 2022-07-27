@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-11T14:43:05+08:00" />
-<meta property="article:modified_time" content="2022-04-01T22:47:40+08:00" />
+<meta property="article:modified_time" content="2022-07-27T23:08:38+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Markdown语法总结"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93\/"
-        },"genre": "posts","keywords": "markdown, 工具","wordcount":  5763 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93\/","datePublished": "2022-01-11T14:43:05+08:00","dateModified": "2022-04-01T22:47:40+08:00","publisher": {
+        },"genre": "posts","keywords": "markdown, 软件工具","wordcount":  5874 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93\/","datePublished": "2022-01-11T14:43:05+08:00","dateModified": "2022-07-27T23:08:38+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -117,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Markdown语法总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-11">2022-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5763 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-11">2022-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5874 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" class="leancloud_visitors" data-flag-title="Markdown语法总结">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -695,41 +695,22 @@ markdown表格没有相关的语法，但是可以借助html标签，只要使�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">```c++  
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">​```c++  
 #include &lt;iostream&gt;  
 int main(){  
     std::cout &lt;&lt; &#34;hello world!\n&#34;;  
     return 0;  
 }  
-```  
+```
 </code></pre></td></tr></table>
 </div>
-</div><p><em>渲染效果：</em></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;  </span><span class="cp">
-</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>  
-    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;hello world!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>  
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>  
-<span class="p">}</span>  
-</code></pre></td></tr></table>
-</div>
-</div><div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-lightbulb fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">如果想要引述的代码块本身包含了3个连续的反引号```，那么就用连续的4个反引号````把它包围起来(上方C++的原文内容输入就是这么做的)。</div>
-        </div>
-    </div>
-<p>markdown支持的代码段语言非常丰富 ，包括了几乎所有主流编程语言，参照比较通用的Github风格(GFM,Github Flavored Markdown)所支持的<code>语法高亮</code>，语言类型支持列表(参考<a href="https://www.rubycoloredglasses.com/2013/04/languages-supported-by-github-flavored-markdown/" target="_blank" rel="noopener noreffer">Languages Supported by Github Flavored Markdown</a>)如下列表(Code可展开)：</p>
+</div><p><em>渲染效果：</em>
+​```c++<br>
+#include <iostream><br>
+int main(){<br>
+std::cout &laquo; &ldquo;hello world!\n&rdquo;;<br>
+return 0;<br>
+}</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -785,9 +766,26 @@ int main(){
 </span><span class="lnt">51
 </span><span class="lnt">52
 </span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">actionscript3
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">如果想要引述的代码块本身包含了3个连续的反引号```，那么就用连续的4个反引号````把它包围起来(上方C++的原文内容输入就是这么做的)。</div>
+        </div>
+    </div>
+
+markdown支持的代码段语言非常丰富 ，包括了几乎所有主流编程语言，参照比较通用的Github风格(GFM,Github Flavored Markdown)所支持的`语法高亮`，语言类型支持列表(参考[Languages Supported by Github Flavored Markdown](https://www.rubycoloredglasses.com/2013/04/languages-supported-by-github-flavored-markdown/))如下列表(Code可展开)：  
+``` list
+actionscript3
 apache
 applescript
 asp
@@ -957,21 +955,21 @@ yaml
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-04-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1df0b60c072a83ecd129ea39995381056df5dd14" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 1df0b60c072a83ecd129ea39995381056df5dd14: 整理了文件夹，准确分类，方便管理">
-                                    <i class="fas fa-hashtag fa-fw"></i>1df0b60</a></span>
+                <span>更新于 2022-07-27&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/486f399d8a1a059f85b5d2060081b91fbd88a76b" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 486f399d8a1a059f85b5d2060081b91fbd88a76b: 发布 Metal Shader Debug">
+                                    <i class="fas fa-hashtag fa-fw"></i>486f399</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-hashtags="markdown,工具"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-hashtag="markdown"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-image="/img/Script-Pic/I-Love-Markdown.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-description="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-description="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-hashtags="markdown,软件工具"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-hashtag="markdown"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-image="/img/Script-Pic/I-Love-Markdown.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-description="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结" data-description="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/10_markdown%E8%AF%AD%E6%B3%95%E5%B0%8F%E7%BB%93/" data-title="Markdown语法总结"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/markdown/">markdown</a>,&nbsp;<a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/markdown/">markdown</a>,&nbsp;<a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">软件工具</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
@@ -1022,8 +1020,10 @@ yaml
             
                 
             
+                
+            
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 100062 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 101982 字 </span>
             </div>
 
             <div class="footer-line">

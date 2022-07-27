@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Metal Shader逐行调试方法 - Benjamin的求知旅记</title><meta name="Description" content="摘要：介绍使用Xcode逐行调试Metal-Shader的方法"><meta property="og:title" content="Metal Shader逐行调试方法" />
+<meta property="og:description" content="摘要：介绍使用Xcode逐行调试Metal-Shader的方法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-27T23:08:38+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Metal Shader逐行调试方法"/>
+<meta name="twitter:description" content="摘要：介绍使用Xcode逐行调试Metal-Shader的方法"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" /><link rel="prev" href="https://kissingfire123.github.io/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Metal Shader逐行调试方法",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/07\/23_metal-shader-debug\/"
+        },"genre": "posts","keywords": "Metal, 图形渲染","wordcount":  1809 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/07\/23_metal-shader-debug\/","datePublished": "2022-07-01T00:00:00+00:00","dateModified": "2022-07-27T23:08:38+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "     \"Benjamin Lee\""
+            },"description": "摘要：介绍使用Xcode逐行调试Metal-Shader的方法"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Metal Shader逐行调试方法</h1><h2 class="single-subtitle">使用Xcode逐行Metal Shader</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-01">2022-07-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1809 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2022/07/23_metal-shader-debug/" class="leancloud_visitors" data-flag-title="Metal Shader逐行调试方法">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Metal-Pic/Metal-ShaderDebug.webp"
+        data-srcset="/img/Metal-Pic/Metal-ShaderDebug.webp, /img/Metal-Pic/Metal-ShaderDebug.webp 1.5x, /img/Metal-Pic/Metal-ShaderDebug.webp 2x"
+        data-sizes="auto"
+        alt="/img/Metal-Pic/Metal-ShaderDebug.webp"
+        title="摘要：介绍使用Xcode逐行调试Metal-Shader的方法" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#调试环境">调试环境</a></li>
+    <li><a href="#调试过程">调试过程</a>
+      <ul>
+        <li><a href="#情况ametal以工程代码形式">情况A：metal以工程代码形式</a>
+          <ul>
+            <li><a href="#step1-设置build-setting">Step1: 设置Build-Setting</a></li>
+            <li><a href="#step2-抓帧">Step2: 抓帧</a></li>
+            <li><a href="#step3-单行shader-debug">Step3: 单行Shader-Debug</a></li>
+          </ul>
+        </li>
+        <li><a href="#情况bmetal先自行编译metallib形式">情况B：metal先自行编译metallib形式</a>
+          <ul>
+            <li><a href="#step1-设置metal-compile选项">Step1: 设置Metal-Compile选项</a></li>
+            <li><a href="#step2-抓帧-1">Step2: 抓帧</a></li>
+            <li><a href="#step3-单行shader-debug-1">Step3: 单行Shader-Debug</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p>对比其他图形学API，Metal的Shader调试是比较方便的，从WWDC2018开始，Metal就支持Shader的Profile和单行调试了。</p>
+<p>官方相关视频可以参考 <a href="https://developer.apple.com/videos/play/wwdc2018/608/" target="_blank" rel="noopener noreffer">Metal Shader Debugging and Profiling</a>，该视频介绍了相关技巧，附上该视频对应的 <a href="https://devstreaming-cdn.apple.com/videos/wwdc/2018/608u6qpg6mh0uq/608/608_metal_shader_debugging_and_profiling.pdf?dl=1" target="_blank" rel="noopener noreffer">PPT下载地址</a>。</p>
+<p>⚠️：Shader-Debug的抓帧调试<strong>都是适用于Online-Render</strong>，而非Offscreen-Render。</p>
+<h1 id="调试环境">调试环境</h1>
+<p>⚠️：Xcode的版本升级或者SDK的升级，可能会导致Metal的Shader-Debug和CaptureFrame功能不可用，如果你目前的环境是Ok的，建议不要轻易升级。</p>
+<p>本文档测试环境如下：</p>
+<table>
+<thead>
+<tr>
+<th>Mac 系统版本</th>
+<th>iPhone-系统版本</th>
+<th>Xcode版本</th>
+<th>macOS-SDK版本</th>
+<th>iOS-SDK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS 12.0.1 Monterey</td>
+<td>iOS 15.3</td>
+<td>13.2</td>
+<td>12.1 (21C46)</td>
+<td>15.2 (19C51)</td>
+</tr>
+</tbody>
+</table>
+<h1 id="调试过程">调试过程</h1>
+<h2 id="情况ametal以工程代码形式">情况A：metal以工程代码形式</h2>
+<p>Apple官方给出的Metal-Sample-Code就是以这种方式组织的，比如<code>AAPLRender.metal</code>文件处于<strong>Xcode工程目录树列表</strong>中，并且可以和<code>Objective-C</code>文件共享<code>.h </code>头文件，直接和 Objective-C代码文件一起编译。</p>
+<p><strong>这种情况适用于自己写的简单Demo验证问题</strong>，非常方便，也非常推荐（不过缺点是CMake不支持这种形式直接configure）。</p>
+<p>情况 A 以官方 Sample 工程 <a href="https://developer.apple.com/documentation/metal/textures/creating_and_sampling_textures" target="_blank" rel="noopener noreffer"><strong>Creating And Sampling Textures</strong></a>为例子进行演示，且只讲述Mac过程，iOS平台也是类似的。</p>
+<h3 id="step1-设置build-setting">Step1: 设置Build-Setting</h3>
+<p>在Xcode的Build Settings中，先点击 <strong>左侧正确的target</strong>，搜索&quot;produce debugging&quot;，在&quot;Metal Compiler&quot;下属的Debug设置，如下图，设置&quot;Produce debugging information&quot;，选中到&quot;<code>Yes, include source code</code>&quot;。</p>
+<div align =center>
+<img  src="/imgBed/MetalShaderDebug-buildSetting.webp"/>
+</div>
+<h3 id="step2-抓帧">Step2: 抓帧</h3>
+<p>以Debug模式运行后，<strong><code>单击 Capture Frame</code></strong>（Xcode13.0版本以前是照相机图标📷，从Xcode13.0起是个大写的M）：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://docs-assets.developer.apple.com/published/5d37f0c61d/3179308@2x.png"
+        data-srcset="https://docs-assets.developer.apple.com/published/5d37f0c61d/3179308@2x.png, https://docs-assets.developer.apple.com/published/5d37f0c61d/3179308@2x.png 1.5x, https://docs-assets.developer.apple.com/published/5d37f0c61d/3179308@2x.png 2x"
+        data-sizes="auto"
+        alt="https://docs-assets.developer.apple.com/published/5d37f0c61d/3179308@2x.png"
+        title="captureFrame" /></p>
+<p>⚠️：如果遇到抓帧按键是灰色的，需要设置Run-Option （快捷键 Command + Shift + &lt; ），设置GPU Frame Capture模式为 <strong>Metal</strong> 。</p>
+<p>等待一会儿后自动跳转到抓帧界面，关注左边调用堆栈，<strong><code>依次点击 </code></strong> 下拉 MyCommand -&gt; MyRenderEncoder -&gt; dr -&gt; drawPrimitives 。</p>
+<p>下拉菜单中，Geometry用于查看 vertex 阶段的顶点信息，Attachments 是用于查看fragements 信息，也是更常用的。</p>
+<p>此处我们选Attachments，看到渲染的主画面， <strong><code>鼠标左键长按 </code></strong> 某个像素点，如下图所示：</p>
+<div align =center>
+<img  src="/imgBed/MetalShaderDebug-longPress.webp"/>
+</div>
+<blockquote>
+<p>如果Debug不顺畅，悬停于Debug按钮，若如果遇到SDK版本问题，可能会给出相关提示;</p>
+<p>⚠️ ：macOS-Deployment-SDK版本需要和使用的 Xcode 版本匹配，比如我的 Xcode13.2 要求至少为macOS-10.15。</p>
+</blockquote>
+<p>若一切顺利，接上图步骤，<strong><code>单击 Debug 按钮</code></strong>，可以跳转到Shader，如下图所示：</p>
+<div align =center>
+<img  src="/imgBed/MetalShaderDebug-shaderDebug.webp"/>
+</div>
+<h3 id="step3-单行shader-debug">Step3: 单行Shader-Debug</h3>
+<p>进入上述 Shader-Deubg 界面后，快捷键如下：</p>
+<ul>
+<li>鼠标双击切换行</li>
+<li>使用方向键 ⬆️ / ⬇️ 进行单行执行回放</li>
+<li>使用方向键 ⬅️ / ➡️ 进行单个函数的Step-out 和 Step-in</li>
+</ul>
+<p>图中 Shader 右侧是变量观察栏，而且圈起的方框可点击预览Texture，还能调用系统Finder进行存储。</p>
+<h2 id="情况bmetal先自行编译metallib形式">情况B：metal先自行编译metallib形式</h2>
+<p>使用 glsl 代码编译成 lib 后再导入 MTLLibrary ，适用于此类情况，使用起来更为麻烦一些。比如某个 *.metal 文件，直接调用命令行编译得到 metallib ，然后再让 metallib 参与 metal 应用的编译。</p>
+<h3 id="step1-设置metal-compile选项">Step1: 设置Metal-Compile选项</h3>
+<p>需要在编译Metal-Lib时带上Symbol符号信息，才能启用Shader-Debug功能。在Xcode13.0之前，该编译选项是 <code>-MO</code> ，自 Xcode13.0 起，选项为 <code>-frecord-sources=flat</code>。命令示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#  假设以 RGBToYUV420 这个 shader 举例</span>
+<span class="c1">#  这一行得到 air 中间文件(Apple Intermediate Representation)</span>
+xcrun -sdk macosx metal -c -frecord-sources RGBToYUV420.metal
+<span class="c1">#  这一行链接air中间文件，得到 metallib文件</span>
+xcrun -sdk macosx metal -frecord-sources -o RGBToYUV420.metallib RGBToYUV420.air
+<span class="c1">#  这一行分离metallib, 得到metallibsym符号文件, 在shader-debug的时候会提醒加载外部sym文件</span>
+xcrun -sdk macosx metal-dsymutil -flat  -remove-source RGBToYUV420.metallib
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<ul>
+<li>更多命令选项可以在终端执行 <code>xcrun -sdk macosx metal --help</code> 查看。</li>
+</ul>
+</blockquote>
+<h3 id="step2-抓帧-1">Step2: 抓帧</h3>
+<p>在抓帧环节，如本节 Step1 所述，需要单独加载外部 metallibsym 符号，metal应用程序才能正确跳转到 metal 的shader 文件。</p>
+<h3 id="step3-单行shader-debug-1">Step3: 单行Shader-Debug</h3>
+<p>和情况A一致，不赘述。</p>
+<blockquote>
+<p>参考链接:</p>
+<p><a href="https://developer.apple.com/documentation/metal/shader_authoring/developing_and_debugging_metal_shaders?language=objc" target="_blank" rel="noopener noreffer">Apple: Developing and Debugging Metal Shaders</a></p>
+<p><a href="https://developer.apple.com/documentation/metal/libraries/generating_and_loading_a_metal_library_symbol_file" target="_blank" rel="noopener noreffer">Apple: Generating and Loading a Metal Library Symbol File</a></p>
+<p><a href="https://developer.apple.com/documentation/metal/basic_tasks_and_concepts/viewing_your_gpu_workload_with_the_metal_debugger?language=objc" target="_blank" rel="noopener noreffer">Apple: Viewing Your GPU Workload with the Metal Debugger</a></p>
+<p><a href="https://xcodereleases.com" target="_blank" rel="noopener noreffer">All-Xcode-Release&rsquo;s  Download &amp; SDK对照表</a></p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-07-27&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/486f399d8a1a059f85b5d2060081b91fbd88a76b" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 486f399d8a1a059f85b5d2060081b91fbd88a76b: 发布 Metal Shader Debug">
+                                    <i class="fas fa-hashtag fa-fw"></i>486f399</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法" data-hashtags="Metal,图形渲染"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-hashtag="Metal"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法" data-image="/img/Metal-Pic/Metal-ShaderDebug.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法" data-description="摘要：介绍使用Xcode逐行调试Metal-Shader的方法"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法" data-description="摘要：介绍使用Xcode逐行调试Metal-Shader的方法"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" data-title="Metal Shader逐行调试方法"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/metal/">Metal</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" class="prev" rel="prev" title="Effective C&#43;&#43;(第3版)精读总结(四)"><i class="fas fa-angle-left fa-fw"></i>Effective C&#43;&#43;(第3版)精读总结(四)</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 101982 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>

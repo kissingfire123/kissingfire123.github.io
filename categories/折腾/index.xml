@@ -5,14 +5,14 @@
         <description>折腾 - 分类 - Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
             <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 01 May 2022 15:57:31 &#43;0800</lastBuildDate><atom:link href="https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/" rel="self" type="application/rss+xml" /><item>
-    <title>Hugo框架LoveIt博客主题配置过程记录</title>
+    <title>Hugo框架LoveIt博客主题配置</title>
     <link>https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</link>
     <pubDate>Sun, 01 May 2022 15:57:31 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Chore-Pic/LoveIt-Theme.webp" referrerpolicy="no-referrer">
-            </div>摘要：LoveIt主题从Github模板到个性化所需要做的重要配置]]></description>
+            </div>摘要：LoveIt主题从默认模板到个性化所需要做的重要配置]]></description>
 </item><item>
     <title>利用Hugo和Github-Pages搭建免费的个人博客</title>
     <link>https://kissingfire123.github.io/2021/12/05_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
