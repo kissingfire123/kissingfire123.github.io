@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Markdown语法总结 - Benjamin的求知旅记</title><meta name="Description" content="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><meta property="og:title" content="Markdown语法总结" />
+<meta property="og:description" content="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-01-11T14:43:05+08:00" />
+<meta property="article:modified_time" content="2022-08-01T20:57:53+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Markdown语法总结"/>
+<meta name="twitter:description" content="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" /><link rel="prev" href="https://kissingfire123.github.io/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" /><link rel="next" href="https://kissingfire123.github.io/2022/01/11_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%8C/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Markdown语法总结",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown_grammar_summary\/"
+        },"genre": "posts","keywords": "markdown, 软件工具","wordcount":  5874 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/10_markdown_grammar_summary\/","datePublished": "2022-01-11T14:43:05+08:00","dateModified": "2022-08-01T20:57:53+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：对常用的markdown语法(基本语法+扩展语法)做个总结概述，备忘查询"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Markdown语法总结</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-11">2022-01-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5874 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 12 分钟&nbsp;<span id="/2022/01/10_markdown_grammar_summary/" class="leancloud_visitors" data-flag-title="Markdown语法总结">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Script-Pic/I-Love-Markdown.webp"
+        data-srcset="/img/Script-Pic/I-Love-Markdown.webp, /img/Script-Pic/I-Love-Markdown.webp 1.5x, /img/Script-Pic/I-Love-Markdown.webp 2x"
+        data-sizes="auto"
+        alt="/img/Script-Pic/I-Love-Markdown.webp"
+        title="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#基本语法">基本语法</a>
+      <ul>
+        <li><a href="#段落与换行">段落与换行</a></li>
+        <li><a href="#标题层级">标题层级</a></li>
+        <li><a href="#字体强调">字体强调</a></li>
+        <li><a href="#列表">列表</a></li>
+        <li><a href="#引用">引用</a></li>
+        <li><a href="#插入图片">插入图片</a></li>
+        <li><a href="#插入url超链接">插入URL超链接</a></li>
+        <li><a href="#水平分隔线">水平分隔线</a></li>
+      </ul>
+    </li>
+    <li><a href="#扩展语法">扩展语法</a>
+      <ul>
+        <li><a href="#表格">表格</a></li>
+        <li><a href="#code-block">代码段</a></li>
+        <li><a href="#目录树">目录树</a></li>
+        <li><a href="#任务列表">任务列表</a></li>
+        <li><a href="#标题id">标题ID</a></li>
+        <li><a href="#高亮背景色">高亮背景色</a></li>
+        <li><a href="#上标下标">上标下标</a></li>
+        <li><a href="#emoji表情">Emoji表情</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p>Markdown是一种轻量级标记语言，于2004年由创始人<a href="https://zh.wikipedia.org/wiki/%e7%b4%84%e7%bf%b0%c2%b7%e6%a0%bc%e9%ad%af%e4%bc%af" target="_blank" rel="noopener noreffer">John Gruber</a>发布，采用并不复杂的语法，可以书写简洁美观带有格式的文本。</p>
+<h1 id="基本语法">基本语法</h1>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>关于符号<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">重要的事情提前说：<strong>Markdown中的所有标记符号都是英氏符号</strong>，也就是输入法为输入英文状态下的时候。(尤其警惕竖向分隔线|，感叹号!，括号()，等等&hellip;中英文的这几个有点像)</div>
+        </div>
+    </div>
+<h2 id="段落与换行">段落与换行</h2>
+<ol>
+<li>空行可以用来段落分割，输入回车Enter换行即可；</li>
+<li>段落内换行可以使用<code>&lt;br&gt;</code>来换行，通常可以用在markdown表格内换行;</li>
+<li>某些markdown编辑器在写完上一行文本后<code>输入Enter</code>换行依然<code>未能换行生效</code>，那就再Enter一个空行，或者在上一行<code>末尾加2个连续空格</code>；</li>
+<li>如果不是在列表内的段落，不鼓励行首缩进；</li>
+</ol>
+<h2 id="标题层级">标题层级</h2>
+<p>Markdown使用符号 <strong>#</strong> 来表示标题的层级，几个 <strong>#</strong> 号就是几级标题，通常用到4级就足够内容排布了。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">输入内容</th>
+<th style="text-align:left">渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"># 一级标题 <br> ## 二级标题 <br> ### 三级标题 <br></td>
+<td style="text-align:left"><h1>一级标题</h1>  <h2>二级标题</h2>  <h3>三级标题</h3></td>
+</tr>
+</tbody>
+</table>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>标题细节<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>#号和标题内容之间有空格</li>
+<li>顺便一提,标题层级<code>x</code>其实转化为html等同于<code>&lt;hx&gt; 标题内容 &lt;/hx&gt;</code>，x为数字(😏上述表格内右边内容我其实用的html标签，表格内的#号形式没法渲染)</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h2 id="字体强调">字体强调</h2>
+<ol>
+<li><strong>字体加粗</strong>：加粗的内容使用<code>前后2个连续的星号* 包围</code>起来,例如：   
+<table>
+<thead>
+<tr>
+<th>输入内容</th>
+<th>渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>这是**加粗**的内容</td>
+<td>这是<strong>加粗</strong>的内容</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<blockquote>
+<p>⚠️</p>
+<ul>
+<li>如果加粗的内容有*,#,-,这一类markdown语法有关的字符，可以用英式反斜杠<code>\</code>加在前面转义(实际上想让任何markdown的某个标记符号失效，都可以用反斜杠<code>\</code>转义从而escape);</li>
+<li>某些Markdown编译器对*号解析有点问题，如果渲染效果未生效，外侧的*号前后加空格即可,和未加粗的内容分隔开👉假如&quot;前文**加粗内容**后文&quot;不生效，修改成&quot;前文  **加粗内容**  后文&quot;即可。</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>
+<p><em>字体斜体</em>：斜体的内容使用<code>前后1个星号*包围</code>或者<code>前后1个下划线_包围</code>起来,例如：      </p>
+<table>
+<thead>
+<tr>
+<th>输入内容</th>
+<th>渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>这是*斜体*的内容</td>
+<td>这是<em>斜体</em> 的内容</td>
+</tr>
+<tr>
+<td>这也是 _斜体_ 的内容</td>
+<td>这也是 <em>斜体</em> 的内容</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>代码字体</code>：行内代码的内容使用<code>前后1个英式反引号包围</code>起来(反引号`在键盘左上角,数字1左边)，一般来说，代码语法渲染后有轻度高亮的效果，例如:     </p>
+<table>
+<thead>
+<tr>
+<th>输入内容</th>
+<th>渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>这是`代码`的内容</td>
+<td>这是<code>代码</code>的内容</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><del>字体删除线</del>：对删除线的内容<code>前后2个连续的英式波浪号 ~包围</code>起来，例如： </p>
+<table>
+<thead>
+<tr>
+<th>输入内容</th>
+<th>渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~~这是删除线的内容~~</td>
+<td><del>这是删除线的内容</del></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong><code>字体的组合</code></strong>:以上的效果可以组合起来使用：   </p>
+<table>
+<thead>
+<tr>
+<th>输入内容</th>
+<th>渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>***加粗和斜体***</td>
+<td><em><strong>加粗和斜体</strong></em></td>
+</tr>
+<tr>
+<td>~~**删除线和加粗~~**</td>
+<td><del><strong>删除线和加粗</strong></del></td>
+</tr>
+<tr>
+<td>~~*删除线和斜体*~~</td>
+<td><del><em>删除线和斜体</em></del></td>
+</tr>
+<tr>
+<td>~~***加粗, 斜体和删除线***~~</td>
+<td><del><em><strong>加粗, 斜体和删除线</strong></em></del></td>
+</tr>
+<tr>
+<td>**`加粗和高亮`**</td>
+<td><strong><code>加粗和高亮</code></strong></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="列表">列表</h2>
+<p>列表分为<code>无序列表</code>和<code>有序列表</code>：无序列表用英式符号短横<code>-</code>、加号<code>+</code>、或星号<code>*</code> 后接空格来表示；有序列表使用<code>数字加点接空格</code>(例如&quot;1. &ldquo;)来表示。   </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">输入内容</th>
+<th style="text-align:left">渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">- 短横无序列表 <br> - 短横无序列表</td>
+<td style="text-align:left"><ul> <li>短横无序列表</li>  <li>短横无序列表</li> </ul></td>
+</tr>
+<tr>
+<td style="text-align:left">+ 加号无序列表  <br> + 加号无序列表</td>
+<td style="text-align:left"><ul> <li>加号无序列表</li>  <li>加号无序列表</li> </ul></td>
+</tr>
+<tr>
+<td style="text-align:left">* 星号无序列表 <br> * 星号无序列表</td>
+<td style="text-align:left"><ul> <li>星号无序列表</li>  <li>星号无序列表</li> </ul></td>
+</tr>
+<tr>
+<td style="text-align:left">1. 数字有序列表 <br> 2. 数字有序列表</td>
+<td style="text-align:left"><ol> <li>数字有序列表</oi>  <li>数字有序列表</li> </ol></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：</p>
+<ul>
+<li>列表一般会自动缩进，而且写完一条列表内容后，按下Enter换行，markdown会自动新建下一个列表</li>
+<li>列表可以嵌套使用</li>
+</ul>
+</blockquote>
+<h2 id="引用">引用</h2>
+<p>使用英式大于号 <code>&gt;</code> 来标识一段引用内容，支持多行引用，也支持引用内列表。引用很有用，渲染效果一般是一段加了浅色阴影的文本，可以用于文首/文末的声明，参考链接等内容，有时可以用来做注意事项的声明。<br>
+输入内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&gt; 注意：这是引用内容
+&gt; - 引用细节1
+&gt; - 引用细节2
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果：</p>
+<blockquote>
+<p>注意：这是引用内容</p>
+<ul>
+<li>引用细节1</li>
+<li>引用细节2</li>
+</ul>
+</blockquote>
+<h2 id="插入图片">插入图片</h2>
+<p>markdown使用 <code>![图片描述](图片链接)</code> 的形式来展示一张图片。<br>
+这个链接<strong>可以是本地链接，也可以是网络链接</strong>。</p>
+<ul>
+<li>
+<p>如果是只在本地看，可以使用本地链接，分为本地全路径和本地相对路径：</p>
+<ol>
+<li>本地全路径：有一张图在<code>D:\Cat.png</code>,那么可以在markdown中引入图片<code>![小猫](D:\Cat.png)</code> ;</li>
+<li>本地相对路径：本md文档同目录有个Pic目录，里面有张<code>Cat.png</code>,那么可以在markdown中引入图片<code>![小猫](./Pic/Cat.png)</code> ;</li>
+</ol>
+</li>
+<li>
+<p>如果是需要发布到网络博客，那么就需要使用图片的网络链接了<br>
+想引用网页的某张图，<code>鼠标右键复制图片链接地址</code>, 就是我们需要的图片链接了。举例，去 <em><a href="https://www.runoob.com/cplusplus/cpp-tutorial.html" target="_blank" rel="noopener noreffer">菜鸟教程C++</a></em> 的主页，主页Logo复制到链接后，输入如下内容插入图片：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">![C++ programming](https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png)
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染后，图片则自动显示如下：<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png"
+        data-srcset="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png, https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png 1.5x, https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png 2x"
+        data-sizes="auto"
+        alt="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png"
+        title="C&#43;&#43; programming" /></p>
+</li>
+</ul>
+<p>那么，如果我们自己的制作的图片想要上传到网络呢？<br>
+最常见的是写博客和云笔记，除了某些云笔记软件自带图床，更通常的做法是自己备份在Gitee或Github，更简便的办法是采用 <strong><code>图床</code></strong> ,推荐个好用的开源工具<code>PicGo</code>，奉上👉   <em><a href="https://github.com/Molunerfinn/PicGo/releases" target="_blank" rel="noopener noreffer">PicGO-Github-Release链接</a></em>。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>图片排版<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>首先，markdown插入图片都是左对齐的，有时想要<strong>图片居中</strong>，只能动用html排版了，具体用法如下(<em>图片显示尺寸width字段可以省略不写</em> )： <br>
+输入内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">align </span><span class="o">=</span><span class="s">center</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">img</span>  <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png&#34;</span>
+      <span class="na">width </span><span class="o">=</span> <span class="s">&#34;120&#34;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果：</p>
+<div align =center>
+<img  src="https://www.runoob.com/wp-content/uploads/2015/01/cpp-mini-logo.png"
+      width = "120"/>
+</div>
+</div>
+        </div>
+    </div>
+<h2 id="插入url超链接">插入URL超链接</h2>
+<p>markdown 使用 <code>[超链接描述](链接地址)</code> ，适用场景：比如想给出某链接的地址，浏览者鼠标点击即可浏览器跳转。<br>
+比如输入内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[访问一个高Star的免费中文书籍仓库](https://github.com/justjavac/free-programming-books-zh_CN)
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果：<br>
+<a href="https://github.com/justjavac/free-programming-books-zh_CN" target="_blank" rel="noopener noreffer">访问一个高Star的免费中文书籍仓库</a></p>
+<h2 id="水平分隔线">水平分隔线</h2>
+<p>在一个大段落之后，想和后续内容在<code>视觉</code>上有分隔效果，这时候就需要用到<code>水平分隔线</code>了。markdown中的水平分隔线使用方法：<code>单行使用3个及以上</code>的星号*(***),或短横线-(&mdash;),或下划线_(___)，且上下为空行，和正文分开。<br>
+输入内容(只演示*号，另外2种一样的):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">段落1
+
+*****
+
+段落2
+
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果:<br>
+段落1</p>
+<hr>
+<p>段落2</p>
+<h1 id="扩展语法">扩展语法</h1>
+<p>在基础语法发布后，人们发现不够用，于是有了扩展语法。扩展语法的特性包括表格、代码段控制、脚注、标题ID(Heading ID,我更愿称之为标题锚点)、任务列表、Emoji表情、高亮语法等语法。<br>
+因为markdown是兼容html的，所以某些扩展语法需要借助html的各类标签。</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>扩展语法不是所有Markdown编辑器都全盘支持，具体情况以该编辑器的支持情况为准；</li>
+<li>代码段和表格基本都支持，其他的特性就很依赖编辑器的具体实现了；</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h2 id="表格">表格</h2>
+<ul>
+<li>
+<p><code>表格基本用法</code><br>
+表格使用<code>英式竖向分隔线|和短横-</code>来构建，举例如下：<br>
+输入内容(第一行表头,第二行表格分割线,第3~n行都是主体内容)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">|设备|iPhone11| macBookPro| 小米10|华为mate40Pro|
+|---| ---|---|---|---|
+|系统|iOS | macOS|Android|Android/Harmony|
+|供应商|Apple|Apple|小米|华为 |
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>iPhone11</th>
+<th>macBookPro</th>
+<th>小米10</th>
+<th>华为mate40Pro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统</td>
+<td>iOS</td>
+<td>macOS</td>
+<td>Android</td>
+<td>Android/Harmony</td>
+</tr>
+<tr>
+<td>供应商</td>
+<td>Apple</td>
+<td>Apple</td>
+<td>小米</td>
+<td>华为</td>
+</tr>
+</tbody>
+</table>
+<p>提示💡 : 表格内如果想显示竖线分隔符<code>|</code>，需要使用<code>\</code>转义。</p>
+</li>
+<li>
+<p><code>表格对齐</code><br>
+表格内容是可以做对齐的，只要将上述第二行的三条短横线改成 &ldquo;:&ndash;&quot;(左对齐)、&quot;&ndash;:&quot;(右对齐)、&quot;:-:&quot;(居中对齐)，每列都能单独控制对齐方式。</p>
+</li>
+<li>
+<p><code>单元格内多行</code><br>
+表格内多行需要借助html，比如某行内容太长或者想分行叙述两三项内容，就可以用换行符 <code>&lt;br&gt;</code> 实现单元格内换行。</p>
+</li>
+<li>
+<p><code>表格单元格合并</code><br>
+markdown表格没有相关的语法，但是可以借助html标签，只要使用的编辑器支持html标签就可以渲染出来。<br>
+需要用到的标签：</p>
+<ul>
+<li>colspan：规定单元格可纵深的列数</li>
+<li>rowspan：规定单元格可横跨的行数</li>
+<li>&lt;table&gt;的基本规则:
+<ol>
+<li>整体表格描述用<code>&lt;table&gt;</code>和<code>&lt;/table&gt;</code>包裹起来；</li>
+<li>“绘制表格”的顺序从左到右，类似扫描，一行(几行)的描述，然后再从上到下；</li>
+<li>每一行表格使用<code>&lt;tr&gt;</code>和<code>&lt;/tr&gt;</code>包裹起来；</li>
+<li>每个单元格的<strong>实际文本内容</strong>使用<code>&lt;td&gt;</code>和<code>&lt;/td&gt;</code>包裹起来，行列伸展的rowspan/colspan在td内声明；</li>
+<li>单元格可以设置对齐方式，在<code>&lt;td&gt;</code>范围内使用align=&ldquo;left&rdquo;(或right,center,justify,char)；</li>
+</ol>
+</li>
+</ul>
+<p>例如，如下描绘了“<mark>表格列合并</mark>”：
+输入内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;table&gt;
+  &lt;tr&gt;
+      &lt;td&gt;东方&lt;/td&gt;
+      &lt;td align = &#34;right&#34;&gt;西门&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+      &lt;td colspan=&#34;2&#34;  align = &#34;center&#34;&gt;姓氏&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果：</p>
+<table>
+    <tr>
+        <td>东方</td>
+        <td align = "right">西门</td>
+    </tr>
+    <tr>
+        <td colspan="2"  align = "center">姓氏</td>
+    </tr>
+</table>  
+<p>如下描绘了稍微复杂的“<mark>表格行合并</mark>”：<br>
+输入内容如下(Code可展开):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td align=&#34;center&#34;&gt;类别&lt;/td&gt;
+        &lt;td&gt;名称&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan=&#34;2&#34; align=&#34;center&#34;&gt;颜色&lt;/td&gt;
+        &lt;td&gt;红色&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;黄色&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;距离&lt;/td&gt;
+        &lt;td rowspan=&#34;2&#34;&gt;物理单位&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;时间&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果：</p>
+  <table>
+    <tr>
+        <td align="center">类别</td>
+        <td>名称</td>
+    </tr>
+    <tr>
+        <td rowspan="2" align="center">颜色</td>
+        <td>红色</td>
+    </tr>
+    <tr>
+        <td>黄色</td>
+    </tr>
+    <tr>
+        <td>距离</td>
+        <td rowspan="2">物理单位</td>
+    </tr>
+      <tr>
+        <td>时间</td>
+    </tr>
+</table>
+</li>
+</ul>
+<h2 id="code-block">代码段</h2>
+<p>代码段的高亮使用<strong>3个连续的反引号 `</strong> 来标识代码段，并后接语言类型(针对语法高亮)，结尾处用3个反引号包围代码段。如果不接语言类型，也是可以的，不做任何语法的高亮。如下是C++的代码例子：</p>
+<p><em>输入以下内容</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">​```c++  
+#include &lt;iostream&gt;  
+int main(){  
+    std::cout &lt;&lt; &#34;hello world!\n&#34;;  
+    return 0;  
+}  
+```
+</code></pre></td></tr></table>
+</div>
+</div><p><em>渲染效果：</em>
+​```c++<br>
+#include <iostream><br>
+int main(){<br>
+std::cout &laquo; &ldquo;hello world!\n&rdquo;;<br>
+return 0;<br>
+}</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">如果想要引述的代码块本身包含了3个连续的反引号```，那么就用连续的4个反引号````把它包围起来(上方C++的原文内容输入就是这么做的)。</div>
+        </div>
+    </div>
+
+markdown支持的代码段语言非常丰富 ，包括了几乎所有主流编程语言，参照比较通用的Github风格(GFM,Github Flavored Markdown)所支持的`语法高亮`，语言类型支持列表(参考[Languages Supported by Github Flavored Markdown](https://www.rubycoloredglasses.com/2013/04/languages-supported-by-github-flavored-markdown/))如下列表(Code可展开)：  
+``` list
+actionscript3
+apache
+applescript
+asp
+brainfuck
+c
+cfm
+clojure
+cmake
+coffee-script, coffeescript, coffee
+cpp
+cs
+csharp
+css
+csv
+bash
+diff
+elixir
+erb - HTML + Embedded Ruby
+go
+haml
+http
+java
+javascript
+json
+jsx
+less
+lolcode
+make - Makefile
+markdown
+matlab
+nginx
+objectivec
+pascal
+PHP
+Perl
+python
+profile - python profiler output
+rust
+salt, saltstate - Salt
+shell, sh, zsh, bash - Shell scripting
+scss
+sql
+svg
+swift
+rb, jruby, ruby - Ruby
+smalltalk
+vim, viml - Vim Script
+volt
+vhdl
+vue
+xml - XML and also used for HTML with inline CSS and Javascript
+yaml
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="目录树">目录树</h2>
+<p>markdown可以自动生成目录，一般在文档的开头位置，单独一行输入<code>[TOC]</code>，如果编辑器支持，是可以自动生成目录树的，支持点击跳转。</p>
+<h2 id="任务列表">任务列表</h2>
+<p>任务列表特别适合记录TODO-List，复盘每天/每周的工作哪些做了，哪些没做。具体语法为“短横+空格+中括号[ ]”中括号内为空格表示不勾选，写入字母x则表示选中☑️,如下:<br>
+输入内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">- [x] 基础功能Api完成
+- [x] 各项功能单元测试
+- [x] 测试部提测
+- [ ] 提测反馈修复与迭代
+- [ ] 正式发版
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果:</p>
+<ul>
+<li><i class="far fa-check-square fa-fw"></i> 基础功能Api完成</li>
+<li><i class="far fa-check-square fa-fw"></i> 各项功能单元测试</li>
+<li><i class="far fa-check-square fa-fw"></i> 测试部提测</li>
+<li><i class="far fa-square fa-fw"></i> 提测反馈修复与迭代</li>
+<li><i class="far fa-square fa-fw"></i> 正式发版</li>
+</ul>
+<h2 id="标题id">标题ID</h2>
+<p>标题ID(heading IDs)这个功能其实是用来给某级标题做个自定义的id标记，方便阅读者在另外一个位置通过这个指定的id跳转的。举例，本文的扩展语法下的<code>代码段</code>那一节的标题给他添加Heading-id，id标记名为&quot;code-block&rdquo;，则那一行的标题后要追加该id，写作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">## 代码段 {#code-block}
+</code></pre></td></tr></table>
+</div>
+</div><p>“代码段”这个标题渲染后看起来没什么不同。但是，我在本节，这个位置新增<code>[转到代码段](#code-block)</code>,显示效果像链接，点这个跳转👉 <a href="#code-block" rel="">转到代码段</a>。就成功的跳转到了那一节的标题处。</p>
+<p><em>其他用法</em>：还可以用于给出远端链接时，那篇文章本身带有Heading-id，这样访问链接时直接跳转到指定的章节，而不是从头读起。<br>
+给出带有标题Id的链接格式为: <code>[链接描述](链接地址/#heading-id名)</code>，举例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">[markdown-guide的heading-id章节](https://www.markdownguide.org/extended-syntax/#linking-to-heading-ids)
+</code></pre></td></tr></table>
+</div>
+</div><p>渲染效果(点击后可根据heading-id直接跳转到指定章节)：
+<a href="https://www.markdownguide.org/extended-syntax/#linking-to-heading-ids" target="_blank" rel="noopener noreffer">markdown-guide的heading-id章节</a></p>
+<h2 id="高亮背景色">高亮背景色</h2>
+<p>这个功能用的相对比较少，但是如果使用的markdown编辑器支持html的，渲染效果也不错。<br>
+用法： 使用<code>&lt;mark&gt;高亮背景内容&lt;/mark&gt;</code>来实现突出重要内容，渲染效果： <mark>高亮背景内容</mark></p>
+<h2 id="上标下标">上标下标</h2>
+<p>同样地，使用html标签语法来实现该功能：</p>
+<ul>
+<li>上标用法：使用<code>&lt;sup&gt;上标内容&lt;/sup&gt;</code>来实现上标效果，比如输入 <code>国际认证商标&lt;sup&gt;TM&lt;/sup&gt;</code>，渲染效果：国际认证商标<sup>TM</sup></li>
+<li>下标用法：使用<code>&lt;sub&gt;下标内容&lt;/sub&gt;</code>来实现下标效果，比如输入 <code>水的分子式为H&lt;sub&gt;2&lt;/sub&gt;O</code>，渲染效果：水的分子式为H<sub>2</sub>O</li>
+</ul>
+<p>提示：如果是要写数学公式，单就这2个是完全不够的，直接在Markdown编辑里找到math公式支持的设置，打开即可(或者是安装其对应的数学插件)，较为通用的有 <em><a href="http://docs.mathjax.org/en/latest/" target="_blank" rel="noopener noreffer">mathJax</a></em> , <em><a href="https://katex.org/docs/api.html" target="_blank" rel="noopener noreffer">Katex</a></em> 等。</p>
+<h2 id="emoji表情">Emoji表情</h2>
+<p>某些编辑器是支持使用Emoji表情的，具体用法：使用<code>2个英式冒号包围表情短码</code>,短码(short-code，可以理解为代号)的。举例如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入内容</th>
+<th style="text-align:center">渲染效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">:roll_eyes:</td>
+<td style="text-align:center">🙄</td>
+</tr>
+<tr>
+<td style="text-align:center">:rofl:</td>
+<td style="text-align:center">🤣</td>
+</tr>
+<tr>
+<td style="text-align:center">:man_shrugging:</td>
+<td style="text-align:center">🤷‍♂️</td>
+</tr>
+<tr>
+<td style="text-align:center">:thinking:</td>
+<td style="text-align:center">🤔</td>
+</tr>
+<tr>
+<td style="text-align:center">:snail:</td>
+<td style="text-align:center">🐌</td>
+</tr>
+<tr>
+<td style="text-align:center">:house_with_garden:</td>
+<td style="text-align:center">🏡</td>
+</tr>
+<tr>
+<td style="text-align:center">:cn:</td>
+<td style="text-align:center">🇨🇳</td>
+</tr>
+</tbody>
+</table>
+<p>这只是其中的几个表情，还有大量的Emoji表情，如官方列举👉：<em><a href="https://gist.github.com/rxaviers/7360908" target="_blank" rel="noopener noreffer">list of emoji short-codes.</a></em></p>
+<blockquote>
+<p>参考链接</p>
+<ul>
+<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank" rel="noopener noreffer">Markdown Guide - Basic Syntax</a></li>
+<li><a href="https://www.markdownguide.org/extended-syntax/" target="_blank" rel="noopener noreffer">Markdown Guide - Extended Syntax</a></li>
+<li><a href="https://markdown.com.cn/" target="_blank" rel="noopener noreffer">Markdown官方教程中文版</a></li>
+<li><a href="https://toast-lab.tech/info/markdown-syntax.html" target="_blank" rel="noopener noreffer">Toast-lab - Markdown Syntax</a></li>
+</ul>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-08-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/0e8acc3eef804c6b53bb3300449678cc7349c198" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 0e8acc3eef804c6b53bb3300449678cc7349c198: rename some markdown files">
+                                    <i class="fas fa-hashtag fa-fw"></i>0e8acc3</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结" data-hashtags="markdown,软件工具"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-hashtag="markdown"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结" data-image="/img/Script-Pic/I-Love-Markdown.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结" data-description="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结" data-description="摘要：对常用的markdown语法(基本语法&#43;扩展语法)做个总结概述，备忘查询"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/" data-title="Markdown语法总结"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/markdown/">markdown</a>,&nbsp;<a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/">软件工具</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/01/09_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E6%80%BB%E7%BB%93_%E7%AC%AC3%E7%AB%A0%E5%85%89%E6%A0%85%E5%8C%96/" class="prev" rel="prev" title="Fundamentals of Computer Graphics第3章总结_(光栅化)"><i class="fas fa-angle-left fa-fw"></i>Fundamentals of Computer Graphics第3章总结_(光栅化)</a>
+            <a href="/2022/01/11_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%BA%8C/" class="next" rel="next" title="Effective C&#43;&#43;(第3版)精读总结(二)">Effective C&#43;&#43;(第3版)精读总结(二)<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 101982 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>

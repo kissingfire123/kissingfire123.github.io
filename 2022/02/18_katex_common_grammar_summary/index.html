@@ -1,0 +1,2625 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>常用数学公式排版KaTex语法总结 - Benjamin的求知旅记</title><meta name="Description" content="摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法"><meta property="og:title" content="常用数学公式排版KaTex语法总结" />
+<meta property="og:description" content="摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-20T22:34:53+08:00" />
+<meta property="article:modified_time" content="2022-08-01T20:57:53+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常用数学公式排版KaTex语法总结"/>
+<meta name="twitter:description" content="摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" /><link rel="prev" href="https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" /><link rel="next" href="https://kissingfire123.github.io/2022/03/16_shell_useful_technique_summary/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "常用数学公式排版KaTex语法总结",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2022\/02\/18_katex_common_grammar_summary\/"
+        },"genre": "posts","keywords": "Markdown, Katex","wordcount":  8270 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/02\/18_katex_common_grammar_summary\/","datePublished": "2022-02-20T22:34:53+08:00","dateModified": "2022-08-01T20:57:53+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">常用数学公式排版KaTex语法总结</h1><h2 class="single-subtitle">应用广泛，且可嵌入Markdown中结合使用</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-02-20">2022-02-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8270 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 17 分钟&nbsp;<span id="/2022/02/18_katex_common_grammar_summary/" class="leancloud_visitors" data-flag-title="常用数学公式排版KaTex语法总结">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Script-Pic/Katex-Project.webp"
+        data-srcset="/img/Script-Pic/Katex-Project.webp, /img/Script-Pic/Katex-Project.webp 1.5x, /img/Script-Pic/Katex-Project.webp 2x"
+        data-sizes="auto"
+        alt="/img/Script-Pic/Katex-Project.webp"
+        title="摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#零-前言">零、 前言</a></li>
+    <li><a href="#一公式使用">一、公式使用</a>
+      <ul>
+        <li><a href="#1如何插入公式">1．如何插入公式</a></li>
+        <li><a href="#2输入上下标">2．输入上下标</a></li>
+        <li><a href="#3输入括号和分隔符">3．输入括号和分隔符</a></li>
+        <li><a href="#4输入分数">4．输入分数</a></li>
+        <li><a href="#5输入开方">5．输入开方</a></li>
+        <li><a href="#6输入省略号">6．输入省略号</a></li>
+        <li><a href="#7输入向量">7．输入向量</a></li>
+        <li><a href="#8输入积分">8．输入积分</a></li>
+        <li><a href="#9输入极限运算">9．输入极限运算</a></li>
+        <li><a href="#10输入累加累乘运算">10．输入累加、累乘运算</a></li>
+        <li><a href="#11输入希腊字母">11．输入希腊字母</a></li>
+        <li><a href="#12输入其它特殊字符">12．输入其它特殊字符</a>
+          <ul>
+            <li><a href="#1关系运算符">(1)．关系运算符</a></li>
+            <li><a href="#2集合运算符">(2)．集合运算符</a></li>
+            <li><a href="#3对数运算符">(3)．对数运算符</a></li>
+            <li><a href="#4三角运算符">(4)．三角运算符</a></li>
+            <li><a href="#5微积分运算符">(5)．微积分运算符</a></li>
+            <li><a href="#6逻辑运算符">(6)．逻辑运算符</a></li>
+            <li><a href="#7戴帽符号">(7)．戴帽符号</a></li>
+            <li><a href="#8连线符号">(8)．连线符号</a></li>
+            <li><a href="#9箭头符号">(9)．箭头符号</a></li>
+          </ul>
+        </li>
+        <li><a href="#13如何进行字体转换">13．如何进行字体转换</a></li>
+        <li><a href="#14大括号和行标的使用">14．大括号和行标的使用</a></li>
+        <li><a href="#15其它命令">15．其它命令</a>
+          <ul>
+            <li><a href="#1添加注释文字">(1)．添加注释文字</a></li>
+            <li><a href="#2在字符间加入空格">(2)．在字符间加入空格</a></li>
+            <li><a href="#3更改文字颜色">(3)．更改文字颜色</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二矩阵使用">二、矩阵使用</a>
+      <ul>
+        <li><a href="#1输入无框矩阵">1．输入无框矩阵</a></li>
+        <li><a href="#2输入边框矩阵">2．输入边框矩阵</a></li>
+        <li><a href="#3输入带省略符号的矩阵">3．输入带省略符号的矩阵</a></li>
+        <li><a href="#4输入带分割符号的矩阵">4．输入带分割符号的矩阵</a></li>
+        <li><a href="#5输入行中矩阵">5．输入行中矩阵</a></li>
+      </ul>
+    </li>
+    <li><a href="#三方程式序列使用">三、方程式序列使用</a>
+      <ul>
+        <li><a href="#1输入一个方程组">1．输入一个方程组</a></li>
+        <li><a href="#2输入一个方程式序列">2．输入一个方程式序列</a></li>
+        <li><a href="#3方程式序列每一行注明原因">3．方程式序列每一行注明原因</a></li>
+      </ul>
+    </li>
+    <li><a href="#四条件表达式组的使用">四、条件表达式组的使用</a>
+      <ul>
+        <li><a href="#1输入一个条件表达式组">1．输入一个条件表达式组</a></li>
+        <li><a href="#2左侧对齐的条件表达式组">2．左侧对齐的条件表达式组</a></li>
+        <li><a href="#3适配指定行高">3．适配指定行高</a></li>
+      </ul>
+    </li>
+    <li><a href="#五数组与表格使用">五、数组与表格使用</a>
+      <ul>
+        <li><a href="#1输入一个数组或表格">1．输入一个数组或表格</a></li>
+        <li><a href="#2输入一个嵌套的数组或表格">2．输入一个嵌套的数组或表格</a></li>
+      </ul>
+    </li>
+    <li><a href="#六连分数使用">六、连分数使用</a>
+      <ul>
+        <li><a href="#1输入一个连分数">1．输入一个连分数</a></li>
+      </ul>
+    </li>
+    <li><a href="#七其他注意事项">七、其他注意事项</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><hr>
+<h1 id="零-前言">零、 前言</h1>
+<p>$\TeX$ 数学公式是以文本的形式和规则书写，由公式渲染器进行渲染，可以嵌入Markdown，HTML网页等内容。知名且广泛使用的数学<strong>JS渲染器</strong>支持有$MathJax$，$\KaTeX$  ，两者底层采用的都是 $\TeX$ 排版协议。</p>
+<p>$MathJax$支持的公式功能更多更全面，但是$\KaTeX$  渲染速度更快，而且其特性覆盖范围足够大多数人使用。</p>
+<p>本博客主题为<a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer">HugoTheme-LoveIt</a>，<strong><code>使用的是</code></strong>$\KaTeX$ 数学渲染器，所以涉及的语法都是$\KaTeX$ 和$MathJax$都支持的部分。</p>
+<blockquote>
+<p>⚠️</p>
+<ul>
+<li>关于公式内换行，标准的$MathJax$和$\KaTeX$是&quot;<code>\\</code>&quot;，而<strong>本博客主题</strong>的$\KaTeX$是&quot;<code>\\\\</code>&quot;，这个很重要！（<em>尤其是输入矩阵这类多行公式</em> ）</li>
+<li><strong>本博客主题</strong>的$\KaTeX$ 使用<code>\</code>对其他单个字符进行转义时，也是类似，比如<strong>公式内空格</strong>可以<code>\space</code>或者用<code>\\,</code>或<code>\\;</code>，某些场合需要大括号<code>{}</code>,也是使用<code>\\{</code>和<code>\\}</code>$\Longrightarrow$注意$\KaTeX$ 对于单个符号转义就是用2个斜杠<code>\</code>。</li>
+</ul>
+</blockquote>
+<h1 id="一公式使用">一、公式使用</h1>
+<h2 id="1如何插入公式">1．如何插入公式</h2>
+<p>$\LaTeX$ 的数学公式有两种：行内公式和独立公式。行中公式放在文中与其它文字混编，独立公式单独成行。</p>
+<p>行内公式可以用<strong>单个美元符号</strong>包裹表示：例如<code>$a^2+b^2 = c^2$</code>，渲染后$a^2+b^2 = c^2$。</p>
+<p>独立成行的公式用<strong>2个美元符号</strong>包裹表示：例如<code>$$a^2+b^2 = c^2$$</code>,渲染后：</p>
+<p>$$a^2+b^2 = c^2$$</p>
+<h2 id="2输入上下标">2．输入上下标</h2>
+<p><code>^</code> 表示上标, <code>_</code> 表示下标。如果上下标的内容多于一个字符，需要用 <code>{}</code> 将这些内容括成一个整体。上下标可以嵌套，也可以同时使用。</p>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> x^{y^z}</span><span class="o">=(</span><span class="m">1</span><span class="o">+</span><span class="nb">{</span><span class="nv">\rm</span><span class="nb"> e}^x</span><span class="o">)</span><span class="nb">^{</span><span class="o">-</span><span class="m">2</span><span class="nb">xy^w} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：</p>
+<p>$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$</p>
+</li>
+</ul>
+<h2 id="3输入括号和分隔符">3．输入括号和分隔符</h2>
+<p><code>()</code>、<code>[]</code> 和 <code>|</code> 表示符号本身，使用 <code>\{\}</code> 来表示 <code>{}</code> 。当要显示大号的括号或分隔符时，要用 <code>\left</code> 和 <code>\right</code> 命令。</p>
+<p>一些特殊的括号：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\langle</td>
+<td style="text-align:center">$\langle$</td>
+<td style="text-align:center">\rangle</td>
+<td style="text-align:center">$\rangle$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lceil</td>
+<td style="text-align:center">$\lceil$</td>
+<td style="text-align:center">\rceil</td>
+<td style="text-align:center">$\rceil$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lfloor</td>
+<td style="text-align:center">$\lfloor$</td>
+<td style="text-align:center">\rfloor</td>
+<td style="text-align:center">$\rfloor$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lbrace</td>
+<td style="text-align:center">$\lbrace$</td>
+<td style="text-align:center">\rbrace</td>
+<td style="text-align:center">$\rbrace$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lvert</td>
+<td style="text-align:center">$\lvert$</td>
+<td style="text-align:center">\rvert</td>
+<td style="text-align:center">$\rvert$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lVert</td>
+<td style="text-align:center">$\lVert$</td>
+<td style="text-align:center">\rVert</td>
+<td style="text-align:center">$\rVert$</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>有时，我们需要在行内使用两个竖杠表示向量间的某种空间距离，可以这样写
+<span style="text-align: center; display: block"> <code>\lVert \boldsymbol{X}_i - \boldsymbol{S}_j \rVert^2</code> → $\lVert \boldsymbol{X}_i - \boldsymbol{S}_j \rVert^2$ </span></p>
+</blockquote>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> f</span><span class="o">(</span><span class="nb">x,y,z</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">3</span><span class="nb">y^</span><span class="m">2</span><span class="nb">z </span><span class="nv">\left</span><span class="o">(</span><span class="nb"> </span><span class="m">3</span><span class="o">+</span><span class="nv">\frac</span><span class="nb">{</span><span class="m">7</span><span class="nb">x</span><span class="o">+</span><span class="m">5</span><span class="nb">}{</span><span class="m">1</span><span class="o">+</span><span class="nb">y^</span><span class="m">2</span><span class="nb">} </span><span class="nv">\right</span><span class="o">)</span><span class="nb"> </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：</p>
+<p>$$ f(x,y,z) = 3y^2z \left( 3+\frac{7x+5}{1+y^2} \right) $$</p>
+</li>
+</ul>
+<p>有时要用 <code>\left.</code> 或 <code>\right.</code> 进行匹配而不显示本身。</p>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\left</span><span class="nb">. </span><span class="nv">\frac</span><span class="nb">{{</span><span class="nv">\rm</span><span class="nb"> d}u}{{</span><span class="nv">\rm</span><span class="nb"> d}x} </span><span class="nv">\right</span><span class="nb">| _{x</span><span class="o">=</span><span class="m">0</span><span class="nb">} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：$$ \left. \frac{{\rm d}u}{{\rm d}x} \right| _{x=0} $$</p>
+</li>
+</ul>
+<h2 id="4输入分数">4．输入分数</h2>
+<p>通常使用 <code>\frac {分子} {分母}</code> 来生成一个分数，分数可多层嵌套。如果分式较为复杂，亦可使用 <code>分子 \over 分母</code> 此时分数仅有一层。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{a</span><span class="o">-</span><span class="m">1</span><span class="nb">}{b</span><span class="o">-</span><span class="m">1</span><span class="nb">} </span><span class="nv">\quad</span><span class="nb"> or </span><span class="nv">\quad</span><span class="nb"> {a</span><span class="o">+</span><span class="m">1</span><span class="nb"> </span><span class="nv">\over</span><span class="nb"> b</span><span class="o">+</span><span class="m">1</span><span class="nb">} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：$$ \frac{a-1}{b-1} \quad or \quad {a+1 \over b+1} $$</li>
+</ul>
+<p>当分式 <strong>仅有两个字符时</strong> 可直接输入 <code>\frac ab</code> 来快速生成一个 $\large\frac ab$ 。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb"> </span><span class="m">12</span><span class="nb">,</span><span class="nv">\frac</span><span class="nb"> </span><span class="m">1</span><span class="nb">a,</span><span class="nv">\frac</span><span class="nb"> a</span><span class="m">2</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\text</span><span class="nb">{</span><span class="m">2</span><span class="nb"> letters only:} </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb"> </span><span class="m">12</span><span class="nb">a </span><span class="nv">\\</span><span class="nb">,, k</span><span class="nv">\frac</span><span class="nb"> q{r^</span><span class="m">2</span><span class="nb">} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：$$ \frac 12,\frac 1a,\frac a2 \quad \mid \quad \text{2 letters only:} \quad \frac 12a \,, k\frac q{r^2} $$</li>
+</ul>
+<h2 id="5输入开方">5．输入开方</h2>
+<p>使用 <code>\sqrt [根指数，省略时为2] {被开方数}</code> 命令输入开方。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="nb">{</span><span class="m">2</span><span class="nb">} </span><span class="nv">\quad</span><span class="nb"> or </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\sqrt</span><span class="o">[</span><span class="nb">n</span><span class="o">]</span><span class="nb">{</span><span class="m">3</span><span class="nb">} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：$$ \sqrt{2} \quad or \quad \sqrt[n]{3} $$</li>
+</ul>
+<h2 id="6输入省略号">6．输入省略号</h2>
+<p>数学公式中常见的省略号有两种，<code>\ldots</code> 表示与 <strong>文本底线</strong> 对齐的省略号，<code>\cdots</code> 表示与 <strong>文本中线</strong> 对齐的省略号。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> f</span><span class="o">(</span><span class="nb">x_</span><span class="m">1</span><span class="nb">,x_</span><span class="m">2</span><span class="nb">  </span><span class="nv">\ldots</span><span class="nb"> x_n</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> x_</span><span class="m">1</span><span class="nb">^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> x_</span><span class="m">2</span><span class="nb">^</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> </span><span class="o">+</span><span class="nb"> x_n^</span><span class="m">2</span><span class="nb"> </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：</p>
+<p>$$ f(x_1,x_2  \ldots x_n) = x_1^2 + x_2^2 + \cdots + x_n^2  $$</p>
+</li>
+</ul>
+<h2 id="7输入向量">7．输入向量</h2>
+<p>使用 <code>\vec{向量}</code> 来自动产生一个向量。也可以使用 <code>\overrightarrow</code> 等命令自定义字母上方的符号。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\vec</span><span class="nb">{a} </span><span class="nv">\cdot</span><span class="nb"> </span><span class="nv">\vec</span><span class="nb">{b}</span><span class="o">=</span><span class="m">0</span><span class="nb"> </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：$$ \vec{a} \cdot \vec{b}=0 $$</p>
+</li>
+<li>
+<p>例子：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> xy </span><span class="nv">\text</span><span class="nb">{ with arrows:} </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\overleftarrow</span><span class="nb">{xy} </span><span class="nv">\\</span><span class="nb">; </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\\</span><span class="nb">; </span><span class="nv">\overleftrightarrow</span><span class="nb">{xy} </span><span class="nv">\\</span><span class="nb">; </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\\</span><span class="nb">; </span><span class="nv">\overrightarrow</span><span class="nb">{xy} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：$$ xy \text{ with arrows:} \quad \overleftarrow{xy} \; \mid \; \overleftrightarrow{xy} \; \mid \; \overrightarrow{xy} $$</li>
+</ul>
+<h2 id="8输入积分">8．输入积分</h2>
+<p>使用 <code>\int_积分下限^积分上限 {被积表达式}</code> 来输入一个积分。</p>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\int</span><span class="nb">_</span><span class="m">0</span><span class="nb">^</span><span class="m">1</span><span class="nb"> {x^</span><span class="m">2</span><span class="nb">} </span><span class="nv">\,</span><span class="nb">{</span><span class="nv">\rm</span><span class="nb"> d}x </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>显示：$$ \int_0^1 {x^2} ,{\rm d}x $$</p>
+<p>本例中 <code>\,</code> 和 <code>{\rm d}</code> 部分可省略，但加入能使式子更美观，详见“<a href="#3%e5%9c%a8%e5%ad%97%e7%ac%a6%e9%97%b4%e5%8a%a0%e5%85%a5%e7%a9%ba%e6%a0%bc" rel="">在字符间加入空格</a>”及“<a href="#13%e5%a6%82%e4%bd%95%e8%bf%9b%e8%a1%8c%e5%ad%97%e4%bd%93%e8%bd%ac%e6%8d%a2" rel="">如何进行字体转换</a>”。</p>
+<h2 id="9输入极限运算">9．输入极限运算</h2>
+<p>使用 <code>\lim_{变量 \to 表达式} 表达式</code> 来输入一个极限。如有需求，可以更改 <code>\to</code> 符号至任意符号。</p>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\lim</span><span class="nb">_{n </span><span class="nv">\to</span><span class="nb"> </span><span class="nv">\infty</span><span class="nb">} </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{n</span><span class="o">(</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="o">)</span><span class="nb">} </span><span class="nv">\quad</span><span class="nb"> and </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\lim</span><span class="nb">_{x</span><span class="nv">\leftarrow</span><span class="nb">{示例}} </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{n</span><span class="o">(</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="o">)</span><span class="nb">} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>显示：$$ \lim_{n \to \infty} \frac{1}{n(n+1)} \quad and \quad \lim_{x\leftarrow{示例}} \frac{1}{n(n+1)} $$</p>
+<h2 id="10输入累加累乘运算">10．输入累加、累乘运算</h2>
+<p>使用 <code>\sum_{下标表达式}^{上标表达式} {累加表达式}</code> 来输入一个累加。与之类似，使用 <code>\prod</code> <code>\bigcup</code> <code>\bigcap</code> 来分别输入累乘、并集和交集，更多符号可参考“<a href="#12%e8%be%93%e5%85%a5%e5%85%b6%e5%ae%83%e7%89%b9%e6%ae%8a%e5%ad%97%e7%ac%a6" rel="">其它特殊字符</a>”。
+此类符号在行内显示时上下标表达式将会移至右上角和右下角，如 $\sum_{i=1}^n \frac{1}{i^2}$。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\sum</span><span class="nb">_{i</span><span class="o">=</span><span class="m">1</span><span class="nb">}^n </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{i^</span><span class="m">2</span><span class="nb">} </span><span class="nv">\quad</span><span class="nb"> and </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\prod</span><span class="nb">_{i</span><span class="o">=</span><span class="m">1</span><span class="nb">}^n </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">}{i^</span><span class="m">2</span><span class="nb">} </span><span class="nv">\quad</span><span class="nb"> and </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\bigcup</span><span class="nb">_{i</span><span class="o">=</span><span class="m">1</span><span class="nb">}^{</span><span class="m">2</span><span class="nb">} </span><span class="nv">\Bbb</span><span class="nb">{R} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：$$ \sum_{i=1}^n \frac{1}{i^2} \quad and \quad \prod_{i=1}^n \frac{1}{i^2} \quad and \quad \bigcup_{i=1}^{2} \Bbb{R} $$</li>
+</ul>
+<h2 id="11输入希腊字母">11．输入希腊字母</h2>
+<p>输入 <code>\小写希腊字母英文全称</code> 和 <code>\首字母大写希腊字母英文全称</code> 来分别输入小写和大写希腊字母。
+<strong>对于大写希腊字母与现有字母相同的，直接输入大写字母即可。</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\alpha</td>
+<td style="text-align:center">$\alpha$</td>
+<td style="text-align:center">A</td>
+<td style="text-align:center">$A$</td>
+<td style="text-align:center">\beta</td>
+<td style="text-align:center">$\beta$</td>
+<td style="text-align:center">B</td>
+<td style="text-align:center">$B$</td>
+</tr>
+<tr>
+<td style="text-align:center">\gamma</td>
+<td style="text-align:center">$\gamma$</td>
+<td style="text-align:center">\Gamma</td>
+<td style="text-align:center">$\Gamma$</td>
+<td style="text-align:center">\delta</td>
+<td style="text-align:center">$\delta$</td>
+<td style="text-align:center">\Delta</td>
+<td style="text-align:center">$\Delta$</td>
+</tr>
+<tr>
+<td style="text-align:center">\epsilon</td>
+<td style="text-align:center">$\epsilon$</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">$E$</td>
+<td style="text-align:center">\zeta</td>
+<td style="text-align:center">$\zeta$</td>
+<td style="text-align:center">Z</td>
+<td style="text-align:center">$Z$</td>
+</tr>
+<tr>
+<td style="text-align:center">\eta</td>
+<td style="text-align:center">$\eta$</td>
+<td style="text-align:center">H</td>
+<td style="text-align:center">$H$</td>
+<td style="text-align:center">\theta</td>
+<td style="text-align:center">$\theta$</td>
+<td style="text-align:center">\Theta</td>
+<td style="text-align:center">$\Theta$</td>
+</tr>
+<tr>
+<td style="text-align:center">\iota</td>
+<td style="text-align:center">$\iota$</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">$I$</td>
+<td style="text-align:center">\kappa</td>
+<td style="text-align:center">$\kappa$</td>
+<td style="text-align:center">K</td>
+<td style="text-align:center">$K$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lambda</td>
+<td style="text-align:center">$\lambda$</td>
+<td style="text-align:center">\Lambda</td>
+<td style="text-align:center">$\Lambda$</td>
+<td style="text-align:center">\mu</td>
+<td style="text-align:center">$\mu$</td>
+<td style="text-align:center">M</td>
+<td style="text-align:center">$M$</td>
+</tr>
+<tr>
+<td style="text-align:center">\nu</td>
+<td style="text-align:center">$\nu$</td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">$N$</td>
+<td style="text-align:center">\xi</td>
+<td style="text-align:center">$\xi$</td>
+<td style="text-align:center">\Xi</td>
+<td style="text-align:center">$\Xi$</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:center">$o$</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">$O$</td>
+<td style="text-align:center">\pi</td>
+<td style="text-align:center">$\pi$</td>
+<td style="text-align:center">\Pi</td>
+<td style="text-align:center">$\Pi$</td>
+</tr>
+<tr>
+<td style="text-align:center">\rho</td>
+<td style="text-align:center">$\rho$</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">$P$</td>
+<td style="text-align:center">\sigma</td>
+<td style="text-align:center">$\sigma$</td>
+<td style="text-align:center">\Sigma</td>
+<td style="text-align:center">$\Sigma$</td>
+</tr>
+<tr>
+<td style="text-align:center">\tau</td>
+<td style="text-align:center">$\tau$</td>
+<td style="text-align:center">T</td>
+<td style="text-align:center">$T$</td>
+<td style="text-align:center">\upsilon</td>
+<td style="text-align:center">$\upsilon$</td>
+<td style="text-align:center">\Upsilon</td>
+<td style="text-align:center">$\Upsilon$</td>
+</tr>
+<tr>
+<td style="text-align:center">\phi</td>
+<td style="text-align:center">$\phi$</td>
+<td style="text-align:center">\Phi</td>
+<td style="text-align:center">$\Phi$</td>
+<td style="text-align:center">\chi</td>
+<td style="text-align:center">$\chi$</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">$X$</td>
+</tr>
+<tr>
+<td style="text-align:center">\psi</td>
+<td style="text-align:center">$\psi$</td>
+<td style="text-align:center">\Psi</td>
+<td style="text-align:center">$\Psi$</td>
+<td style="text-align:center">\omega</td>
+<td style="text-align:center">$\omega$</td>
+<td style="text-align:center">\Omega</td>
+<td style="text-align:center">$\Omega$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>部分字母有变量专用形式，以 <code>\var-</code> 开头。</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">小写形式</th>
+<th style="text-align:center">大写形式</th>
+<th style="text-align:center">变量形式</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\epsilon</td>
+<td style="text-align:center">E</td>
+<td style="text-align:center">\varepsilon</td>
+<td style="text-align:center">$\epsilon \mid E \mid \varepsilon$</td>
+</tr>
+<tr>
+<td style="text-align:center">\theta</td>
+<td style="text-align:center">\Theta</td>
+<td style="text-align:center">\vartheta</td>
+<td style="text-align:center">$\theta \mid \Theta \mid \vartheta$</td>
+</tr>
+<tr>
+<td style="text-align:center">\rho</td>
+<td style="text-align:center">P</td>
+<td style="text-align:center">\varrho</td>
+<td style="text-align:center">$\rho \mid P \mid \varrho$</td>
+</tr>
+<tr>
+<td style="text-align:center">\sigma</td>
+<td style="text-align:center">\Sigma</td>
+<td style="text-align:center">\varsigma</td>
+<td style="text-align:center">$\sigma \mid \Sigma \mid \varsigma$</td>
+</tr>
+<tr>
+<td style="text-align:center">\phi</td>
+<td style="text-align:center">\Phi</td>
+<td style="text-align:center">\varphi</td>
+<td style="text-align:center">$\phi \mid \Phi \mid \varphi$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12输入其它特殊字符">12．输入其它特殊字符</h2>
+<blockquote>
+<p><strong>完整的 $\LaTeX$ 可用符号列表可以在 <a href="https://mirror.its.dal.ca/ctan/info/symbols/comprehensive/symbols-a4.pdf" target="_blank" rel="noopener noreffer">这份文档</a> 中查阅（极长，共 348 页），大部分常用符号可以参阅 <a href="https://pic.plover.com/MISC/symbols.pdf" target="_blank" rel="noopener noreffer">这份精简版文档</a> 查询。</strong></p>
+</blockquote>
+<blockquote>
+<p>若需要显示更大或更小的字符，在符号前插入 <code>\large</code> 或 <code>\small</code> 命令，比如“<code>$\small{x} + \normalsize{x}+\large{x}$</code>”，显示为$\small{x} + \normalsize{x}+\large{x}$。
+$KaTeX$  针对任意元素均提供从小至大 <code>\tiny</code>  <code>\scriptsize</code> <code>\small</code> <code>\normalsize</code> <code>\large</code> <code>\Large</code> <code>\LARGE</code> <code>\huge</code> <code>\Huge</code> 等渲染尺寸。</p>
+</blockquote>
+<h3 id="1关系运算符">(1)．关系运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\pm</td>
+<td style="text-align:center">$\pm$</td>
+<td style="text-align:center">\times</td>
+<td style="text-align:center">$\times$</td>
+<td style="text-align:center">\div</td>
+<td style="text-align:center">$\div$</td>
+<td style="text-align:center">\mid</td>
+<td style="text-align:center">$\mid$</td>
+</tr>
+<tr>
+<td style="text-align:center">\nmid</td>
+<td style="text-align:center">$\nmid$</td>
+<td style="text-align:center">\cdot</td>
+<td style="text-align:center">$\cdot$</td>
+<td style="text-align:center">\circ</td>
+<td style="text-align:center">$\circ$</td>
+<td style="text-align:center">\ast</td>
+<td style="text-align:center">$\ast$</td>
+</tr>
+<tr>
+<td style="text-align:center">\bigodot</td>
+<td style="text-align:center">$\bigodot$</td>
+<td style="text-align:center">\bigotimes</td>
+<td style="text-align:center">$\bigotimes$</td>
+<td style="text-align:center">\bigoplus</td>
+<td style="text-align:center">$\bigoplus$</td>
+<td style="text-align:center">\leq</td>
+<td style="text-align:center">$\leq$</td>
+</tr>
+<tr>
+<td style="text-align:center">\geq</td>
+<td style="text-align:center">$\geq$</td>
+<td style="text-align:center">\neq</td>
+<td style="text-align:center">$\neq$</td>
+<td style="text-align:center">\approx</td>
+<td style="text-align:center">$\approx$</td>
+<td style="text-align:center">\equiv</td>
+<td style="text-align:center">$\equiv$</td>
+</tr>
+<tr>
+<td style="text-align:center">\sum</td>
+<td style="text-align:center">$\sum$</td>
+<td style="text-align:center">\prod</td>
+<td style="text-align:center">$\prod$</td>
+<td style="text-align:center">\coprod</td>
+<td style="text-align:center">$\coprod$</td>
+<td style="text-align:center">\backslash</td>
+<td style="text-align:center">$\backslash$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2集合运算符">(2)．集合运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\emptyset</td>
+<td style="text-align:center">$\emptyset$</td>
+<td style="text-align:center">\in</td>
+<td style="text-align:center">$\in$</td>
+<td style="text-align:center">\notin</td>
+<td style="text-align:center">$\notin$</td>
+</tr>
+<tr>
+<td style="text-align:center">\subset</td>
+<td style="text-align:center">$\subset$</td>
+<td style="text-align:center">\supset</td>
+<td style="text-align:center">$\supset$</td>
+<td style="text-align:center">\subseteq</td>
+<td style="text-align:center">$\subseteq$</td>
+</tr>
+<tr>
+<td style="text-align:center">\supseteq</td>
+<td style="text-align:center">$\supseteq$</td>
+<td style="text-align:center">\cap</td>
+<td style="text-align:center">$\cap$</td>
+<td style="text-align:center">\cup</td>
+<td style="text-align:center">$\cup$</td>
+</tr>
+<tr>
+<td style="text-align:center">\vee</td>
+<td style="text-align:center">$\vee$</td>
+<td style="text-align:center">\wedge</td>
+<td style="text-align:center">$\wedge$</td>
+<td style="text-align:center">\uplus</td>
+<td style="text-align:center">$\uplus$</td>
+</tr>
+<tr>
+<td style="text-align:center">\top</td>
+<td style="text-align:center">$\top$</td>
+<td style="text-align:center">\bot</td>
+<td style="text-align:center">$\bot$</td>
+<td style="text-align:center">\complement</td>
+<td style="text-align:center">$\complement$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3对数运算符">(3)．对数运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\log</td>
+<td style="text-align:center">$\log$</td>
+<td style="text-align:center">\lg</td>
+<td style="text-align:center">$\lg$</td>
+<td style="text-align:center">\ln</td>
+<td style="text-align:center">$\ln$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4三角运算符">(4)．三角运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\backsim</td>
+<td style="text-align:center">$\backsim$</td>
+<td style="text-align:center">\cong</td>
+<td style="text-align:center">$\cong$</td>
+<td style="text-align:center">\angle A</td>
+<td style="text-align:center">$\angle A$</td>
+</tr>
+<tr>
+<td style="text-align:center">\sin</td>
+<td style="text-align:center">$\sin$</td>
+<td style="text-align:center">\cos</td>
+<td style="text-align:center">$\cos$</td>
+<td style="text-align:center">\tan</td>
+<td style="text-align:center">$\tan$</td>
+</tr>
+<tr>
+<td style="text-align:center">\csc</td>
+<td style="text-align:center">$\csc$</td>
+<td style="text-align:center">\sec</td>
+<td style="text-align:center">$\sec$</td>
+<td style="text-align:center">\cot</td>
+<td style="text-align:center">$\cot$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5微积分运算符">(5)．微积分运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\int</td>
+<td style="text-align:center">$\int$</td>
+<td style="text-align:center">\iint</td>
+<td style="text-align:center">$\iint$</td>
+<td style="text-align:center">\iiint</td>
+<td style="text-align:center">$\iiint$</td>
+</tr>
+<tr>
+<td style="text-align:center">\partial</td>
+<td style="text-align:center">$\partial$</td>
+<td style="text-align:center">\oint</td>
+<td style="text-align:center">$\oint$</td>
+<td style="text-align:center">\prime</td>
+<td style="text-align:center">$\prime$</td>
+</tr>
+<tr>
+<td style="text-align:center">\lim</td>
+<td style="text-align:center">$\lim$</td>
+<td style="text-align:center">\infty</td>
+<td style="text-align:center">$\infty$</td>
+<td style="text-align:center">\nabla</td>
+<td style="text-align:center">$\nabla$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6逻辑运算符">(6)．逻辑运算符</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\because</td>
+<td style="text-align:center">$\because$</td>
+<td style="text-align:center">\therefore</td>
+<td style="text-align:center">$\therefore$</td>
+<td style="text-align:center">\neg</td>
+<td style="text-align:center">$\neg$</td>
+</tr>
+<tr>
+<td style="text-align:center">\forall</td>
+<td style="text-align:center">$\forall$</td>
+<td style="text-align:center">\exists</td>
+<td style="text-align:center">$\exists$</td>
+<td style="text-align:center">\not\subset</td>
+<td style="text-align:center">$\not\subset$</td>
+</tr>
+<tr>
+<td style="text-align:center">\not&lt;</td>
+<td style="text-align:center">$\not&lt;$</td>
+<td style="text-align:center">\not&gt;</td>
+<td style="text-align:center">$\not&gt;$</td>
+<td style="text-align:center">\not=</td>
+<td style="text-align:center">$\not=$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7戴帽符号">(7)．戴帽符号</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\hat{xy}</td>
+<td style="text-align:center">$\hat{xy}$</td>
+<td style="text-align:center">\widehat{xyz}</td>
+<td style="text-align:center">$\widehat{xyz}$</td>
+<td style="text-align:center">\bar{y}</td>
+<td style="text-align:center">$\bar{y}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\tilde{xy}</td>
+<td style="text-align:center">$\tilde{xy}$</td>
+<td style="text-align:center">\widetilde{xyz}</td>
+<td style="text-align:center">$\widetilde{xyz}$</td>
+<td style="text-align:center">\acute{y}</td>
+<td style="text-align:center">$\acute{y}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\breve{y}</td>
+<td style="text-align:center">$\breve{y}$</td>
+<td style="text-align:center">\check{y}</td>
+<td style="text-align:center">$\check{y}$</td>
+<td style="text-align:center">\grave{y}</td>
+<td style="text-align:center">$\grave{y}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\dot{x}</td>
+<td style="text-align:center">$\dot{x}$</td>
+<td style="text-align:center">\ddot{x}</td>
+<td style="text-align:center">$\ddot{x}$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>若需要在<strong>特定文字顶部\底部放置内容</strong>，可使用 <code>\overset{顶部内容}{正常内容}</code> 和 <code>\underset{底部内容}{正常内容}</code> 命令。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\verb</span><span class="o">+</span><span class="nv">\overset</span><span class="nb">{above}{level}</span><span class="o">+</span><span class="nb"> </span><span class="nv">\qquad</span><span class="nb"> </span><span class="nv">\overset</span><span class="nb">{xx}{ABC} </span><span class="nv">\\</span><span class="nb">;</span><span class="nv">\\</span><span class="nb">; </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\overset</span><span class="nb">{x^</span><span class="m">2</span><span class="nb">}{</span><span class="nv">\longmapsto</span><span class="nb">}</span><span class="nv">\ \\</span><span class="nb">, </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\overset</span><span class="nb">{</span><span class="nv">\bullet\circ\circ\bullet</span><span class="nb">}{T} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：
+$$ \verb+\overset{above}{level}+ \qquad \overset{xx}{ABC} \;\; \mid \quad \overset{x^2}{\longmapsto}\ \, \mid \quad \overset{\bullet\circ\circ\bullet}{T} $$</p>
+</li>
+<li>
+<p>例子：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\verb</span><span class="o">+</span><span class="nv">\underset</span><span class="nb">{below}{level}</span><span class="o">+</span><span class="nb"> </span><span class="nv">\qquad</span><span class="nb"> </span><span class="nv">\underset</span><span class="nb">{xx}{ABC} </span><span class="nv">\\</span><span class="nb">;</span><span class="nv">\\</span><span class="nb">; </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\underset</span><span class="nb">{x^</span><span class="m">2</span><span class="nb">}{</span><span class="nv">\longmapsto</span><span class="nb">}</span><span class="nv">\ \\</span><span class="nb">, </span><span class="nv">\mid</span><span class="nb"> </span><span class="nv">\quad</span><span class="nb"> </span><span class="nv">\underset</span><span class="nb">{</span><span class="nv">\bullet\circ\circ\bullet</span><span class="nb">}{T} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$ \verb+\underset{below}{level}+ \qquad \underset{xx}{ABC} \;\; \mid \quad \underset{x^2}{\longmapsto}\ \, \mid \quad \underset{\bullet\circ\circ\bullet}{T} $$</li>
+</ul>
+<p>此命令可叠加嵌套使用，生成类似化学反应式的多重条件符号，
+例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\rm</span> <span class="nb">{</span>SrO<span class="nb">}</span> + V<span class="nb">^{</span>&#39;&#39;<span class="nb">}_{</span>Sr<span class="nb">}</span> <span class="k">\overset</span><span class="nb">{</span>H<span class="nb">_</span>2<span class="nb">}{</span><span class="k">\underset</span><span class="nb">{</span>1300℃<span class="nb">}{</span><span class="k">\Longleftrightarrow</span><span class="nb">}}</span> 2e<span class="nb">^{</span>&#39;<span class="nb">}</span>+<span class="k">\frac</span> 12O<span class="nb">_</span>2(g) + Sr<span class="nb">^{</span><span class="k">\times</span><span class="nb">}_</span>S
+</code></pre></td></tr></table>
+</div>
+</div><p>显示：</p>
+<p>$$ \rm {SrO} + V^{''}_{Sr} \overset{H_2}{\underset{1300℃}{\Longleftrightarrow}} 2e^{'}+\frac 12O_2(g) + Sr^{\times}_S$$</p>
+<h3 id="8连线符号">(8)．连线符号</h3>
+<p>其它可用的文字修饰符可参见官方文档 <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference#answer-13081" target="_blank" rel="noopener noreffer">&ldquo;Additional decorations&rdquo;</a>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\fbox{a+b+c+d} <span style="display: block"><strong>高级框选需<a href="#5%e6%b7%bb%e5%8a%a0%e5%88%a0%e9%99%a4%e7%ba%bf" rel="">声明 <code>enclose</code> 标签</a></strong></span></td>
+<td style="text-align:center">$\fbox{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\overleftarrow{a+b+c+d}</td>
+<td style="text-align:center">$\overleftarrow{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\overrightarrow{a+b+c+d}</td>
+<td style="text-align:center">$\overrightarrow{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\overleftrightarrow{a+b+c+d}</td>
+<td style="text-align:center">$\overleftrightarrow{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\underleftarrow{a+b+c+d}</td>
+<td style="text-align:center">$\underleftarrow{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\underrightarrow{a+b+c+d}</td>
+<td style="text-align:center">$\underrightarrow{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\underleftrightarrow{a+b+c+d}</td>
+<td style="text-align:center">$\underleftrightarrow{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\overline{a+b+c+d}</td>
+<td style="text-align:center">$\overline{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\underline{a+b+c+d}</td>
+<td style="text-align:center">$\underline{a+b+c+d}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\overbrace{a+b+c+d}^{Sample}</td>
+<td style="text-align:center">$\overbrace{a+b+c+d}^{Sample}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\underbrace{a+b+c+d}_{Sample}</td>
+<td style="text-align:center">$\underbrace{a+b+c+d}_{Sample}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}</td>
+<td style="text-align:center">$\overbrace{a+\underbrace{b+c}_{1.0}+d}^{2.0}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\underbrace{a\cdot a\cdots a}_{b\text{ times}}</td>
+<td style="text-align:center">$\underbrace{a\cdot a\cdots a}_{b\text{ times}}$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9箭头符号">(9)．箭头符号</h3>
+<ul>
+<li>
+<p>推荐使用符号：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\to</td>
+<td style="text-align:center">$\to$</td>
+<td style="text-align:center">\mapsto</td>
+<td style="text-align:center">$\mapsto$</td>
+<td style="text-align:center">\underrightarrow{1℃/min}</td>
+<td style="text-align:center">$\underrightarrow{1℃/min}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\implies</td>
+<td style="text-align:center">$\implies$</td>
+<td style="text-align:center">\iff</td>
+<td style="text-align:center">$\iff$</td>
+<td style="text-align:center">\impliedby</td>
+<td style="text-align:center">$\impliedby$</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>其它可用符号：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\uparrow</td>
+<td style="text-align:center">$\uparrow$</td>
+<td style="text-align:center">\Uparrow</td>
+<td style="text-align:center">$\Uparrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\downarrow</td>
+<td style="text-align:center">$\downarrow$</td>
+<td style="text-align:center">\Downarrow</td>
+<td style="text-align:center">$\Downarrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\leftarrow</td>
+<td style="text-align:center">$\leftarrow$</td>
+<td style="text-align:center">\Leftarrow</td>
+<td style="text-align:center">$\Leftarrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\rightarrow</td>
+<td style="text-align:center">$\rightarrow$</td>
+<td style="text-align:center">\Rightarrow</td>
+<td style="text-align:center">$\Rightarrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\leftrightarrow</td>
+<td style="text-align:center">$\leftrightarrow$</td>
+<td style="text-align:center">\Leftrightarrow</td>
+<td style="text-align:center">$\Leftrightarrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\longleftarrow</td>
+<td style="text-align:center">$\longleftarrow$</td>
+<td style="text-align:center">\Longleftarrow</td>
+<td style="text-align:center">$\Longleftarrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\longrightarrow</td>
+<td style="text-align:center">$\longrightarrow$</td>
+<td style="text-align:center">\Longrightarrow</td>
+<td style="text-align:center">$\Longrightarrow$</td>
+</tr>
+<tr>
+<td style="text-align:center">\longleftrightarrow</td>
+<td style="text-align:center">$\longleftrightarrow$</td>
+<td style="text-align:center">\Longleftrightarrow</td>
+<td style="text-align:center">$\Longleftrightarrow$</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="13如何进行字体转换">13．如何进行字体转换</h2>
+<p>若要对公式的某一部分字符进行字体转换，可以用 <code>{\字体 {需转换的部分字符}}</code> 命令，其中 <code>\字体</code> 部分可以参照下表选择合适的字体。一般情况下，公式默认为斜体字 $italic$ 。</p>
+<p>示例中 <strong>全部大写</strong> 的字体仅大写可用。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">全字母可用</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">仅大写可用</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\rm</td>
+<td style="text-align:center">罗马体</td>
+<td style="text-align:center">$\rm{Sample}$</td>
+<td style="text-align:center"><strong>\mathcal</strong></td>
+<td style="text-align:center"><strong>花体（数学符号等）</strong></td>
+<td style="text-align:center">$\mathcal{SAMPLE}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\it</td>
+<td style="text-align:center">斜体</td>
+<td style="text-align:center">$\it{Sample}$</td>
+<td style="text-align:center"><strong>\mathbb</strong></td>
+<td style="text-align:center"><strong>黑板粗体（定义域等）</strong></td>
+<td style="text-align:center">$\mathbb{SAMPLE}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\bf</td>
+<td style="text-align:center">粗体</td>
+<td style="text-align:center">$\bf{Sample}$</td>
+<td style="text-align:center">\mathit</td>
+<td style="text-align:center">数学斜体</td>
+<td style="text-align:center">$\mathit{SAMPLE}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\sf</td>
+<td style="text-align:center">等线体</td>
+<td style="text-align:center">$\sf{Sample}$</td>
+<td style="text-align:center">\mathscr</td>
+<td style="text-align:center">手写体</td>
+<td style="text-align:center">$\mathscr{SAMPLE}$</td>
+</tr>
+<tr>
+<td style="text-align:center">\tt</td>
+<td style="text-align:center">打字机体</td>
+<td style="text-align:center">$\tt{Sample}$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">\frak</td>
+<td style="text-align:center">旧德式字体</td>
+<td style="text-align:center">$\frak{Sample}$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️注意： <code>\boldsymbol{\vec \alpha}</code> 用来表示向量或者矩阵的加粗斜体，如向量 $\boldsymbol{\vec\alpha}$。</p>
+</blockquote>
+<p>转换字体十分常用，例如在积分中：</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cc<span class="nb">}</span>
+    <span class="k">\mathrm</span><span class="nb">{</span>Bad<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\mathrm</span><span class="nb">{</span>Better<span class="nb">}</span> <span class="k">\\\\</span>
+    <span class="k">\hline</span> <span class="k">\\\\</span>
+    <span class="k">\int</span><span class="nb">_</span>0<span class="nb">^</span>1 x<span class="nb">^</span>2 dx <span class="nb">&amp;</span> <span class="k">\int</span><span class="nb">_</span>0<span class="nb">^</span>1 x<span class="nb">^</span>2  <span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>x
+<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：</p>
+<p>$$\begin{array}{cc}
+\mathrm{Bad} &amp; \mathrm{Better} \\
+\hline \\
+\int_0^1 x^2 dx &amp; \int_0^1 x^2  \,{\rm d}x
+\end{array}$$</p>
+</li>
+</ul>
+<p>注意比较两个式子间 $dx$ 与 ${\rm d} x$ 的不同。
+使用 <code>\operatorname</code> 命令也可以达到相同的效果。</p>
+<h2 id="14大括号和行标的使用">14．大括号和行标的使用</h2>
+<p>在 <code>\left</code> 和 <code>\right</code> 之后加上要使用的括号来创建自动匹配高度的圆括号 <code>(</code> <code>)</code>，方括号 <code>[</code> <code>]</code> 和花括号 <code>\{</code> <code>\}</code>。
+在每个公式末尾前使用 <code>\tag {行标}</code> 来实现行标。</p>
+<ul>
+<li>例子：注意：本博客主题的$\KaTeX$使用<code>\\{</code>和<code>\\}</code>对左、右括号转义，如果是$MathJax$，使用<code>\{</code>和<code>\}</code>。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">f</span><span class="nv">\left</span><span class="o">(</span><span class="nb">
+</span><span class="nb">   </span><span class="nv">\left</span><span class="o">[</span><span class="nb"> 
+</span><span class="nb">     </span><span class="nv">\frac</span><span class="nb">{
+</span><span class="nb">       </span><span class="m">1</span><span class="o">+</span><span class="nv">\left\\</span><span class="nb">{x,y</span><span class="nv">\right\\</span><span class="nb">}
+</span><span class="nb">     }{
+</span><span class="nb">       </span><span class="nv">\left</span><span class="o">(</span><span class="nb">
+</span><span class="nb">          </span><span class="nv">\frac</span><span class="nb"> xy </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb"> yx
+</span><span class="nb">       </span><span class="nv">\right</span><span class="o">)</span><span class="nb">
+</span><span class="nb">       </span><span class="o">(</span><span class="nb">u</span><span class="o">+</span><span class="m">1</span><span class="o">)</span><span class="nb">
+</span><span class="nb">     }</span><span class="o">+</span><span class="nb">a
+</span><span class="nb">   </span><span class="nv">\right</span><span class="o">]</span><span class="nb">^{</span><span class="m">3</span><span class="o">/</span><span class="m">2</span><span class="nb">}
+</span><span class="nb"></span><span class="nv">\right</span><span class="o">)</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\tag</span><span class="nb"> {行标}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$
+f\left(
+\left[
+\frac{
+1+\left\{x,y\right\}
+}{
+\left(
+\frac xy + \frac yx
+\right)
+(u+1)
+}+a
+\right]^{3/2}
+\right)
+\tag {行标}
+$$</li>
+</ul>
+<p>如果你需要在不同的行显示对应括号，可以在每一行对应处使用 <code>\left.</code> 或 <code>\right.</code> 来放一个“不存在的括号”。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\begin</span><span class="nb">{aligned}
+</span><span class="nb">    a</span><span class="o">=</span><span class="nb">&amp;</span><span class="nv">\left</span><span class="o">(</span><span class="m">1</span><span class="o">+</span><span class="m">2</span><span class="o">+</span><span class="m">3</span><span class="o">+</span><span class="nb"> </span><span class="nv">\cdots</span><span class="nb"> </span><span class="nv">\right</span><span class="nb">. </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">      &amp;</span><span class="nv">\cdots</span><span class="o">+</span><span class="nv">\left</span><span class="nb">. </span><span class="nv">\infty</span><span class="o">-</span><span class="m">2</span><span class="o">+</span><span class="nv">\infty</span><span class="o">-</span><span class="m">1</span><span class="o">+</span><span class="nv">\infty\right</span><span class="o">)</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\end</span><span class="nb">{aligned}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：<br>
+$$
+\begin{aligned}
+a=&amp;\left(1+2+3+ \cdots \right. \\
+&amp;\cdots+\left. \infty-2+\infty-1+\infty\right)
+\end{aligned}
+$$</li>
+</ul>
+<h2 id="15其它命令">15．其它命令</h2>
+<h3 id="1添加注释文字">(1)．添加注释文字</h3>
+<p>在 <code>\text {文字}</code> 中仍可以使用 <code>$公式$</code> 插入其它公式。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> f</span><span class="o">(</span><span class="nb">n</span><span class="o">)=</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{cases} n</span><span class="o">/</span><span class="m">2</span><span class="nb">, &amp; </span><span class="nv">\text</span><span class="nb"> {if $n$ is even} </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="nb">, &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is odd} </span><span class="nv">\end</span><span class="nb">{cases} </span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$ f(n)= \begin{cases} n/2, &amp; \text {if $n$ is even} \\ 3n+1, &amp; \text{if $n$ is odd} \end{cases} $$</li>
+</ul>
+<h3 id="2在字符间加入空格">(2)．在字符间加入空格</h3>
+<p>有四种宽度的空格可以使用： <code>\\,</code>、<code>\\;</code>、<code>\quad</code> 和 <code>\qquad</code>，灵活使用 <code>\text{n个空格}</code> 也可以在任意位置实现空格。</p>
+<blockquote>
+<p><code>再次提醒</code>：本博客主题的$\KaTeX$ 是使用2个斜杠来转义，所以是<code>\\;</code>和<code>\\,</code>，如果是$MathJax$，则是一个斜杠，即<code>\, </code>和 <code>\;</code>。</p>
+</blockquote>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">A B </span><span class="nv">\quad</span><span class="nb"> Vs </span><span class="nv">\quad</span><span class="nb"> A</span><span class="nv">\\</span><span class="nb">,B  </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">C D </span><span class="nv">\quad</span><span class="nb"> Vs </span><span class="nv">\quad</span><span class="nb"> C</span><span class="nv">\\</span><span class="nb">;D   </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">E F </span><span class="nv">\quad</span><span class="nb"> Vs </span><span class="nv">\quad</span><span class="nb"> E</span><span class="nv">\space</span><span class="nb"> F 
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：(注意$AB$在公式中<strong>手动输入空格是没用的</strong>，需要上述的特殊字符作为空格)：
+$$
+A B \quad Vs \quad A\,B  \\
+C D \quad Vs \quad C\;D   \\
+E F \quad Vs \quad E\space F
+$$</p>
+</li>
+</ul>
+<p>一些常见的公式单位可表达如下：</p>
+<ul>
+<li>例子：(注意：本博客主题转义感叹号<code>!</code>也用了2个反斜杠，即<code>\\!</code>)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb"> </span><span class="nv">\mu</span><span class="nb">_</span><span class="m">0</span><span class="o">=</span><span class="m">4</span><span class="nv">\pi\times</span><span class="m">10</span><span class="nb">^{</span><span class="o">-</span><span class="m">7</span><span class="nb">} </span><span class="nv">\ \left</span><span class="nb">.</span><span class="nv">\mathrm</span><span class="nb">{</span><span class="nv">\mathrm</span><span class="nb">{T}</span><span class="nv">\\</span><span class="o">!</span><span class="nv">\cdot\\</span><span class="o">!</span><span class="nv">\mathrm</span><span class="nb">{m}}</span><span class="nv">\middle</span><span class="o">/</span><span class="nv">\mathrm</span><span class="nb">{A}</span><span class="nv">\right</span><span class="nb">.</span><span class="s">$$</span>  
+
+<span class="sb">$$</span><span class="nb"> </span><span class="m">180</span><span class="nb">^</span><span class="nv">\circ</span><span class="o">=</span><span class="nv">\pi</span><span class="nb"> </span><span class="nv">\ \mathrm</span><span class="nb">{rad} </span><span class="s">$$</span>  
+
+<span class="sb">$$</span><span class="nb"> </span><span class="nv">\mathrm</span><span class="nb">{N_A} </span><span class="o">=</span><span class="nb"> </span><span class="m">6</span><span class="nb">.</span><span class="m">022</span><span class="nv">\times</span><span class="m">10</span><span class="nb">^{</span><span class="m">23</span><span class="nb">} </span><span class="nv">\ \mathrm</span><span class="nb">{mol}^{</span><span class="o">-</span><span class="m">1</span><span class="nb">}</span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：
+$$ \mu_0=4\pi\times10^{-7} \ \left.\mathrm{\mathrm{T}\!\cdot\!\mathrm{m}}\middle/\mathrm{A}\right. $$</p>
+<p>$$ 180^\circ=\pi \ \mathrm{rad} $$</p>
+<p>$$ \mathrm{N_A} = 6.022\times10^{23} \ \mathrm{mol}^{-1} $$</p>
+</li>
+</ul>
+<h3 id="3更改文字颜色">(3)．更改文字颜色</h3>
+<p>使用 <code>\color{颜色}{文字}</code> 来更改特定的文字颜色。</p>
+<p>更改文字颜色需要浏览器支持 ，如果浏览器不知道你所需的颜色，那么文字将被渲染为黑色。对于较旧的浏览器（HTML4 &amp; CSS2），以下颜色是被支持的：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+<th style="text-align:center">输入</th>
+<th style="text-align:center">显示</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">black</td>
+<td style="text-align:center">$\color{black}{text}$</td>
+<td style="text-align:center">grey</td>
+<td style="text-align:center">$\color{grey}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">silver</td>
+<td style="text-align:center">$\color{silver}{text}$</td>
+<td style="text-align:center">white</td>
+<td style="text-align:center">$\color{white}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">maroon</td>
+<td style="text-align:center">$\color{maroon}{text}$</td>
+<td style="text-align:center">red</td>
+<td style="text-align:center">$\color{red}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">yellow</td>
+<td style="text-align:center">$\color{yellow}{text}$</td>
+<td style="text-align:center">lime</td>
+<td style="text-align:center">$\color{lime}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">olive</td>
+<td style="text-align:center">$\color{olive}{text}$</td>
+<td style="text-align:center">green</td>
+<td style="text-align:center">$\color{green}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">teal</td>
+<td style="text-align:center">$\color{teal}{text}$</td>
+<td style="text-align:center">auqa</td>
+<td style="text-align:center">$\color{auqa}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">blue</td>
+<td style="text-align:center">$\color{blue}{text}$</td>
+<td style="text-align:center">navy</td>
+<td style="text-align:center">$\color{navy}{text}$</td>
+</tr>
+<tr>
+<td style="text-align:center">purple</td>
+<td style="text-align:center">$\color{purple}{text}$</td>
+<td style="text-align:center">fuchsia</td>
+<td style="text-align:center">$\color{fuchsia}{text}$</td>
+</tr>
+</tbody>
+</table>
+<p>对于较新的浏览器（HTML5 &amp; CSS3），HEX 颜色将被支持：</p>
+<p>输入 <code>\color {#rgb} {text}</code> 来自定义更多的颜色，其中 <code>#rgb</code> 或 <code>#rrggbb</code> 的 <code>r</code> <code>g</code> <code>b</code> 可输入 <code>0-9</code> 和 <code>a-f</code> 来表示红色、绿色和蓝色的纯度（饱和度）。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>|rrrrrrrr|<span class="nb">}</span><span class="k">\hline</span>
+    <span class="k">\verb</span>+#000+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#000<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span>
+    <span class="k">\verb</span>+#00F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#00F<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\\\\</span>
+    <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#0F0+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#0F0<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span>
+    <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#0FF+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#0FF<span class="nb">}{</span>text<span class="nb">}</span> <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#F00+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F00<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span>
+    <span class="k">\verb</span>+#F0F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F0F<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\\\\</span>
+    <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#FF0+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#FF0<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span>
+    <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#FFF+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#FFF<span class="nb">}{</span>text<span class="nb">}</span> <span class="k">\\\\</span>
+<span class="k">\hline\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：$$
+\begin{array}{|rrrrrrrr|}\hline
+\verb+#000+ &amp; \color{#000}{text} &amp; &amp; &amp;
+\verb+#00F+ &amp; \color{#00F}{text} &amp; &amp; \\
+&amp; &amp; \verb+#0F0+ &amp; \color{#0F0}{text} &amp;
+&amp; &amp; \verb+#0FF+ &amp; \color{#0FF}{text} \\
+\verb+#F00+ &amp; \color{#F00}{text} &amp; &amp; &amp;
+\verb+#F0F+ &amp; \color{#F0F}{text} &amp; &amp; \\
+&amp; &amp; \verb+#FF0+ &amp; \color{#FF0}{text} &amp;
+&amp; &amp; \verb+#FFF+ &amp; \color{#FFF}{text} \\
+\hline\end{array}$$</p>
+</li>
+<li>
+<p>例子：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>|rrrrrrrr|<span class="nb">}</span><span class="k">\hline</span>
+    <span class="k">\verb</span>+#000+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#000<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#005+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#005<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#00A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#00A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#00F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#00F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#500+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#500<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#505+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#505<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#50A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#50A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#50F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#50F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#A00+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A00<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#A05+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A05<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#A0A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A0A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#A0F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A0F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#F00+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F00<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#F05+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F05<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#F0A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F0A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#F0F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F0F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+<span class="k">\hline</span>
+    <span class="k">\verb</span>+#080+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#080<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#085+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#085<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#08A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#08A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#08F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#08F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#580+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#580<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#585+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#585<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#58A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#58A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#58F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#58F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#A80+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A80<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#A85+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A85<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#A8A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A8A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#A8F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#A8F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#F80+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F80<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#F85+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F85<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#F8A+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F8A<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#F8F+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#F8F<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+<span class="k">\hline</span>
+    <span class="k">\verb</span>+#0F0+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#0F0<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#0F5+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#0F5<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#0FA+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#0FA<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#0FF+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#0FF<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#5F0+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#5F0<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#5F5+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#5F5<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#5FA+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#5FA<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#5FF+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#5FF<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#AF0+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#AF0<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#AF5+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#AF5<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#AFA+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#AFA<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#AFF+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#AFF<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+    <span class="k">\verb</span>+#FF0+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#FF0<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#FF5+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#FF5<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#FFA+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#FFA<span class="nb">}{</span>text<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\verb</span>+#FFF+ <span class="nb">&amp;</span> <span class="k">\color</span><span class="nb">{</span>#FFF<span class="nb">}{</span>text<span class="nb">}</span>  <span class="k">\\\\</span>
+<span class="k">\hline\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：</p>
+<p>$$\begin{array}{|rrrrrrrr|}\hline
+\verb+#000+ &amp; \color{#000}{text} &amp; \verb+#005+ &amp; \color{#005}{text} &amp; \verb+#00A+ &amp; \color{#00A}{text} &amp; \verb+#00F+ &amp; \color{#00F}{text}  \\
+\verb+#500+ &amp; \color{#500}{text} &amp; \verb+#505+ &amp; \color{#505}{text} &amp; \verb+#50A+ &amp; \color{#50A}{text} &amp; \verb+#50F+ &amp; \color{#50F}{text}  \\
+\verb+#A00+ &amp; \color{#A00}{text} &amp; \verb+#A05+ &amp; \color{#A05}{text} &amp; \verb+#A0A+ &amp; \color{#A0A}{text} &amp; \verb+#A0F+ &amp; \color{#A0F}{text}  \\
+\verb+#F00+ &amp; \color{#F00}{text} &amp; \verb+#F05+ &amp; \color{#F05}{text} &amp; \verb+#F0A+ &amp; \color{#F0A}{text} &amp; \verb+#F0F+ &amp; \color{#F0F}{text}  \\
+\hline
+\verb+#080+ &amp; \color{#080}{text} &amp; \verb+#085+ &amp; \color{#085}{text} &amp; \verb+#08A+ &amp; \color{#08A}{text} &amp; \verb+#08F+ &amp; \color{#08F}{text}  \\
+\verb+#580+ &amp; \color{#580}{text} &amp; \verb+#585+ &amp; \color{#585}{text} &amp; \verb+#58A+ &amp; \color{#58A}{text} &amp; \verb+#58F+ &amp; \color{#58F}{text}  \\
+\verb+#A80+ &amp; \color{#A80}{text} &amp; \verb+#A85+ &amp; \color{#A85}{text} &amp; \verb+#A8A+ &amp; \color{#A8A}{text} &amp; \verb+#A8F+ &amp; \color{#A8F}{text}  \\
+\verb+#F80+ &amp; \color{#F80}{text} &amp; \verb+#F85+ &amp; \color{#F85}{text} &amp; \verb+#F8A+ &amp; \color{#F8A}{text} &amp; \verb+#F8F+ &amp; \color{#F8F}{text}  \\
+\hline
+\verb+#0F0+ &amp; \color{#0F0}{text} &amp; \verb+#0F5+ &amp; \color{#0F5}{text} &amp; \verb+#0FA+ &amp; \color{#0FA}{text} &amp; \verb+#0FF+ &amp; \color{#0FF}{text}  \\
+\verb+#5F0+ &amp; \color{#5F0}{text} &amp; \verb+#5F5+ &amp; \color{#5F5}{text} &amp; \verb+#5FA+ &amp; \color{#5FA}{text} &amp; \verb+#5FF+ &amp; \color{#5FF}{text}  \\
+\verb+#AF0+ &amp; \color{#AF0}{text} &amp; \verb+#AF5+ &amp; \color{#AF5}{text} &amp; \verb+#AFA+ &amp; \color{#AFA}{text} &amp; \verb+#AFF+ &amp; \color{#AFF}{text}  \\
+\verb+#FF0+ &amp; \color{#FF0}{text} &amp; \verb+#FF5+ &amp; \color{#FF5}{text} &amp; \verb+#FFA+ &amp; \color{#FFA}{text} &amp; \verb+#FFF+ &amp; \color{#FFF}{text}  \\
+\hline\end{array}$$</p>
+</li>
+</ul>
+<h1 id="二矩阵使用">二、矩阵使用</h1>
+<h2 id="1输入无框矩阵">1．输入无框矩阵</h2>
+<p>在开头使用 <code>\begin{matrix}</code>，在结尾使用 <code>\end{matrix}</code>，在中间插入矩阵元素，每个元素之间插入 <code>&amp;</code> ，并在每行结尾处使用 <code>\\</code> 。（不同于标准的$\KaTeX$ ，<strong>本博客主题需要使用4个反斜杠</strong>换行，即<code>\\\\</code>）
+使用矩阵时必须声明 <code>$</code> 或 <code>$$</code> 符号。</p>
+<ul>
+<li>例子：(⚠️：这里换行用了4个反斜杠<code>\</code>，因为本博客主题的$KaTeX$ 还需<code>\</code>转义自身)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\begin</span><span class="nb">{matrix}
+</span><span class="nb">    </span><span class="m">1</span><span class="nb"> &amp; x &amp; x^</span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="m">1</span><span class="nb"> &amp; y &amp; y^</span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="m">1</span><span class="nb"> &amp; z &amp; z^</span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\end</span><span class="nb">{matrix}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$
+\begin{matrix}
+1 &amp; x &amp; x^2 \\
+1 &amp; y &amp; y^2 \\
+1 &amp; z &amp; z^2 \\
+\end{matrix}
+$$</li>
+</ul>
+<h2 id="2输入边框矩阵">2．输入边框矩阵</h2>
+<p>在开头将 <code>matrix</code> 替换为 <code>pmatrix</code> <code>bmatrix</code> <code>Bmatrix</code> <code>vmatrix</code> <code>Vmatrix</code> 。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="s">$</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{matrix} </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">4</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{matrix} </span><span class="s">$</span>
+<span class="s">$</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{pmatrix} </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">4</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{pmatrix} </span><span class="s">$</span>
+<span class="s">$</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{bmatrix} </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">4</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{bmatrix} </span><span class="s">$</span>
+<span class="s">$</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{Bmatrix} </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">4</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{Bmatrix} </span><span class="s">$</span>
+<span class="s">$</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{vmatrix} </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">4</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{vmatrix} </span><span class="s">$</span>
+<span class="s">$</span><span class="nb"> </span><span class="nv">\begin</span><span class="nb">{Vmatrix} </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">4</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> </span><span class="nv">\end</span><span class="nb">{Vmatrix} </span><span class="s">$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+<table>
+<thead>
+<tr>
+<th style="text-align:center">matrix</th>
+<th style="text-align:center">pmatrix</th>
+<th style="text-align:center">bmatrix</th>
+<th style="text-align:center">Bmatrix</th>
+<th style="text-align:center">vmatrix</th>
+<th style="text-align:center">Vmatrix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$ \begin{matrix} 1 &amp; 2 \\ 3 &amp; 4 \\ \end{matrix} $</td>
+<td style="text-align:center">$ \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ \end{pmatrix} $</td>
+<td style="text-align:center">$ \begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ \end{bmatrix} $</td>
+<td style="text-align:center">$ \begin{Bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ \end{Bmatrix} $</td>
+<td style="text-align:center">$ \begin{vmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ \end{vmatrix} $</td>
+<td style="text-align:center">$ \begin{Vmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ \end{Vmatrix} $</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="3输入带省略符号的矩阵">3．输入带省略符号的矩阵</h2>
+<p>使用 <code>\cdots</code> $\cdots$ , <code>\ddots</code> $\ddots$ , <code>\vdots</code> $\vdots$ 来输入省略符号。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\begin</span><span class="nb">{pmatrix}
+</span><span class="nb">    </span><span class="m">1</span><span class="nb"> &amp; a_</span><span class="m">1</span><span class="nb"> &amp; a_</span><span class="m">1</span><span class="nb">^</span><span class="m">2</span><span class="nb"> &amp; </span><span class="nv">\cdots</span><span class="nb"> &amp; a_</span><span class="m">1</span><span class="nb">^n </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="m">1</span><span class="nb"> &amp; a_</span><span class="m">2</span><span class="nb"> &amp; a_</span><span class="m">2</span><span class="nb">^</span><span class="m">2</span><span class="nb"> &amp; </span><span class="nv">\cdots</span><span class="nb"> &amp; a_</span><span class="m">2</span><span class="nb">^n </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\vdots</span><span class="nb"> &amp; </span><span class="nv">\vdots</span><span class="nb"> &amp; </span><span class="nv">\vdots</span><span class="nb"> &amp; </span><span class="nv">\ddots</span><span class="nb"> &amp; </span><span class="nv">\vdots</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="m">1</span><span class="nb"> &amp; a_m &amp; a_m^</span><span class="m">2</span><span class="nb"> &amp; </span><span class="nv">\cdots</span><span class="nb"> &amp; a_m^n </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\end</span><span class="nb">{pmatrix}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$
+\begin{pmatrix}
+1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\
+1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; a_m &amp; a_m^2 &amp; \cdots &amp; a_m^n \\
+\end{pmatrix}
+$$</li>
+</ul>
+<h2 id="4输入带分割符号的矩阵">4．输入带分割符号的矩阵</h2>
+<p>详见&quot;<a href="#%e4%ba%94%e6%95%b0%e7%bb%84%e4%b8%8e%e8%a1%a8%e6%a0%bc%e4%bd%bf%e7%94%a8%e5%8f%82%e8%80%83" rel="">数组使用参考</a>&quot;。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\left</span><span class="o">[</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\begin</span><span class="nb">{array}{cc|c}
+</span><span class="nb">        </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="m">4</span><span class="nb"> &amp; </span><span class="m">5</span><span class="nb"> &amp; </span><span class="m">6</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\end</span><span class="nb">{array}
+</span><span class="nb"></span><span class="nv">\right</span><span class="o">]</span><span class="nb">
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$
+\left[
+\begin{array}{cc|c}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+\end{array}
+\right]
+$$</li>
+</ul>
+<p>其中 <code>cc|c</code> 代表在一个三列矩阵中的第二和第三列之间插入分割线。</p>
+<h2 id="5输入行中矩阵">5．输入行中矩阵</h2>
+<p>若想在一行内显示矩阵，
+使用<code>\bigl(\begin{smallmatrix} ... \end{smallmatrix}\bigr)</code>。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex">这是一个行中矩阵的示例 <span class="s">$</span><span class="nv">\bigl</span><span class="o">(</span><span class="nv">\begin</span><span class="nb">{smallmatrix} a &amp; b </span><span class="nv">\\\\</span><span class="nb"> c &amp; d </span><span class="nv">\end</span><span class="nb">{smallmatrix}</span><span class="nv">\bigr</span><span class="o">)</span><span class="s">$</span> 。
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：</p>
+<p>这是一个行中矩阵的示例 $\bigl(\begin{smallmatrix} a &amp; b \\ c &amp; d \end{smallmatrix}\bigr)$ 。</p>
+</li>
+</ul>
+<h1 id="三方程式序列使用">三、方程式序列使用</h1>
+<h2 id="1输入一个方程组">1．输入一个方程组</h2>
+<p>可以使用 <code>\begin{array} … \end{array}</code> 和 <code>\left\{ … \right.</code> 来创建一个方程组。</p>
+<p>在等号<code>=</code>前加符号<code>&amp;</code>是为了让等号以后的内容对齐。</p>
+<p>同样地，本博客主题是使用4个<code>\</code>换行，标准$\KaTeX$ 和$MathJax$都是使用2个<code>\</code>换行，以及对符号<code>{</code>的转义<code>\\{</code>。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\left\\</span><span class="nb">{ 
+</span><span class="nb">    </span><span class="nv">\begin</span><span class="nb">{array}{c}
+</span><span class="nb">        a_</span><span class="m">1</span><span class="nb">x</span><span class="o">+</span><span class="nb">b_</span><span class="m">1</span><span class="nb">y</span><span class="o">+</span><span class="nb">c_</span><span class="m">1</span><span class="nb">z &amp;</span><span class="o">=</span><span class="nb">d_</span><span class="m">1</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> 
+</span><span class="nb">        a_</span><span class="m">2</span><span class="nb">x</span><span class="o">+</span><span class="nb">b_</span><span class="m">2</span><span class="nb">y</span><span class="o">+</span><span class="nb">c_</span><span class="m">2</span><span class="nb">z &amp;</span><span class="o">=</span><span class="nb">d_</span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb"> 
+</span><span class="nb">        a_</span><span class="m">3</span><span class="nb">x</span><span class="o">+</span><span class="nb">b_</span><span class="m">3</span><span class="nb">y</span><span class="o">+</span><span class="nb">c_</span><span class="m">3</span><span class="nb">z &amp;</span><span class="o">=</span><span class="nb">d_</span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\end</span><span class="nb">{array}
+</span><span class="nb"></span><span class="nv">\right</span><span class="nb">. 
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：
+$$
+\left\{
+\begin{array}{c}
+a_1x+b_1y+c_1z &amp;=d_1 \\
+a_2x+b_2y+c_2z &amp;=d_2 \\
+a_3x+b_3y+c_3z &amp;=d_3 \\
+\end{array}
+\right.
+$$
+<strong>或使用条件表达式组</strong> <code>\begin{cases} … \end{cases}</code> 来实现相同效果：</p>
+</li>
+<li>
+<p>例子：</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>cases<span class="nb">}</span>
+    a<span class="nb">_</span>1x+b<span class="nb">_</span>1y+c<span class="nb">_</span>1z <span class="nb">&amp;</span>=d<span class="nb">_</span>1 <span class="k">\\\\</span> 
+    a<span class="nb">_</span>2x+b<span class="nb">_</span>2y+c<span class="nb">_</span>2z <span class="nb">&amp;</span>=d<span class="nb">_</span>2 <span class="k">\\\\</span> 
+    a<span class="nb">_</span>3x+b<span class="nb">_</span>3y+c<span class="nb">_</span>3z <span class="nb">&amp;</span>=d<span class="nb">_</span>3 <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>cases<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$\begin{cases}
+a_1x+b_1y+c_1z &amp;=d_1 \\
+a_2x+b_2y+c_2z &amp;=d_2 \\
+a_3x+b_3y+c_3z &amp;=d_3 \\
+\end{cases}$$</li>
+</ul>
+<h2 id="2输入一个方程式序列">2．输入一个方程式序列</h2>
+<p>人们经常想要一列<code>等号对齐</code>且居中的方程式序列。使用 <code>\begin{align}…\end{align}</code> 来创造一列方程式，其中在每行结尾处使用 <code>\\</code> （本博客主题是<code>\\\\</code>）。使用方程式序列无需声明公式符号 <code>$</code> 或 <code>$$</code> 。</p>
+<p><strong>请注意 <code>{align}</code> 语句是自动编号的，使用 <code>{aligned}</code> 声明不自动编号。</strong>（详细资料可参考<a href="https://katex.org/docs/supported.html#other-katex-environments" target="_blank" rel="noopener noreffer">katex-environments</a>）</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+    <span class="k">\sqrt</span><span class="nb">{</span>37<span class="nb">}</span> <span class="nb">&amp;</span> = <span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>73<span class="nb">^</span>2-1<span class="nb">}{</span>12<span class="nb">^</span>2<span class="nb">}}</span> <span class="k">\\\\</span>
+              <span class="nb">&amp;</span> = <span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>73<span class="nb">^</span>2<span class="nb">}{</span>12<span class="nb">^</span>2<span class="nb">}</span><span class="k">\cdot\frac</span><span class="nb">{</span>73<span class="nb">^</span>2-1<span class="nb">}{</span>73<span class="nb">^</span>2<span class="nb">}}</span> <span class="k">\\\\</span>
+              <span class="nb">&amp;</span> = <span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>73<span class="nb">^</span>2<span class="nb">}{</span>12<span class="nb">^</span>2<span class="nb">}}</span><span class="k">\sqrt</span><span class="nb">{</span><span class="k">\frac</span><span class="nb">{</span>73<span class="nb">^</span>2-1<span class="nb">}{</span>73<span class="nb">^</span>2<span class="nb">}}</span> <span class="k">\\\\</span>
+              <span class="nb">&amp;</span> = <span class="k">\frac</span><span class="nb">{</span>73<span class="nb">}{</span>12<span class="nb">}</span><span class="k">\sqrt</span><span class="nb">{</span>1-<span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>73<span class="nb">^</span>2<span class="nb">}}</span> <span class="k">\\\\</span> 
+              <span class="nb">&amp;</span> <span class="k">\approx</span> <span class="k">\frac</span><span class="nb">{</span>73<span class="nb">}{</span>12<span class="nb">}</span><span class="k">\left</span>(1-<span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="k">\cdot</span>73<span class="nb">^</span>2<span class="nb">}</span><span class="k">\right</span>) <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：<br>
+$$\begin{aligned}
+\sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\
+&amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\
+&amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\
+&amp; = \frac{73}{12}\sqrt{1-\frac{1}{73^2}} \\
+&amp; \approx \frac{73}{12}\left(1-\frac{1}{2\cdot73^2}\right) \\
+\end{aligned}$$</li>
+</ul>
+<h2 id="3方程式序列每一行注明原因">3．方程式序列每一行注明原因</h2>
+<p>在 <code>{align}</code>或<code>{aligned} </code>中后添加 <code>&amp;</code> 符号来自动对齐后面的内容，可灵活组合 <code>\text</code> 和 <code>\tag</code> 语句。<code>\tag</code> 语句编号优先级高于自动编号。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+    v + w <span class="nb">&amp;</span> = 0  <span class="nb">&amp;</span> <span class="k">\text</span><span class="nb">{</span>Given<span class="nb">}</span>  <span class="k">\\\\</span>
+       -w <span class="nb">&amp;</span> = -w + 0 <span class="nb">&amp;</span> <span class="k">\text</span><span class="nb">{</span>additive identity<span class="nb">}</span>   <span class="k">\\\\</span>
+   -w + 0 <span class="nb">&amp;</span> = -w + (v + w) <span class="nb">&amp;</span> <span class="k">\text</span><span class="nb">{</span>equations<span class="nb">}</span> <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>显示：</p>
+<p>$$\begin{aligned}
+v + w &amp; = 0  &amp; \text{Given}  \\
+-w &amp; = -w + 0 &amp; \text{additive identity}   \\
+-w + 0 &amp; = -w + (v + w) &amp; \text{equations} \\
+\end{aligned}$$</p>
+</li>
+</ul>
+<h1 id="四条件表达式组的使用">四、条件表达式组的使用</h1>
+<h2 id="1输入一个条件表达式组">1．输入一个条件表达式组</h2>
+<p>使用 <code>\begin{cases}…\end{cases}</code> 来创造一组条件表达式，在每一行条件中插入 <code>&amp;</code> 来指定需要对齐的内容，并在每一行结尾处使用 <code>\\</code>。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">    f</span><span class="o">(</span><span class="nb">n</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb">
+</span><span class="nb">        </span><span class="nv">\begin</span><span class="nb">{cases}
+</span><span class="nb">            n</span><span class="o">/</span><span class="m">2</span><span class="nb">,  &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is even} </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">3</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="nb">, &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is odd} </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="nv">\end</span><span class="nb">{cases}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：
+$$
+f(n) =
+\begin{cases}
+n/2,  &amp;\text{if $n$ is even} \\
+3n+1, &amp;\text{if $n$ is odd} \\
+\end{cases}
+$$</li>
+</ul>
+<h2 id="2左侧对齐的条件表达式组">2．左侧对齐的条件表达式组</h2>
+<p>若想让文字在<strong>左侧对齐显示</strong>，则有如下方式：</p>
+<ul>
+<li>例子：（注意：本博客主题的$\KaTeX$ 需要<code>\\}</code>来表示<code>\}</code>，$MathJax$ 可改为<code>\}</code>）</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\left</span><span class="nb">.
+</span><span class="nb">        </span><span class="nv">\begin</span><span class="nb">{array}{l}
+</span><span class="nb">            </span><span class="nv">\text</span><span class="nb">{if $n$ is even:} &amp; n</span><span class="o">/</span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="nv">\text</span><span class="nb">{if $n$ is odd:} &amp; </span><span class="m">3</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="nv">\end</span><span class="nb">{array}
+</span><span class="nb">    </span><span class="nv">\right\\</span><span class="nb">}
+</span><span class="nb">    </span><span class="o">=</span><span class="nb">f</span><span class="o">(</span><span class="nb">n</span><span class="o">)</span><span class="nb">
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：<br>
+$$\left.
+\begin{array}{l}
+\text{if $n$ is even:} &amp; n/2 \\
+\text{if $n$ is odd:} &amp; 3n+1 \\
+\end{array}
+\right\}
+=f(n)$$</li>
+</ul>
+<h2 id="3适配指定行高">3．适配指定行高</h2>
+<p>在一些情况下，条件表达式中某些行的行高为非标准高度，此时使用 <code>\\[2ex]</code> 语句代替该行末尾的 <code>\\</code> 来让编辑器适配2倍行高。</p>
+<p><strong>一个 <code>[ex]</code> 指一个 &ldquo;X-Height&rdquo;，即 x 字母高度</strong>。</p>
+<ul>
+<li>
+<p>例子1：<br>
+<strong>不适配</strong>2倍行高[2ex]：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">f</span><span class="o">(</span><span class="nb">n</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> 
+</span><span class="nb">    </span><span class="nv">\begin</span><span class="nb">{cases}
+</span><span class="nb">        </span><span class="nv">\frac</span><span class="nb">{n}{</span><span class="m">2</span><span class="nb">}, &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is even} </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="m">3</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="nb">,        &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is odd} </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\end</span><span class="nb">{cases}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>例子1显示：<br>
+$$
+f(n) =
+\begin{cases}
+\frac{n}{2}, &amp; \text{if $n$ is even} \\
+3n+1,        &amp; \text{if $n$ is odd} \\
+\end{cases}
+$$</p>
+</li>
+<li>
+<p>例子2:</p>
+<p><strong>适配</strong>2倍行高[2ex]：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">f</span><span class="o">(</span><span class="nb">n</span><span class="o">)</span><span class="nb"> </span><span class="o">=</span><span class="nb"> 
+</span><span class="nb">    </span><span class="nv">\begin</span><span class="nb">{cases}
+</span><span class="nb">        </span><span class="nv">\frac</span><span class="nb">{n}{</span><span class="m">2</span><span class="nb">}, &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is even} </span><span class="nv">\\\\</span><span class="o">[</span><span class="m">2</span><span class="nb">ex</span><span class="o">]</span><span class="nb">
+</span><span class="nb">        </span><span class="m">3</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="nb">,        &amp; </span><span class="nv">\text</span><span class="nb">{if $n$ is odd} </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\end</span><span class="nb">{cases}
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>例子2显示：
+$$
+f(n) =
+\begin{cases}
+\frac{n}{2}, &amp; \text{if $n$ is even} \\[2ex]
+3n+1,        &amp; \text{if $n$ is odd} \\
+\end{cases}
+$$</p>
+</li>
+</ul>
+<p>可以根据情况指定多个 <code>[ex]</code>，如 <code>[3ex]</code>、<code>[4ex]</code> 等。
+其实可以在任意换行处使用 <code>\\[2ex]</code> 语句，只要你觉得合适。</p>
+<h1 id="五数组与表格使用">五、数组与表格使用</h1>
+<h2 id="1输入一个数组或表格">1．输入一个数组或表格</h2>
+<p>通常，一个格式化后的表格比单纯的文字或排版后的文字更具有可读性。
+数组和表格均以 <code>\begin{array}</code> 开头，并在其后定义列数及每一列的文本对齐属性，<code>c</code> <code>l</code> <code>r</code> 分别代表居中、左对齐及右对齐。若需要插入垂直分割线，在定义式中插入 <code>|</code> ，若要插入水平分割线，在下一行输入前插入 <code>\hline</code> 。
+与矩阵相似，每行元素间均须要插入 <code>&amp;</code> ，每行元素以 <code>\\</code> 结尾，最后以 <code>\ end{array}</code> 结束数组。
+使用单个数组或表格时无需声明 <code>$</code> 或 <code>$$</code> 符号。</p>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>c|lcr<span class="nb">}</span>
+    n <span class="nb">&amp;</span> <span class="k">\text</span><span class="nb">{</span>左对齐<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\text</span><span class="nb">{</span>居中对齐<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\text</span><span class="nb">{</span>右对齐<span class="nb">}</span> <span class="k">\\\\</span>
+    <span class="k">\hline</span>
+    1 <span class="nb">&amp;</span> 0.24 <span class="nb">&amp;</span> 1 <span class="nb">&amp;</span> 125 <span class="k">\\\\</span>
+    2 <span class="nb">&amp;</span> -1 <span class="nb">&amp;</span> 189 <span class="nb">&amp;</span> -8 <span class="k">\\\\</span>
+    3 <span class="nb">&amp;</span> -20 <span class="nb">&amp;</span> 2000 <span class="nb">&amp;</span> 1+10i <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：</p>
+<p>$$\begin{array}{c|lcr}
+n &amp; \text{左对齐} &amp; \text{居中对齐} &amp; \text{右对齐} \\
+\hline
+1 &amp; 0.24 &amp; 1 &amp; 125 \\
+2 &amp; -1 &amp; 189 &amp; -8 \\
+3 &amp; -20 &amp; 2000 &amp; 1+10i \\
+\end{array}$$</p>
+</li>
+</ul>
+<h2 id="2输入一个嵌套的数组或表格">2．输入一个嵌套的数组或表格</h2>
+<p>多个数组\表格可 <strong>互相嵌套</strong> 并组成一组数组或表格。
+使用嵌套前必须声明 <code>$$</code> 符号。</p>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb"></span><span class="nv">\begin</span><span class="nb">{array}{c} </span><span class="c">% 总表格
+</span><span class="c"></span><span class="nb">    </span><span class="nv">\begin</span><span class="nb">{array}{cc} </span><span class="c">% 第一行内分成两列
+</span><span class="c"></span><span class="nb">        </span><span class="nv">\begin</span><span class="nb">{array}{c|cccc} </span><span class="c">% 第一列&#34;最小值&#34;数组
+</span><span class="c"></span><span class="nb">            </span><span class="nv">\text</span><span class="nb">{min} &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="nv">\hline</span><span class="nb">
+</span><span class="nb">            </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="nv">\end</span><span class="nb">{array}
+</span><span class="nb">        &amp;
+</span><span class="nb">        </span><span class="nv">\begin</span><span class="nb">{array}{c|cccc} </span><span class="c">% 第二列&#34;最大值&#34;数组
+</span><span class="c"></span><span class="nb">            </span><span class="nv">\text</span><span class="nb">{max} &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="nv">\hline</span><span class="nb">
+</span><span class="nb">            </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">            </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="nv">\end</span><span class="nb">{array}
+</span><span class="nb">    </span><span class="nv">\end</span><span class="nb">{array} </span><span class="c">% 第一行表格组结束
+</span><span class="c"></span><span class="nb">    </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\begin</span><span class="nb">{array}{c|cccc} </span><span class="c">% 第二行 Delta 值数组
+</span><span class="c"></span><span class="nb">        </span><span class="nv">\Delta</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="nv">\hline</span><span class="nb">
+</span><span class="nb">        </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">        </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">3</span><span class="nb"> &amp; </span><span class="m">2</span><span class="nb"> &amp; </span><span class="m">1</span><span class="nb"> &amp; </span><span class="m">0</span><span class="nb"> </span><span class="nv">\\\\</span><span class="nb">
+</span><span class="nb">    </span><span class="nv">\end</span><span class="nb">{array} </span><span class="c">% 第二行表格结束
+</span><span class="c"></span><span class="nv">\end</span><span class="nb">{array} </span><span class="c">% 总表格结束
+</span><span class="c"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：
+$$
+\begin{array}{c} % 总表格
+\begin{array}{cc} % 第一行内分成两列
+\begin{array}{c|cccc} % 第一列&quot;最小值&quot;数组
+\text{min} &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+\hline
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\
+2 &amp; 0 &amp; 1 &amp; 2 &amp; 2 \\
+3 &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+\end{array}
+&amp;
+\begin{array}{c|cccc} % 第二列&quot;最大值&quot;数组
+\text{max} &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+\hline
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+1 &amp; 1 &amp; 1 &amp; 2 &amp; 3 \\
+2 &amp; 2 &amp; 2 &amp; 2 &amp; 3 \\
+3 &amp; 3 &amp; 3 &amp; 3 &amp; 3 \\
+\end{array}
+\end{array} % 第一行表格组结束
+\\
+\begin{array}{c|cccc} % 第二行 Delta 值数组
+\Delta &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+\hline
+0 &amp; 0 &amp; 1 &amp; 2 &amp; 3 \\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 2 \\
+2 &amp; 2 &amp; 1 &amp; 0 &amp; 1 \\
+3 &amp; 3 &amp; 2 &amp; 1 &amp; 0 \\
+\end{array} % 第二行表格结束
+\end{array} % 总表格结束
+$$</p>
+</li>
+</ul>
+<h1 id="六连分数使用">六、连分数使用</h1>
+<h2 id="1输入一个连分数">1．输入一个连分数</h2>
+<p>就像输入分式时使用 <code>\frac</code> 一样，使用 <code>\cfrac</code> 来创建一个连分数。</p>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">x </span><span class="o">=</span><span class="nb"> a_</span><span class="m">0</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">1</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">1</span><span class="nb"> </span><span class="o">+</span><span class="nb">
+</span><span class="nb">            </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">2</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb">
+</span><span class="nb">              </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">3</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">3</span><span class="nb"> </span><span class="o">+</span><span class="nb">
+</span><span class="nb">                </span><span class="nv">\cfrac</span><span class="nb">{</span><span class="m">4</span><span class="nb">^</span><span class="m">4</span><span class="nb">}{a_</span><span class="m">4</span><span class="nb"> </span><span class="o">+</span><span class="nb"> 
+</span><span class="nb">                  </span><span class="nv">\cdots</span><span class="nb">
+</span><span class="nb">                }
+</span><span class="nb">              }
+</span><span class="nb">            }
+</span><span class="nb">          }
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：
+$$
+x = a_0 + \cfrac{1^2}{a_1 +
+\cfrac{2^2}{a_2 +
+\cfrac{3^2}{a_3 +
+\cfrac{4^4}{a_4 +
+\cdots
+}
+}
+}
+}
+$$
+不要使用普通的 <code>\frac</code> 或 <code>\over</code> 来生成连分数，这样会看起来<strong>很恶心</strong>。</p>
+</li>
+<li>
+<p>反例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">x </span><span class="o">=</span><span class="nb"> a_</span><span class="m">0</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">1</span><span class="nb"> </span><span class="o">+</span><span class="nb">
+</span><span class="nb">            </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb">
+</span><span class="nb">              </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">3</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">3</span><span class="nb"> </span><span class="o">+</span><span class="nb">
+</span><span class="nb">                </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">4</span><span class="nb">^</span><span class="m">4</span><span class="nb">}{a_</span><span class="m">4</span><span class="nb"> </span><span class="o">+</span><span class="nb"> 
+</span><span class="nb">                  </span><span class="nv">\cdots</span><span class="nb">
+</span><span class="nb">                }
+</span><span class="nb">              }
+</span><span class="nb">            }
+</span><span class="nb">          }
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：
+$$
+x = a_0 + \frac{1^2}{a_1 +
+\frac{2^2}{a_2 +
+\frac{3^2}{a_3 +
+\frac{4^4}{a_4 +
+\cdots
+}
+}
+}
+}
+$$
+当然，你可以使用 <code>\frac</code> 来表达连分数的<strong>紧缩记法</strong>。</p>
+</li>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="sb">$$</span><span class="nb">
+</span><span class="nb">x </span><span class="o">=</span><span class="nb"> a_</span><span class="m">0</span><span class="nb"> </span><span class="o">+</span><span class="nb"> </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">1</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">1</span><span class="nb"> </span><span class="o">+</span><span class="nb">}
+</span><span class="nb">          </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">2</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">2</span><span class="nb"> </span><span class="o">+</span><span class="nb">}
+</span><span class="nb">          </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">3</span><span class="nb">^</span><span class="m">2</span><span class="nb">}{a_</span><span class="m">3</span><span class="nb"> </span><span class="o">+</span><span class="nb">}
+</span><span class="nb">          </span><span class="nv">\frac</span><span class="nb">{</span><span class="m">4</span><span class="nb">^</span><span class="m">4</span><span class="nb">}{a_</span><span class="m">4</span><span class="nb"> </span><span class="o">+</span><span class="nb">}
+</span><span class="nb">          </span><span class="nv">\cdots</span><span class="nb">
+</span><span class="nb"></span><span class="s">$$</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：
+$$
+x = a_0 + \frac{1^2}{a_1 +}
+\frac{2^2}{a_2 +}
+\frac{3^2}{a_3 +}
+\frac{4^4}{a_4 +}
+\cdots
+$$</p>
+</li>
+</ul>
+<p>连分数通常都太大以至于不易排版，所以建议在连分数前后声明 <code>$$</code> 符号，或使用像 <code>[a0,a1,a2,a3,…]</code> 一样的紧缩记法。</p>
+<h1 id="七其他注意事项">七、其他注意事项</h1>
+<p>现在指出的小问题并<strong>不会影响公式的正确显示</strong>，但能让它们<strong>看起来明显更好看</strong>。</p>
+<ol>
+<li>
+<p>在<code>以 e 为底</code>的指数函数、极限和积分中尽量不要使用 <code>\frac</code> 符号;</p>
+<p>$\Longrightarrow$ 它会使整段函数看起来很奇怪并可能产生歧义，因此它在专业数学排版中不会被采用。</p>
+<p>可试着横着写这些分式，中间使用斜线间隔 <code>/</code> （用斜线代替分数线）。</p>
+<ul>
+<li>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cc<span class="nb">}</span>
+<span class="k">\mathrm</span><span class="nb">{</span>Bad<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\mathrm</span><span class="nb">{</span>Better<span class="nb">}</span> <span class="k">\\\\</span>
+<span class="k">\hline</span> <span class="k">\\\\</span>
+<span class="k">\large</span> e<span class="nb">^{</span>i<span class="k">\frac</span><span class="nb">{</span><span class="k">\pi</span><span class="nb">}</span>2<span class="nb">}</span> <span class="k">\quad</span> e<span class="nb">^{</span><span class="k">\frac</span><span class="nb">{</span>i<span class="k">\pi</span><span class="nb">}</span>2<span class="nb">}&amp;</span> <span class="k">\large</span> e<span class="nb">^{</span>i<span class="k">\pi</span>/2<span class="nb">}</span> <span class="k">\\\\</span><span class="na">[2ex]</span>
+<span class="k">\int</span><span class="nb">_{</span>-<span class="k">\frac\pi</span>2<span class="nb">}^</span><span class="k">\frac\pi</span>2 <span class="k">\sin</span> x<span class="k">\\</span>,dx <span class="nb">&amp;</span> <span class="k">\int</span><span class="nb">_{</span>-<span class="k">\pi</span>/2<span class="nb">}^{</span><span class="k">\pi</span>/2<span class="nb">}</span><span class="k">\sin</span> x<span class="k">\\</span>,dx <span class="k">\\\\</span>
+  <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示：</p>
+<p>$$\begin{array}{cc}
+\mathrm{Bad} &amp; \mathrm{Better} \\
+\hline \\
+\large e^{i\frac{\pi}2} \quad e^{\frac{i\pi}2}&amp; \large e^{i\pi/2} \\[2ex]
+\int_{-\frac\pi2}^\frac\pi2 \sin x\,dx &amp; \int_{-\pi/2}^{\pi/2}\sin x\,dx \\
+\end{array}$$</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用 <code>|</code> 符号作为分隔符时会产生错误的间距，因此在需要分隔时最好使用 <code>\mid</code> 来代替它;</p>
+<ul>
+<li>例子:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cc<span class="nb">}</span>
+  <span class="k">\mathrm</span><span class="nb">{</span>Bad<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\mathrm</span><span class="nb">{</span>Better<span class="nb">}</span> <span class="k">\\\\</span>
+  <span class="k">\hline</span> <span class="k">\\\\</span>
+  <span class="k">\{</span>x|x<span class="nb">^</span>2<span class="k">\in\Bbb</span> Z<span class="k">\}</span> <span class="nb">&amp;</span> <span class="k">\{</span>x<span class="k">\mid</span> x<span class="nb">^</span>2<span class="k">\in\Bbb</span> Z<span class="k">\}</span> <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：<br>
+$$\begin{array}{cc}
+\mathrm{Bad} &amp; \mathrm{Better} \\
+\hline \\
+{x|x^2\in\Bbb Z} &amp; {x\mid x^2\in\Bbb Z} \\
+\end{array}$$</li>
+</ul>
+</li>
+<li>
+<p>使用多重积分符号时，不要多次使用 <code>\int</code> 来声明，直接使用 <code>\iint</code> 来表示<strong>二重积分</strong>，使用 <code>\iiint</code> 来表示<strong>三重积分;</strong></p>
+<p>个人补充：在表示面积分和体积分时下标建议使用 <code>\boldsymbol{S}</code> 和 <code>\boldsymbol{V}</code> 符号；</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cc<span class="nb">}</span>
+    <span class="k">\mathrm</span><span class="nb">{</span>Bad<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\mathrm</span><span class="nb">{</span>Better<span class="nb">}</span> <span class="k">\\\\</span>
+    <span class="k">\hline</span> <span class="k">\\\\</span>
+    <span class="k">\int\int</span><span class="nb">_</span>S f(x)<span class="k">\\</span>,dy<span class="k">\\</span>,dx <span class="nb">&amp;</span> <span class="k">\iint</span><span class="nb">_{</span><span class="k">\boldsymbol</span><span class="nb">{</span>S<span class="nb">}}</span> f(x)<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>y<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>x <span class="k">\\\\</span>
+    <span class="k">\int\int\int</span><span class="nb">_</span>V f(x)<span class="k">\\</span>,dz<span class="k">\\</span>,dy<span class="k">\\</span>,dx <span class="nb">&amp;</span> <span class="k">\iiint</span><span class="nb">_{</span><span class="k">\boldsymbol</span><span class="nb">{</span>V<span class="nb">}}</span> f(x)<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>z<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>y<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>x <span class="k">\\\\</span><span class="na">[3ex]</span>
+    <span class="k">\hline</span> <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：</li>
+</ul>
+<p>$$
+\begin{array}{cc}
+\mathrm{Bad} &amp; \mathrm{Better} \\
+\hline \\
+\int\int_S f(x)\,dy\,dx &amp; \iint_{\boldsymbol{S}} f(x)\,{\rm d}y\,{\rm d}x \\
+\int\int\int_V f(x)\,dz\,dy\,dx &amp; \iiint_{\boldsymbol{V}} f(x)\,{\rm d}z\,{\rm d}y\,{\rm d}x \\[3ex]
+\hline \\
+\end{array}
+$$</p>
+</li>
+<li>
+<p>使用多重积分时，在被积变量后加入 <code>\,</code> 或<code>\space</code>（或在微分符号 ${\rm d}$ 之前）插入一个小的间距;</p>
+<p>否则各种被积变量将会挤成一团。注意比较 ${\rm d}z{\rm d} y{\rm d} x$ 的不同。</p>
+<ul>
+<li>例子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cc<span class="nb">}</span>
+    <span class="k">\mathrm</span><span class="nb">{</span>Bad<span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\mathrm</span><span class="nb">{</span>Better<span class="nb">}</span> <span class="k">\\\\</span>
+    <span class="k">\hline</span> <span class="k">\\\\</span>
+    <span class="k">\iiint</span><span class="nb">_</span>V f(x)<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>z <span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>y <span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>x <span class="nb">&amp;</span> <span class="k">\iiint</span><span class="nb">_{</span><span class="k">\boldsymbol</span><span class="nb">{</span>V<span class="nb">}}</span> f(x)<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>z<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>y<span class="k">\\</span>,<span class="nb">{</span><span class="k">\rm</span> d<span class="nb">}</span>x <span class="k">\\\\</span>
+<span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>显示：</li>
+</ul>
+<p>$$
+\begin{array}{cc}
+\mathrm{Bad} &amp; \mathrm{Better} \\
+\hline \\
+\iiint_V f(x){\rm d}z {\rm d}y {\rm d}x &amp; \iiint_{\boldsymbol{V}} f(x)\,{\rm d}z\,{\rm d}y\,{\rm d}x \\
+\end{array}
+$$</p>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>参考链接</p>
+<ul>
+<li><a href="https://ericp.cn/cmd" target="_blank" rel="noopener noreffer">数学公式Cmd-Markdown参考</a></li>
+<li><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener noreffer">MathJax basic tutorial and quick reference</a></li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/info/gentle/gentle.pdf" target="_blank" rel="noopener noreffer">清华镜像站Mannual-PDF：A Gentle Introduction to TEX</a></li>
+<li><a href="https://katex.org/docs/support_table.html" target="_blank" rel="noopener noreffer">Katex官方：Supported Table</a></li>
+<li><a href="https://katex.org/docs/supported.html" target="_blank" rel="noopener noreffer">Katex官方：Supported Function</a></li>
+<li><a href="https://katex.org/#demo" target="_blank" rel="noopener noreffer">Katex官方：在线语法测试</a></li>
+</ul>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-08-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/0e8acc3eef804c6b53bb3300449678cc7349c198" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 0e8acc3eef804c6b53bb3300449678cc7349c198: rename some markdown files">
+                                    <i class="fas fa-hashtag fa-fw"></i>0e8acc3</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结" data-hashtags="Markdown,Katex"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-hashtag="Markdown"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结" data-image="/img/Script-Pic/Katex-Project.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结" data-description="摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结" data-description="摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/" data-title="常用数学公式排版KaTex语法总结"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/markdown/">markdown</a>,&nbsp;<a href="/tags/katex/">Katex</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/" class="prev" rel="prev" title="Effective C&#43;&#43;(第3版)精读总结(三)"><i class="fas fa-angle-left fa-fw"></i>Effective C&#43;&#43;(第3版)精读总结(三)</a>
+            <a href="/2022/03/16_shell_useful_technique_summary/" class="next" rel="next" title="Shell脚本实用技巧小结">Shell脚本实用技巧小结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 101982 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
