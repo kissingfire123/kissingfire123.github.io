@@ -2,12 +2,12 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://kissingfire123.github.io/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/categories/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/categories/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/metal/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/2022/07/23_metal-shader-debug/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/posts/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/tags/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/posts/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/c&#43;&#43;/</loc><lastmod>2022-07-07T14:32:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
@@ -17,7 +17,11 @@
             <loc>https://kissingfire123.github.io/tags/hugo/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/loveit/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/</loc><lastmod>2022-07-27T23:08:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/github/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/2022/03/21_github_useful_technique_summary/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/%E5%B7%A5%E5%85%B7/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/%E6%94%B6%E8%97%8F/</loc><lastmod>2022-08-03T22:14:25&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/shell%E8%84%9A%E6%9C%AC/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/2022/03/16_shell_useful_technique_summary/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/unix/</loc><lastmod>2022-08-01T20:57:53&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
