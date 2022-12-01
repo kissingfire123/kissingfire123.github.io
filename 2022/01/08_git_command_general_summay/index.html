@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/08_git_command_general_summay/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-02T10:50:54+08:00" />
-<meta property="article:modified_time" content="2022-08-01T20:57:53+08:00" />
+<meta property="article:modified_time" content="2022-12-01T22:35:02+08:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常用Git命令行总结"/>
@@ -25,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/08_git_command_general_summay\/"
-        },"genre": "posts","keywords": "git, 开发工具链","wordcount":  6346 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/08_git_command_general_summay\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-08-01T20:57:53+08:00","publisher": {
+        },"genre": "posts","keywords": "git, 开发工具链","wordcount":  8036 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/08_git_command_general_summay\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-12-01T22:35:02+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -117,8 +117,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">常用Git命令行总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6346 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/2022/01/08_git_command_general_summay/" class="leancloud_visitors" data-flag-title="常用Git命令行总结">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8036 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 17 分钟&nbsp;<span id="/2022/01/08_git_command_general_summay/" class="leancloud_visitors" data-flag-title="常用Git命令行总结">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="featured-image"><img
@@ -142,8 +142,12 @@
     <li><a href="#restore">git add/restore</a></li>
     <li><a href="#reset">git reset</a></li>
     <li><a href="#branch">git branch/switch</a></li>
+    <li><a href="#checkout">git checkout</a></li>
+    <li><a href="#switch">git switch</a></li>
     <li><a href="#fetch">git fetch/pull</a></li>
     <li><a href="#commit">git commit</a></li>
+    <li><a href="#diff">git diff</a></li>
+    <li><a href="#restore">git restore</a></li>
     <li><a href="#log">git log</a></li>
     <li><a href="#cherry-pick">git cherry-pick</a></li>
     <li><a href="#push">git push</a></li>
@@ -156,10 +160,11 @@
         <li><a href="#add-submodule">add submodule</a></li>
         <li><a href="#update-submodule">update submodule</a></li>
         <li><a href="#remove-submodule">remove submodule</a></li>
+        <li><a href="#query-submodule">query submodule</a></li>
       </ul>
     </li>
+    <li><a href="#grep">git grep</a></li>
     <li><a href="#other-commands">other commands</a></li>
-    <li><a href="#heading"></a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="forward">forward</h1>
@@ -386,6 +391,8 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 </tr>
 </tbody>
 </table>
+<h1 id="checkout">git checkout</h1>
+<h1 id="switch">git switch</h1>
 <h1 id="fetch">git fetch/pull</h1>
 <p><code>git fetch</code>为获取，目的为拿到远端的改动，存在仓库，不对本地文件和分支做任何改动。</p>
 <p><code>git pull</code>为拉取，实际动作为<code>git fetch</code> <strong>+</strong> <code>git merge</code>,会拉取到远端改动并合并到当前本地分支。如果有冲突，需要解决冲突。</p>
@@ -413,7 +420,92 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 </tr>
 </tbody>
 </table>
-<h1 id="log">git log</h1>
+<h1 id="diff">git diff</h1>
+<p><code>git diff</code> 的命令参数实在是太丰富了，可以用来对比查看本地没暂存(add)的工作区、暂存区的、仓库区的、分支之间的，节点之间的&hellip;等等修改.</p>
+<p>官方help 信息如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">usage: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> --cached <span class="o">[</span>&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt; <span class="o">[</span>--merge-base<span class="o">]</span> <span class="o">[</span>&lt;commit&gt;...<span class="o">]</span> &lt;commit&gt; <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt;...&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;blob&gt; &lt;blob&gt;<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> --no-index <span class="o">[</span>--<span class="o">]</span> &lt;path&gt; &lt;path&gt;<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>根据个人在日常工作中最常用的命令简单汇总如下：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>git diff . </code></td>
+<td>查看当前本地修改的所有文件diff</td>
+</tr>
+<tr>
+<td><code>git diff &lt;指定某个路径文件名&gt;</code></td>
+<td>查看当前本地修改的某个文件diff</td>
+</tr>
+<tr>
+<td><code>git diff --staged &lt;指定某个路径文件名&gt; </code></td>
+<td>查看本地修改了且add了的某个文件diff</td>
+</tr>
+<tr>
+<td><code>git diff SHA1值 SHA2值 --stat</code></td>
+<td>查看2个节点之间的文件差距，文件列表形式给出</td>
+</tr>
+<tr>
+<td><code>git diff SHA1值 SHA2值  &lt;指定某个路径文件名&gt;</code></td>
+<td>查看2个节点之间的某个文件的具体修改点</td>
+</tr>
+<tr>
+<td><code>git diff SHA1值~1  SHA1值 &lt;指定某个路径文件名&gt;</code></td>
+<td>查看SHA值这个commit节点的某个文件的具体修改<br>举例<code>git diff HEAD~1  HEAD CMakeLists.txt</code></td>
+</tr>
+<tr>
+<td><code>git diff  分支名a  分支名b --stat</code></td>
+<td>用法类似2个commit节点，只是对比2个分支的HEAD差异</td>
+</tr>
+</tbody>
+</table>
+<p>在使用 <code>git diff</code> 这个命令时，通常会有各种教程教配置界面化的 diff 比较工具，但是注意，git diff 本身是 CLI 形式的，所以配置成带UI的是可能会出问题的，带UI的配置命令应该是 <code>git difftool </code>，而不是 <code>git diff</code>。如果要看左右 compare 形式的 diff 效果，推荐用 <code>vimdiff</code> ，速度快，而且可以配置主题美化，推荐用 <code>github</code> 的 vim 主题。</p>
+<h1 id="restore">git restore</h1>
+<p><code>git restore</code> 的作用主要是回撤对文件的修改，有点像<code>git checkout</code> 恢复文件的修改，但区别如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 回撤本地工作区中没有add的文件修改，包括对内容的修改，以及对文件本身的删除、新增</span>
+<span class="c1"># git checkout -- &lt;文件名&gt; 只能回撤修改，不能回撤对文件的增删</span>
+git restore &lt;文件名&gt; 
+
+<span class="c1"># 回撤已经add但还没commit的文件修改, -S 是 --staged 的简略形式</span>
+git restore -S &lt;文件名&gt; 
+
+<span class="c1"># PS: 如果都commit了还想撤回到 added-but-not-commited 或 not-added 状态，参考 git reset</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="log">git log</h1>
 <p><code>git log</code>的参数实在是多，这里简单的列出常用的几条：</p>
 <table>
 <thead>
@@ -440,8 +532,8 @@ git log -3        <span class="c1">#可以看到刚才的一笔提交，处于�
 <td>查看某个指定的文件/文件夹,  查看前n条</td>
 </tr>
 <tr>
-<td><code>git log -n --grep=&quot;your_key_words&quot; </code></td>
-<td>搜索指定的commit信息关键词,  查看满足条件的前n条</td>
+<td><code>git log -n -i --grep=&quot;myKeywords&quot; </code></td>
+<td>搜索指定的commit关键词(忽略大小写),  满足条件的前n条</td>
 </tr>
 <tr>
 <td><code>git log -n --graph --abbrev-commit  </code></td>
@@ -523,7 +615,7 @@ git cherry-pick a30651a 8069d71  34afa92
 <p><code>git push -f origin</code> 可以强行推送本地分支，覆盖远端，一般用于个人随意支配的feature分支，<strong><code>慎用</code></strong>。</p>
 <p><code>git push origin --delete branchXX</code>可以删除远程分支origin/branchXX，<strong><code>慎用</code></strong>。</p>
 <h1 id="rebase">git rebase</h1>
-<p><code>git rebase</code>的英文描述是 <em>&ldquo;Reapply commits on top of another base tip&rdquo;</em>,可以理解为&quot;将分支的基础从一个提交改为另一个提交&quot;，和merge相比最大的特点就是可以让分支流更简洁；另外，如果团队中有code-review的开发规范，rebase也是必不可少的，减少代码reviewer的负担。</p>
+<p><code>git rebase</code>的英文描述是 <em>&ldquo;Reapply commits on top of another base tip&rdquo;</em>,可以理解为&quot;将分支的基础从一个提交改为另一个提交&quot;，和merge相比最大的特点就是可以让分支流更简洁（其实缺点也是这个，丢掉了当初的分支历史）；另外，如果团队中有code-review的开发规范，rebase也是必不可少的，减少代码reviewer的负担。</p>
 <p>适用场景：从mater分支某个节点A分出了feature分支，然后各自都向前走了几个commit节点，现在feature想要获取master的新修改，这时候可以merge，也可以rebase。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -564,6 +656,42 @@ A --- B --- C
 </div><p>上述D'，E&rsquo;是表示rebase后commit-ID会变，如果有冲突还得解决。</p>
 <p>可以rebase到别的分支(可以是本地或远端，最常用master)，比如执行<code>git rebase origin/master</code> ，或者<code>git rebase commit-ID-xx</code>选择rebase到某个分支的某个commit节点。</p>
 <p>解决冲突时，执行<code>git mergetool </code>调用工具手动解决，解决后<code>git rebase --continue</code>,至此，就完成了一次成功的commit。如果中途想放弃rebase，<code>git rebase --abort</code>即可。</p>
+<ul>
+<li>
+<p><strong>常见问题1</strong>：rebase 有时候还会带着 submodule 一起，结果出现下述问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Fast-forwarding submodule moduleAxx
+Auto-merging moduleAxx
+error: add_cacheinfo failed to refresh <span class="k">for</span> path <span class="s1">&#39;moduleAxx&#39;</span><span class="p">;</span> merge aborting.
+hint: Could not execute the todo <span class="nb">command</span>
+hint: 
+hint:     pick 4ec7e2de3b00bfc5a258e002b9e5b0efe8756345 update moduleAxx
+hint: 
+hint: It has been rescheduled<span class="p">;</span> To edit the <span class="nb">command</span> before continuing, please
+hint: edit the todo list first:
+hint: 
+hint:     git rebase --edit-todo
+hint:     git rebase --continue
+</code></pre></td></tr></table>
+</div>
+</div><p>正确做法，执行 <code>git rebase --edit-todo</code> ，使用 <code>#</code> 号注释掉 <strong>子模块</strong> 的pick选项，先处理其他代码的 confilict ， 最后再来一起看看子模块的更新，一步到位更新。</p>
+</li>
+</ul>
 <h1 id="compress">git rebase -i(compress)</h1>
 <p>有时候开发一个功能，需要分步骤多次commit临时修改，最后压缩在一起。</p>
 <p><code>git rebase -i HEAD~n</code>，其中n为数字可以用于压缩最新的n个提交为1个提交，其中<code>HEAD~n</code>可以替换为那个节点具体的commit值。</p>
@@ -694,7 +822,7 @@ d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</s
 git tag -a 0.1.3 -m “Release version 0.1.3″
 <span class="c1"># 给某个指定的commit-id (比如 34afa92 )打上tag,也可酌情加 tag-message</span>
 git tag -a v1.5.12  34afa92
-<span class="c1"># 推送本地指定的tag到远端</span>
+<span class="c1"># 推送本地指定的tag到远端 （建议先推当时的代码节点，再推tag）</span>
 git push origin  v1.5.12 
 <span class="c1"># 推送 本地所有的 标签到远程服务器上，在git push origin代码之后推送</span>
 git push origin --tags
@@ -770,14 +898,105 @@ git submodule update --init --recursive    <span class="c1">#这时发现文件�
 <p>子模块其实和文件类似，只是在仓库中，它的修改，是它的commit节点来记录和判别的。</p>
 <p>如果子模块向前更新了，主仓库要添加这笔改动的话，像普通文件一样，<code>git add --&gt; git commit --&gt; git push</code>，一套流程带走子模块。</p>
 <h2 id="remove-submodule">remove submodule</h2>
-<p>子模块的删除并非像添加时那么简单轻松，注意按下述顺序操作：</p>
+<p>子模块的删除有2种方法，列举如下：</p>
+<ol>
+<li>
+<p>删除方法一（规范，推荐）：<code>git submodule deinit path_to_submodule </code>  是官方文档推荐的做法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 举例要删除子模块subModAxxx </span>
+git submodule deinit  subModAxxx
+git rm subModAxxx 
+<span class="c1"># 如果deinit命令再加上 --force 参数，就相当于上面2句</span>
+git commit -m <span class="s2">&#34;delete submodule subModAxxx&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>删除方法二（野路子，也能做到）：</p>
+<p>注意按下述顺序操作：</p>
 <ul>
 <li>回退.gitmodules文件的修改,<code>git restore</code>回退之后<code>git add</code>暂存；</li>
 <li>删除目录树和索引文件，执行: <code>git rm --cached path_to_submodule</code>,(path_to_submodule替换成实际路径);</li>
 <li>删除.git目录的文件记录，执行：<code>rm -rf .git/modules/path_to_submodule</code>;</li>
 <li>删除本地文件：<code>rm -rf path_to_submodule</code>，最后<code>git commit</code>上述修改即可完全删除子模块 。</li>
 </ul>
-<h1 id="other-commands">other commands</h1>
+</li>
+</ol>
+<h2 id="query-submodule">query submodule</h2>
+<p>对子模块状态的查询，有2个好用的命令。</p>
+<ol>
+<li>
+<p>其中一个是 <code>git submodule status</code> ， 可以用来查看当前本地仓库子模块的实际SHA节点（还没commit）；</p>
+</li>
+<li>
+<p>另外一个更好用，<code>git ls-tree &lt;SHA值或tag名或HEAD&gt;:目录 | grep 子模块名</code> 可以用来查看这个<strong>指定节点</strong>的已经commit的子模块节点。</p>
+<p>或者可以省去目录指定，默认根目录，执行 <code>git  ls-tree &lt;SHA值或tag名或HEAD&gt; | grep 子模块名</code> 。</p>
+</li>
+</ol>
+<p>以我博客仓库为例子，用于发布publish的子模块为 kissingfire123.github.io，放置于仓库根目录，则运行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git submodule status             
++fd0529c190d63b9d6b2aa58d7467f92f8f6b02ff kissingfire123.github.io <span class="o">(</span>heads/main<span class="o">)</span>
+ aa74e340906f29c8fafaf442cb6e1f766fb5df0f themes/LoveIt <span class="o">(</span>v0.2.10-2-gaa74e34<span class="o">)</span>
+$ git ls-tree HEAD <span class="p">|</span> grep kissingfire123.github.io 
+<span class="m">160000</span> commit 433feb82a37da65bd2690615485be754515f49fc	kissingfire123.github.io
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="grep">git grep</h1>
+<p><code>git grep</code> 的作用是在仓库指定分支/节点的所有文本中搜索指定的关键字文本，默认是当前节点/分支。</p>
+<p>所以可以不用切分支，就直接搜索指定分支下是否包含某个关键文本。</p>
+<blockquote>
+<p><strong>官方用法</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git grep -h                   
+usage: git grep <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>-e<span class="o">]</span> &lt;pattern&gt; <span class="o">[</span>&lt;rev&gt;...<span class="o">]</span> <span class="o">[[</span>--<span class="o">]</span> &lt;path&gt;...
+</code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>假设我们想看看 ParseInfo 这个接口，在当前仓库分支有没有合入，以及代码状态。</p>
+<p>搭配了几个好用且常用的命令参数后，就可以这样搜索：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git grep ParseInfo
+<span class="c1"># -i 是忽略大小写，-n是指定行号</span>
+git grep -i -n parseInfo
+<span class="c1"># --name-only 只显示文本所在的那个文件名</span>
+git grep --name-only ParseInfo
+<span class="c1"># 命令参数后面指定 分支名 或 SHA 值 或 tag 值，可以指定 节点/分支 进行搜索</span>
+git grep -i parseInfo  v1.6.3 
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="other-commands">other commands</h1>
 <table>
 <thead>
 <tr>
@@ -798,20 +1017,24 @@ git submodule update --init --recursive    <span class="c1">#这时发现文件�
 <td><code>git merge-base --fork-point br1 br2</code></td>
 <td>打印出分支br1和分支br2的最新共同祖先节点SHA值</br>（共同节点：形状上类似2条单链表的共同节点）</td>
 </tr>
+<tr>
+<td><code>git ls-tree &lt;node&gt;:&lt;dir&gt;</code></td>
+<td>查看某个节点的对应所有子模块的SHA，node可以为主仓库的SHA值或tag名或HEAD，还可以后接 `</td>
+</tr>
 </tbody>
 </table>
-<h1 id="heading"></h1>
 <blockquote>
 <p>参考链接：</p>
 <ul>
 <li><a href="https://www.waynerv.com/posts/git-rebase-intro/" target="_blank" rel="noopener noreffer">Git Rebase的原理详解</a></li>
+<li><a href="https://stackoverflow.com/questions/20655073/how-to-see-which-commit-a-git-submodule-points-at" target="_blank" rel="noopener noreffer">StackOverflow: how to see which commit that submodule point at.</a></li>
 </ul>
 </blockquote></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/0e8acc3eef804c6b53bb3300449678cc7349c198" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 0e8acc3eef804c6b53bb3300449678cc7349c198: rename some markdown files">
-                                    <i class="fas fa-hashtag fa-fw"></i>0e8acc3</a></span>
+                <span>更新于 2022-12-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/11d1bc77c0aa98bc82c850a80dc21de998c0afa5" target="_blank" title="commit by liwenyao(liwenyao@insta360.com) 11d1bc77c0aa98bc82c850a80dc21de998c0afa5: refine git 命令使用技巧">
+                                    <i class="fas fa-hashtag fa-fw"></i>11d1bc7</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -880,7 +1103,7 @@ git submodule update --init --recursive    <span class="c1">#这时发现文件�
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 105167 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 106850 字 </span>
             </div>
 
             <div class="footer-line">
