@@ -4,7 +4,16 @@
         <link>https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
         <description>计算机图形学 - 分类 - Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Fri, 01 Jul 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="self" type="application/rss+xml" /><item>
+    <title>图像渲染管线理解</title>
+    <link>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</link>
+    <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/RenderingBasics/RenderingPipeLine.jpg" referrerpolicy="no-referrer">
+            </div>摘要：从数学角度阐述图像渲染基础]]></description>
+</item><item>
     <title>Metal Shader逐行调试方法</title>
     <link>https://kissingfire123.github.io/2022/07/23_metal-shader-debug/</link>
     <pubDate>Fri, 01 Jul 2022 00:00:00 &#43;0000</pubDate>

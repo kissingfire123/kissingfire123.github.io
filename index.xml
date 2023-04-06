@@ -4,9 +4,18 @@
         <link>https://kissingfire123.github.io/</link>
         <description>Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 07 Aug 2022 12:11:27 &#43;0800</lastBuildDate>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://kissingfire123.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>图像渲染管线理解</title>
+    <link>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</link>
+    <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/RenderingBasics/RenderingPipeLine.jpg" referrerpolicy="no-referrer">
+            </div>摘要：从数学角度阐述图像渲染基础]]></description>
+</item><item>
     <title>PPT实用技巧的学习与实践</title>
     <link>https://kissingfire123.github.io/2022/08/25_learndeepinpowerpoint/</link>
     <pubDate>Sun, 07 Aug 2022 12:11:27 &#43;0800</pubDate>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part2.webp" referrerpolicy="no-referrer">
             </div>摘要：Effective C++(第三版)内容第三、第四章的总结]]></description>
-</item><item>
-    <title>Markdown语法总结</title>
-    <link>https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/</link>
-    <pubDate>Tue, 11 Jan 2022 14:43:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2022/01/10_markdown_grammar_summary/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/Script-Pic/I-Love-Markdown.webp" referrerpolicy="no-referrer">
-            </div>摘要：对常用的markdown语法(基本语法+扩展语法)做个总结概述，备忘查询]]></description>
 </item></channel>
 </rss>

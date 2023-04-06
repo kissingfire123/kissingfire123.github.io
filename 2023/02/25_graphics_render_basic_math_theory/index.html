@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>图像渲染管线理解 - Benjamin的求知旅记</title><meta name="Description" content="摘要：从数学角度阐述图像渲染基础"><meta property="og:title" content="图像渲染管线理解" />
+<meta property="og:description" content="摘要：从数学角度阐述图像渲染基础" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-06T23:47:08+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="图像渲染管线理解"/>
+<meta name="twitter:description" content="摘要：从数学角度阐述图像渲染基础"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" /><link rel="prev" href="https://kissingfire123.github.io/2022/08/25_learndeepinpowerpoint/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "图像渲染管线理解",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2023\/02\/25_graphics_render_basic_math_theory\/"
+        },"genre": "posts","keywords": "数学, 图形渲染","wordcount":  7001 ,
+        "url": "https:\/\/kissingfire123.github.io\/2023\/02\/25_graphics_render_basic_math_theory\/","datePublished": "2023-02-05T00:00:00+00:00","dateModified": "2023-04-06T23:47:08+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "     \"Benjamin Lee\""
+            },"description": "摘要：从数学角度阐述图像渲染基础"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">图像渲染管线理解</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-05">2023-02-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7001 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 14 分钟&nbsp;<span id="/2023/02/25_graphics_render_basic_math_theory/" class="leancloud_visitors" data-flag-title="图像渲染管线理解">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/RenderingBasics/RenderingPipeLine.jpg"
+        data-srcset="/img/RenderingBasics/RenderingPipeLine.jpg, /img/RenderingBasics/RenderingPipeLine.jpg 1.5x, /img/RenderingBasics/RenderingPipeLine.jpg 2x"
+        data-sizes="auto"
+        alt="/img/RenderingBasics/RenderingPipeLine.jpg"
+        title="摘要：从数学角度阐述图像渲染基础" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#render-关键词">Render 关键词</a></li>
+    <li><a href="#管线概览">管线概览</a></li>
+    <li><a href="#图形-api-工作机制">图形 API 工作机制</a>
+      <ul>
+        <li><a href="#opengl"><strong>OpenGL</strong></a></li>
+        <li><a href="#direct3d"><strong>Direct3D</strong></a></li>
+        <li><a href="#vulkan"><strong>Vulkan</strong></a></li>
+        <li><a href="#metal"><strong>Metal</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#hello-pipeline-opengl-为例">Hello Pipeline (OpenGL 为例)</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="render-关键词">Render 关键词</h1>
+<ul>
+<li>
+<p><strong>渲染</strong> (Render)
+直译就是绘图或图像可视化，只是这个过程是由软件参与，在PC或移动端上生成或展示图像。</p>
+<p>图像渲染是 CG 技术的子学科，其他几个兄弟学科有 几何、动画、物理仿真等。渲染本身包括 2D 渲染和 3D 渲染。</p>
+</li>
+<li>
+<p><strong>图形 API  标准/框架</strong> 
+图形 API 是 CPU (Host) 交互 GPU (Device) 的接口，不是指特定的代码库，而是一套 API 规范，各家显卡厂商按照规范，实现自己的GPU驱动。</p>
+<p>业内常用的图形API有以下：</p>
+<ul>
+<li><highlight>OpenGL</highlight>:
+<ol>
+<li>
+<p>OpenGL规范由1992年成立的OpenGL架构评审委员会（ARB，Architecture Review Board ）发布，2006年将控制权传递给了  <a href="https://www.khronos.org/" target="_blank" rel="noopener noreffer">Khronos Group</a> ；</p>
+</li>
+<li>
+<p>OpenGL不仅语言无关，而且平台无关;</p>
+</li>
+<li>
+<p>OpenGL ES(OpenGL for Embedded Systems)首次发布于2003年，是OpenGL子集，为移动端而生，相对于OpenGL去除了一些非必要的且性能欠佳的一些API；</p>
+</li>
+<li>
+<p>WebGL来在网页上绘制和渲染复杂三维图形，基于 HTML 和 JavaScript 开发；</p>
+</li>
+<li>
+<p>不同平台上有不同的机制一关联<strong>Native窗口系统</strong>，在Windows上是wgl，在X-Window上是 xgl，在Apple OS上是 AGL/ EAGL, Android 上是 EGL ，还有些可以方便 OpenGL 接入 Native 窗口的第三方库 freeglut, GLFW , SDL , Qt, wxWidgets等等；</p>
+</li>
+<li>
+<p>除了核心API要求的功能之外，GPU 供应商可以通过扩展的形式提供额外功能，扩展可能会引入新功能和新常量，一般以 EXT_ 开头，也有以厂家缩写开头的(举例如GL_NV_bindless_texture)；</p>
+</li>
+<li>
+<p>OpenGL <strong>现在广泛使用</strong>的大版本有 OpenGL 3,4, GL ES版本有 ES2, ES3，版本之间接口可能有新增或去除，以及规范中的兼容性要求，都可以在 <a href="https://docs.gl" target="_blank" rel="noopener noreffer">https://docs.gl</a> 进行查询；</p>
+</li>
+<li>
+<p>最新版本是 2017 年发布的 OpenGL 4.6，可能不久的将来就停止更新了(Khronos 要发力 Vulkan)；</p>
+</li>
+</ol>
+</li>
+<li>Direct3D:
+<ol>
+<li>
+<p>Direct3D 是微软公司开发的图形API，不能跨平台，只能在 Windows 上运行；</p>
+</li>
+<li>
+<p>Direct3D 是 DirectX 的一部分，所以也会以 DX+数字 来指代Direct3D 具体版本，例如简称DX11或D3D11都可；</p>
+</li>
+<li>
+<p>开发引入可以采用COM interface，也可以采用 .NET Framework；对于COM interface，遵循COM规范编写，以Win32动态链接库(dll)或者可执行文件形式发布；</p>
+</li>
+<li>
+<p>COM 优点：与开发语言无关、通过接口有效保证了组件的复用性、组件运行效率高，便于使用和管理；</p>
+</li>
+<li>
+<p>自 1996 年首次发布以来，目前最新版本已经到了 Direct3D 12；</p>
+</li>
+</ol>
+</li>
+<li>Metal:
+<ol>
+<li>
+<p><strong>Metal</strong> 是由苹果公司所开发的图形API，2014 年发布，兼顾图形与计算功能，支持面向底层、低开销的硬件加速，类似于兼并了 OpenGL 和 OpenCL，同时支持 GPU 加速的 3D 图形渲染和并行数据计算；</p>
+</li>
+<li>
+<p>只能在 Apple 的 MacOS / iOS 上运行；</p>
+</li>
+<li>
+<p>使用 Objective-C 或 Swift 开发，最新版本已经来到了 Metal 3.0 (<a href="https://developer.apple.com/videos/play/wwdc2022/10066/" target="_blank" rel="noopener noreffer">WWDC 2022: Discover Metal 3</a>)；</p>
+</li>
+</ol>
+</li>
+<li>Vulkan:
+<ol>
+<li>
+<p><strong>Vulkan</strong>是Khronos Group开发的一个新 API ，它提供了对现代显卡的一个更好的抽象，与OpenGL和Direct3D等现有 API 相比，Vulkan可以更详细的向显卡描述你的应用程序打算做什么，从而可以获得更好的性能和更小的驱动开销;</p>
+</li>
+<li>
+<p>Vulkan的设计理念与 Direct3D 12 以及 Metal 基本类似，但 <strong>Vulkan 作为 OpenGL 的替代者</strong>，它设计之初就是为了跨平台实现的，可以同时在 Windows、Linux 和 Android 开发，以及在 MacOS/iOS 也可正常工作，只是底层基于 MoltenVK 实现的；</p>
+</li>
+<li>
+<p>目前最新 Stable release 版本是 1.3.245；</p>
+</li>
+</ol>
+</li>
+<li>软件渲染：如 <a href="https://www.mesa3d.org/" target="_blank" rel="noopener noreffer">Mesa 3D 图形库</a>、 <a href="https://github.com/google/swiftshader" target="_blank" rel="noopener noreffer">SwiftShader</a> 以及各类开源库；</li>
+<li>API 之间的模拟： <a href="https://github.com/google/angle" target="_blank" rel="noopener noreffer">ANGLE</a>、 <a href="https://www.khronos.org/assets/uploads/developers/presentations/Vulkan-09-Zink-OpenGL-on-Vulkan-SIGGRAPH-Jul19.pdf" target="_blank" rel="noopener noreffer">Zink</a>、  <a href="https://fdossena.com/index.php?p=wined3d/index.frag" target="_blank" rel="noopener noreffer">WineD3D</a>、 <a href="https://github.com/doitsujin/dxvk" target="_blank" rel="noopener noreffer">dxvk</a>、  <a href="https://github.com/HansKristian-Work/vkd3d-proton" target="_blank" rel="noopener noreffer">VKD3D</a>、 <a href="https://github.com/KhronosGroup/MoltenVK." target="_blank" rel="noopener noreffer">MoltenVK</a>；</li>
+</ul>
+</li>
+<li>
+<p><strong>Shader</strong> 
+Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点像简化版的C/C++语言，外加一些渲染或并行计算特有的数据结构和用法；</p>
+<p>OpenGL下称为 glsl 代码，D3D 称为HLSL，Metal 下称为 metal 代码，其实后缀都无所谓，基本都是字符串读入，由特定图形 API 的 compile 接口编译成 GPU 能识别的指令序列。</p>
+</li>
+<li>
+<p><strong>实时与离线</strong>
+这是渲染的两大分类：</p>
+<ol>
+<li>实时渲染(Realtime Rendering)是指渲染到屏幕，也就是我们说的预览，对实时性要求高，每帧处理时间不得高于 1.0/fps 秒(fps, frame per seconds)，会配合 Double Buffer 技术使用(渲染中属于 Swap Chain 一环，有时也会使用 Tripple-Buffer)；</li>
+</ol>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线-DoubleBuffer.jpg" , width = "300" , alt="renderPipelineBasic-管线-DoubleBuffer.jpg">
+</div>
+<ol start="2">
+<li>离屏渲染(Offscreen Render)是指某些时候我们不需要将渲染结果显示在屏幕，那我们选择保存到文件或渲染到 FrameBuffer/ Texture 暂存，平时我们说的视频导出了，对实时性要求没有预览那么高；</li>
+</ol>
+</li>
+<li>
+<p><strong>渲染引擎</strong></p>
+<ul>
+<li>OSG</li>
+<li>Ogre</li>
+<li>Bgfx</li>
+<li>DiligentEngine</li>
+<li>Filament</li>
+<li>Oryol</li>
+<li>Cesium.js，Three.js</li>
+<li>内含于游戏引擎：Unity 3D, Unreal Engine, Cocos 2D&amp;3D &hellip;&hellip;</li>
+</ul>
+</li>
+<li>
+<p><strong>工业应用</strong></p>
+<p>主流工业应用：包括电子游戏、AR/VR/MR、流媒体影视 、计算机辅助设计/工程(CAD/CAE)、仿真模拟、动画电影特效以及其他可视化设计。</p>
+</li>
+</ul>
+<h1 id="管线概览">管线概览</h1>
+<p>渲染的过程称之为<strong>渲染管线</strong>(Render PipeLine)。</p>
+<p>渲染管线的主要功能是基于给定的虚拟相机、物体、光源、照明模式以及纹理等诸多条件的情况下，生成或绘制一幅二维图像的过程。</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-渲染管线-概览.jpg" , width = "500" , alt="renderPipelineBasic-渲染管线-概览.jpg">
+</div>
+<p>在概念上可以将图像渲染管线分为三个阶段：应用程序阶段、几何阶段以及光栅化阶段。</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Architecture.jpg" , width = "500">
+</div>
+<ul>
+<li>
+<p>应用程序阶段（The Application Stage）：开发者完全控制，CPU参与，几何体数据准备（包括点、线、矩形等绘制图元 — render primitive），虽然是个单独的过程，但是仍然可以进行管线化或者并行化处理。</p>
+</li>
+<li>
+<p>几何阶段（The Geometry Stage）：负责大部分顶点、多边形操作。</p>
+</li>
+</ul>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Geometry.png" , width = "500">
+</div>
+<p>​      如上图所示，该阶段包括模型&amp;视点变换、顶点着色、投影、裁剪、屏幕映射，几何阶段执行的是计算量非常高的任务。下图为模型视点变换对相机和模型的影响：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-ModelView-Transform.jpg" , width = "400" , alt="模型视点变换对相机和模型的影响">
+</div>
+<p>两种投影形式（相机类型）如下图：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-TwoCameras.jpg" , width = "300" , alt="renderPipelineBasic-TwoCameras">
+</div>
+<p>裁剪 Cliping 过程如下图：</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Clipping.jpg" , width = "500" , alt="渲染管线clipping">
+</div>
+<p>对部分位于视体内部的图元进行裁剪操作，这就是裁剪过程存在的意义。</p>
+<ul>
+<li>
+<p>光栅化阶段（The Rasterizer Stage） ：给定经过变换和投影之后的顶点，颜色以及纹理坐标（均来自于几何阶段），给每个像素(Pixel)正确配色，以便正确绘制整幅图像。这个过个过程叫<strong>光珊化</strong> (rasterization) 或扫描 变换( scan conversion)，即从二维顶点所处的屏幕空间（所有顶点都包含 Z 值即深度值，以及各种与相关的着色信息）到屏幕上的像素的转换。</p>
+<p>光栅化可以细分如下：</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Rasterize.jpg" , width = "600" , alt="渲染管线Rasterize">
+</div>
+</li>
+</ul>
+<p>​      其中，在三角形遍历阶段将进行逐像素检查操作，检查该像素处的像素中心是否由三角形覆盖，而 对于有三角形部分重合的像素，将在其重合部分生成片段（ fragment）。</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-管线逐像素扫描Triangle.png" , width = "300" , alt="renderPipelineBasic-管线逐像素扫描Triangle">
+</div>
+<p>​     我们实际获得了 👇 ，What happend？<strong>Sampling Aliasing !</strong></p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Triangle-Aliasing.png" , width = "300" , alt="renderPipelineBasic-管线Triangle-Aliasing">
+</div>
+<p>抗锯齿采样手段如下：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线AntiAliasing-过程.png" , width = "300" , alt="renderPipelineBasic-管线AntiAliasing-过程">
+</div> 
+<p>抗锯齿采样结果如下：</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Triangle-AntiAliasing结果.png" , width = "600" , alt="renderPipelineBasic-管线Triangle-AntiAliasing结果">
+</div>
+<p>面对这种采样失真的情况，需要应用反走样技术（也叫抗混叠），常用的技术为多重采样抗锯齿（Multi Sampling Anti-Aliasing，简称 MSAA），是一种特殊的SSAA（Super Sampling AA，简单放大后近邻混合）。</p>
+<p>MSAA 首先来自于 OpenGL。具体是 MSAA 只对 Z 缓存（Z-Buffer）和模板缓存 (Stencil Buffer)中的数据进行超级采样抗锯齿的处理。可以简单理解为只对多边形的边缘进行抗锯齿处理。</p>
+<p>其他抗锯齿的手段还有很多，例如 CSAA, HRAA, TXAA,MFA，FXAA等等。</p>
+<p>此外，得到的 fragment 像素的<strong>深度</strong> (距离观察相机的远近，即 Z-Buffer)各不相同，需要做一次深度测试，来决议可见性的问题，保留 near 去除 further，效果类似于 “画家算法”。</p>
+<p>最后，<strong>三个主流程串联起来</strong>，关键步骤如下：（注意某些步骤的 Programmable 、 Configurable 或 UnConfigurable）</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-管线全流程.png" , width = "700" , alt="renderPipelineBasic-管线全流程">
+</div>
+<h1 id="图形-api-工作机制">图形 API 工作机制</h1>
+<h2 id="opengl"><strong>OpenGL</strong></h2>
+<p>关于OpenGL机制，最广为人所知的是它是一个状态机(State Machine ，如下图，高清原图看<a href="https://www.lri.fr/~mbl/ENS/IG2/docs/opengl-stm.pdf" target="_blank" rel="noopener noreffer">OpenGL State Machie Schematic</a>)，不对应任何驱动具体实现，只是大致的原理图。</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-OpenGL-StateMachine.jpg" , alt="renderPipelineBasic-OpenGL-StateMachine">
+</div>
+<p>说到 OpenGL 不得不提的是其上下文机制 (Context)，在应用程序调用任何 OpenGL 的指令之前，需要安排首先创建一个 OpenGL 的上下文。这个上下文是一个非常庞大的状态机，保存了 OpenGL 中的各种状态，这也是OpenGL指令执行的基础。</p>
+<p>虽说可以在不同线程中使用不同的Context，Context之间共享纹理、缓冲区等资源，利用 Shared Context 减轻上下文切换的负担（配合glFence），但是能共享的资源类型是有限制的(例如FBO 和 VAO 属于资源管理型对象，不可共享)。</p>
+<p>但出于OpenGL 由于状态机这个桎梏，<strong>天然是适合单线程渲染的</strong>。由于状态机中的状态、资源、内存无法解决多线程中的竞争问题，在OpenGL中实现多线程一直是荆棘中跳舞，就算再小心翼翼也不能避免刺痛。</p>
+<p>我们的渲染资源的操作必须在其相应的渲染线程完成，避免破坏上下文。</p>
+<h2 id="direct3d"><strong>Direct3D</strong></h2>
+<p>Direct3D的重要抽象概念包括 <code>devices</code>,  <code>swap chains</code> 和 <code>resources</code>。</p>
+<ol>
+<li>
+<p>devices 包括硬件设备（hardware device）、参考设备(reference device)、软件驱动设备（software driverdevice）、WARP设备（WARPdevice）以及其他 device type;</p>
+</li>
+<li>
+<p>swap chains(交换链) 在Direct3D中为一个设备渲染目标的集合。每一个设备都有至少一个交换链，一个交换目标可以为一个渲染和显示到屏幕上的颜色缓存;
+前后台缓存组合 (double buffering 或叫 page flipping)，主缓存中的内容（前台缓存）会显示在屏幕上，而辅助缓存（后台缓存）用于绘制下一帧;</p>
+</li>
+<li>
+<p>resources（资源）包含以下类型的数据：几何图形、纹理、缓冲区以及着色器数据**；**</p>
+</li>
+</ol>
+<p>​      下图 Direct3D Rendering Pipeline ，与标准 Pipeline 相比，有其定制化的内容，更为丰富，而且某些 stage 是可选的。</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-D3D-pipeline.png" , alt="renderPipelineBasic-D3D-pipeline", width="400">
+</div>
+<ul>
+<li>
+<p>图中橙色的 Tesselation Stages 是曲面细分之意，单词原意是【镶嵌】，主要手段是对三角面进行细分，让渲染对象的表面和边缘更平滑，物件呈现更为精细。</p>
+</li>
+<li>
+<p>Tesselation 是渲染管线中可选的阶段，并且该技术不是 Direct3D 独有(OpenGL 也有TCS - <a href="https://www.khronos.org/opengl/wiki/Tessellation_Control_Shader" target="_blank" rel="noopener noreffer">Tessellation Control Shader</a>)，只是Direct3D 单独为其增加了 3 个Shader阶段，分别是外壳着色器(Hull Shader，可编程)、镶嵌器 (Tessellator，不可编程，硬件管理)和域着色器(Domain Shader，可编程) 。</p>
+ <div align=center>
+<img src="/imgBed/renderPipelineBasic-D3D曲面细分.png" , alt="renderPipelineBasic-D3D曲面细分", width="400">
+</div>
+</li>
+</ul>
+<h2 id="vulkan"><strong>Vulkan</strong></h2>
+<p>Vulkan 作为 Khronos 组织首推的下一代图形 API 规范，具有3个很明显的特点：</p>
+<ol>
+<li>更依赖于程序自身的认知：让程序有更多的权限和责任自主的处理调度和优化;</li>
+<li>多线程友好：让程序尽可能的利用所有CPU计算资源从而提高性能。Vulkan中不再需要依赖于绑定在某个线程上的Context，而是用全新的基于Queue的方式向GPU递交任务，并且提供多种Synchronization的组件;</li>
+<li>强调复用：从而减少开销。大多数Vulkan API的组件都可以高效的被复用；</li>
+</ol>
+<blockquote>
+<p>值得注意的是： Vulkan 不是万能灵药，一般来说，只有瓶颈在 CPU，将 OpenGL 改为 Vulkan 才有较大收益。</p>
+</blockquote>
+<p><strong>渲染的大致流程</strong> :</p>
+<p>vkInstance $\rightarrow $ vkDevice $\rightarrow $ vkImage/vkBuffer$\rightarrow $ vkAllocateMemory $\rightarrow $vkBindBuffer/Image $\rightarrow $VkCommandBuffer $\rightarrow $vkQueueSubmit$\rightarrow $ vkPipeline + vkShaderModule$\rightarrow $VkDescriptorSet (bind model)$\rightarrow $VkSwapchainKHR $\rightarrow $vkQueuePresentKHR。</p>
+<p>关于 <strong>Vertex Buffer</strong> 的申请，可以参考下图：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-vulkan-vertexBuffer.png" , alt="renderPipelineBasic-vulkan-vertexBuffer.png">
+</div>
+<p>对于 <strong>Render Loop</strong> 的流程理解，可以参考下图：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-vulkan-RenderLoop.png" , alt="renderPipelineBasic-vulkan-RenderLoop.png">
+</div>
+此外，Vulkan 引入了一个优雅的调试系统，即验证层 。验证层是可选组件（调试开启，Release 时 Close），他 hook 进Vulkan函数调用，以实施额外操作。 
+<p>验证层的常见操作有：</p>
+<ul>
+<li>
+<p>根据特性 Specification 检查参数值，以检测误用</p>
+</li>
+<li>
+<p>跟踪对象的创建和销毁过程，以查找资源泄漏</p>
+</li>
+<li>
+<p>通过追踪线程调用源头来检查线程安全性</p>
+</li>
+<li>
+<p>将所有调用及其参数保存到标准输出</p>
+</li>
+<li>
+<p>追踪Vulkan调用，用于剖析和重演</p>
+</li>
+</ul>
+<p>更多的 Vulkan 流程图理解可以参考一个 GitHub 仓库：<a href="https://github.com/David-DiGioia/vulkan-diagrams" target="_blank" rel="noopener noreffer">David-DiGioia/vulkan-diagrams</a></p>
+<h2 id="metal"><strong>Metal</strong></h2>
+<p>Metal 作为现代图形 API 框架，设计上许多地方都和 OpenGL 不同，并与 Vulkan 较为相似，其渲染管线如下图所示：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Metal-Routine.png", alt="renderPipelineBasic-管线Metal-Routine.png">
+</div>
+<p>与 Vulkan 相似，有 MTLDevice、MTLCommandBuffer、MTLTexture、MTLCommandEncoder、MTLRenderPassDescriptor等资源，同步方面也有 addCompletedHandler、addScheduledHandler、addMTLFence、MTLEvent 的 Low-Level 的细粒度方式。</p>
+<p><strong>一个command queue包含了一系列command buffers</strong>。command queue用于组织它拥有的各个command buffer按序执行。一个command buffers包含多个被编码的指令，这些指令将在一个特定的设备上执行。一个Encoder可以将绘制、计算、位图传输指令推入一个command buffer，最后这些command buffer将被提交到设备执⾏。</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线Metal-MTLCommandQueue.png" , alt=" renderPipelineBasic-管线Metal-MTLCommandQueue.png">
+</div>
+<p><strong>各家 API 的理论性能极限</strong></p>
+<p>图形程序的性能表现和程序设计与流程息息相关，但 API 设计机制本身有别，倘若尝试一较高下，Khronos给出了一张各个图形 API <strong>理论极限性能</strong>对比：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-管线PerformancePotential.png" , alt=" renderPipelineBasic-管线PerformancePotential.png">
+</div>
+<h1 id="hello-pipeline-opengl-为例">Hello Pipeline (OpenGL 为例)</h1>
+<p>以一段简单的渲染 demo 为例，从 Render Pipeline 看下如下效果(2张图片上传、融合并缩放/旋转)是如何达成的：</p>
+<div align=center>
+<img src="/imgBed/renderPipelineBasic-helloPipeLine.gif" , alt="renderPipelineBasic-helloPipeLine.gif">
+</div>
+<ol>
+<li>
+<p><strong>顶点数据准备</strong></p>
+<p>指定一个矩形4个点的顶点数据，包括 3d-position、rgb-color 以及 texture-position：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">      <span class="c1">// Set up vertex data (and buffer(s)) and attribute pointers. (复合demo，颜色在这个效果可以不用，是其他效果的)
+</span><span class="c1"></span>      <span class="n">GLfloat</span> <span class="n">vertices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+                  <span class="c1">//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
+</span><span class="c1"></span>                   <span class="mf">0.5f</span><span class="p">,</span>  <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span>   <span class="c1">// 右上
+</span><span class="c1"></span>                   <span class="mf">0.5f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="c1">// 右下
+</span><span class="c1"></span>                  <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="c1">// 左下
+</span><span class="c1"></span>                  <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span>  <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span>    <span class="c1">// 左上
+</span><span class="c1"></span>      <span class="p">};</span>
+
+      <span class="n">GLuint</span> <span class="n">indices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>  <span class="cm">/* vertices的顶点索引 0,1,2,3 */</span>
+          <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1">// First Triangle
+</span><span class="c1"></span>          <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>  
+      <span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>上传顶点数据</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">   <span class="cm">/*接收原始数据，并绑定属性到openGL上下文*/</span>
+   <span class="kt">void</span> <span class="nf">ProcessBindAttrs</span><span class="p">(</span><span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">VBO</span><span class="p">,</span> <span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">VAO</span><span class="p">,</span> <span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">EBO</span><span class="p">,</span> 
+       <span class="k">const</span> <span class="n">GLfloat</span> <span class="o">*</span> <span class="n">vertices</span><span class="p">,</span><span class="n">GLuint</span> <span class="n">vertexMemSize</span><span class="p">,</span> 
+       <span class="k">const</span> <span class="n">GLuint</span> <span class="o">*</span> <span class="n">indices</span><span class="p">,</span><span class="n">GLuint</span> <span class="n">indexMemSize</span><span class="p">){</span>
+       <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VAO</span><span class="p">);</span><span class="cm">/*创建VAO*/</span>
+       <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VBO</span><span class="p">);</span><span class="cm">/*创建VAO*/</span>
+       <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">EBO</span><span class="p">);</span><span class="cm">/*创建EBO*/</span>
+       <span class="cm">/* 1. 绑定VAO, 再设置顶点属性,到解绑之前,这些上下文属性就都属于这个VAO了,避免了VBO重复执行 */</span>
+       <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span>
+
+       <span class="cm">/* 2. 把顶点数组复制到缓冲中供OpenGL使用 */</span>
+       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">VBO</span><span class="p">);</span>
+       <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexMemSize</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span><span class="c1">// other: GL_DYNAMIC_DRAW,GL_STREAM_DRAW 
+</span><span class="c1"></span>
+       <span class="cm">/* 3. 复制我们的索引数组到一个索引缓冲中，供OpenGL使用*/</span>
+       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">EBO</span><span class="p">);</span>
+       <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">indexMemSize</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span>
+       <span class="cm">/* 4. 设置顶点属性指针 */</span>
+       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>   <span class="n">GL_FLOAT</span><span class="p">,</span>  <span class="n">GL_FALSE</span><span class="p">,</span>  <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span><span class="p">);</span> 
+       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">0</span> <span class="cm">/*position-index*/</span><span class="p">);</span><span class="cm">/*上面2句设置positon */</span>
+       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)(</span><span class="mi">3</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">)));</span>
+       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">1</span> <span class="cm">/*color-index*/</span><span class="p">);</span><span class="c1">//这2句设置color
+</span><span class="c1"></span>       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="cm">/*dimesions*/</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)(</span><span class="mi">6</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">)));</span>
+       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">2</span> <span class="cm">/*texture-index*/</span><span class="p">);</span><span class="c1">//这2句设置texture
+</span><span class="c1"></span>
+       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* 解绑VBO,因为glVertexAttribPointer使用ok了*/</span>
+       <span class="p">......</span>
+     <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>上传纹理</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="cm">/* 使用一张图片创建一个texture纹理, 并设置属性 */</span>
+  <span class="n">GLuint</span> <span class="nf">CreateTextureWithImage</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">texImagePath</span><span class="p">){</span>
+      <span class="cm">/*纹理1生成*/</span>
+      <span class="n">GLuint</span> <span class="n">texture</span><span class="p">;</span>
+      <span class="n">glGenTextures</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texture</span><span class="p">);</span>
+      <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture</span><span class="p">);</span>
+
+      <span class="cm">/*设置纹理1的环绕方式:GL_REPEAT|GL_MIRRORED_REPEAT|GL_CLAMP_TO_EDGE|GL_CLAMP_TO_BORDER*/</span>
+      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_WRAP_S</span><span class="p">,</span> <span class="n">GL_MIRRORED_REPEAT</span><span class="p">);</span>
+      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_WRAP_T</span><span class="p">,</span> <span class="n">GL_MIRRORED_REPEAT</span><span class="p">);</span>
+
+      <span class="cm">/*设置纹理1过滤(纹理和物体大小不匹配:放大(Magnify)和缩小的时候可以设置纹理过滤选项)*/</span>
+      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">);</span>
+      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MAG_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">);</span>
+
+      <span class="cm">/*设置多级渐远纹理1 Mipmap(原纹理的1/4,1/16,1/64...来适配远近纹理)*/</span>
+      <span class="cm">/*生成mipmap: glGenerateMipmaps,只有缩小纹理过滤才能mipmap*/</span>
+      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_LINEAR_MIPMAP_LINEAR</span><span class="p">);</span>
+
+      <span class="cm">/*使用SOIL库(Simple OpenGL Image Library)加载和创建纹理*/</span>
+      <span class="kt">int</span> <span class="n">texWidth</span><span class="p">,</span> <span class="n">texHeight</span><span class="p">;</span>
+      <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">image</span> <span class="o">=</span> <span class="n">SOIL_load_image</span><span class="p">(</span><span class="n">texImagePath</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texWidth</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texHeight</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOIL_LOAD_RGB</span><span class="p">);</span>
+      <span class="n">assert</span><span class="p">(</span><span class="n">image</span><span class="o">!=</span> <span class="k">nullptr</span><span class="p">);</span>
+      <span class="n">glTexImage2D</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span><span class="cm">/* 纹理目标(Target)*/</span>
+          <span class="mi">0</span><span class="p">,</span>        <span class="cm">/*Mipmap的级别, 0表示基本级别 */</span>
+          <span class="n">GL_RGB</span><span class="p">,</span>   <span class="cm">/*纹理储存格式 */</span>
+          <span class="n">texWidth</span><span class="p">,</span>
+          <span class="n">texHeight</span><span class="p">,</span>
+          <span class="mi">0</span><span class="p">,</span>        <span class="cm">/*历史遗留问题,必须为0 */</span>
+          <span class="n">GL_RGB</span><span class="p">,</span>   <span class="cm">/*原图的格式和数据类型,用RGB加载image */</span>
+          <span class="n">GL_UNSIGNED_BYTE</span><span class="p">,</span>
+          <span class="n">image</span><span class="p">);</span>   <span class="cm">/*图像数据buffer */</span>
+      <span class="n">glGenerateMipmap</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">);</span>
+      <span class="n">SOIL_free_image_data</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+      <span class="k">return</span> <span class="n">texture</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>Shader Compile/Load</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span> <span class="n">vShaderCode</span> <span class="o">=</span> <span class="n">vertexCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="cm">/* 读入了 vertex shader内容的字符串*/</span>
+  <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span> <span class="n">fShaderCode</span> <span class="o">=</span> <span class="n">fragmentCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="cm">/*读入了 fragment shader内容的字符串 */</span>
+
+  <span class="cm">/*Step 2.compile vertex-Shader*/</span>
+  <span class="n">GLuint</span> <span class="n">vertex</span><span class="p">;</span>
+  <span class="n">GLint</span> <span class="n">success</span><span class="p">;</span>
+  <span class="n">GLchar</span> <span class="n">infoLog</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+
+  <span class="c1">// vertex shader
+</span><span class="c1"></span>  <span class="n">vertex</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
+  <span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vShaderCode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">);</span>
+  <span class="c1">// if has compile error, get and print
+</span><span class="c1"></span>  <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">){</span>
+      <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">infoLog</span><span class="p">);</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR:SHADER::VERTEX::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">infoLog</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="cm">/*Step 3.compile fragment-Shader*/</span>
+  <span class="n">GLuint</span> <span class="n">fragment</span><span class="p">;</span>
+  <span class="n">fragment</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
+  <span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fShaderCode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">glCompileShader</span><span class="p">(</span><span class="n">fragment</span><span class="p">);</span>
+  <span class="c1">// if has compile error, get and print 
+</span><span class="c1"></span>  <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">){</span>
+      <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">infoLog</span><span class="p">);</span>
+      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">infoLog</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="cm">/*Step 4.Create shader program*/</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
+  <span class="n">glAttachShader</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">);</span>
+  <span class="n">glAttachShader</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">);</span>
+  <span class="n">glLinkProgram</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">);</span>
+  <span class="c1">// if has link error, get and print  
+</span><span class="c1"></span>  <span class="n">glGetProgramiv</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">GL_LINK_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+  <span class="p">......</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>Uniform 变量传入/绑定 Shader</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">   <span class="cm">/*uniform 值设置纹理单元属性 */</span>
+   <span class="n">glActiveTexture</span><span class="p">(</span><span class="n">GL_TEXTURE0</span><span class="p">);</span>
+   <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture1</span><span class="p">);</span>
+   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;ourTexture1&#34;</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+   <span class="n">glActiveTexture</span><span class="p">(</span><span class="n">GL_TEXTURE1</span><span class="p">);</span>
+   <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture2</span><span class="p">);</span>
+   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;ourTexture2&#34;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;textureAlpha&#34;</span><span class="p">),</span> <span class="n">gTextureAlpha</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Unitform 绑定变量后，可以在shader中启用变量并生效：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"> <span class="c1">// Vertex Shader， 这段存为 vertex.glsl 文件</span>
+ <span class="err">#</span><span class="n">version</span> <span class="mi">330</span> <span class="n">core</span> 
+ <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mo">0</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">position</span><span class="p">;</span><span class="cm">/*接收来自VBO的数据,并且自行命名*/</span>
+ <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">color</span><span class="p">;</span>
+ <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec2</span> <span class="n">texCoord</span><span class="p">;</span>
+   <span class="k">out</span> <span class="k">vec3</span> <span class="n">ourColor</span><span class="p">;</span>
+   <span class="k">out</span> <span class="k">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
+   <span class="k">uniform</span> <span class="n">mat4</span> <span class="n">transform</span><span class="p">;</span>
+   <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">transform</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="mf">1.0</span><span class="n">f</span><span class="p">);</span> 
+           <span class="n">ourColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+           <span class="n">TexCoord</span> <span class="o">=</span> <span class="k">vec2</span><span class="p">(</span><span class="n">texCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span> <span class="o">-</span> <span class="n">texCoord</span><span class="p">.</span><span class="n">y</span><span class="p">);</span><span class="cm">/*上下翻转，可以改变纹理的朝向*/</span>
+   <span class="p">}</span> 
+   <span class="c1">// fragment shader ， 这段存为 fragment.glsl 文件</span>
+   <span class="err">#</span><span class="n">version</span> <span class="mi">330</span> <span class="n">core</span>
+   <span class="k">in</span> <span class="k">vec3</span> <span class="n">ourColor</span><span class="p">;</span>
+   <span class="k">in</span> <span class="k">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
+   <span class="k">out</span> <span class="k">vec4</span> <span class="n">color</span><span class="p">;</span> 
+
+   <span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">ourTexture1</span><span class="p">;</span>
+   <span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">ourTexture2</span><span class="p">;</span>
+   <span class="k">uniform</span> <span class="k">int</span> <span class="n">textureAlpha</span><span class="p">;</span>
+   <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="cm">/*效果4: 加载2个纹理texture1和texture2,且纹理2的透明度可调*/</span>
+   <span class="n">color</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">texture</span><span class="p">(</span><span class="n">ourTexture1</span><span class="p">,</span><span class="n">TexCoord</span><span class="p">),</span><span class="n">texture</span><span class="p">(</span><span class="n">ourTexture2</span><span class="p">,</span><span class="k">vec2</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">TexCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">TexCoord</span><span class="p">.</span><span class="n">y</span><span class="p">)),</span><span class="n">textureAlpha</span><span class="o">/</span><span class="mf">100.0</span><span class="p">);</span><span class="c1">//textureAlpha/100.0 means 2nd texture rate</span>
+   <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>Model 变换</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="cm">/* 注意, 由于矩阵乘法计算规则,实际的变换动作顺序应该与阅读顺序相反 */</span>
+  <span class="cm">/* 实际变换矩阵：先缩放、后旋转、最后平移 */</span>
+  <span class="n">glm</span><span class="o">::</span><span class="n">mat4</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">translate</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">rotateAxis</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rotateAngle</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">scale</span><span class="p">){</span>
+      <span class="n">glm</span><span class="o">::</span><span class="n">mat4</span> <span class="n">trans</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="cm">/*初始化为单位矩阵*/</span>
+      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">translate</span><span class="p">);</span><span class="cm">/*三个方向的平移*/</span>
+      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">rotateAngle</span><span class="p">,</span> <span class="n">rotateAxis</span><span class="p">);</span><span class="cm">/*给定的旋转轴以及旋转角*/</span>
+      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">scale</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">scale</span><span class="p">);</span><span class="cm">/* 三个方向的缩放因子*/</span>
+      <span class="k">return</span> <span class="n">trans</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>发起 Draw Call</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="n">GLFWwindow</span><span class="o">*</span> <span class="n">window</span> <span class="o">=</span> <span class="n">glfwCreateWindow</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="s">&#34;LearnOpenGL&#34;</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+  <span class="p">...</span>
+  <span class="cm">/*第一个变换图*/</span>
+  <span class="n">trans</span> <span class="o">=</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">),</span>
+      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">GLfloat</span><span class="o">&gt;</span><span class="p">(</span><span class="n">glfwGetTime</span><span class="p">()</span> <span class="o">*</span> <span class="mf">50.0f</span><span class="p">)),</span>
+      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+  <span class="n">GLuint</span> <span class="n">transformLoc</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;transform&#34;</span><span class="p">);</span>
+  <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">transformLoc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">trans</span><span class="p">));</span>
+
+  <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span><span class="cm">/*绑定VAO,应用前面设置的属性*/</span>
+  <span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span><span class="cm">/*利用顶点索引作图*/</span> 
+
+  <span class="cm">/*第二个变换图, 再次调用glDrawElements */</span>
+  <span class="n">GLfloat</span> <span class="n">scaleFactor</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">glfwGetTime</span><span class="p">()));</span>
+  <span class="n">trans</span> <span class="o">=</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">),</span>
+      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="mf">0.0f</span><span class="p">,</span>
+      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="n">scaleFactor</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">));</span>
+  <span class="n">transformLoc</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;transform&#34;</span><span class="p">);</span>
+  <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">transformLoc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">trans</span><span class="p">));</span>
+  <span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">glBindVertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="cm">/*解绑VAO */</span>
+  <span class="p">...</span>
+  <span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span><span class="c1">// Swap the screen buffers
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<p>以上就是一次简单且完整的渲染流程了。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-04-06&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/3b1eb6d98ab6c14eadb366abebb505a85c55dd58" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 3b1eb6d98ab6c14eadb366abebb505a85c55dd58: publish rendering pipeline">
+                                    <i class="fas fa-hashtag fa-fw"></i>3b1eb6d</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解" data-hashtags="数学,图形渲染"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-hashtag="数学"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解" data-image="/img/RenderingBasics/RenderingPipeLine.jpg"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解" data-description="摘要：从数学角度阐述图像渲染基础"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解" data-description="摘要：从数学角度阐述图像渲染基础"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" data-title="图像渲染管线理解"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>,&nbsp;<a href="/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/08/25_learndeepinpowerpoint/" class="prev" rel="prev" title="PPT实用技巧的学习与实践"><i class="fas fa-angle-left fa-fw"></i>PPT实用技巧的学习与实践</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 118431 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
