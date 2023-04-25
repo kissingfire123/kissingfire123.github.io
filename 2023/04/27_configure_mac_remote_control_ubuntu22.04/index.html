@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Mac 远程桌面控制Ubuntu 22.04 (RDP) - Benjamin的求知旅记</title><meta name="Description" content="摘要：记录安装与配置Ubuntu 22.04 的远程控制"><meta property="og:title" content="Mac 远程桌面控制Ubuntu 22.04 (RDP)" />
+<meta property="og:description" content="摘要：记录安装与配置Ubuntu 22.04 的远程控制" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-01T15:57:31+08:00" />
+<meta property="article:modified_time" content="2023-04-25T21:22:44+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mac 远程桌面控制Ubuntu 22.04 (RDP)"/>
+<meta name="twitter:description" content="摘要：记录安装与配置Ubuntu 22.04 的远程控制"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" /><link rel="prev" href="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mac 远程桌面控制Ubuntu 22.04 (RDP)",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2023\/04\/27_configure_mac_remote_control_ubuntu22.04\/"
+        },"genre": "posts","keywords": "Linux, Mac, RDP","wordcount":  1858 ,
+        "url": "https:\/\/kissingfire123.github.io\/2023\/04\/27_configure_mac_remote_control_ubuntu22.04\/","datePublished": "2023-04-01T15:57:31+08:00","dateModified": "2023-04-25T21:22:44+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：记录安装与配置Ubuntu 22.04 的远程控制"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Mac 远程桌面控制Ubuntu 22.04 (RDP)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1858 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2023/04/27_configure_mac_remote_control_ubuntu22.04/" class="leancloud_visitors" data-flag-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp"
+        data-srcset="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp, /img/Chore-Pic/Ubuntu22.04-Xfce4.webp 1.5x, /img/Chore-Pic/Ubuntu22.04-Xfce4.webp 2x"
+        data-sizes="auto"
+        alt="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp"
+        title="摘要：记录安装与配置Ubuntu 22.04 的远程控制" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#why-rdp">Why RDP</a></li>
+    <li><a href="#配置xfce4">配置xfce4</a></li>
+    <li><a href="#配置xrdp">配置xrdp</a></li>
+    <li><a href="#远控软件推荐">远控软件推荐</a></li>
+    <li><a href="#faq">FAQ</a>
+      <ul>
+        <li><a href="#关于-xrdp-service失败">关于 XRDP service失败</a></li>
+        <li><a href="#远程连接后终端窗口点击没反应">远程连接后终端窗口点击没反应</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考文章">参考文章</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="背景">背景</h1>
+<p>对于跨平台开发人员，有时需要同时操作多台开发设备，<strong>并且需要 UI 界面</strong>，否则 SSH 就 Ok 了。</p>
+<p>多套键鼠操作肯定是麻烦的，注意到公司/学校内往往是有局域网，所以我选择的是一台主设备远程控制其他机器，局域网内的远控体验非常好（包括操作流畅度以及画面清晰度）。</p>
+<p>公网的就不说了，百花齐放， TeamViewer、向日葵、AnyDesk这些都是比较常用的。</p>
+<p>书写本文时，我的系统版本是 Ubuntu 22.04，配置好后，可以让 Mac 和 Windows 都能远程桌面控制该 Ubuntu 机器。</p>
+<h1 id="why-rdp">Why RDP</h1>
+<p>用Xrdp是因为比VNC好很多，磁盘共享这种附带功能不说，关键是RDP的算法，用起来要比VNC的RFB快VNC采用的RFB算法，下面放一下他们俩的主要区别:</p>
+<ul>
+<li>RFB是在服务器端将窗口在显存中画好之后将图像传给客户端，客户端只充当一个图像解码显示的角色；</li>
+<li>RDP则将画图的工作交给了客户端，服务器需要了解客户端显示能力的具体情况，以便作出相应调整。RFB主要传图像，RDP主要传指令。就一般应用而言，RFB数据量太大，RDP对客户端要求较高，因此RFB适用于瘦客户端，RDP适用于低速网络。</li>
+</ul>
+<p><strong>个人体验而言</strong>，局域网内试过各种VNC的Client远控，体验都不太好，画面模糊，鼠标迟滞。反观 RDP 远控，个人体验，基本和操作真机无异。</p>
+<h1 id="配置xfce4">配置xfce4</h1>
+<p>为什么要选择Xfce4 呢？==&gt; 因为这个桌面 <strong>稳定且轻量化啊</strong>，操作起来快啊。</p>
+<p>而且，<strong>原生的</strong>GNOME 桌面我也试过，<strong>不是很好用</strong>，所有菜单都缩到左上角一个 [活动] 选项，还动不动就黑屏，Gnome 我服了。</p>
+<p>执行下述命令即可<strong>安装 xfce4</strong> 极其组件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 更新 apt 信息</span>
+sudo apt update
+
+<span class="c1"># 安装Xfce桌面</span>
+sudo apt install xubuntu-desktop
+
+<span class="c1"># 这是服务器连接显示器要用的桌面，重启后显示器应出现图形界面</span>
+sudo apt install xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils
+</code></pre></td></tr></table>
+</div>
+</div><p>编辑配置文件，将默认桌面切换为 xfce4 ，轻量快速体验好。</p>
+<p>执行下方命令即可配置默认桌面为xfce4:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> xfce4-session &gt; ~/.xsession
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="配置xrdp">配置xrdp</h1>
+<p>执行下方命令即可完成 xrdp 的<strong>安装</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 安装</span>
+sudo apt install xrdp
+</code></pre></td></tr></table>
+</div>
+</div><p>执行下方命令即可完成 xrdp 的<strong>配置</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 允许xrdp 运行 </span>
+sudo systemctl <span class="nb">enable</span> xrdp
+
+<span class="c1"># 配置防火墙，让xrdp的3389 端口可以被访问。</span>
+sudo ufw allow 3389/tcp
+<span class="c1"># 想更安全的话执行: sudo ufw allow from 192.168.33.0/24 to any port 3389</span>
+<span class="c1"># 其中 IP 范围是 192.168.33.0/24，可以换成你想要的</span>
+
+<span class="c1"># 需要添加xrdp到 ssl-cert group </span>
+sudo adduser xrdp ssl-cert
+
+<span class="c1"># 编辑ini文件，在文件末尾添加   exec startxfce4</span>
+sudo vim /etc/xrdp/xrdp.ini
+</code></pre></td></tr></table>
+</div>
+</div><p>配置完后，Xrdp 服务将自动运行，当然，也可以手动重启 xrdp 服务：(<strong>可选操作</strong>)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo service xrdp restart 
+sudo systemctl restart xrdp 
+</code></pre></td></tr></table>
+</div>
+</div><p>Xrdp 的状态确认可以通过执行 <code>sudo systemctl status xrdp</code>来确认：</p>
+<p>状态正常，大概应该是这样的，没有明显报错：</p>
+<p>下方信息我是已经远程状态，没被远程可能信息稍有不同。但是不能有明显的service报错信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> xrdp.service - xrdp daemon
+     Loaded: loaded <span class="o">(</span>/lib/systemd/system/xrdp.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: &gt;
+     Active: active <span class="o">(</span>running<span class="o">)</span> since Tue 2023-03-25 16:47:22 CST<span class="p">;</span> 3h 39min ago
+ ......（其他信息）
+
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="远控软件推荐">远控软件推荐</h1>
+<p>目前我们是使用 RDP 协议控制 Ubuntu，那么在不同平台，均有不错的软件可以用来远控该 Ubuntu：</p>
+<ul>
+<li>
+<p><strong>Windows</strong></p>
+<ol>
+<li>
+<p>使用系统自带的远程控制软件 mstsc ；</p>
+</li>
+<li>
+<p>或使用神器 <a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener noreffer">MobaXterm</a>，该神器支持多种协议，RDP 只是其中一种，用 MobaXterm 的好处是不用每次都输密码登陆，可管理登陆项。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Mac</strong></p>
+<p>目前在用的 2 款免费软件是 <a href="https://apps.apple.com/us/app/parallels-client/id600925318?mt=12" target="_blank" rel="noopener noreffer">Apple Store: Parallels  Client</a> 和 <a href="https://mac.mac89.com/mac/2406.html?bd_vid=10271877597253530135" target="_blank" rel="noopener noreffer">Microsoft Remote Desktop for Mac(Apple Store里好像也有)</a>，任选一个都可以，都很好用。</p>
+<p>用来远控本文的 Ubuntu 或者 Windows 机器都是可以的，局域网下体验非常不错，基本和操作真机无异。</p>
+</li>
+<li>
+<p><strong>Linux</strong></p>
+<p>Linux 下的远程软件（包含 RDP 协议控制的），比较有名的应该是  Remmina 和 Vinagre，我都没试过，自行下载尝试吧。</p>
+</li>
+</ul>
+<h1 id="faq">FAQ</h1>
+<h2 id="关于-xrdp-service失败">关于 XRDP service失败</h2>
+<p>按照上述的方法配置了xrdp后，理论上应该是能正常用起来了，But ：</p>
+<p>假设还有问题，<strong>更多的错误排查</strong>可以参考这 2 篇文章：<a href="https://www.codeclip.com/4260.html" target="_blank" rel="noopener noreffer">ubuntu18远程桌面_zhayushui的专栏</a> 和 <a href="https://blog.51cto.com/weiyigeek/5667141" target="_blank" rel="noopener noreffer">51Cto: Xrdp服务安装配置实现Linux远程桌面访问</a> 。</p>
+<h2 id="远程连接后终端窗口点击没反应">远程连接后终端窗口点击没反应</h2>
+<p>原因：上述将桌面换成 Xfce4 之后，terminal 仍然还是 gnome-terminal ，所以出现了一些兼容问题，导致 Terminal 启动失败。</p>
+<p>如何解决：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 切换终端</span>
+sudo update-alternatives --config x-terminal-emulator
+</code></pre></td></tr></table>
+</div>
+</div><p>打印出如下内容后：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">有 2 个候选项可用于替换 x-terminal-emulator (提供 /usr/bin/x-terminal-emulator)。
+ 选择    路径              优先级 状态
+\------------------------------------------------------------
+\* 0      /usr/bin/gnome-terminal.wrapper  40    自动模式
+   1      /usr/bin/gnome-terminal.wrapper  40    手动模式
+   2      /usr/bin/xfce4-terminal.wrapper  40    手动模式
+
+要维持当前值[*]请按&lt;回车键&gt;，或者键入选择的编号：
+update-alternatives: 使用 /usr/bin/xfce4-terminal.wrapper 来在手动模式中提供 /usr/bin/x-terminal-emulator (x-terminal-emulator)
+</code></pre></td></tr></table>
+</div>
+</div><p>选择和 <strong>xfce4 相关的</strong> terminal，上述是2 ，则输入 2 然后 Enter ，然后重新连接 RDP 远程即可。</p>
+<h1 id="参考文章">参考文章</h1>
+<ol>
+<li><a href="https://developer.aliyun.com/article/762186" target="_blank" rel="noopener noreffer">阿里云：如何在Ubuntu 20.04 上安装 Xrdp 服务器（远程桌面）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/380560464" target="_blank" rel="noopener noreffer">知乎：Ubuntu Server xfce4桌面、Xrdp远程桌面安装：深度学习环境搭建</a></li>
+<li><a href="https://www.xtuos.com/214862.html" target="_blank" rel="noopener noreffer">如何在 Ubuntu 22.04 LTS 上安装 Xfce 桌面</a></li>
+</ol></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-04-25&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/f2369052f07ca0aa9db9cc533e6c284339ed105f" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) f2369052f07ca0aa9db9cc533e6c284339ed105f: publish remote control linux">
+                                    <i class="fas fa-hashtag fa-fw"></i>f236905</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)" data-hashtags="Linux,Mac,RDP"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)" data-image="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)" data-description="摘要：记录安装与配置Ubuntu 22.04 的远程控制"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)" data-description="摘要：记录安装与配置Ubuntu 22.04 的远程控制"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" data-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/mac/">Mac</a>,&nbsp;<a href="/tags/rdp/">RDP</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2023/02/25_graphics_render_basic_math_theory/" class="prev" rel="prev" title="图像渲染管线理解"><i class="fas fa-angle-left fa-fw"></i>图像渲染管线理解</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 120289 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
