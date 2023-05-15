@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Ubuntu 22.04  C&#43;&#43; 开发机的安装配置 - Benjamin的求知旅记</title><meta name="Description" content="摘要：记录安装与配置 Ubuntu 22.04 的开发环境"><meta property="og:title" content="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置" />
+<meta property="og:description" content="摘要：记录安装与配置 Ubuntu 22.04 的开发环境" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-18T15:57:31+08:00" />
+<meta property="article:modified_time" content="2023-05-15T08:56:12+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置"/>
+<meta name="twitter:description" content="摘要：记录安装与配置 Ubuntu 22.04 的开发环境"/>
+<meta name="application-name" content="Benjamin的博客">
+<meta name="apple-mobile-web-app-title" content="Benjamin的博客"><meta name="theme-color" content="#ffe5b3"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" /><link rel="prev" href="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" /><link rel="next" href="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ubuntu 22.04  C++ 开发机的安装配置",
+        "inLanguage": "zh-cn",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kissingfire123.github.io\/2023\/03\/28_install_configure_ubuntu_for_develop\/"
+        },"genre": "posts","keywords": "Linux, Mac, 开发环境","wordcount":  6267 ,
+        "url": "https:\/\/kissingfire123.github.io\/2023\/03\/28_install_configure_ubuntu_for_develop\/","datePublished": "2023-03-18T15:57:31+08:00","dateModified": "2023-05-15T08:56:12+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Benjamin Lee"
+            },"description": "摘要：记录安装与配置 Ubuntu 22.04 的开发环境"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <a href="https://github.com/kissingfire123" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="3.5rem" height="3.5rem" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+        <div class="header-title">
+            <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i> 所有文章 </a><a class="menu-item" href="/tags/"><i class='fas fa-regular fa-tag'></i> 标签 </a><a class="menu-item" href="/categories/"><i class='fas fa-thin fa-folder-open'></i> 分类 </a><a class="menu-item" href="/about/"><i class='fas fa-thin fa-user'></i> 关于 </a><a class="menu-item" href="/friends/"><i class='fas fa-light fa-link'></i> 友链 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Benjamin的求知旅记"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/home-logo.ico"
+        data-srcset="/img/home-logo.ico, /img/home-logo.ico 1.5x, /img/home-logo.ico 2x"
+        data-sizes="auto"
+        alt="/img/home-logo.ico"
+        title="/img/home-logo.ico" />Bejamin主页</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="文章归档"><i class='fas fa-thin fa-archive'></i>所有文章</a><a class="menu-item" href="/tags/" title=""><i class='fas fa-regular fa-tag'></i>标签</a><a class="menu-item" href="/categories/" title=""><i class='fas fa-thin fa-folder-open'></i>分类</a><a class="menu-item" href="/about/" title=""><i class='fas fa-thin fa-user'></i>关于</a><a class="menu-item" href="/friends/" title=""><i class='fas fa-light fa-link'></i>友链</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Ubuntu 22.04  C&#43;&#43; 开发机的安装配置</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>折腾</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-18">2023-03-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6267 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/2023/03/28_install_configure_ubuntu_for_develop/" class="leancloud_visitors" data-flag-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp"
+        data-srcset="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp, /img/Chore-Pic/Ubuntu22.04-Xfce4.webp 1.5x, /img/Chore-Pic/Ubuntu22.04-Xfce4.webp 2x"
+        data-sizes="auto"
+        alt="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp"
+        title="摘要：记录安装与配置 Ubuntu 22.04 的开发环境" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#桌面软件">桌面软件</a>
+      <ul>
+        <li><a href="#shadowsocks">ShadowSocks</a>
+          <ul>
+            <li><a href="#proxychains">proxychains</a></li>
+          </ul>
+        </li>
+        <li><a href="#chrome-浏览器">Chrome 浏览器</a>
+          <ul>
+            <li><a href="#switch-omega插件">Switch Omega插件</a></li>
+          </ul>
+        </li>
+        <li><a href="#远程桌面控制">远程桌面控制</a></li>
+        <li><a href="#飞书">飞书</a></li>
+        <li><a href="#smartgit">SmartGit</a></li>
+        <li><a href="#visual-studio-code">Visual Studio Code</a></li>
+        <li><a href="#android-studio">Android Studio</a>
+          <ul>
+            <li><a href="#方式1-命令行安装最新版">方式1: 命令行安装最新版</a></li>
+            <li><a href="#方式2-官网下载安装指定版本">方式2: 官网下载安装指定版本</a></li>
+          </ul>
+        </li>
+        <li><a href="#挂载网盘">挂载网盘</a></li>
+      </ul>
+    </li>
+    <li><a href="#命令行工具">命令行工具</a>
+      <ul>
+        <li><a href="#oh-my-zsh">oh my zsh</a></li>
+        <li><a href="#cmake">cmake</a></li>
+        <li><a href="#adb">adb</a></li>
+        <li><a href="#scrcpy">scrcpy</a></li>
+        <li><a href="#ncdu">ncdu</a></li>
+        <li><a href="#htop">htop</a></li>
+        <li><a href="#fanyi">fanyi</a></li>
+        <li><a href="#ag">ag</a></li>
+        <li><a href="#fzf">fzf</a></li>
+        <li><a href="#ffmpeg">ffmpeg</a></li>
+        <li><a href="#axel">axel</a></li>
+        <li><a href="#tldr">tldr</a></li>
+      </ul>
+    </li>
+    <li><a href="#faq">FAQ</a>
+      <ul>
+        <li><a href="#扩容根分区">扩容根分区</a></li>
+        <li><a href="#扩容-home-目录">扩容 home 目录</a></li>
+        <li><a href="#git-credential-凭证">Git Credential 凭证</a></li>
+        <li><a href="#编辑桌面菜单栏">编辑桌面菜单栏</a></li>
+        <li><a href="#android-studio-sync-failed">Android Studio Sync Failed</a></li>
+      </ul>
+    </li>
+    <li><a href="#参考链接">参考链接</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p>记录了一台全新安装的 Ubuntu 22.04 搭建开发环境的过程，其中<code>命令行工具</code>大多是可选项，按需安装。</p>
+<h1 id="桌面软件">桌面软件</h1>
+<h2 id="shadowsocks">ShadowSocks</h2>
+<p>由于是基于 Electron 很自然的可以跨平台使用，比命令行形式的好用很多。</p>
+<p>Github 地址 : <a href="https://github.com/nojsja/shadowsocks-electron" target="_blank" rel="noopener noreffer">nojsja/shadowsocks-electro</a>，下载地址 <a href="https://github.com/nojsja/shadowsocks-electron/releases" target="_blank" rel="noopener noreffer">shadowsocks-electron/releases</a> 。</p>
+<blockquote>
+<p>如果没看到 deb 包，注意点击  show all assets  下拉按钮。</p>
+</blockquote>
+<p>使用<code> sudo dpkg -i shadowsocks-electron_1.2.3_arm64.deb</code> 安装。</p>
+<p>安装后，先复制 SSR 订阅链接地址，点击左下角 “+” 号添加URL订阅地址，从剪切板解析添加。</p>
+<p>添加后，启动连接，并设置好 IP 端口，尽量别用1080，可能会和一些网络管理软件冲突，选个其他的端口，比如 10811。</p>
+<h3 id="proxychains">proxychains</h3>
+<p>命令行的代理工具 proxychains 堪称神器，可以在  http_proxy 失效的时候补位，甚至可以直接代替 http_proxy 的设置， 安装方式： <code>sudo apt install proxychains </code>。</p>
+<p>配置文件在：<code>/etc/proxychains.conf</code> ，在配置文件最末尾编辑如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 默认的这句 sock4 注释掉   </span>
+<span class="c1"># socks4 127.0.0.1. 9050</span>
+<span class="c1"># 假设上述 shadow socks的代理端口是 10811</span>
+socks5 127.0.0.1. <span class="m">10811</span>
+https 127.0.0.1. <span class="m">10811</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如何使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在需要访问代理网络（需要梯子）的命令添加前缀 proxychains </span>
+<span class="c1"># 举例如下:</span>
+proxychains wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh  
+</code></pre></td></tr></table>
+</div>
+</div><p>更多详细信息可以参考 <a href="https://zhuanlan.zhihu.com/p/166375631" target="_blank" rel="noopener noreffer">知乎：Linux命令行代理神器-proxychains</a></p>
+<h2 id="chrome-浏览器">Chrome 浏览器</h2>
+<p>只要执行以下 2 条命令即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 下载最新 deb 的包</span>
+<span class="c1"># 假设遇到 SSL 网路问题，搭个梯子吧，或者 prxychains </span>
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+<span class="c1"># dpkg 安装</span>
+sudo dpkg  -i  install google-chrome-stable_current_amd64.deb
+</code></pre></td></tr></table>
+</div>
+</div><p>安装后可以点击图标运行，或者命令行运行 <code>google-chrome</code> 安装。</p>
+<h3 id="switch-omega插件">Switch Omega插件</h3>
+<p>下载地址为： <a href="https://github.com/FelisCatus/SwitchyOmega/releases" target="_blank" rel="noopener noreffer">FelisCatus/SwitchyOmega/releases</a>。</p>
+<p>直接使用 chrome 浏览器下载可能一下载就被删掉了，可以鼠标右键复制下载地址，然后使用 wget 或 curl 命令行终端下载：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/SwitchyOmega_Chromium.crx
+<span class="c1"># 如果网速不佳，用 proxychains 可能会更好</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>如何安装</strong>：</p>
+<p>新版chrome 已经不能直接拖拽到 chrome 安装了，需要解压后再加载：</p>
+<ol>
+<li>先重命名下载的 crx 文件为 zip 文件；</li>
+<li>再解压zip文件；</li>
+<li>使用chrome 浏览器打开开发者模式，手动加载；</li>
+</ol>
+<p>其中步骤 1，2 需要运行命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 备份一下</span>
+cp SwitchyOmega_Chromium.crx SwitchyOmega_Chromium.crx.bak
+
+mv SwitchyOmega_Chromium.crx SwitchyOmega_Chromium.zip
+mkdir SwitchyOmega_Chromium 
+sudo apt install unzip 
+unzip SwitchyOmega_Chromium.zip  -d SwitchyOmega_Chromium
+</code></pre></td></tr></table>
+</div>
+</div><p>剩下步骤3:</p>
+<ul>
+<li>访问：<code>chrome://extensions</code> ，右上角 “开发者模式” 点击启用；</li>
+<li>左上角出现的 “加载已解压的扩展程序”，然后选中☑️ 上述解压的 SwitchyOmega_Chromium 文件夹。</li>
+</ul>
+<h2 id="远程桌面控制">远程桌面控制</h2>
+<p>参考本站另外一篇文章：<a href="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04" target="_blank" rel="noopener noreffer">Mac 远程桌面控制Ubuntu 22.04 (RDP)</a></p>
+<h2 id="飞书">飞书</h2>
+<p>访问官网<a href="https://www.feishu.cn/download" target="_blank" rel="noopener noreffer">飞书Download</a> ，对得到的 deb 包使用 dpkg 安装即可。</p>
+<h2 id="smartgit">SmartGit</h2>
+<p>Smart Git 官网 <a href="https://www.syntevo.com/smartgit/download/" target="_blank" rel="noopener noreffer">SmartGit 下载</a>, 可以下载 tar.gz 或 deb 包，官网推荐 tar.gz 方式安装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 解压安装包 , 建议解压后拷贝到 /usr/local 目录</span>
+tar xzf &lt;smartgit*.tar.gz&gt;
+<span class="c1"># 手动执行,在 smart git 解压后的根目录</span>
+./bin/smartgit.sh
+<span class="c1"># 添加 smartgit 开始菜单启动项</span>
+./bin/add-menuitem.sh
+<span class="c1"># 移除 smartgit 开始菜单启动项</span>
+./bin/remove-menuitem.sh
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="visual-studio-code">Visual Studio Code</h2>
+<p>前往官方网站 [Visual Studio Code下载](下载页面 <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreffer">https://code.visualstudio.com/download</a>) deb 包，<strong>假设包名为</strong> code_1.77.3-1681292746_amd64.deb ，执行下述命令安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo dpkg -i code_1.77.3-1681292746_amd64.deb
+</code></pre></td></tr></table>
+</div>
+</div><p>配置方式可以参考官网：<a href="https://code.visualstudio.com/docs/cpp/config-linux" target="_blank" rel="noopener noreffer">Using C++ on Linux in VS Code</a>.</p>
+<p>简单说就是需要配置得到 3 个 json 文件，分别是，<code>tasks.json</code>、<code>launch.json</code>、<code>c_cpp_properties.json</code>，具体步骤如下：</p>
+<ol>
+<li>
+<p>首先 <code>gcc -v</code> , <code>g++ -v</code>确认安装了 gcc/g++ (Ubuntu 22.04 默认安装了)。然后安装插件 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener noreffer">C++ extension for VS Code</a>;</p>
+</li>
+<li>
+<p>创建新工程以及添加新文件 helloworld.cpp ，点击<strong>右上角 run</strong> 运行，选择“g++ 构建与调试活动文件”，则在 .vscode 目录下生成了 <code>tasks.json</code> 文件；</p>
+<p>如果编译目录下多个 cpp 文件，可以考虑将 json 文件中的  <code>${file}</code>  换成 <code>${workspaceFolder}/*.cpp</code> ；</p>
+</li>
+<li>
+<p>类似步骤 2， 点击右上角三角形旁边<strong>下拉框调试</strong>，选择“g++ 构建与调试活动文件”，则在 .vscode 目录下生成了 <code>launch.json</code> 文件，负责管理调试的命令选项；</p>
+<p>args 设置命令行参数，env 设置环境变量；</p>
+</li>
+<li>
+<p>按下快捷键  shift ⇧ + command/win ⌘ + P，并输入&quot;C/C++&quot;，选择弹出来的待选项 “C/C++编辑配置(UI)”，则在 .vscode 目录下生成了 <code>c_cpp_properties.json</code> 文件。</p>
+</li>
+</ol>
+<blockquote>
+<p>⚠️注意：当前的 3 个json 文件在当前目录的 .vscode 目录内，只对当前工程生效。</p>
+</blockquote>
+<p><strong>如何复用上述的设置呢？</strong></p>
+<p>拷贝 .vscode 文件夹📁到指定的项目工程目录即可，或者定义 alias 命令，快速拷贝。</p>
+<p>那么，除了上述的 3 个 json 文件，<strong>还有其他方式吗，那当然是 CMake 了</strong>，具体的就不赘述了，也比较简单。</p>
+<h2 id="android-studio">Android Studio</h2>
+<h3 id="方式1-命令行安装最新版">方式1: 命令行安装最新版</h3>
+<p>除了下载官网的 tar.gz 的包去运行 /studio.sh ，更推荐的是使用命令行直接安装，在菜单栏还能点击，用起来也更稳定。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 可以视情况而定，安装什么版本</span>
+sudo apt install openjdk-11-jdk
+<span class="c1"># 检查 jdk 安装情况</span>
+java --version
+<span class="c1"># 添加 android studio 的 ppa </span>
+sudo apt-add-repository ppa:maarten-fonville/android-studio
+
+sudo apt update 
+sudo apt install android-studio
+</code></pre></td></tr></table>
+</div>
+</div><p>还有 snap 方式也能安装，不喜欢也不推荐。</p>
+<p>如果有需要的可以参考 <a href="https://linuxhint.com/install-android-studio-linux-mint-and-ubuntu" target="_blank" rel="noopener noreffer">Install latest Android Studio on Linux Mint 20 and Ubuntu 20.04</a>  的 Method2 自行安装。</p>
+<h3 id="方式2-官网下载安装指定版本">方式2: 官网下载安装指定版本</h3>
+<p>首先安装 64 位 linux 需要的一些开发组件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+</code></pre></td></tr></table>
+</div>
+</div><p>可以去官网 ：https://developer.android.com/studio/archive 下载指定版本的 tar.gz 的包。</p>
+<p>解压后拷贝到 /usr/local 或 /opt  目录下，假设拷贝到/opt 目录，运行 /opt/android-studio/bin/studio.sh</p>
+<blockquote>
+<p>提示：如需使 Android Studio 出现在应用列表中，请从 Android Studio 菜单栏中依次选择 Tools &gt; Create Desktop Entry。</p>
+</blockquote>
+<p>上述步骤<strong>也可以直接参考官网</strong>：<a href="https://developer.android.com/studio/install?hl=zh-cn#linux" target="_blank" rel="noopener noreffer">android developer ：android studio linux 版安装</a></p>
+<h2 id="挂载网盘">挂载网盘</h2>
+<p>先安装 cifs 工具：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install cifs-utils
+</code></pre></td></tr></table>
+</div>
+</div><p>然后再挂载网盘：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 创建本地挂载目录</span>
+sudo mkdir /media/my_net_disk
+<span class="c1"># 假设网盘地址是 110.0.62.88, 用户名 Benjamin</span>
+sudo mount -t cifs -o <span class="nv">username</span><span class="o">=</span>Benjamin  //110.0.62.88/share_dir  /media/my_net_disk
+<span class="c1"># 然后会打印一句 Password for Benjamin@//110.0.62.88/share_dir ,输入密码即可</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="命令行工具">命令行工具</h1>
+<p>在安装下述命令之前，最好先更新一下软件源，使用国内源会少很多问题。</p>
+<h2 id="oh-my-zsh">oh my zsh</h2>
+<p>Ubuntu 默认是没有 zsh 的，要先安装 <code>sudo apt install zsh</code>;</p>
+<p>可以看下默认的 Shell 应该是bash ：<code>echo $SHELL</code> ;</p>
+<p>其次 修改下终端 shell 为 zsh ： <code>chsh -s /bin/zsh</code>;</p>
+<p>再次检查下 shell ，如果没生效，重启试下。</p>
+<p>下载安装 oh my zsh :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span>  ~
+wget  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+sh install.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>如果遇到网络 443 端口拒绝访问的问题，别犹豫，就是梯子有问题。</p>
+<p>如果用梯子，使用神器 proxychains 工具吧 ，我的网络就是有问题，上述在 wget 最前面加上 proxychains 前置即可。</p>
+<blockquote>
+<p>实测参考：同样是 wget 下载 smartgit 的安装包，使用 proxychains 和不使用的对比速度是 88 KB/s 和 4.4MB/s</p>
+</blockquote>
+<p>oh-my-zsh 的默认会将已有的 <code>~/.zshrc</code> 拷贝并改名为 <code>.zshrc.pre-oh-my-zsh</code> ，并将所有 oh-my-zsh 的配置文件写于  <code>~/.zshrc</code> 。我不是很喜欢这样，<strong>我更喜欢将配置文件改名</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 这三句要严格按照顺序执行</span>
+mv  ~/.zshrc  ~/.oh_my_zsh.rc 
+mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc 
+<span class="nb">echo</span> <span class="s2">&#34;source  ~/.oh_my_zsh.rc&#34;</span>  &gt;&gt;  ~/.zshrc 
+</code></pre></td></tr></table>
+</div>
+</div><p>按照上述修改后，ohMyZsh 的配置文件为 <code>~/.oh_my_zsh.rc</code> ，Theme 变量为 ZSH_THEME。</p>
+<p>有非常多的主题样式可以选择，具体效果可以参考：   <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" target="_blank" rel="noopener noreffer">https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</a></p>
+<h2 id="cmake">cmake</h2>
+<p>一行命令安装：<code>sudo  apt  install -y  cmake </code></p>
+<h2 id="adb">adb</h2>
+<p>执行一句即可： <code>sudo apt  -y  install  adb</code> 。</p>
+<p>安装后可以愉快的使用 adb 命令了😊。</p>
+<h2 id="scrcpy">scrcpy</h2>
+<p>一款非常优秀的 <strong>Android 投屏 + 控制</strong> 软件，名字 scrcpy 是 &ldquo;<strong>scr</strong>een <strong>copy</strong>&rdquo; 的缩写。</p>
+<p>在 Linux/Mac/Windows 均可用，Github 地址：<a href="https://github.com/Genymobile/scrcpy" target="_blank" rel="noopener noreffer">Genymobile/scrcpy</a>，安装非常简单：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  -y  install  scrcpy
+</code></pre></td></tr></table>
+</div>
+</div><p>安装好之后，在命令行执行  <code>scrcpy</code> 即可启动连着 PC 的 Android 机，可以投屏+鼠标键盘控制输入。</p>
+<p><strong>如果连着多台 Andriod</strong>，使用 <code>adb devices</code> 打印设备id，然后 <code>scrcpy -s &lt;设备id&gt;</code> 控制指定设备。</p>
+<h2 id="ncdu">ncdu</h2>
+<p>可以在终端很方便的查看指定的文件夹/磁盘的文件磁盘空间占比。</p>
+<p>安装方式 : <code>sudo apt install -y ncdu</code></p>
+<p>更多使用时的命令选项和快捷键可以参考：https://linuxpip.org/install-ncdu-ubuntu/</p>
+<h2 id="htop">htop</h2>
+<p>终端查看系统当前状态，包括 CPU，内存等资源的占用，是对系统命令 <code>top</code> 的加强和补充。</p>
+<p>安装较为简单 <code>sudo apt install htop</code>。</p>
+<h2 id="fanyi">fanyi</h2>
+<p>是一个非常好用的终端翻译软件，只能支持中英互译，Linux / Mac 都能用，github 地址： <a href="https://github.com/afc163/fanyi" target="_blank" rel="noopener noreffer">afc163/fanyi</a></p>
+<p>先安装 node.js 和 npm ：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  install  nodejs  npm
+</code></pre></td></tr></table>
+</div>
+</div><p>一行语句安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install fanyi -g
+</code></pre></td></tr></table>
+</div>
+</div><p>如何使用：在命令行终端使用 fy 命令即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># fanyi &lt;中文或者英语&gt; ,也可以使用 fy 代替 fanyi</span>
+<span class="c1"># 举例如下：</span>
+fy  经济
+fy  grace
+</code></pre></td></tr></table>
+</div>
+</div><p>这个翻译软件还能与时俱进，可以配置 OpenAI 的 Key，接入 ChatGpt 助力翻译，🐮。</p>
+<h2 id="ag">ag</h2>
+<p>silver search，也叫 <code> ag</code>，是一个非常高效的命令行搜索工具（目录内定位那些指定文本内容的文件），是比 <code>ack</code> 命令更快的代替品，Linux / Mac/ Windows 都能用，github 地址 <a href="https://github.com/ggreer/the_silver_searcher" target="_blank" rel="noopener noreffer">ggreer/the_silver_searcher</a> .</p>
+<p>如何安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  install  silversearcher-ag
+</code></pre></td></tr></table>
+</div>
+</div><p>如何使用：</p>
+<p>命令格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Usage: ag <span class="o">[</span>FILE-TYPE<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span> PATTERN <span class="o">[</span>PATH<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>除了<code> ag  -h</code> 查看命令行选项之外，介绍几个常用用法备忘：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 最常用用法，找到包含 MainWidget 关键词的文件 (注意，默认是大小写不敏感)</span>
+ag MainWidget
+
+<span class="c1"># 在指定目录找到包含 MainWidget 关键词的文件, 且 -s 大小写敏感, 以及 -g 限定文件类型为 md</span>
+ag  -s MainWidget  ../Projects  -g  *.md 
+
+<span class="c1"># 也支持中文</span>
+ag 你好
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="fzf">fzf</h2>
+<p>Fuzzy，一个根据关键词模糊搜索文件/文本的终端工具，可用于 Linux/Mac/Windows，并可以插件形式组合 vim 等编辑器使用，github 地址： <a href="https://github.com/junegunn/fzf" target="_blank" rel="noopener noreffer">junegunn/fzf</a> 。</p>
+<p><strong>何为模糊搜索</strong>：假设最终我们要搜的是 app/src/main/cpp/core/decode.cc ，那么我们搜 appcodeco，也可以找到该文件。</p>
+<p>安装方式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt  install  fzf 
+</code></pre></td></tr></table>
+</div>
+</div><p>如何使用：</p>
+<p>基本使用方式：可以直接 <code>fzf</code> 在当前目录模糊搜文件，也可以组合其他命令使用，如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 基于find 结果进一步搜索过滤</span>
+find  ~  -type f  <span class="p">|</span> fzf 
+
+<span class="c1"># 对 sed 的命令帮助信息进行搜索过滤</span>
+man sed <span class="p">|</span> fzf -e 
+</code></pre></td></tr></table>
+</div>
+</div><p>常用的快捷键：</p>
+<p><code>Ctrl + J</code>/ <code>Ctrl + K</code> ：移动鼠标下一行/上一行；</p>
+<p><code>Page Up</code>/ <code>Page Down</code> ： 上一页/下一页；</p>
+<p><code>Ctrl + C </code>: 退出；</p>
+<p>常用的命令选项使用方式：</p>
+<p><code>fzf  -e</code> : 精确指定关键词；</p>
+<p><code>fzf  -i </code> ：忽略大小写；</p>
+<p><code>fzf  +s</code>: 不对输出结果排序；</p>
+<p><code>fzf -m</code> : 多选模式，multi select，使用 tab 键选中多个；</p>
+<p>更多用法直接看 help 信息: <code>man fzf</code>。</p>
+<h2 id="ffmpeg">ffmpeg</h2>
+<p>ffmpeg 是鼎鼎大名的音视频处理的开源工具/开源库。</p>
+<p>对于音视频/图像领域开发者，处理一些简单的媒体文件，使用命令行非常方便。</p>
+<p>执行一行命令安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  install  -y  ffmpeg 
+</code></pre></td></tr></table>
+</div>
+</div><p>安装完后，我的电脑对 ffmpeg 命令无法自动补全，并且会优先提示 _ffmpeg 命令，所以我直接写 alias 好了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 如果是用的 bash, 那就是 ~/.bashrc</span>
+<span class="nb">echo</span> <span class="s2">&#34;\n# ffmpeg alias definition&#34;</span>    &gt;&gt; ~/.zshrc
+<span class="nb">echo</span> <span class="s2">&#34;alias  ffmpeg=/usr/bin/ffmpeg&#34;</span>  &gt;&gt; ~/.zshrc
+<span class="nb">echo</span> <span class="s2">&#34;alias  ffplay=/usr/bin/ffplay&#34;</span>  &gt;&gt; ~/.zshrc
+<span class="nb">echo</span> <span class="s2">&#34;alias  ffprobe=/usr/bin/ffprobe&#34;</span>  &gt;&gt; ~/.zshrc
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="axel">axel</h2>
+<p>是支持多线程下载的终端工具，大多数情况下，比 wget 和 curl 都要更快速高效。</p>
+<p>一行语句安装：<code>sudo apt -y install axel  </code></p>
+<h2 id="tldr">tldr</h2>
+<p>tldr &ndash;&gt; 即 too long don&rsquo;t read， “太长不看”的意思。</p>
+<p>用于简化命令行的 ManPage 解释的，对纷繁复杂的 <code>man &lt;command&gt;</code> 的内容做了简化输出，让每个人都能快速上手命令。</p>
+<p>安装和使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt -y install tldr
+tldr -u 
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="faq">FAQ</h1>
+<h2 id="扩容根分区">扩容根分区</h2>
+<p>安装的时候没有分配好根分区的大小，只有 50G，旁边有 150G 是未挂载到文件系统。不想用挂载形式，而是想并入根分区。</p>
+<p>⚠️：我这里遇到的情况比较简单，是同一块磁盘，相邻分区，而且是向右扩容。</p>
+<p><strong>本来使用 gparted 是个不错的选择</strong>，不过我这边一直报 gtk 的错，可能是远程桌面原因吧，那就使用 <strong>parted</strong> 工具吧。</p>
+<blockquote>
+<p>⚠️：后来才知道，远程桌面使用 gparted 是可能会打不开，去真机连显示器就可以了。</p>
+</blockquote>
+<p>先看看磁盘的情况：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 查看文件系统的大致情况，确认根分区是哪块盘</span>
+sudo df -h 
+<span class="c1"># 查看磁盘和各分区的情况, 根据 df 的情况，关注根分区所在盘 /dev/sdc 的情况</span>
+sudo fdisk --list
+</code></pre></td></tr></table>
+</div>
+</div><p>fdisk 内容太多了不贴了，我这边 <code>df -h </code> 的打印内容是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo df -h 
+文件系统        大小  已用  可用 已用% 挂载点
+tmpfs           3.2G  2.1M  3.2G    1% /run
+/dev/sdc5       50G    43G  7G     96% /
+tmpfs            16G   42M   16G    1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M    1% /run/lock
+/dev/sdc3       189M  5.3M  183M    3% /boot/efi
+tmpfs           3.2G  100K  3.2G    1% /run/user/127
+tmpfs           3.2G  100K  3.2G    1% /run/user/1000
+</code></pre></td></tr></table>
+</div>
+</div><p>可以看到根分区基本满了(96% 的占用)，然后 fdisk 查看到的信息是 /dev/sdc6 这个相邻分区有140G，但是没挂载到文件系统。</p>
+<p>执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo parted /dev/sdc
+GNU Parted 3.4
+使用 /dev/sdc
+欢迎使用 GNU Parted！输入 <span class="s1">&#39;help&#39;</span> 来查看命令列表。
+</code></pre></td></tr></table>
+</div>
+</div><p>进入 parted 模式，可以输入<code> help</code> 看看帮助信息打印如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">  align-check 类型 N                         检查分区 N 是否为 <span class="o">(</span><span class="nv">最小</span><span class="o">=</span>min<span class="p">|</span><span class="nv">最佳</span><span class="o">=</span>opt<span class="o">)</span> 对齐类型
+  <span class="nb">help</span> <span class="o">[</span>COMMAND<span class="o">]</span>                           打印通用求助信息，或 COMMAND 的帮助
+  mklabel,mktable LABEL-TYPE               创建新的磁盘卷标 <span class="o">(</span>分区表<span class="o">)</span>
+  mkpart 分区类型 <span class="o">[</span>文件系统类型<span class="o">]</span> 起始点 结束点 创建一个分区
+  name 编号 名称                           将指定“编号”的分区命名为“名称”
+  print <span class="o">[</span>devices<span class="p">|</span>free<span class="p">|</span>list,all<span class="p">|</span>数字<span class="o">]</span>        显示分区表、可用设备、剩余空间、所有分区或特殊分区
+  quit                                     退出程序
+  rescue 起始点 终止点                      挽救临近“起始点”、“终止点”的遗失的分区
+  resizepart NUMBER END                    改变 NUMBER 的大小
+  rm NUMBER                                删除编号为 NUMBER 的分区
+  <span class="k">select</span> 设备                              选择要编辑的设备
+  disk_set 旗标 状态                       变更已选设备上的旗标
+  disk_toggle <span class="o">[</span>旗标<span class="o">]</span>                       切换已选设备上的旗标状态
+  <span class="nb">set</span> 编号 旗标 状态                       改变指定“编号”分区的旗标
+  toggle <span class="o">[</span>编号 <span class="o">[</span>旗标<span class="o">]]</span>                     切换“编号”分区上的“旗标”状态
+  unit 单位                                设置缺省的“单位”
+  version                                  显示目前 GNU Parted 的版本与版权信息
+</code></pre></td></tr></table>
+</div>
+</div><p>并且可以输入 <code>print</code> 查看 /dev/sdc 这块盘的细节：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> print
+型号：ATA Samsung SSD <span class="m">870</span> <span class="o">(</span>scsi<span class="o">)</span>
+磁盘 /dev/sdc: 1000GB
+扇区大小 <span class="o">(</span>逻辑/物理<span class="o">)</span>：512B/512B
+分区表：gpt
+磁盘标志：
+
+编号  起始点  结束点  大小    文件系统        名称                          标志
+ <span class="m">1</span>    17.4kB  16.8MB  16.8MB                  Microsoft reserved partition  msftres
+ <span class="m">2</span>    16.8MB  785GB   785GB   ntfs            Basic data partition          msftdata
+ <span class="m">3</span>    785GB   786GB   200MB   fat32                                         启动, esp
+ <span class="m">4</span>    786GB   802GB   16.4GB  linux-swap<span class="o">(</span>v1<span class="o">)</span>                                交换
+ <span class="m">5</span>    802GB   853GB   50GB    ext4
+ <span class="m">6</span>    854GB   999GB   145GB   ext4
+</code></pre></td></tr></table>
+</div>
+</div><p>需要做的简述如下：</p>
+<ol>
+<li>删掉 /dev/sdc6；</li>
+<li>resize /dev/sdc5 扩容；</li>
+<li>更新分区列表信息以及文件系统；</li>
+</ol>
+<p>继续在parted 命令模式下依次执行如下：（parted）是命令模式前缀，命令内容是后面的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> rm  <span class="m">6</span>
+<span class="o">(</span>parted<span class="o">)</span> resizepart <span class="m">6</span> 999GB
+<span class="o">(</span>parted<span class="o">)</span> quit
+</code></pre></td></tr></table>
+</div>
+</div><p>退出了parted 之后，执行下述2句，刷新分区列表和文件系统信息，让文件系统知道分区改变了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo partprobe 
+benjamin@bjm-Ubuntu:~$ sudo resize2fs -p /dev/sdc5
+</code></pre></td></tr></table>
+</div>
+</div><p>此时再使用系统的df, fdisk ，或磁盘工具、磁盘占用分析助手等软件查看，<strong>分区扩容成功</strong>！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo df -h
+文件系统        大小  已用  可用 已用% 挂载点
+tmpfs           3.2G  2.1M  3.2G    1% /run
+/dev/sdc5       181G   43G  131G   25% /
+tmpfs            16G   67M   16G    1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M    1% /run/lock
+/dev/sdc3       189M  5.3M  183M    3% /boot/efi
+tmpfs           3.2G  100K  3.2G    1% /run/user/127
+tmpfs           3.2G  100K  3.2G    1% /run/user/1000
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="扩容-home-目录">扩容 home 目录</h2>
+<p>安装Ubuntu 系统的时候，根分区和 home 给的大小都不够，这下眼看要满了。</p>
+<p>因为我是双系统，ubuntu 是安装在windows 的 F 盘（一块 1T 的三星SSD）。</p>
+<p>目前打算这么做：</p>
+<ol>
+<li>
+<p>在 ubuntu 系统下，从同一块盘的 windows SSD 那儿切 300 GB 出来;</p>
+</li>
+<li>
+<p>这 300 GB新建个 ext4 格式的分区；</p>
+</li>
+<li>
+<p>编辑 /etc/fstab 设置开机挂载该磁盘到 /home/USER_NAME/data ；</p>
+<p>其中，USER_NAME 是用户名，data 随便取；</p>
+</li>
+<li>
+<p>这样挂载出来的目录应该是从属于root 用户的，chown 到自己用户，例如<strong>我的用户名是 benjamin</strong>；</p>
+</li>
+</ol>
+<p>具体的操作如下：</p>
+<ol>
+<li>
+<p>Ubuntu 安装一下 gparted，执行 <code>sudo apt install gparted</code> 即可，然后 sudo gparted 即可启动界面管理器，使用方法很简单，和一般的磁盘管理助手差不多，切个空闲分区出来，假设叫 <code>/dev/sdc6</code> 吧；</p>
+<p>注意，远程桌面操作时会打不开 gparted，去真机连接显示器即可。</p>
+</li>
+<li>
+<p>前面我们知道了新建的分区是 /dev/sdc6，那么执行 <code>sudo blkid | grep sdc</code> ，得到如下信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">/dev/sdc4: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;cd7caf9b-4785-4e61-acc3-b75bc8ee945b&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;swap&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;5bf679ac-850f-46e2-b9d4-26c6fb50a3a7&#34;</span>
+/dev/sdc5: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;90ec6ddb-b262-4375-9b48-620f5eb584a1&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;4096&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ext4&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;11372470-1ba0-49eb-afd1-d386cbc7964b&#34;</span>
+/dev/sdc2: <span class="nv">LABEL</span><span class="o">=</span><span class="s2">&#34;SSD&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;512&#34;</span> <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;1822F6E122F6C2B4&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ntfs&#34;</span> <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;Basic data partition&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;df0e569e-25e3-47d2-9ac2-01bc3ee0af97&#34;</span>
+/dev/sdc3: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;7386-BF96&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;512&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;vfat&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;460a5a51-e590-4a39-8435-408cc4f330f4&#34;</span>
+/dev/sdc1: <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;Microsoft reserved partition&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;ec079113-2f27-4fc9-b175-57e73e7bb85e&#34;</span>
+/dev/sdc6: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;5e2aa47a-34b2-46f2-84ef-640a57cacabd&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;4096&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ext4&#34;</span> <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;/dev/sdc6&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;ffb8b3e1-a8f4-4cc7-88d1
+</span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建挂载目录<code> mkdir /home/benjamin/data</code> , 然后编辑文件系统表， <code>sudo vim /etc/fstab</code>   或 界面编辑<code>sudo gedit /etc/fstab</code>  ，末尾添加如下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">UUID</span><span class="o">=</span>5e2aa47a-34b2-46f2-84ef-640a57cacabd /home/benjamin/data  ext4 defaults <span class="m">0</span> <span class="m">2</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>含义分别是：分区UUID、挂载目录、磁盘格式、挂载选项、是否备份dump、磁盘检查顺序等。后面三项 defaults  0  2 是比较符合我们个人日常使用的。</p>
+<p>更详细的参数含义可以参考: <a href="https://www.cnblogs.com/FengGeBlog/p/10178824.html" target="_blank" rel="noopener noreffer">博客园：Linux之/etc/fstab文件讲解</a> 。</p>
+</li>
+<li>
+<p>重启机器。会发现 挂载目录下有个 lost+found 目录了，不过可以看到目录所有者是root，改一下owner.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 我的用户名是 benjamin</span>
+sudo chown -R  benjamin:benjamin  /home/benjamin/data
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>大功告成。</strong></p>
+</li>
+</ol>
+<h2 id="git-credential-凭证">Git Credential 凭证</h2>
+<p>Linux 平台不像win 和 mac 那么方便，对 credential 的管理可能还是需要手动配置一下。</p>
+<p>具体问题：在 git <strong>同步远端代码时(https仓库地址</strong>，比如 submodule 同步)，<strong>总会被要求输入 username 和 password</strong> 。</p>
+<p>原理：crendential 可以cache方式暂存，也可以文件形式永久存储，对 https 形式访问仓库时需要身份认证。后者干脆不用https形式，该用ssh形式的仓库地址亦可。</p>
+<p><code>方法一</code>：改远程仓库地址为 ssh 形式：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># gitlab 地址话也是类似的，改为gitlab地址即可</span>
+git remote set-url origin git@github.com:username/your-repo.git
+</code></pre></td></tr></table>
+</div>
+</div><p><code>方法二</code>：新建 credential 文件保存 git 仓库账号密码 ：</p>
+<p>我遇到的是子仓库用的 https 地址，不去手动改为 ssh 形式地址了，而是采用 file 形式保存账号密码。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">touch ~/.my-credentials
+<span class="c1"># benjamin 是git username,  myPassword123 是密码，gitlab.myCompany.com 是 git-host，</span>
+<span class="c1"># 我这里写的是公司的gitlab地址(公司名信息隐去，逃~)</span>
+<span class="nb">echo</span> <span class="s1">&#39;https://benjamin:myPassword123@gitlab.myCompany.com&#39;</span> &gt; ~/.my-credentials
+<span class="c1"># 配置全局，git 命令行不会再问你 账号密码了</span>
+git config --global credential.helper <span class="s1">&#39;store --file ~/.my-credentials&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="编辑桌面菜单栏">编辑桌面菜单栏</h2>
+<p><mark>假设</mark>安装了一款软件 (假设 android-studio 4.1) ，之后升级重装了另外一个版本 4.2，会发现开始菜单图标点击失效了。</p>
+<p>需要手动编辑图标链接信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ls /usr/share/applications  <span class="p">|</span> grep -i android 
+</code></pre></td></tr></table>
+</div>
+</div><p>找到文件为：android-studio.desktop , 编辑该配置文件，其中执行路径变量 <code>Exec</code> 尤其需要注意，软件升级后主要是可能这个执行路径变了。</p>
+<h2 id="android-studio-sync-failed">Android Studio Sync Failed</h2>
+<p>考虑是不是被全局的代理配置影响了，有些工程不需要代理就能跑，挂了代理反而不行。</p>
+<p>全局代理文件 <code>~/.gradle/gradle.properties</code>  ，检查是否对 system.proxy 是否有设置，如果需要关掉，使用 # 号注释掉。</p>
+<h1 id="参考链接">参考链接</h1>
+<ol>
+<li><a href="https://www.cnblogs.com/tanrong/p/10225229.html" target="_blank" rel="noopener noreffer">博客园：挂载其他磁盘到 home 目录扩容</a></li>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8" target="_blank" rel="noopener noreffer">GitBook: 凭证存储</a></li>
+<li><a href="https://linuxhint.com/install-android-studio-linux-mint-and-ubuntu" target="_blank" rel="noopener noreffer">Install latest Android Studio on Linux Mint 20 and Ubuntu 20.04</a></li>
+<li><a href="https://code.visualstudio.com/docs/setup/linux" target="_blank" rel="noopener noreffer">Microsoft: Visual Studio Code Docs</a></li>
+</ol></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-05-15&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/54061d52fdbf511b3323f21af38a677a4c97d6f8" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 54061d52fdbf511b3323f21af38a677a4c97d6f8: publish ubuntu22.04 develop environment">
+                                    <i class="fas fa-hashtag fa-fw"></i>54061d5</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置" data-hashtags="Linux,Mac,开发环境"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-hashtag="Linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置" data-image="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置" data-description="摘要：记录安装与配置 Ubuntu 22.04 的开发环境"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置" data-description="摘要：记录安装与配置 Ubuntu 22.04 的开发环境"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" data-title="Ubuntu 22.04  C&#43;&#43; 开发机的安装配置"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">Linux</a>,&nbsp;<a href="/tags/mac/">Mac</a>,&nbsp;<a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2023/02/25_graphics_render_basic_math_theory/" class="prev" rel="prev" title="图像渲染管线理解"><i class="fas fa-angle-left fa-fw"></i>图像渲染管线理解</a>
+            <a href="/2023/04/27_configure_mac_remote_control_ubuntu22.04/" class="next" rel="next" title="Mac 远程桌面控制Ubuntu 22.04 (RDP)">Mac 远程桌面控制Ubuntu 22.04 (RDP)<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            <div class="footer-line">
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 126556 字 </span>
+            </div>
+
+            <div class="footer-line">
+				<span id="run-time"></span>
+            </div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{"valine":{"appId":"6aYGah9X6KRekPxOkx2u3ozl-gzGzoHsz","appKey":"OPVQ1v39BIWr9GX8biOyPD8V","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":true,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"期待您的评论...   😊 [邮箱用于显示gravatar头像，网址用于点击ID直接跳转到您的博客，均不显示。]","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"A6CM5R0XT0","algoliaIndex":"Benjamin-Blog","algoliaSearchKey":"b0913834be4b9582dd1dedca5aa6312a","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>

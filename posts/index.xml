@@ -14,6 +14,15 @@
                 <img src="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp" referrerpolicy="no-referrer">
             </div>摘要：记录安装与配置Ubuntu 22.04 的远程控制]]></description>
 </item><item>
+    <title>Ubuntu 22.04  C&#43;&#43; 开发机的安装配置</title>
+    <link>https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/</link>
+    <pubDate>Sat, 18 Mar 2023 15:57:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/Chore-Pic/Ubuntu22.04-Xfce4.webp" referrerpolicy="no-referrer">
+            </div>摘要：记录安装与配置 Ubuntu 22.04 的开发环境]]></description>
+</item><item>
     <title>图像渲染管线理解</title>
     <link>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</link>
     <pubDate>Sun, 05 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -85,14 +94,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Script-Pic/Katex-Project.webp" referrerpolicy="no-referrer">
             </div>摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法]]></description>
-</item><item>
-    <title>Effective C&#43;&#43;(第3版)精读总结(三)</title>
-    <link>https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/</link>
-    <pubDate>Mon, 14 Feb 2022 10:12:42 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2022/02/14_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E4%B8%89/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/C&#43;&#43;-Pic/EffectiveC&#43;&#43;-FrontPage-part3.webp" referrerpolicy="no-referrer">
-            </div>摘要：Effective C++(第三版)内容第五、第六章的总结]]></description>
 </item></channel>
 </rss>
