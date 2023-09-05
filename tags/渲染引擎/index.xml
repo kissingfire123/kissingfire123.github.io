@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>渲染引擎 - 标签 - Benjamin的求知旅记</title>
+        <link>https://kissingfire123.github.io/tags/%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E/</link>
+        <description>渲染引擎 - 标签 - Benjamin的求知旅记</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://kissingfire123.github.io/tags/%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E/" rel="self" type="application/rss+xml" /><item>
+    <title>OpenSceneGraph学习(1)</title>
+    <link>https://kissingfire123.github.io/2023/08/31_openscenegraph_1st/</link>
+    <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2023/08/31_openscenegraph_1st/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/OSG/OSG_landscape_mark.png" referrerpolicy="no-referrer">
+            </div>前言 出于对老牌渲染引擎 OpenSceneGraph (简称OSG) 的学习借鉴，先从其Example 开始学习了解。 环境准备 以 Windows 系统为例，必备软件如下： MicroSoft Visual Studio （例如我的是 Microsoft]]></description>
+</item></channel>
+</rss>

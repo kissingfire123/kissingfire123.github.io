@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/06_effective-c-%E4%B9%8B%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%80/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-12T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-07-07T14:32:15+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective C&#43;&#43;(第3版)精读总结(一)"/>
 <meta name="twitter:description" content="摘要：Effective C&#43;&#43;(第三版)内容第一、第二章的总结"/>
@@ -214,19 +213,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// 举例：MAX_DATA_COUNT在预处理阶段就会被替换，编译器不会见到它，所以一旦有相关报错，给的是100这个值
-</span><span class="c1"></span><span class="cp">#define MAX_DATA_COUNT   100
-</span><span class="cp"></span><span class="k">const</span>  <span class="kt">int</span> <span class="n">MAX_DATA_COUNT</span> <span class="o">=</span> <span class="mi">100</span> <span class="p">;</span><span class="c1">//常量只有一份，宏会导致多份常量值
-</span><span class="c1"></span><span class="k">class</span> <span class="nc">Buffer</span><span class="p">{</span>
-<span class="k">public</span><span class="o">:</span><span class="c1">//...类其他部分省略
-</span><span class="c1"></span>    <span class="k">static</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">factor_</span> <span class="p">;</span><span class="c1">//static常量,类内声明
-</span><span class="c1"></span>    <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span>  <span class="n">times_</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span><span class="c1">// int类型允许类内初始化,规范上还是建议拿到类外
-</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
-    <span class="k">static</span> <span class="k">const</span>  <span class="kt">int</span> <span class="n">ArrLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="n">ArrLength</span><span class="p">];</span>
-<span class="p">};</span>
-<span class="k">const</span> <span class="kt">double</span> <span class="n">Buffer</span><span class="o">::</span><span class="n">factor_</span>  <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span><span class="c1">//类外初始化,一般写在实现文件*.cpp,*.cc中
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 举例：MAX_DATA_COUNT在预处理阶段就会被替换，编译器不会见到它，所以一旦有相关报错，给的是100这个值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define MAX_DATA_COUNT   100
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">const</span>  <span class="kt">int</span> <span class="n">MAX_DATA_COUNT</span> <span class="o">=</span> <span class="mi">100</span> <span class="p">;</span><span class="c1">//常量只有一份，宏会导致多份常量值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">Buffer</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span><span class="c1">//...类其他部分省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">factor_</span> <span class="p">;</span><span class="c1">//static常量,类内声明
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span>  <span class="n">times_</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span><span class="c1">// int类型允许类内初始化,规范上还是建议拿到类外
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">const</span>  <span class="kt">int</span> <span class="n">ArrLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="n">ArrLength</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">double</span> <span class="n">Buffer</span><span class="o">::</span><span class="n">factor_</span>  <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span><span class="c1">//类外初始化,一般写在实现文件*.cpp,*.cc中
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果编译器不允许声明时&quot;in-class初值设定&quot;,如果是整形常量，可以让枚举值来替代，而且<code>枚举值不能被取地址</code>。</p>
 </li>
@@ -243,12 +242,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#define  GET_MAX(a,b)   ((a)&gt;(b) ? (a) :(b))
-</span><span class="cp"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="n">GET_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>    <span class="c1">// a累加二次
-</span><span class="c1"></span><span class="n">GET_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// a累加一次
-</span><span class="c1">// 定义个inline函数就不会有这个问题,(a,b)作为函数入参就只会计算一次
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#define  GET_MAX(a,b)   ((a)&gt;(b) ? (a) :(b))
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">GET_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>    <span class="c1">// a累加二次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">GET_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">+</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// a累加一次
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 定义个inline函数就不会有这个问题,(a,b)作为函数入参就只会计算一次
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -264,11 +263,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="cp">#define  GET_MAX_ONCE(a,b) \
-</span><span class="cp">        ( {typeof(a) _a = (a);   \
-</span><span class="cp">           typeof(b) _b = (b);   \
-</span><span class="cp">           (_a) &gt; (_b) ? (_a) : (_b); } )
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define  GET_MAX_ONCE(a,b) \
+</span></span></span><span class="line"><span class="cl"><span class="cp">        ( {typeof(a) _a = (a);   \
+</span></span></span><span class="line"><span class="cl"><span class="cp">           typeof(b) _b = (b);   \
+</span></span></span><span class="line"><span class="cl"><span class="cp">           (_a) &gt; (_b) ? (_a) : (_b); } )
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试代码如下：</p>
 <div class="highlight"><div class="chroma">
@@ -281,13 +280,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">GET_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">++</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, b = &#34;</span><span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, c = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">GET_MAX_ONCE</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">++</span><span class="p">);</span>
-<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, b = &#34;</span><span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, c = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="nf">GET_MAX</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">++</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, b = &#34;</span><span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, c = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="nf">GET_MAX_ONCE</span><span class="p">(</span><span class="o">++</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">++</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;a = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, b = &#34;</span><span class="o">&lt;&lt;</span> <span class="n">b</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;, c = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>测试代码输出：</p>
 <div class="highlight"><div class="chroma">
@@ -296,9 +295,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">a = 11, b = 22, c = 21
-a = 11, b = 21, c = 20
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">a = 11, b = 22, c = 21
+</span></span><span class="line"><span class="cl">a = 11, b = 21, c = 20
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>🤔 使用 <code>__auto_type</code> 来取代时要赋初值，关键的 typeof 那行用法改为<code> __auto_type _a = (a);</code> 。</p>
@@ -319,10 +318,10 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//类型char在哪里没关系，关键看const和*的相对位置：const在*左边，指针所指物为常量; const在*右边，指针为常量；
-</span><span class="c1"></span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 指针p所指的字符串为常量，但是p可以修改
-</span><span class="c1"></span><span class="kt">char</span><span class="o">*</span> <span class="k">const</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 指针p是常量，指向的字符串可修改
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//类型char在哪里没关系，关键看const和*的相对位置：const在*左边，指针所指物为常量; const在*右边，指针为常量；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 指针p所指的字符串为常量，但是p可以修改
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">char</span><span class="o">*</span> <span class="k">const</span> <span class="n">p</span><span class="p">;</span> <span class="c1">// 指针p是常量，指向的字符串可修改
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -335,10 +334,10 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="k">const</span> <span class="n">Rational</span> <span class="k">operator</span><span class="o">*</span> <span class="p">(</span><span class="k">const</span> <span class="n">Rational</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span><span class="k">const</span> <span class="n">Rational</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">);</span>
-<span class="c1">//存在Rational a,b,c;
-</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="c1">//例如手误 &#34;==&#34;打成了&#34;=&#34;，编译器会直接报错
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">Rational</span> <span class="k">operator</span><span class="o">*</span> <span class="p">(</span><span class="k">const</span> <span class="n">Rational</span><span class="o">&amp;</span> <span class="n">lhs</span><span class="p">,</span><span class="k">const</span> <span class="n">Rational</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//存在Rational a,b,c;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span> <span class="c1">//例如手误 &#34;==&#34;打成了&#34;=&#34;，编译器会直接报错
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -358,16 +357,16 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++">  <span class="k">class</span> <span class="nc">TextBlock</span><span class="p">{</span><span class="c1">//...类其他部分省略
-</span><span class="c1"></span>      <span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">{</span> <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">];}</span>
-      <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">];}</span>
-  <span class="k">private</span><span class="o">:</span> 
-      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">TextBlock</span><span class="o">&amp;</span> <span class="n">ctb</span><span class="p">){</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ctb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">;</span><span class="c1">//根据const特性，调用 const TextBlock::operator[]
-</span><span class="c1"></span>  <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl">  <span class="k">class</span> <span class="nc">TextBlock</span><span class="p">{</span><span class="c1">//...类其他部分省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">const</span> <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="k">const</span><span class="p">{</span> <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">];}</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">char</span><span class="o">&amp;</span> <span class="k">operator</span><span class="p">[](</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">index</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">text</span><span class="p">[</span><span class="n">index</span><span class="p">];}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="k">const</span> <span class="n">TextBlock</span><span class="o">&amp;</span> <span class="n">ctb</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">ctb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">;</span><span class="c1">//根据const特性，调用 const TextBlock::operator[]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>思考：const成员函数不修改成员对象，那么，如果成员对象为指针<code>char *p</code>，仅修改p指向的内容，那它还是const成员函数吗？<br>
 实测：const成员函数是允许<code>p[2]= 'x'</code>这一操作的，但是不允许<code>p++</code>；</p>
@@ -400,22 +399,22 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Rawdata</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">Rawdata</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span><span class="o">:</span><span class="n">p_</span><span class="p">(</span><span class="n">src</span><span class="p">),</span><span class="n">length_</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">src</span><span class="p">))</span> <span class="p">{}</span>
-    <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">GetLength</span><span class="p">()</span><span class="k">const</span><span class="p">{</span>
-        <span class="n">p_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="c1">//为求简便,不作检查了。p_内容修改编译器是允许的.
-</span><span class="c1"></span>        <span class="k">return</span> <span class="n">length_</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">int</span> <span class="nf">GetLength</span><span class="p">()</span> <span class="p">{</span>      
-        <span class="k">return</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&amp;&gt;</span><span class="p">(</span>
-            <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Rawdata</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)).</span><span class="n">GetLength</span><span class="p">());</span>
-    <span class="p">}</span>
-<span class="k">private</span><span class="o">:</span>
-    <span class="kt">char</span> <span class="o">*</span><span class="n">p_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">length_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Rawdata</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Rawdata</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span><span class="o">:</span><span class="n">p_</span><span class="p">(</span><span class="n">src</span><span class="p">),</span><span class="n">length_</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">src</span><span class="p">))</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">int</span><span class="o">&amp;</span> <span class="n">GetLength</span><span class="p">()</span><span class="k">const</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span><span class="c1">//为求简便,不作检查了。p_内容修改编译器是允许的.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">length_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">GetLength</span><span class="p">()</span> <span class="p">{</span>      
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&amp;&gt;</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span> <span class="n">Rawdata</span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)).</span><span class="n">GetLength</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="n">p_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">length_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -441,17 +440,17 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Customer</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span> <span class="c1">//这里只是为了验证，如果是实际工程代码，建议初值列表尽量和声明顺序保持一致
-</span><span class="c1"></span>    <span class="n">Customer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">gender</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">age</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isVip</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
-        <span class="o">:</span><span class="n">isVip_</span><span class="p">(</span><span class="n">isVip</span><span class="p">),</span> <span class="n">gender_</span><span class="p">(</span><span class="n">gender</span><span class="p">),</span> <span class="n">name_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">age_</span><span class="p">(</span><span class="n">age</span><span class="p">)</span> <span class="p">{}</span>
-<span class="k">private</span><span class="o">:</span>
-    <span class="kt">uint8_t</span> <span class="n">age_</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span><span class="p">;</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">gender_</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">isVip_</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Customer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span> <span class="c1">//这里只是为了验证，如果是实际工程代码，建议初值列表尽量和声明顺序保持一致
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Customer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">gender</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">age</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">isVip</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">:</span><span class="n">isVip_</span><span class="p">(</span><span class="n">isVip</span><span class="p">),</span> <span class="n">gender_</span><span class="p">(</span><span class="n">gender</span><span class="p">),</span> <span class="n">name_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">age_</span><span class="p">(</span><span class="n">age</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">age_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">gender_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">isVip_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -475,8 +474,8 @@ a = 11, b = 21, c = 20
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">EmptyClass</span><span class="p">{};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">EmptyClass</span><span class="p">{};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>等价于👇</strong></p>
 <div class="highlight"><div class="chroma">
@@ -490,14 +489,14 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">EmptyClass</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">EmptyClass</span><span class="p">()</span> <span class="p">{}</span>        <span class="c1">// default构造函数
-</span><span class="c1"></span>    <span class="n">EmptyClass</span><span class="p">(</span><span class="k">const</span> <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{}</span><span class="c1">//copy构造函数
-</span><span class="c1"></span>    <span class="o">~</span><span class="n">EmptyClass</span><span class="p">()</span> <span class="p">{}</span><span class="c1">//default析构函数，注意是non-virtual
-</span><span class="c1"></span>    <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{}</span><span class="c1">//copy assignment操作符
-</span><span class="c1"></span><span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">EmptyClass</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">EmptyClass</span><span class="p">()</span> <span class="p">{}</span>        <span class="c1">// default构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">EmptyClass</span><span class="p">(</span><span class="k">const</span> <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{}</span><span class="c1">//copy构造函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">~</span><span class="n">EmptyClass</span><span class="p">()</span> <span class="p">{}</span><span class="c1">//default析构函数，注意是non-virtual
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">EmptyClass</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{}</span><span class="c1">//copy assignment操作符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>如果一个非空Class自行声明了构造函数，编译器就不再为它创建default构造函数</li>
@@ -516,17 +515,17 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">NameObject</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">NameObject</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span><span class="n">nameValue_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">objectVal_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span>
-<span class="k">private</span><span class="o">:</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">nameValue_</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">objectVal_</span><span class="p">;</span>
-<span class="p">};</span><span class="c1">//考虑以下应用代码
-</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">(</span><span class="s">&#34;Mike&#34;</span><span class="p">),</span> <span class="n">name2</span><span class="p">(</span><span class="s">&#34;Nicky&#34;</span><span class="p">);</span>
-<span class="n">NameObject</span> <span class="nf">nObj</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span> <span class="n">nObj2</span><span class="p">(</span><span class="n">name2</span><span class="p">,</span><span class="mi">33</span><span class="p">);</span>
-<span class="n">nObj2</span> <span class="o">=</span> <span class="n">nObj</span><span class="p">;</span><span class="c1">//这一句会导致编译失败，因为引用不能指向2个对象，且const不可改
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NameObject</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">NameObject</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="o">:</span><span class="n">nameValue_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">objectVal_</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">nameValue_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">int</span> <span class="n">objectVal_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span><span class="c1">//考虑以下应用代码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">(</span><span class="s">&#34;Mike&#34;</span><span class="p">),</span> <span class="n">name2</span><span class="p">(</span><span class="s">&#34;Nicky&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">NameObject</span> <span class="nf">nObj</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span> <span class="n">nObj2</span><span class="p">(</span><span class="n">name2</span><span class="p">,</span><span class="mi">33</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">nObj2</span> <span class="o">=</span> <span class="n">nObj</span><span class="p">;</span><span class="c1">//这一句会导致编译失败，因为引用不能指向2个对象，且const不可改
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -553,12 +552,12 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>  
-<span class="k">public</span><span class="o">:</span>  
-    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>  
-    <span class="n">A</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>  
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>  
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">A</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">    <span class="n">A</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">A</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -580,13 +579,13 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
-    <span class="k">public</span><span class="o">:</span>
-        <span class="k">virtual</span> <span class="o">~</span><span class="n">RawData</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">};</span>
-<span class="c1">// 这里特殊的是，需要为这个纯虚函数提供定义
-</span><span class="c1"></span><span class="o">~</span><span class="n">RawData</span><span class="o">::</span><span class="n">RawData</span><span class="p">(){}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RawData</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">virtual</span> <span class="o">~</span><span class="n">RawData</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 这里特殊的是，需要为这个纯虚函数提供定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">~</span><span class="n">RawData</span><span class="o">::</span><span class="n">RawData</span><span class="p">(){}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -627,21 +626,21 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Transaction</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">explict</span> <span class="n">Transaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">,</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span><span class="o">:</span><span class="n">id_</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">logTransaction</span><span class="p">(</span><span class="n">info</span><span class="p">);</span> <span class="p">}</span>
-    <span class="kt">void</span> <span class="nf">logTransaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">info</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span> <span class="p">}</span><span class="c1">//non-Virtual函数
-</span><span class="c1"></span><span class="k">private</span><span class="o">:</span> 
-    <span class="kt">int</span> <span class="n">id_</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">class</span> <span class="nc">BuyTransaction</span> <span class="o">:</span><span class="k">public</span> <span class="n">Transaction</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>  <span class="c1">//将log信息传递给 基类Transaction构造函数； 并初始化了基类成员
-</span><span class="c1"></span>    <span class="n">BuyTransaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-        <span class="o">:</span><span class="n">Transaction</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span><span class="cm">/**/</span><span class="p">}</span>
-<span class="p">};</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Transaction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">explict</span> <span class="n">Transaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">,</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span><span class="o">:</span><span class="n">id_</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span> <span class="n">logTransaction</span><span class="p">(</span><span class="n">info</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">logTransaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">info</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span> <span class="p">}</span><span class="c1">//non-Virtual函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">id_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BuyTransaction</span> <span class="o">:</span><span class="k">public</span> <span class="n">Transaction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>  <span class="c1">//将log信息传递给 基类Transaction构造函数； 并初始化了基类成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">BuyTransaction</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">info</span><span class="p">,</span> <span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">:</span><span class="n">Transaction</span><span class="p">(</span><span class="n">info</span><span class="p">,</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span><span class="cm">/**/</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><div class="details admonition tip open">
         <div class="details-summary admonition-title">
@@ -659,12 +658,12 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">BuyTransaction</span> <span class="o">:</span><span class="k">public</span> <span class="n">Transaction</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-  <span class="k">using</span> <span class="n">Transaction</span><span class="o">::</span><span class="n">Transaction</span><span class="p">;</span> 
-  <span class="c1">//其他
-</span><span class="c1"></span><span class="p">};</span> 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BuyTransaction</span> <span class="o">:</span><span class="k">public</span> <span class="n">Transaction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">using</span> <span class="n">Transaction</span><span class="o">::</span><span class="n">Transaction</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="c1">//其他
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span> 
+</span></span></code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -685,14 +684,14 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="n">Widget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Widget</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">//... do some thing
-</span><span class="c1"></span>        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Widget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Widget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Widget</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//... do some thing
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div>上述做法不局限于operator=，还有operator += ,-=,*=,/=等其他赋值运算符。<br>
 该主流协议/做法不是强制性的，只是个建议，因为这样可以允许<strong>连续赋值</strong>($x=y=z$的形式)。<br>
@@ -721,21 +720,21 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">BitMap</span> <span class="p">{</span><span class="cm">/*省略类声明&amp;实现*/</span><span class="p">};</span>
-<span class="k">class</span> <span class="nc">MapWidget</span> <span class="p">{</span>
-<span class="k">private</span><span class="o">:</span>
-    <span class="n">BitMap</span> <span class="o">*</span> <span class="n">pb_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-<span class="k">public</span><span class="o">:</span>
-    <span class="k">explicit</span> <span class="n">MapWidget</span><span class="p">(</span><span class="n">BitMap</span> <span class="o">*</span><span class="n">pb</span><span class="p">)</span> <span class="o">:</span><span class="n">pb_</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span> <span class="p">{}</span>
-    <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">//这一句为认同测试(identity test)
-</span><span class="c1"></span>        <span class="n">BitMap</span> <span class="o">*</span><span class="n">pOrig</span> <span class="o">=</span> <span class="n">pb_</span><span class="p">;</span><span class="c1">//不要一上来就delete，而是保存this-&gt;pb_
-</span><span class="c1"></span>        <span class="n">pb_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BitMap</span><span class="p">(</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">pb_</span><span class="p">);</span><span class="c1">//因为这一句可能抛异常
-</span><span class="c1"></span>        <span class="k">delete</span> <span class="n">pOrig</span><span class="p">;</span>
-        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BitMap</span> <span class="p">{</span><span class="cm">/*省略类声明&amp;实现*/</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MapWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BitMap</span> <span class="o">*</span> <span class="n">pb_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">MapWidget</span><span class="p">(</span><span class="n">BitMap</span> <span class="o">*</span><span class="n">pb</span><span class="p">)</span> <span class="o">:</span><span class="n">pb_</span><span class="p">(</span><span class="n">pb</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="c1">//这一句为认同测试(identity test)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">BitMap</span> <span class="o">*</span><span class="n">pOrig</span> <span class="o">=</span> <span class="n">pb_</span><span class="p">;</span><span class="c1">//不要一上来就delete，而是保存this-&gt;pb_
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">pb_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BitMap</span><span class="p">(</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">pb_</span><span class="p">);</span><span class="c1">//因为这一句可能抛异常
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">delete</span> <span class="n">pOrig</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>
@@ -751,13 +750,13 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">MapWidget</span><span class="o">::</span><span class="n">Swap</span><span class="p">(</span><span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">){</span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">pb_</span><span class="p">,</span><span class="n">pb_</span><span class="p">);}</span>
-<span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">MapWidget</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">MapWidget</span> <span class="nf">temp</span><span class="p">(</span><span class="n">rhs</span><span class="p">);</span>
-    <span class="n">Swap</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
-    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">MapWidget</span><span class="o">::</span><span class="n">Swap</span><span class="p">(</span><span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">){</span><span class="n">std</span><span class="o">::</span><span class="n">swap</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">pb_</span><span class="p">,</span><span class="n">pb_</span><span class="p">);}</span>
+</span></span><span class="line"><span class="cl"><span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">MapWidget</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">MapWidget</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MapWidget</span> <span class="nf">temp</span><span class="p">(</span><span class="n">rhs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Swap</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -799,29 +798,29 @@ a = 11, b = 21, c = 20
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Customer</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span> 
-    <span class="n">Customer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">float</span> <span class="n">money</span><span class="p">)</span><span class="o">:</span><span class="n">name_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="n">money_</span><span class="p">(</span><span class="n">money</span><span class="p">)</span> <span class="p">{}</span>
-<span class="k">private</span><span class="o">:</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="n">money_</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">class</span> <span class="nc">VipCustomer</span> <span class="o">:</span><span class="k">public</span> <span class="n">Customer</span> <span class="p">{</span>
-<span class="k">public</span><span class="o">:</span>  <span class="c1">//注意：派生类要复制基类那部分的成员变量
-</span><span class="c1"></span>    <span class="k">using</span> <span class="n">Customer</span><span class="o">::</span><span class="n">Customer</span><span class="p">;</span> <span class="c1">//参考R09
-</span><span class="c1"></span>    <span class="n">VipCustomer</span><span class="p">(</span><span class="k">const</span> <span class="n">VipCustomer</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
-        <span class="o">:</span><span class="n">priority_</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">priority_</span><span class="p">),</span><span class="n">Customer</span><span class="p">(</span><span class="n">rhs</span><span class="p">){}</span>
-    <span class="n">VipCustomer</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">VipCustomer</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">){</span>
-        <span class="n">Customer</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">rhs</span><span class="p">);</span>
-        <span class="n">priority_</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">priority_</span><span class="p">;</span>
-        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kt">void</span> <span class="nf">setPriority</span><span class="p">(</span><span class="kt">int</span> <span class="n">priority</span><span class="p">)</span> <span class="p">{</span> <span class="n">priority_</span> <span class="o">=</span> <span class="n">priority</span><span class="p">;</span> <span class="p">};</span>
-<span class="k">private</span><span class="o">:</span>
-    <span class="kt">int</span> <span class="n">priority_</span><span class="p">;</span><span class="c1">//子类独有成员可以单独set函数赋值，或者构造函数初始化列表赋值
-</span><span class="c1"></span><span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Customer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">Customer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">float</span> <span class="n">money</span><span class="p">)</span><span class="o">:</span><span class="n">name_</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="n">money_</span><span class="p">(</span><span class="n">money</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">money_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">VipCustomer</span> <span class="o">:</span><span class="k">public</span> <span class="n">Customer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>  <span class="c1">//注意：派生类要复制基类那部分的成员变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">using</span> <span class="n">Customer</span><span class="o">::</span><span class="n">Customer</span><span class="p">;</span> <span class="c1">//参考R09
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">VipCustomer</span><span class="p">(</span><span class="k">const</span> <span class="n">VipCustomer</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">:</span><span class="n">priority_</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">priority_</span><span class="p">),</span><span class="n">Customer</span><span class="p">(</span><span class="n">rhs</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">VipCustomer</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">VipCustomer</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Customer</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="n">rhs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">priority_</span> <span class="o">=</span> <span class="n">rhs</span><span class="p">.</span><span class="n">priority_</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setPriority</span><span class="p">(</span><span class="kt">int</span> <span class="n">priority</span><span class="p">)</span> <span class="p">{</span> <span class="n">priority_</span> <span class="o">=</span> <span class="n">priority</span><span class="p">;</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">priority_</span><span class="p">;</span><span class="c1">//子类独有成员可以单独set函数赋值，或者构造函数初始化列表赋值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -910,8 +909,10 @@ a = 11, b = 21, c = 20
             
                 
             
+                
+            
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 126556 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
             </div>
 
             <div class="footer-line">

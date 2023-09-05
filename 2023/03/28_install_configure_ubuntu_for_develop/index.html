@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-18T15:57:31+08:00" />
 <meta property="article:modified_time" content="2023-06-04T23:03:15+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu 22.04 C&#43;&#43; 开发机的安装配置"/>
 <meta name="twitter:description" content="摘要：记录安装与配置 Ubuntu 22.04 的开发环境"/>
@@ -213,12 +212,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 默认的这句 sock4 注释掉   </span>
-<span class="c1"># socks4 127.0.0.1. 9050</span>
-<span class="c1"># 假设上述 shadow socks的代理端口是 10811</span>
-socks5 127.0.0.1. <span class="m">10811</span>
-https 127.0.0.1. <span class="m">10811</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 默认的这句 sock4 注释掉   </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># socks4 127.0.0.1. 9050</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 假设上述 shadow socks的代理端口是 10811</span>
+</span></span><span class="line"><span class="cl">socks5 127.0.0.1. <span class="m">10811</span>
+</span></span><span class="line"><span class="cl">https 127.0.0.1. <span class="m">10811</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如何使用：</p>
 <div class="highlight"><div class="chroma">
@@ -228,10 +227,10 @@ https 127.0.0.1. <span class="m">10811</span>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 在需要访问代理网络（需要梯子）的命令添加前缀 proxychains </span>
-<span class="c1"># 举例如下:</span>
-proxychains wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh  
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 在需要访问代理网络（需要梯子）的命令添加前缀 proxychains </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 举例如下:</span>
+</span></span><span class="line"><span class="cl">proxychains wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>更多详细信息可以参考 <a href="https://zhuanlan.zhihu.com/p/166375631" target="_blank" rel="noopener noreffer">知乎：Linux命令行代理神器-proxychains</a></p>
 <h2 id="chrome-浏览器">Chrome 浏览器</h2>
@@ -245,12 +244,12 @@ proxychains wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 下载最新 deb 的包</span>
-<span class="c1"># 假设遇到 SSL 网路问题，搭个梯子吧，或者 prxychains </span>
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-<span class="c1"># dpkg 安装</span>
-sudo dpkg  -i  install google-chrome-stable_current_amd64.deb
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 下载最新 deb 的包</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 假设遇到 SSL 网路问题，搭个梯子吧，或者 prxychains </span>
+</span></span><span class="line"><span class="cl">wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+</span></span><span class="line"><span class="cl"><span class="c1"># dpkg 安装</span>
+</span></span><span class="line"><span class="cl">sudo dpkg  -i  install google-chrome-stable_current_amd64.deb
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装后可以点击图标运行，或者命令行运行 <code>google-chrome</code> 安装。</p>
 <h3 id="switch-omega插件">Switch Omega插件</h3>
@@ -262,9 +261,9 @@ sudo dpkg  -i  install google-chrome-stable_current_amd64.deb
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">wget https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/SwitchyOmega_Chromium.crx
-<span class="c1"># 如果网速不佳，用 proxychains 可能会更好</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wget https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.5.20/SwitchyOmega_Chromium.crx
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果网速不佳，用 proxychains 可能会更好</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>如何安装</strong>：</p>
 <p>新版chrome 已经不能直接拖拽到 chrome 安装了，需要解压后再加载：</p>
@@ -285,14 +284,14 @@ sudo dpkg  -i  install google-chrome-stable_current_amd64.deb
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 备份一下</span>
-cp SwitchyOmega_Chromium.crx SwitchyOmega_Chromium.crx.bak
-
-mv SwitchyOmega_Chromium.crx SwitchyOmega_Chromium.zip
-mkdir SwitchyOmega_Chromium 
-sudo apt install unzip 
-unzip SwitchyOmega_Chromium.zip  -d SwitchyOmega_Chromium
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 备份一下</span>
+</span></span><span class="line"><span class="cl">cp SwitchyOmega_Chromium.crx SwitchyOmega_Chromium.crx.bak
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mv SwitchyOmega_Chromium.crx SwitchyOmega_Chromium.zip
+</span></span><span class="line"><span class="cl">mkdir SwitchyOmega_Chromium 
+</span></span><span class="line"><span class="cl">sudo apt install unzip 
+</span></span><span class="line"><span class="cl">unzip SwitchyOmega_Chromium.zip  -d SwitchyOmega_Chromium
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>剩下步骤3:</p>
 <ul>
@@ -317,15 +316,15 @@ unzip SwitchyOmega_Chromium.zip  -d SwitchyOmega_Chromium
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 解压安装包 , 建议解压后拷贝到 /usr/local 目录</span>
-tar xzf &lt;smartgit*.tar.gz&gt;
-<span class="c1"># 手动执行,在 smart git 解压后的根目录</span>
-./bin/smartgit.sh
-<span class="c1"># 添加 smartgit 开始菜单启动项</span>
-./bin/add-menuitem.sh
-<span class="c1"># 移除 smartgit 开始菜单启动项</span>
-./bin/remove-menuitem.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 解压安装包 , 建议解压后拷贝到 /usr/local 目录</span>
+</span></span><span class="line"><span class="cl">tar xzf &lt;smartgit*.tar.gz&gt;
+</span></span><span class="line"><span class="cl"><span class="c1"># 手动执行,在 smart git 解压后的根目录</span>
+</span></span><span class="line"><span class="cl">./bin/smartgit.sh
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加 smartgit 开始菜单启动项</span>
+</span></span><span class="line"><span class="cl">./bin/add-menuitem.sh
+</span></span><span class="line"><span class="cl"><span class="c1"># 移除 smartgit 开始菜单启动项</span>
+</span></span><span class="line"><span class="cl">./bin/remove-menuitem.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="visual-studio-code">Visual Studio Code</h2>
 <p>前往官方网站 [Visual Studio Code下载](下载页面 <a href="https://code.visualstudio.com/download" target="_blank" rel="noopener noreffer">https://code.visualstudio.com/download</a>) deb 包，<strong>假设包名为</strong> code_1.77.3-1681292746_amd64.deb ，执行下述命令安装：</p>
@@ -334,8 +333,8 @@ tar xzf &lt;smartgit*.tar.gz&gt;
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">sudo dpkg -i code_1.77.3-1681292746_amd64.deb
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo dpkg -i code_1.77.3-1681292746_amd64.deb
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>配置方式可以参考官网：<a href="https://code.visualstudio.com/docs/cpp/config-linux" target="_blank" rel="noopener noreffer">Using C++ on Linux in VS Code</a>.</p>
 <p>简单说就是需要配置得到 3 个 json 文件，分别是，<code>tasks.json</code>、<code>launch.json</code>、<code>c_cpp_properties.json</code>，具体步骤如下：</p>
@@ -377,16 +376,16 @@ tar xzf &lt;smartgit*.tar.gz&gt;
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 可以视情况而定，安装什么版本</span>
-sudo apt install openjdk-11-jdk
-<span class="c1"># 检查 jdk 安装情况</span>
-java --version
-<span class="c1"># 添加 android studio 的 ppa </span>
-sudo apt-add-repository ppa:maarten-fonville/android-studio
-
-sudo apt update 
-sudo apt install android-studio
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 可以视情况而定，安装什么版本</span>
+</span></span><span class="line"><span class="cl">sudo apt install openjdk-11-jdk
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查 jdk 安装情况</span>
+</span></span><span class="line"><span class="cl">java --version
+</span></span><span class="line"><span class="cl"><span class="c1"># 添加 android studio 的 ppa </span>
+</span></span><span class="line"><span class="cl">sudo apt-add-repository ppa:maarten-fonville/android-studio
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo apt update 
+</span></span><span class="line"><span class="cl">sudo apt install android-studio
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>还有 snap 方式也能安装，不喜欢也不推荐。</p>
 <p>如果有需要的可以参考 <a href="https://linuxhint.com/install-android-studio-linux-mint-and-ubuntu" target="_blank" rel="noopener noreffer">Install latest Android Studio on Linux Mint 20 and Ubuntu 20.04</a>  的 Method2 自行安装。</p>
@@ -397,8 +396,8 @@ sudo apt install android-studio
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以去官网 ：https://developer.android.com/studio/archive 下载指定版本的 tar.gz 的包。</p>
 <p>解压后拷贝到 /usr/local 或 /opt  目录下，假设拷贝到/opt 目录，运行 /opt/android-studio/bin/studio.sh</p>
@@ -413,8 +412,8 @@ sudo apt install android-studio
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install cifs-utils
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt-get install cifs-utils
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后再挂载网盘：</p>
 <div class="highlight"><div class="chroma">
@@ -426,12 +425,12 @@ sudo apt install android-studio
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 创建本地挂载目录</span>
-sudo mkdir /media/my_net_disk
-<span class="c1"># 假设网盘地址是 110.0.62.88, 用户名 Benjamin</span>
-sudo mount -t cifs -o <span class="nv">username</span><span class="o">=</span>Benjamin  //110.0.62.88/share_dir  /media/my_net_disk
-<span class="c1"># 然后会打印一句 Password for Benjamin@//110.0.62.88/share_dir ,输入密码即可</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 创建本地挂载目录</span>
+</span></span><span class="line"><span class="cl">sudo mkdir /media/my_net_disk
+</span></span><span class="line"><span class="cl"><span class="c1"># 假设网盘地址是 110.0.62.88, 用户名 Benjamin</span>
+</span></span><span class="line"><span class="cl">sudo mount -t cifs -o <span class="nv">username</span><span class="o">=</span>Benjamin  //110.0.62.88/share_dir  /media/my_net_disk
+</span></span><span class="line"><span class="cl"><span class="c1"># 然后会打印一句 Password for Benjamin@//110.0.62.88/share_dir ,输入密码即可</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="命令行工具">命令行工具</h1>
 <p>在安装下述命令之前，最好先更新一下软件源，使用国内源会少很多问题。</p>
@@ -448,10 +447,10 @@ sudo mount -t cifs -o <span class="nv">username</span><span class="o">=</span>Be
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span>  ~
-wget  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-sh install.sh
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span>  ~
+</span></span><span class="line"><span class="cl">wget  https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+</span></span><span class="line"><span class="cl">sh install.sh
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如果遇到网络 443 端口拒绝访问的问题，别犹豫，就是梯子有问题。</p>
 <p>如果用梯子，使用神器 proxychains 工具吧 ，我的网络就是有问题，上述在 wget 最前面加上 proxychains 前置即可。</p>
@@ -467,11 +466,11 @@ sh install.sh
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 这三句要严格按照顺序执行</span>
-mv  ~/.zshrc  ~/.oh_my_zsh.rc 
-mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc 
-<span class="nb">echo</span> <span class="s2">&#34;source  ~/.oh_my_zsh.rc&#34;</span>  &gt;&gt;  ~/.zshrc 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 这三句要严格按照顺序执行</span>
+</span></span><span class="line"><span class="cl">mv  ~/.zshrc  ~/.oh_my_zsh.rc 
+</span></span><span class="line"><span class="cl">mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc 
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;source  ~/.oh_my_zsh.rc&#34;</span>  &gt;&gt;  ~/.zshrc 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>按照上述修改后，ohMyZsh 的配置文件为 <code>~/.oh_my_zsh.rc</code> ，Theme 变量为 ZSH_THEME。</p>
 <p>有非常多的主题样式可以选择，具体效果可以参考：   <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes" target="_blank" rel="noopener noreffer">https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</a></p>
@@ -488,8 +487,8 @@ mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  -y  install  scrcpy
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo  apt  -y  install  scrcpy
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装好之后，在命令行执行  <code>scrcpy</code> 即可启动连着 PC 的 Android 机，可以投屏+鼠标键盘控制输入。</p>
 <p><strong>如果连着多台 Andriod</strong>，使用 <code>adb devices</code> 打印设备id，然后 <code>scrcpy -s &lt;设备id&gt;</code> 控制指定设备。</p>
@@ -508,8 +507,8 @@ mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  install  nodejs  npm
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo  apt  install  nodejs  npm
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一行语句安装：</p>
 <div class="highlight"><div class="chroma">
@@ -517,8 +516,8 @@ mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">npm install fanyi -g
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install fanyi -g
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如何使用：在命令行终端使用 fy 命令即可。</p>
 <div class="highlight"><div class="chroma">
@@ -529,11 +528,11 @@ mv  ~/.zshrc.pre-oh-my-zsh  ~/.zshrc
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># fanyi &lt;中文或者英语&gt; ,也可以使用 fy 代替 fanyi</span>
-<span class="c1"># 举例如下：</span>
-fy  经济
-fy  grace
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># fanyi &lt;中文或者英语&gt; ,也可以使用 fy 代替 fanyi</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 举例如下：</span>
+</span></span><span class="line"><span class="cl">fy  经济
+</span></span><span class="line"><span class="cl">fy  grace
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个翻译软件还能与时俱进，可以配置 OpenAI 的 Key，接入 ChatGpt 助力翻译，🐮。</p>
 <h2 id="ag">ag</h2>
@@ -544,8 +543,8 @@ fy  grace
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  install  silversearcher-ag
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo  apt  install  silversearcher-ag
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如何使用：</p>
 <p>命令格式如下：</p>
@@ -554,8 +553,8 @@ fy  grace
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Usage: ag <span class="o">[</span>FILE-TYPE<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span> PATTERN <span class="o">[</span>PATH<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Usage: ag <span class="o">[</span>FILE-TYPE<span class="o">]</span> <span class="o">[</span>OPTIONS<span class="o">]</span> PATTERN <span class="o">[</span>PATH<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>除了<code> ag  -h</code> 查看命令行选项之外，介绍几个常用用法备忘：</p>
 <div class="highlight"><div class="chroma">
@@ -570,15 +569,15 @@ fy  grace
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 最常用用法，找到包含 MainWidget 关键词的文件 (注意，默认是大小写不敏感)</span>
-ag MainWidget
-
-<span class="c1"># 在指定目录找到包含 MainWidget 关键词的文件, 且 -s 大小写敏感, 以及 -g 限定文件类型为 md</span>
-ag  -s MainWidget  ../Projects  -g  *.md 
-
-<span class="c1"># 也支持中文</span>
-ag 你好
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 最常用用法，找到包含 MainWidget 关键词的文件 (注意，默认是大小写不敏感)</span>
+</span></span><span class="line"><span class="cl">ag MainWidget
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在指定目录找到包含 MainWidget 关键词的文件, 且 -s 大小写敏感, 以及 -g 限定文件类型为 md</span>
+</span></span><span class="line"><span class="cl">ag  -s MainWidget  ../Projects  -g  *.md 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 也支持中文</span>
+</span></span><span class="line"><span class="cl">ag 你好
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="fzf">fzf</h2>
 <p>Fuzzy，一个根据关键词模糊搜索文件/文本的终端工具，可用于 Linux/Mac/Windows，并可以插件形式组合 vim 等编辑器使用，github 地址： <a href="https://github.com/junegunn/fzf" target="_blank" rel="noopener noreffer">junegunn/fzf</a> 。</p>
@@ -589,8 +588,8 @@ ag 你好
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt  install  fzf 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt  install  fzf 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>如何使用：</p>
 <p>基本使用方式：可以直接 <code>fzf</code> 在当前目录模糊搜文件，也可以组合其他命令使用，如下</p>
@@ -603,12 +602,12 @@ ag 你好
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 基于find 结果进一步搜索过滤</span>
-find  ~  -type f  <span class="p">|</span> fzf 
-
-<span class="c1"># 对 sed 的命令帮助信息进行搜索过滤</span>
-man sed <span class="p">|</span> fzf -e 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 基于find 结果进一步搜索过滤</span>
+</span></span><span class="line"><span class="cl">find  ~  -type f  <span class="p">|</span> fzf 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 对 sed 的命令帮助信息进行搜索过滤</span>
+</span></span><span class="line"><span class="cl">man sed <span class="p">|</span> fzf -e 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>常用的快捷键：</p>
 <p><code>Ctrl + J</code>/ <code>Ctrl + K</code> ：移动鼠标下一行/上一行；</p>
@@ -629,8 +628,8 @@ man sed <span class="p">|</span> fzf -e
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo  apt  install  -y  ffmpeg 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo  apt  install  -y  ffmpeg 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装完后，我的电脑对 ffmpeg 命令无法自动补全，并且会优先提示 _ffmpeg 命令，所以我直接写 alias 好了：</p>
 <div class="highlight"><div class="chroma">
@@ -642,12 +641,12 @@ man sed <span class="p">|</span> fzf -e
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 如果是用的 bash, 那就是 ~/.bashrc</span>
-<span class="nb">echo</span> <span class="s2">&#34;\n# ffmpeg alias definition&#34;</span>    &gt;&gt; ~/.zshrc
-<span class="nb">echo</span> <span class="s2">&#34;alias  ffmpeg=/usr/bin/ffmpeg&#34;</span>  &gt;&gt; ~/.zshrc
-<span class="nb">echo</span> <span class="s2">&#34;alias  ffplay=/usr/bin/ffplay&#34;</span>  &gt;&gt; ~/.zshrc
-<span class="nb">echo</span> <span class="s2">&#34;alias  ffprobe=/usr/bin/ffprobe&#34;</span>  &gt;&gt; ~/.zshrc
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 如果是用的 bash, 那就是 ~/.bashrc</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;\n# ffmpeg alias definition&#34;</span>    &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;alias  ffmpeg=/usr/bin/ffmpeg&#34;</span>  &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;alias  ffplay=/usr/bin/ffplay&#34;</span>  &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;alias  ffprobe=/usr/bin/ffprobe&#34;</span>  &gt;&gt; ~/.zshrc
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="axel">axel</h2>
 <p>是支持多线程下载的终端工具，大多数情况下，比 wget 和 curl 都要更快速高效。</p>
@@ -662,9 +661,9 @@ man sed <span class="p">|</span> fzf -e
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo apt -y install tldr
-tldr -u 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt -y install tldr
+</span></span><span class="line"><span class="cl">tldr -u 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="faq">FAQ</h1>
 <h2 id="扩容根分区">扩容根分区</h2>
@@ -683,11 +682,11 @@ tldr -u
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 查看文件系统的大致情况，确认根分区是哪块盘</span>
-sudo df -h 
-<span class="c1"># 查看磁盘和各分区的情况, 根据 df 的情况，关注根分区所在盘 /dev/sdc 的情况</span>
-sudo fdisk --list
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 查看文件系统的大致情况，确认根分区是哪块盘</span>
+</span></span><span class="line"><span class="cl">sudo df -h 
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看磁盘和各分区的情况, 根据 df 的情况，关注根分区所在盘 /dev/sdc 的情况</span>
+</span></span><span class="line"><span class="cl">sudo fdisk --list
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>fdisk 内容太多了不贴了，我这边 <code>df -h </code> 的打印内容是：</p>
 <div class="highlight"><div class="chroma">
@@ -703,16 +702,16 @@ sudo fdisk --list
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo df -h 
-文件系统        大小  已用  可用 已用% 挂载点
-tmpfs           3.2G  2.1M  3.2G    1% /run
-/dev/sdc5       50G    43G  7G     96% /
-tmpfs            16G   42M   16G    1% /dev/shm
-tmpfs           5.0M  4.0K  5.0M    1% /run/lock
-/dev/sdc3       189M  5.3M  183M    3% /boot/efi
-tmpfs           3.2G  100K  3.2G    1% /run/user/127
-tmpfs           3.2G  100K  3.2G    1% /run/user/1000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">benjamin@bjm-Ubuntu:~$ sudo df -h 
+</span></span><span class="line"><span class="cl">文件系统        大小  已用  可用 已用% 挂载点
+</span></span><span class="line"><span class="cl">tmpfs           3.2G  2.1M  3.2G    1% /run
+</span></span><span class="line"><span class="cl">/dev/sdc5       50G    43G  7G     96% /
+</span></span><span class="line"><span class="cl">tmpfs            16G   42M   16G    1% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs           5.0M  4.0K  5.0M    1% /run/lock
+</span></span><span class="line"><span class="cl">/dev/sdc3       189M  5.3M  183M    3% /boot/efi
+</span></span><span class="line"><span class="cl">tmpfs           3.2G  100K  3.2G    1% /run/user/127
+</span></span><span class="line"><span class="cl">tmpfs           3.2G  100K  3.2G    1% /run/user/1000
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>可以看到根分区基本满了(96% 的占用)，然后 fdisk 查看到的信息是 /dev/sdc6 这个相邻分区有140G，但是没挂载到文件系统。</p>
 <p>执行：</p>
@@ -724,11 +723,11 @@ tmpfs           3.2G  100K  3.2G    1% /run/user/1000
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo parted /dev/sdc
-GNU Parted 3.4
-使用 /dev/sdc
-欢迎使用 GNU Parted！输入 <span class="s1">&#39;help&#39;</span> 来查看命令列表。
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">benjamin@bjm-Ubuntu:~$ sudo parted /dev/sdc
+</span></span><span class="line"><span class="cl">GNU Parted 3.4
+</span></span><span class="line"><span class="cl">使用 /dev/sdc
+</span></span><span class="line"><span class="cl">欢迎使用 GNU Parted！输入 <span class="s1">&#39;help&#39;</span> 来查看命令列表。
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>进入 parted 模式，可以输入<code> help</code> 看看帮助信息打印如下:</p>
 <div class="highlight"><div class="chroma">
@@ -752,24 +751,24 @@ GNU Parted 3.4
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">  align-check 类型 N                         检查分区 N 是否为 <span class="o">(</span><span class="nv">最小</span><span class="o">=</span>min<span class="p">|</span><span class="nv">最佳</span><span class="o">=</span>opt<span class="o">)</span> 对齐类型
-  <span class="nb">help</span> <span class="o">[</span>COMMAND<span class="o">]</span>                           打印通用求助信息，或 COMMAND 的帮助
-  mklabel,mktable LABEL-TYPE               创建新的磁盘卷标 <span class="o">(</span>分区表<span class="o">)</span>
-  mkpart 分区类型 <span class="o">[</span>文件系统类型<span class="o">]</span> 起始点 结束点 创建一个分区
-  name 编号 名称                           将指定“编号”的分区命名为“名称”
-  print <span class="o">[</span>devices<span class="p">|</span>free<span class="p">|</span>list,all<span class="p">|</span>数字<span class="o">]</span>        显示分区表、可用设备、剩余空间、所有分区或特殊分区
-  quit                                     退出程序
-  rescue 起始点 终止点                      挽救临近“起始点”、“终止点”的遗失的分区
-  resizepart NUMBER END                    改变 NUMBER 的大小
-  rm NUMBER                                删除编号为 NUMBER 的分区
-  <span class="k">select</span> 设备                              选择要编辑的设备
-  disk_set 旗标 状态                       变更已选设备上的旗标
-  disk_toggle <span class="o">[</span>旗标<span class="o">]</span>                       切换已选设备上的旗标状态
-  <span class="nb">set</span> 编号 旗标 状态                       改变指定“编号”分区的旗标
-  toggle <span class="o">[</span>编号 <span class="o">[</span>旗标<span class="o">]]</span>                     切换“编号”分区上的“旗标”状态
-  unit 单位                                设置缺省的“单位”
-  version                                  显示目前 GNU Parted 的版本与版权信息
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  align-check 类型 N                         检查分区 N 是否为 <span class="o">(</span>最小<span class="o">=</span>min<span class="p">|</span>最佳<span class="o">=</span>opt<span class="o">)</span> 对齐类型
+</span></span><span class="line"><span class="cl">  <span class="nb">help</span> <span class="o">[</span>COMMAND<span class="o">]</span>                           打印通用求助信息，或 COMMAND 的帮助
+</span></span><span class="line"><span class="cl">  mklabel,mktable LABEL-TYPE               创建新的磁盘卷标 <span class="o">(</span>分区表<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  mkpart 分区类型 <span class="o">[</span>文件系统类型<span class="o">]</span> 起始点 结束点 创建一个分区
+</span></span><span class="line"><span class="cl">  name 编号 名称                           将指定“编号”的分区命名为“名称”
+</span></span><span class="line"><span class="cl">  print <span class="o">[</span>devices<span class="p">|</span>free<span class="p">|</span>list,all<span class="p">|</span>数字<span class="o">]</span>        显示分区表、可用设备、剩余空间、所有分区或特殊分区
+</span></span><span class="line"><span class="cl">  quit                                     退出程序
+</span></span><span class="line"><span class="cl">  rescue 起始点 终止点                      挽救临近“起始点”、“终止点”的遗失的分区
+</span></span><span class="line"><span class="cl">  resizepart NUMBER END                    改变 NUMBER 的大小
+</span></span><span class="line"><span class="cl">  rm NUMBER                                删除编号为 NUMBER 的分区
+</span></span><span class="line"><span class="cl">  <span class="k">select</span> 设备                              选择要编辑的设备
+</span></span><span class="line"><span class="cl">  disk_set 旗标 状态                       变更已选设备上的旗标
+</span></span><span class="line"><span class="cl">  disk_toggle <span class="o">[</span>旗标<span class="o">]</span>                       切换已选设备上的旗标状态
+</span></span><span class="line"><span class="cl">  <span class="nb">set</span> 编号 旗标 状态                       改变指定“编号”分区的旗标
+</span></span><span class="line"><span class="cl">  toggle <span class="o">[</span>编号 <span class="o">[</span>旗标<span class="o">]]</span>                     切换“编号”分区上的“旗标”状态
+</span></span><span class="line"><span class="cl">  unit 单位                                设置缺省的“单位”
+</span></span><span class="line"><span class="cl">  version                                  显示目前 GNU Parted 的版本与版权信息
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>并且可以输入 <code>print</code> 查看 /dev/sdc 这块盘的细节：</p>
 <div class="highlight"><div class="chroma">
@@ -790,21 +789,21 @@ GNU Parted 3.4
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> print
-型号：ATA Samsung SSD <span class="m">870</span> <span class="o">(</span>scsi<span class="o">)</span>
-磁盘 /dev/sdc: 1000GB
-扇区大小 <span class="o">(</span>逻辑/物理<span class="o">)</span>：512B/512B
-分区表：gpt
-磁盘标志：
-
-编号  起始点  结束点  大小    文件系统        名称                          标志
- <span class="m">1</span>    17.4kB  16.8MB  16.8MB                  Microsoft reserved partition  msftres
- <span class="m">2</span>    16.8MB  785GB   785GB   ntfs            Basic data partition          msftdata
- <span class="m">3</span>    785GB   786GB   200MB   fat32                                         启动, esp
- <span class="m">4</span>    786GB   802GB   16.4GB  linux-swap<span class="o">(</span>v1<span class="o">)</span>                                交换
- <span class="m">5</span>    802GB   853GB   50GB    ext4
- <span class="m">6</span>    854GB   999GB   145GB   ext4
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> print
+</span></span><span class="line"><span class="cl">型号：ATA Samsung SSD <span class="m">870</span> <span class="o">(</span>scsi<span class="o">)</span>
+</span></span><span class="line"><span class="cl">磁盘 /dev/sdc: 1000GB
+</span></span><span class="line"><span class="cl">扇区大小 <span class="o">(</span>逻辑/物理<span class="o">)</span>：512B/512B
+</span></span><span class="line"><span class="cl">分区表：gpt
+</span></span><span class="line"><span class="cl">磁盘标志：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">编号  起始点  结束点  大小    文件系统        名称                          标志
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>    17.4kB  16.8MB  16.8MB                  Microsoft reserved partition  msftres
+</span></span><span class="line"><span class="cl"> <span class="m">2</span>    16.8MB  785GB   785GB   ntfs            Basic data partition          msftdata
+</span></span><span class="line"><span class="cl"> <span class="m">3</span>    785GB   786GB   200MB   fat32                                         启动, esp
+</span></span><span class="line"><span class="cl"> <span class="m">4</span>    786GB   802GB   16.4GB  linux-swap<span class="o">(</span>v1<span class="o">)</span>                                交换
+</span></span><span class="line"><span class="cl"> <span class="m">5</span>    802GB   853GB   50GB    ext4
+</span></span><span class="line"><span class="cl"> <span class="m">6</span>    854GB   999GB   145GB   ext4
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>需要做的简述如下：</p>
 <ol>
@@ -820,10 +819,10 @@ GNU Parted 3.4
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">(</span>parted<span class="o">)</span> rm  <span class="m">6</span>
-<span class="o">(</span>parted<span class="o">)</span> resizepart <span class="m">6</span> 999GB
-<span class="o">(</span>parted<span class="o">)</span> quit
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> rm  <span class="m">6</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> resizepart <span class="m">6</span> 999GB
+</span></span><span class="line"><span class="cl"><span class="o">(</span>parted<span class="o">)</span> quit
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>退出了parted 之后，执行下述2句，刷新分区列表和文件系统信息，让文件系统知道分区改变了：</p>
 <div class="highlight"><div class="chroma">
@@ -832,9 +831,9 @@ GNU Parted 3.4
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo partprobe 
-benjamin@bjm-Ubuntu:~$ sudo resize2fs -p /dev/sdc5
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">benjamin@bjm-Ubuntu:~$ sudo partprobe 
+</span></span><span class="line"><span class="cl">benjamin@bjm-Ubuntu:~$ sudo resize2fs -p /dev/sdc5
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>此时再使用系统的df, fdisk ，或磁盘工具、磁盘占用分析助手等软件查看，<strong>分区扩容成功</strong>！</p>
 <div class="highlight"><div class="chroma">
@@ -850,16 +849,16 @@ benjamin@bjm-Ubuntu:~$ sudo resize2fs -p /dev/sdc5
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">benjamin@bjm-Ubuntu:~$ sudo df -h
-文件系统        大小  已用  可用 已用% 挂载点
-tmpfs           3.2G  2.1M  3.2G    1% /run
-/dev/sdc5       181G   43G  131G   25% /
-tmpfs            16G   67M   16G    1% /dev/shm
-tmpfs           5.0M  4.0K  5.0M    1% /run/lock
-/dev/sdc3       189M  5.3M  183M    3% /boot/efi
-tmpfs           3.2G  100K  3.2G    1% /run/user/127
-tmpfs           3.2G  100K  3.2G    1% /run/user/1000
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">benjamin@bjm-Ubuntu:~$ sudo df -h
+</span></span><span class="line"><span class="cl">文件系统        大小  已用  可用 已用% 挂载点
+</span></span><span class="line"><span class="cl">tmpfs           3.2G  2.1M  3.2G    1% /run
+</span></span><span class="line"><span class="cl">/dev/sdc5       181G   43G  131G   25% /
+</span></span><span class="line"><span class="cl">tmpfs            16G   67M   16G    1% /dev/shm
+</span></span><span class="line"><span class="cl">tmpfs           5.0M  4.0K  5.0M    1% /run/lock
+</span></span><span class="line"><span class="cl">/dev/sdc3       189M  5.3M  183M    3% /boot/efi
+</span></span><span class="line"><span class="cl">tmpfs           3.2G  100K  3.2G    1% /run/user/127
+</span></span><span class="line"><span class="cl">tmpfs           3.2G  100K  3.2G    1% /run/user/1000
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="扩容-home-目录">扩容 home 目录</h2>
 <p>安装Ubuntu 系统的时候，根分区和 home 给的大小都不够，这下眼看要满了。</p>
@@ -898,13 +897,13 @@ tmpfs           3.2G  100K  3.2G    1% /run/user/1000
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">/dev/sdc4: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;cd7caf9b-4785-4e61-acc3-b75bc8ee945b&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;swap&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;5bf679ac-850f-46e2-b9d4-26c6fb50a3a7&#34;</span>
-/dev/sdc5: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;90ec6ddb-b262-4375-9b48-620f5eb584a1&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;4096&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ext4&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;11372470-1ba0-49eb-afd1-d386cbc7964b&#34;</span>
-/dev/sdc2: <span class="nv">LABEL</span><span class="o">=</span><span class="s2">&#34;SSD&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;512&#34;</span> <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;1822F6E122F6C2B4&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ntfs&#34;</span> <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;Basic data partition&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;df0e569e-25e3-47d2-9ac2-01bc3ee0af97&#34;</span>
-/dev/sdc3: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;7386-BF96&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;512&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;vfat&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;460a5a51-e590-4a39-8435-408cc4f330f4&#34;</span>
-/dev/sdc1: <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;Microsoft reserved partition&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;ec079113-2f27-4fc9-b175-57e73e7bb85e&#34;</span>
-/dev/sdc6: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;5e2aa47a-34b2-46f2-84ef-640a57cacabd&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;4096&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ext4&#34;</span> <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;/dev/sdc6&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;ffb8b3e1-a8f4-4cc7-88d1
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/dev/sdc4: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;cd7caf9b-4785-4e61-acc3-b75bc8ee945b&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;swap&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;5bf679ac-850f-46e2-b9d4-26c6fb50a3a7&#34;</span>
+</span></span><span class="line"><span class="cl">/dev/sdc5: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;90ec6ddb-b262-4375-9b48-620f5eb584a1&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;4096&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ext4&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;11372470-1ba0-49eb-afd1-d386cbc7964b&#34;</span>
+</span></span><span class="line"><span class="cl">/dev/sdc2: <span class="nv">LABEL</span><span class="o">=</span><span class="s2">&#34;SSD&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;512&#34;</span> <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;1822F6E122F6C2B4&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ntfs&#34;</span> <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;Basic data partition&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;df0e569e-25e3-47d2-9ac2-01bc3ee0af97&#34;</span>
+</span></span><span class="line"><span class="cl">/dev/sdc3: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;7386-BF96&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;512&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;vfat&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;460a5a51-e590-4a39-8435-408cc4f330f4&#34;</span>
+</span></span><span class="line"><span class="cl">/dev/sdc1: <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;Microsoft reserved partition&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;ec079113-2f27-4fc9-b175-57e73e7bb85e&#34;</span>
+</span></span><span class="line"><span class="cl">/dev/sdc6: <span class="nv">UUID</span><span class="o">=</span><span class="s2">&#34;5e2aa47a-34b2-46f2-84ef-640a57cacabd&#34;</span> <span class="nv">BLOCK_SIZE</span><span class="o">=</span><span class="s2">&#34;4096&#34;</span> <span class="nv">TYPE</span><span class="o">=</span><span class="s2">&#34;ext4&#34;</span> <span class="nv">PARTLABEL</span><span class="o">=</span><span class="s2">&#34;/dev/sdc6&#34;</span> <span class="nv">PARTUUID</span><span class="o">=</span><span class="s2">&#34;ffb8b3e1-a8f4-4cc7-88d1
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -914,8 +913,8 @@ tmpfs           3.2G  100K  3.2G    1% /run/user/1000
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">UUID</span><span class="o">=</span>5e2aa47a-34b2-46f2-84ef-640a57cacabd /home/benjamin/data  ext4 defaults <span class="m">0</span> <span class="m">2</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">UUID</span><span class="o">=</span>5e2aa47a-34b2-46f2-84ef-640a57cacabd /home/benjamin/data  ext4 defaults <span class="m">0</span> <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>含义分别是：分区UUID、挂载目录、磁盘格式、挂载选项、是否备份dump、磁盘检查顺序等。后面三项 defaults  0  2 是比较符合我们个人日常使用的。</p>
 <p>更详细的参数含义可以参考: <a href="https://www.cnblogs.com/FengGeBlog/p/10178824.html" target="_blank" rel="noopener noreffer">博客园：Linux之/etc/fstab文件讲解</a> 。</p>
@@ -928,9 +927,9 @@ tmpfs           3.2G  100K  3.2G    1% /run/user/1000
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 我的用户名是 benjamin</span>
-sudo chown -R  benjamin:benjamin  /home/benjamin/data
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 我的用户名是 benjamin</span>
+</span></span><span class="line"><span class="cl">sudo chown -R  benjamin:benjamin  /home/benjamin/data
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>大功告成。</strong></p>
 </li>
@@ -946,9 +945,9 @@ sudo chown -R  benjamin:benjamin  /home/benjamin/data
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># gitlab 地址话也是类似的，改为gitlab地址即可</span>
-git remote set-url origin git@github.com:username/your-repo.git
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># gitlab 地址话也是类似的，改为gitlab地址即可</span>
+</span></span><span class="line"><span class="cl">git remote set-url origin git@github.com:username/your-repo.git
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>方法二</code>：新建 credential 文件保存 git 仓库账号密码 ：</p>
 <p>我遇到的是子仓库用的 https 地址，不去手动改为 ssh 形式地址了，而是采用 file 形式保存账号密码。</p>
@@ -962,13 +961,13 @@ git remote set-url origin git@github.com:username/your-repo.git
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">touch ~/.my-credentials
-<span class="c1"># benjamin 是git username,  myPassword123 是密码，gitlab.myCompany.com 是 git-host，</span>
-<span class="c1"># 我这里写的是公司的gitlab地址(公司名信息隐去，逃~)</span>
-<span class="nb">echo</span> <span class="s1">&#39;https://benjamin:myPassword123@gitlab.myCompany.com&#39;</span> &gt; ~/.my-credentials
-<span class="c1"># 配置全局，git 命令行不会再问你 账号密码了</span>
-git config --global credential.helper <span class="s1">&#39;store --file ~/.my-credentials&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">touch ~/.my-credentials
+</span></span><span class="line"><span class="cl"><span class="c1"># benjamin 是git username,  myPassword123 是密码，gitlab.myCompany.com 是 git-host，</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 我这里写的是公司的gitlab地址(公司名信息隐去，逃~)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;https://benjamin:myPassword123@gitlab.myCompany.com&#39;</span> &gt; ~/.my-credentials
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置全局，git 命令行不会再问你 账号密码了</span>
+</span></span><span class="line"><span class="cl">git config --global credential.helper <span class="s1">&#39;store --file ~/.my-credentials&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="编辑桌面菜单栏">编辑桌面菜单栏</h2>
 <p><mark>假设</mark>安装了一款软件 (假设 android-studio 4.1) ，之后升级重装了另外一个版本 4.2，会发现开始菜单图标点击失效了。</p>
@@ -978,8 +977,8 @@ git config --global credential.helper <span class="s1">&#39;store --file ~/.my-c
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">ls /usr/share/applications  <span class="p">|</span> grep -i android 
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ls /usr/share/applications  <span class="p">|</span> grep -i android 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>找到文件为：android-studio.desktop , 编辑该配置文件，其中执行路径变量 <code>Exec</code> 尤其需要注意，软件升级后主要是可能这个执行路径变了。</p>
 <h2 id="android-studio-sync-failed">Android Studio Sync Failed</h2>
@@ -1072,8 +1071,10 @@ git config --global credential.helper <span class="s1">&#39;store --file ~/.my-c
             
                 
             
+                
+            
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 126556 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
             </div>
 
             <div class="footer-line">

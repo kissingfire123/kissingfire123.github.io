@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://kissingfire123.github.io/2022/07/23_metal-shader-debug/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-07-27T23:08:38+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Metal Shader逐行调试方法"/>
 <meta name="twitter:description" content="摘要：介绍使用Xcode逐行调试Metal-Shader的方法"/>
@@ -242,14 +241,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#  假设以 RGBToYUV420 这个 shader 举例</span>
-<span class="c1">#  这一行得到 air 中间文件(Apple Intermediate Representation)</span>
-xcrun -sdk macosx metal -c -frecord-sources RGBToYUV420.metal
-<span class="c1">#  这一行链接air中间文件，得到 metallib文件</span>
-xcrun -sdk macosx metal -frecord-sources -o RGBToYUV420.metallib RGBToYUV420.air
-<span class="c1">#  这一行分离metallib, 得到metallibsym符号文件, 在shader-debug的时候会提醒加载外部sym文件</span>
-xcrun -sdk macosx metal-dsymutil -flat  -remove-source RGBToYUV420.metallib
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#  假设以 RGBToYUV420 这个 shader 举例</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  这一行得到 air 中间文件(Apple Intermediate Representation)</span>
+</span></span><span class="line"><span class="cl">xcrun -sdk macosx metal -c -frecord-sources RGBToYUV420.metal
+</span></span><span class="line"><span class="cl"><span class="c1">#  这一行链接air中间文件，得到 metallib文件</span>
+</span></span><span class="line"><span class="cl">xcrun -sdk macosx metal -frecord-sources -o RGBToYUV420.metallib RGBToYUV420.air
+</span></span><span class="line"><span class="cl"><span class="c1">#  这一行分离metallib, 得到metallibsym符号文件, 在shader-debug的时候会提醒加载外部sym文件</span>
+</span></span><span class="line"><span class="cl">xcrun -sdk macosx metal-dsymutil -flat  -remove-source RGBToYUV420.metallib
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <ul>
@@ -347,8 +346,10 @@ xcrun -sdk macosx metal-dsymutil -flat  -remove-source RGBToYUV420.metallib
             
                 
             
+                
+            
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 126556 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
             </div>
 
             <div class="footer-line">

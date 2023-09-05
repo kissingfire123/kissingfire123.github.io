@@ -2,21 +2,23 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://kissingfire123.github.io/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/categories/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/tags/linux/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/tags/mac/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/categories/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/2023/08/31_openscenegraph_1st/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/posts/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E/</loc><lastmod>2023-09-05T22:57:58&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/linux/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/mac/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/</loc><lastmod>2023-04-25T21:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://kissingfire123.github.io/posts/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/rdp/</loc><lastmod>2023-04-25T21:22:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://kissingfire123.github.io/tags/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</loc><lastmod>2023-04-06T23:47:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://kissingfire123.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/</loc><lastmod>2023-04-06T23:47:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://kissingfire123.github.io/categories/%E6%8A%98%E8%85%BE/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://kissingfire123.github.io/2023/03/28_install_configure_ubuntu_for_develop/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://kissingfire123.github.io/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc><lastmod>2023-06-04T23:03:15&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/%E6%95%B0%E5%AD%A6/</loc><lastmod>2023-04-06T23:47:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://kissingfire123.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc><lastmod>2023-04-06T23:47:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/</loc><lastmod>2023-04-06T23:47:08&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/ppt/</loc><lastmod>2023-04-02T23:10:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://kissingfire123.github.io/2022/08/25_learndeepinpowerpoint/</loc><lastmod>2023-04-02T23:10:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://kissingfire123.github.io/tags/%E5%B7%A5%E5%85%B7/</loc><lastmod>2023-04-02T23:10:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

@@ -4,9 +4,18 @@
         <link>https://kissingfire123.github.io/</link>
         <description>Benjamin的求知旅记</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-cn</language><managingEditor>lwy13697320205@163.com (Benjamin Lee)</managingEditor>
-            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Sat, 01 Apr 2023 15:57:31 &#43;0800</lastBuildDate>
+            <webMaster>lwy13697320205@163.com (Benjamin Lee)</webMaster><lastBuildDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://kissingfire123.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>OpenSceneGraph学习(1)</title>
+    <link>https://kissingfire123.github.io/2023/08/31_openscenegraph_1st/</link>
+    <pubDate>Tue, 01 Aug 2023 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://kissingfire123.github.io/2023/08/31_openscenegraph_1st/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/OSG/OSG_landscape_mark.png" referrerpolicy="no-referrer">
+            </div>前言 出于对老牌渲染引擎 OpenSceneGraph (简称OSG) 的学习借鉴，先从其Example 开始学习了解。 环境准备 以 Windows 系统为例，必备软件如下： MicroSoft Visual Studio （例如我的是 Microsoft]]></description>
+</item><item>
     <title>Mac 远程桌面控制Ubuntu 22.04 (RDP)</title>
     <link>https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/</link>
     <pubDate>Sat, 01 Apr 2023 15:57:31 &#43;0800</pubDate>
@@ -87,14 +96,5 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/Script-Pic/linux-commandLine.webp" referrerpolicy="no-referrer">
             </div>摘要：讨论Shell脚本编写时用到的一些常用&实用技巧]]></description>
-</item><item>
-    <title>常用数学公式排版KaTex语法总结</title>
-    <link>https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/</link>
-    <pubDate>Sun, 20 Feb 2022 22:34:53 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://kissingfire123.github.io/2022/02/18_katex_common_grammar_summary/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/Script-Pic/Katex-Project.webp" referrerpolicy="no-referrer">
-            </div>摘要：常用KaTex语法总结，在网页、Markdown中常用的数学公式写法]]></description>
 </item></channel>
 </rss>

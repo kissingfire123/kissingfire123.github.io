@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://kissingfire123.github.io/2023/02/25_graphics_render_basic_math_theory/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-05T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-04-06T23:47:08+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="图像渲染管线理解"/>
 <meta name="twitter:description" content="摘要：从数学角度阐述图像渲染基础"/>
@@ -156,7 +155,7 @@
 <p>图像渲染是 CG 技术的子学科，其他几个兄弟学科有 几何、动画、物理仿真等。渲染本身包括 2D 渲染和 3D 渲染。</p>
 </li>
 <li>
-<p><strong>图形 API  标准/框架</strong> 
+<p><strong>图形 API  标准/框架</strong>
 图形 API 是 CPU (Host) 交互 GPU (Device) 的接口，不是指特定的代码库，而是一套 API 规范，各家显卡厂商按照规范，实现自己的GPU驱动。</p>
 <p>业内常用的图形API有以下：</p>
 <ul>
@@ -238,7 +237,7 @@
 </ul>
 </li>
 <li>
-<p><strong>Shader</strong> 
+<p><strong>Shader</strong>
 Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点像简化版的C/C++语言，外加一些渲染或并行计算特有的数据结构和用法；</p>
 <p>OpenGL下称为 glsl 代码，D3D 称为HLSL，Metal 下称为 metal 代码，其实后缀都无所谓，基本都是字符串读入，由特定图形 API 的 compile 接口编译成 GPU 能识别的指令序列。</p>
 </li>
@@ -460,20 +459,20 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">      <span class="c1">// Set up vertex data (and buffer(s)) and attribute pointers. (复合demo，颜色在这个效果可以不用，是其他效果的)
-</span><span class="c1"></span>      <span class="n">GLfloat</span> <span class="n">vertices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-                  <span class="c1">//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
-</span><span class="c1"></span>                   <span class="mf">0.5f</span><span class="p">,</span>  <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span>   <span class="c1">// 右上
-</span><span class="c1"></span>                   <span class="mf">0.5f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="c1">// 右下
-</span><span class="c1"></span>                  <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="c1">// 左下
-</span><span class="c1"></span>                  <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span>  <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span>    <span class="c1">// 左上
-</span><span class="c1"></span>      <span class="p">};</span>
-
-      <span class="n">GLuint</span> <span class="n">indices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>  <span class="cm">/* vertices的顶点索引 0,1,2,3 */</span>
-          <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1">// First Triangle
-</span><span class="c1"></span>          <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>  
-      <span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">      <span class="c1">// Set up vertex data (and buffer(s)) and attribute pointers. (复合demo，颜色在这个效果可以不用，是其他效果的)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">GLfloat</span> <span class="n">vertices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                  <span class="c1">//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="mf">0.5f</span><span class="p">,</span>  <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span>   <span class="c1">// 右上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="mf">0.5f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="c1">// 右下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                  <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="c1">// 左下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                  <span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span>  <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span>   <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span>    <span class="c1">// 左上
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="n">GLuint</span> <span class="n">indices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>  <span class="cm">/* vertices的顶点索引 0,1,2,3 */</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>  <span class="c1">// First Triangle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>  
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -510,35 +509,35 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">   <span class="cm">/*接收原始数据，并绑定属性到openGL上下文*/</span>
-   <span class="kt">void</span> <span class="nf">ProcessBindAttrs</span><span class="p">(</span><span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">VBO</span><span class="p">,</span> <span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">VAO</span><span class="p">,</span> <span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">EBO</span><span class="p">,</span> 
-       <span class="k">const</span> <span class="n">GLfloat</span> <span class="o">*</span> <span class="n">vertices</span><span class="p">,</span><span class="n">GLuint</span> <span class="n">vertexMemSize</span><span class="p">,</span> 
-       <span class="k">const</span> <span class="n">GLuint</span> <span class="o">*</span> <span class="n">indices</span><span class="p">,</span><span class="n">GLuint</span> <span class="n">indexMemSize</span><span class="p">){</span>
-       <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VAO</span><span class="p">);</span><span class="cm">/*创建VAO*/</span>
-       <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VBO</span><span class="p">);</span><span class="cm">/*创建VAO*/</span>
-       <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">EBO</span><span class="p">);</span><span class="cm">/*创建EBO*/</span>
-       <span class="cm">/* 1. 绑定VAO, 再设置顶点属性,到解绑之前,这些上下文属性就都属于这个VAO了,避免了VBO重复执行 */</span>
-       <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span>
-
-       <span class="cm">/* 2. 把顶点数组复制到缓冲中供OpenGL使用 */</span>
-       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">VBO</span><span class="p">);</span>
-       <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexMemSize</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span><span class="c1">// other: GL_DYNAMIC_DRAW,GL_STREAM_DRAW 
-</span><span class="c1"></span>
-       <span class="cm">/* 3. 复制我们的索引数组到一个索引缓冲中，供OpenGL使用*/</span>
-       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">EBO</span><span class="p">);</span>
-       <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">indexMemSize</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span>
-       <span class="cm">/* 4. 设置顶点属性指针 */</span>
-       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>   <span class="n">GL_FLOAT</span><span class="p">,</span>  <span class="n">GL_FALSE</span><span class="p">,</span>  <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span><span class="p">);</span> 
-       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">0</span> <span class="cm">/*position-index*/</span><span class="p">);</span><span class="cm">/*上面2句设置positon */</span>
-       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)(</span><span class="mi">3</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">)));</span>
-       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">1</span> <span class="cm">/*color-index*/</span><span class="p">);</span><span class="c1">//这2句设置color
-</span><span class="c1"></span>       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="cm">/*dimesions*/</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)(</span><span class="mi">6</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">)));</span>
-       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">2</span> <span class="cm">/*texture-index*/</span><span class="p">);</span><span class="c1">//这2句设置texture
-</span><span class="c1"></span>
-       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* 解绑VBO,因为glVertexAttribPointer使用ok了*/</span>
-       <span class="p">......</span>
-     <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">   <span class="cm">/*接收原始数据，并绑定属性到openGL上下文*/</span>
+</span></span><span class="line"><span class="cl">   <span class="kt">void</span> <span class="nf">ProcessBindAttrs</span><span class="p">(</span><span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">VBO</span><span class="p">,</span> <span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">VAO</span><span class="p">,</span> <span class="n">GLuint</span><span class="o">&amp;</span> <span class="n">EBO</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">       <span class="k">const</span> <span class="n">GLfloat</span> <span class="o">*</span> <span class="n">vertices</span><span class="p">,</span><span class="n">GLuint</span> <span class="n">vertexMemSize</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">       <span class="k">const</span> <span class="n">GLuint</span> <span class="o">*</span> <span class="n">indices</span><span class="p">,</span><span class="n">GLuint</span> <span class="n">indexMemSize</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VAO</span><span class="p">);</span><span class="cm">/*创建VAO*/</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">VBO</span><span class="p">);</span><span class="cm">/*创建VAO*/</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">EBO</span><span class="p">);</span><span class="cm">/*创建EBO*/</span>
+</span></span><span class="line"><span class="cl">       <span class="cm">/* 1. 绑定VAO, 再设置顶点属性,到解绑之前,这些上下文属性就都属于这个VAO了,避免了VBO重复执行 */</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       <span class="cm">/* 2. 把顶点数组复制到缓冲中供OpenGL使用 */</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">VBO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexMemSize</span><span class="p">,</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span><span class="c1">// other: GL_DYNAMIC_DRAW,GL_STREAM_DRAW 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">       <span class="cm">/* 3. 复制我们的索引数组到一个索引缓冲中，供OpenGL使用*/</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">EBO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">indexMemSize</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">       <span class="cm">/* 4. 设置顶点属性指针 */</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span>   <span class="n">GL_FLOAT</span><span class="p">,</span>  <span class="n">GL_FALSE</span><span class="p">,</span>  <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">0</span> <span class="cm">/*position-index*/</span><span class="p">);</span><span class="cm">/*上面2句设置positon */</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)(</span><span class="mi">3</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">1</span> <span class="cm">/*color-index*/</span><span class="p">);</span><span class="c1">//这2句设置color
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>       <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="cm">/*dimesions*/</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">),</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)(</span><span class="mi">6</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">GLfloat</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">       <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="mi">2</span> <span class="cm">/*texture-index*/</span><span class="p">);</span><span class="c1">//这2句设置texture
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">       <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* 解绑VBO,因为glVertexAttribPointer使用ok了*/</span>
+</span></span><span class="line"><span class="cl">       <span class="p">......</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -583,43 +582,43 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="cm">/* 使用一张图片创建一个texture纹理, 并设置属性 */</span>
-  <span class="n">GLuint</span> <span class="nf">CreateTextureWithImage</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">texImagePath</span><span class="p">){</span>
-      <span class="cm">/*纹理1生成*/</span>
-      <span class="n">GLuint</span> <span class="n">texture</span><span class="p">;</span>
-      <span class="n">glGenTextures</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texture</span><span class="p">);</span>
-      <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture</span><span class="p">);</span>
-
-      <span class="cm">/*设置纹理1的环绕方式:GL_REPEAT|GL_MIRRORED_REPEAT|GL_CLAMP_TO_EDGE|GL_CLAMP_TO_BORDER*/</span>
-      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_WRAP_S</span><span class="p">,</span> <span class="n">GL_MIRRORED_REPEAT</span><span class="p">);</span>
-      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_WRAP_T</span><span class="p">,</span> <span class="n">GL_MIRRORED_REPEAT</span><span class="p">);</span>
-
-      <span class="cm">/*设置纹理1过滤(纹理和物体大小不匹配:放大(Magnify)和缩小的时候可以设置纹理过滤选项)*/</span>
-      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">);</span>
-      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MAG_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">);</span>
-
-      <span class="cm">/*设置多级渐远纹理1 Mipmap(原纹理的1/4,1/16,1/64...来适配远近纹理)*/</span>
-      <span class="cm">/*生成mipmap: glGenerateMipmaps,只有缩小纹理过滤才能mipmap*/</span>
-      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_LINEAR_MIPMAP_LINEAR</span><span class="p">);</span>
-
-      <span class="cm">/*使用SOIL库(Simple OpenGL Image Library)加载和创建纹理*/</span>
-      <span class="kt">int</span> <span class="n">texWidth</span><span class="p">,</span> <span class="n">texHeight</span><span class="p">;</span>
-      <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">image</span> <span class="o">=</span> <span class="n">SOIL_load_image</span><span class="p">(</span><span class="n">texImagePath</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texWidth</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texHeight</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOIL_LOAD_RGB</span><span class="p">);</span>
-      <span class="n">assert</span><span class="p">(</span><span class="n">image</span><span class="o">!=</span> <span class="k">nullptr</span><span class="p">);</span>
-      <span class="n">glTexImage2D</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span><span class="cm">/* 纹理目标(Target)*/</span>
-          <span class="mi">0</span><span class="p">,</span>        <span class="cm">/*Mipmap的级别, 0表示基本级别 */</span>
-          <span class="n">GL_RGB</span><span class="p">,</span>   <span class="cm">/*纹理储存格式 */</span>
-          <span class="n">texWidth</span><span class="p">,</span>
-          <span class="n">texHeight</span><span class="p">,</span>
-          <span class="mi">0</span><span class="p">,</span>        <span class="cm">/*历史遗留问题,必须为0 */</span>
-          <span class="n">GL_RGB</span><span class="p">,</span>   <span class="cm">/*原图的格式和数据类型,用RGB加载image */</span>
-          <span class="n">GL_UNSIGNED_BYTE</span><span class="p">,</span>
-          <span class="n">image</span><span class="p">);</span>   <span class="cm">/*图像数据buffer */</span>
-      <span class="n">glGenerateMipmap</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">);</span>
-      <span class="n">SOIL_free_image_data</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
-      <span class="k">return</span> <span class="n">texture</span><span class="p">;</span>
-  <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">  <span class="cm">/* 使用一张图片创建一个texture纹理, 并设置属性 */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLuint</span> <span class="nf">CreateTextureWithImage</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">texImagePath</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="cm">/*纹理1生成*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">GLuint</span> <span class="n">texture</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glGenTextures</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texture</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="cm">/*设置纹理1的环绕方式:GL_REPEAT|GL_MIRRORED_REPEAT|GL_CLAMP_TO_EDGE|GL_CLAMP_TO_BORDER*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_WRAP_S</span><span class="p">,</span> <span class="n">GL_MIRRORED_REPEAT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_WRAP_T</span><span class="p">,</span> <span class="n">GL_MIRRORED_REPEAT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="cm">/*设置纹理1过滤(纹理和物体大小不匹配:放大(Magnify)和缩小的时候可以设置纹理过滤选项)*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MAG_FILTER</span><span class="p">,</span> <span class="n">GL_NEAREST</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="cm">/*设置多级渐远纹理1 Mipmap(原纹理的1/4,1/16,1/64...来适配远近纹理)*/</span>
+</span></span><span class="line"><span class="cl">      <span class="cm">/*生成mipmap: glGenerateMipmaps,只有缩小纹理过滤才能mipmap*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glTexParameteri</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">GL_TEXTURE_MIN_FILTER</span><span class="p">,</span> <span class="n">GL_LINEAR_MIPMAP_LINEAR</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="cm">/*使用SOIL库(Simple OpenGL Image Library)加载和创建纹理*/</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">int</span> <span class="n">texWidth</span><span class="p">,</span> <span class="n">texHeight</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">image</span> <span class="o">=</span> <span class="n">SOIL_load_image</span><span class="p">(</span><span class="n">texImagePath</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texWidth</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">texHeight</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOIL_LOAD_RGB</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">assert</span><span class="p">(</span><span class="n">image</span><span class="o">!=</span> <span class="k">nullptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glTexImage2D</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span><span class="cm">/* 纹理目标(Target)*/</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">0</span><span class="p">,</span>        <span class="cm">/*Mipmap的级别, 0表示基本级别 */</span>
+</span></span><span class="line"><span class="cl">          <span class="n">GL_RGB</span><span class="p">,</span>   <span class="cm">/*纹理储存格式 */</span>
+</span></span><span class="line"><span class="cl">          <span class="n">texWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="n">texHeight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">0</span><span class="p">,</span>        <span class="cm">/*历史遗留问题,必须为0 */</span>
+</span></span><span class="line"><span class="cl">          <span class="n">GL_RGB</span><span class="p">,</span>   <span class="cm">/*原图的格式和数据类型,用RGB加载image */</span>
+</span></span><span class="line"><span class="cl">          <span class="n">GL_UNSIGNED_BYTE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="n">image</span><span class="p">);</span>   <span class="cm">/*图像数据buffer */</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glGenerateMipmap</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">SOIL_free_image_data</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">texture</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -665,44 +664,44 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">37
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span> <span class="n">vShaderCode</span> <span class="o">=</span> <span class="n">vertexCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="cm">/* 读入了 vertex shader内容的字符串*/</span>
-  <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span> <span class="n">fShaderCode</span> <span class="o">=</span> <span class="n">fragmentCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="cm">/*读入了 fragment shader内容的字符串 */</span>
-
-  <span class="cm">/*Step 2.compile vertex-Shader*/</span>
-  <span class="n">GLuint</span> <span class="n">vertex</span><span class="p">;</span>
-  <span class="n">GLint</span> <span class="n">success</span><span class="p">;</span>
-  <span class="n">GLchar</span> <span class="n">infoLog</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
-
-  <span class="c1">// vertex shader
-</span><span class="c1"></span>  <span class="n">vertex</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
-  <span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vShaderCode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-  <span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">);</span>
-  <span class="c1">// if has compile error, get and print
-</span><span class="c1"></span>  <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">){</span>
-      <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">infoLog</span><span class="p">);</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR:SHADER::VERTEX::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">infoLog</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="cm">/*Step 3.compile fragment-Shader*/</span>
-  <span class="n">GLuint</span> <span class="n">fragment</span><span class="p">;</span>
-  <span class="n">fragment</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
-  <span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fShaderCode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-  <span class="n">glCompileShader</span><span class="p">(</span><span class="n">fragment</span><span class="p">);</span>
-  <span class="c1">// if has compile error, get and print 
-</span><span class="c1"></span>  <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">){</span>
-      <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">infoLog</span><span class="p">);</span>
-      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">infoLog</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="cm">/*Step 4.Create shader program*/</span>
-  <span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
-  <span class="n">glAttachShader</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">);</span>
-  <span class="n">glAttachShader</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">);</span>
-  <span class="n">glLinkProgram</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">);</span>
-  <span class="c1">// if has link error, get and print  
-</span><span class="c1"></span>  <span class="n">glGetProgramiv</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">GL_LINK_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
-  <span class="p">......</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">  <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span> <span class="n">vShaderCode</span> <span class="o">=</span> <span class="n">vertexCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="cm">/* 读入了 vertex shader内容的字符串*/</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span> <span class="n">fShaderCode</span> <span class="o">=</span> <span class="n">fragmentCode</span><span class="p">.</span><span class="n">c_str</span><span class="p">();</span><span class="cm">/*读入了 fragment shader内容的字符串 */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/*Step 2.compile vertex-Shader*/</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLuint</span> <span class="n">vertex</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLint</span> <span class="n">success</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLchar</span> <span class="n">infoLog</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1">// vertex shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">vertex</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_VERTEX_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glShaderSource</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vShaderCode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glCompileShader</span><span class="p">(</span><span class="n">vertex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// if has compile error, get and print
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">infoLog</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR:SHADER::VERTEX::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">infoLog</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*Step 3.compile fragment-Shader*/</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLuint</span> <span class="n">fragment</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">fragment</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">GL_FRAGMENT_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glShaderSource</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">fShaderCode</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glCompileShader</span><span class="p">(</span><span class="n">fragment</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// if has compile error, get and print 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">glGetShaderiv</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="n">GL_COMPILE_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glGetShaderInfoLog</span><span class="p">(</span><span class="n">fragment</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">infoLog</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ERROR::SHADER::FRAGMENT::COMPILATION_FAILED</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">infoLog</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*Step 4.Create shader program*/</span>
+</span></span><span class="line"><span class="cl">  <span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span> <span class="o">=</span> <span class="n">glCreateProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glAttachShader</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">vertex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glAttachShader</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">fragment</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glLinkProgram</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// if has link error, get and print  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">glGetProgramiv</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Program</span><span class="p">,</span> <span class="n">GL_LINK_STATUS</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">success</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">......</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -719,15 +718,15 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">   <span class="cm">/*uniform 值设置纹理单元属性 */</span>
-   <span class="n">glActiveTexture</span><span class="p">(</span><span class="n">GL_TEXTURE0</span><span class="p">);</span>
-   <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture1</span><span class="p">);</span>
-   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;ourTexture1&#34;</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
-   <span class="n">glActiveTexture</span><span class="p">(</span><span class="n">GL_TEXTURE1</span><span class="p">);</span>
-   <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture2</span><span class="p">);</span>
-   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;ourTexture2&#34;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
-   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;textureAlpha&#34;</span><span class="p">),</span> <span class="n">gTextureAlpha</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">   <span class="cm">/*uniform 值设置纹理单元属性 */</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glActiveTexture</span><span class="p">(</span><span class="n">GL_TEXTURE0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;ourTexture1&#34;</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glActiveTexture</span><span class="p">(</span><span class="n">GL_TEXTURE1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glBindTexture</span><span class="p">(</span><span class="n">GL_TEXTURE_2D</span><span class="p">,</span> <span class="n">texture2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;ourTexture2&#34;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">glUniform1i</span><span class="p">(</span><span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;textureAlpha&#34;</span><span class="p">),</span> <span class="n">gTextureAlpha</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Unitform 绑定变量后，可以在shader中启用变量并生效：</p>
 <div class="highlight"><div class="chroma">
@@ -760,33 +759,33 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"> <span class="c1">// Vertex Shader， 这段存为 vertex.glsl 文件</span>
- <span class="err">#</span><span class="n">version</span> <span class="mi">330</span> <span class="n">core</span> 
- <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mo">0</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">position</span><span class="p">;</span><span class="cm">/*接收来自VBO的数据,并且自行命名*/</span>
- <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">color</span><span class="p">;</span>
- <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec2</span> <span class="n">texCoord</span><span class="p">;</span>
-   <span class="k">out</span> <span class="k">vec3</span> <span class="n">ourColor</span><span class="p">;</span>
-   <span class="k">out</span> <span class="k">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
-   <span class="k">uniform</span> <span class="n">mat4</span> <span class="n">transform</span><span class="p">;</span>
-   <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-       <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">transform</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="mf">1.0</span><span class="n">f</span><span class="p">);</span> 
-           <span class="n">ourColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
-           <span class="n">TexCoord</span> <span class="o">=</span> <span class="k">vec2</span><span class="p">(</span><span class="n">texCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span> <span class="o">-</span> <span class="n">texCoord</span><span class="p">.</span><span class="n">y</span><span class="p">);</span><span class="cm">/*上下翻转，可以改变纹理的朝向*/</span>
-   <span class="p">}</span> 
-   <span class="c1">// fragment shader ， 这段存为 fragment.glsl 文件</span>
-   <span class="err">#</span><span class="n">version</span> <span class="mi">330</span> <span class="n">core</span>
-   <span class="k">in</span> <span class="k">vec3</span> <span class="n">ourColor</span><span class="p">;</span>
-   <span class="k">in</span> <span class="k">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
-   <span class="k">out</span> <span class="k">vec4</span> <span class="n">color</span><span class="p">;</span> 
-
-   <span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">ourTexture1</span><span class="p">;</span>
-   <span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">ourTexture2</span><span class="p">;</span>
-   <span class="k">uniform</span> <span class="k">int</span> <span class="n">textureAlpha</span><span class="p">;</span>
-   <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="cm">/*效果4: 加载2个纹理texture1和texture2,且纹理2的透明度可调*/</span>
-   <span class="n">color</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">texture</span><span class="p">(</span><span class="n">ourTexture1</span><span class="p">,</span><span class="n">TexCoord</span><span class="p">),</span><span class="n">texture</span><span class="p">(</span><span class="n">ourTexture2</span><span class="p">,</span><span class="k">vec2</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">TexCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">TexCoord</span><span class="p">.</span><span class="n">y</span><span class="p">)),</span><span class="n">textureAlpha</span><span class="o">/</span><span class="mf">100.0</span><span class="p">);</span><span class="c1">//textureAlpha/100.0 means 2nd texture rate</span>
-   <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-glsl" data-lang="glsl"><span class="line"><span class="cl"> <span class="c1">// Vertex Shader， 这段存为 vertex.glsl 文件</span>
+</span></span><span class="line"><span class="cl"> <span class="err">#</span><span class="n">version</span> <span class="mi">330</span> <span class="n">core</span> 
+</span></span><span class="line"><span class="cl"> <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mo">0</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">position</span><span class="p">;</span><span class="cm">/*接收来自VBO的数据,并且自行命名*/</span>
+</span></span><span class="line"><span class="cl"> <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec3</span> <span class="n">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="n">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">in</span> <span class="k">vec2</span> <span class="n">texCoord</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">out</span> <span class="k">vec3</span> <span class="n">ourColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">out</span> <span class="k">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">uniform</span> <span class="n">mat4</span> <span class="n">transform</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">transform</span> <span class="o">*</span> <span class="k">vec4</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="mf">1.0</span><span class="n">f</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">ourColor</span> <span class="o">=</span> <span class="n">color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">           <span class="n">TexCoord</span> <span class="o">=</span> <span class="k">vec2</span><span class="p">(</span><span class="n">texCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="n">f</span> <span class="o">-</span> <span class="n">texCoord</span><span class="p">.</span><span class="n">y</span><span class="p">);</span><span class="cm">/*上下翻转，可以改变纹理的朝向*/</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">   <span class="c1">// fragment shader ， 这段存为 fragment.glsl 文件</span>
+</span></span><span class="line"><span class="cl">   <span class="err">#</span><span class="n">version</span> <span class="mi">330</span> <span class="n">core</span>
+</span></span><span class="line"><span class="cl">   <span class="k">in</span> <span class="k">vec3</span> <span class="n">ourColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">in</span> <span class="k">vec2</span> <span class="n">TexCoord</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">out</span> <span class="k">vec4</span> <span class="n">color</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">ourTexture1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">uniform</span> <span class="k">sampler2D</span> <span class="n">ourTexture2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">uniform</span> <span class="k">int</span> <span class="n">textureAlpha</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="k">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="cm">/*效果4: 加载2个纹理texture1和texture2,且纹理2的透明度可调*/</span>
+</span></span><span class="line"><span class="cl">   <span class="n">color</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">texture</span><span class="p">(</span><span class="n">ourTexture1</span><span class="p">,</span><span class="n">TexCoord</span><span class="p">),</span><span class="n">texture</span><span class="p">(</span><span class="n">ourTexture2</span><span class="p">,</span><span class="k">vec2</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">TexCoord</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">TexCoord</span><span class="p">.</span><span class="n">y</span><span class="p">)),</span><span class="n">textureAlpha</span><span class="o">/</span><span class="mf">100.0</span><span class="p">);</span><span class="c1">//textureAlpha/100.0 means 2nd texture rate</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -804,16 +803,16 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="cm">/* 注意, 由于矩阵乘法计算规则,实际的变换动作顺序应该与阅读顺序相反 */</span>
-  <span class="cm">/* 实际变换矩阵：先缩放、后旋转、最后平移 */</span>
-  <span class="n">glm</span><span class="o">::</span><span class="n">mat4</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">translate</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">rotateAxis</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rotateAngle</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">scale</span><span class="p">){</span>
-      <span class="n">glm</span><span class="o">::</span><span class="n">mat4</span> <span class="n">trans</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="cm">/*初始化为单位矩阵*/</span>
-      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">translate</span><span class="p">);</span><span class="cm">/*三个方向的平移*/</span>
-      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">rotateAngle</span><span class="p">,</span> <span class="n">rotateAxis</span><span class="p">);</span><span class="cm">/*给定的旋转轴以及旋转角*/</span>
-      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">scale</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">scale</span><span class="p">);</span><span class="cm">/* 三个方向的缩放因子*/</span>
-      <span class="k">return</span> <span class="n">trans</span><span class="p">;</span>
-  <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">  <span class="cm">/* 注意, 由于矩阵乘法计算规则,实际的变换动作顺序应该与阅读顺序相反 */</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* 实际变换矩阵：先缩放、后旋转、最后平移 */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glm</span><span class="o">::</span><span class="n">mat4</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">translate</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">rotateAxis</span><span class="p">,</span> <span class="kt">float</span> <span class="n">rotateAngle</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span> <span class="n">scale</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glm</span><span class="o">::</span><span class="n">mat4</span> <span class="n">trans</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="cm">/*初始化为单位矩阵*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">translate</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">translate</span><span class="p">);</span><span class="cm">/*三个方向的平移*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">rotate</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">rotateAngle</span><span class="p">,</span> <span class="n">rotateAxis</span><span class="p">);</span><span class="cm">/*给定的旋转轴以及旋转角*/</span>
+</span></span><span class="line"><span class="cl">      <span class="n">trans</span> <span class="o">=</span> <span class="n">glm</span><span class="o">::</span><span class="n">scale</span><span class="p">(</span><span class="n">trans</span><span class="p">,</span> <span class="n">scale</span><span class="p">);</span><span class="cm">/* 三个方向的缩放因子*/</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="n">trans</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -845,30 +844,30 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++">  <span class="n">GLFWwindow</span><span class="o">*</span> <span class="n">window</span> <span class="o">=</span> <span class="n">glfwCreateWindow</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="s">&#34;LearnOpenGL&#34;</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
-  <span class="p">...</span>
-  <span class="cm">/*第一个变换图*/</span>
-  <span class="n">trans</span> <span class="o">=</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">),</span>
-      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">GLfloat</span><span class="o">&gt;</span><span class="p">(</span><span class="n">glfwGetTime</span><span class="p">()</span> <span class="o">*</span> <span class="mf">50.0f</span><span class="p">)),</span>
-      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
-  <span class="n">GLuint</span> <span class="n">transformLoc</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;transform&#34;</span><span class="p">);</span>
-  <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">transformLoc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">trans</span><span class="p">));</span>
-
-  <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span><span class="cm">/*绑定VAO,应用前面设置的属性*/</span>
-  <span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span><span class="cm">/*利用顶点索引作图*/</span> 
-
-  <span class="cm">/*第二个变换图, 再次调用glDrawElements */</span>
-  <span class="n">GLfloat</span> <span class="n">scaleFactor</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">glfwGetTime</span><span class="p">()));</span>
-  <span class="n">trans</span> <span class="o">=</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">),</span>
-      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="mf">0.0f</span><span class="p">,</span>
-      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="n">scaleFactor</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">));</span>
-  <span class="n">transformLoc</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;transform&#34;</span><span class="p">);</span>
-  <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">transformLoc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">trans</span><span class="p">));</span>
-  <span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-  <span class="n">glBindVertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="cm">/*解绑VAO */</span>
-  <span class="p">...</span>
-  <span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span><span class="c1">// Swap the screen buffers
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-C++" data-lang="C++"><span class="line"><span class="cl">  <span class="n">GLFWwindow</span><span class="o">*</span> <span class="n">window</span> <span class="o">=</span> <span class="n">glfwCreateWindow</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="s">&#34;LearnOpenGL&#34;</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/*第一个变换图*/</span>
+</span></span><span class="line"><span class="cl">  <span class="n">trans</span> <span class="o">=</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="n">glm</span><span class="o">::</span><span class="n">radians</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">GLfloat</span><span class="o">&gt;</span><span class="p">(</span><span class="n">glfwGetTime</span><span class="p">()</span> <span class="o">*</span> <span class="mf">50.0f</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLuint</span> <span class="n">transformLoc</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;transform&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">transformLoc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">trans</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">VAO</span><span class="p">);</span><span class="cm">/*绑定VAO,应用前面设置的属性*/</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span><span class="cm">/*利用顶点索引作图*/</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/*第二个变换图, 再次调用glDrawElements */</span>
+</span></span><span class="line"><span class="cl">  <span class="n">GLfloat</span> <span class="n">scaleFactor</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">glfwGetTime</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">trans</span> <span class="o">=</span> <span class="n">CalcTransformMatrix</span><span class="p">(</span><span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">),</span> <span class="mf">0.0f</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="n">glm</span><span class="o">::</span><span class="n">vec3</span><span class="p">(</span><span class="n">scaleFactor</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">transformLoc</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">shader</span><span class="p">.</span><span class="n">GetProgram</span><span class="p">(),</span> <span class="s">&#34;transform&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glUniformMatrix4fv</span><span class="p">(</span><span class="n">transformLoc</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="n">glm</span><span class="o">::</span><span class="n">value_ptr</span><span class="p">(</span><span class="n">trans</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_INT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glBindVertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="cm">/*解绑VAO */</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">glfwSwapBuffers</span><span class="p">(</span><span class="n">window</span><span class="p">);</span><span class="c1">// Swap the screen buffers
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -953,8 +952,10 @@ Shader 也叫着色器，是运行于GPU的代码片段，语法简单，有点�
             
                 
             
+                
+            
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 126556 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
             </div>
 
             <div class="footer-line">

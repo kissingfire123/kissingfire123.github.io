@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/05_%E5%9F%BA%E4%BA%8Ehugo%E5%92%8Cgithub-page%E6%90%AD%E5%BB%BA%E5%85%8D%E8%B4%B9%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2022-04-01T22:47:40+08:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="利用Hugo和Github-Pages搭建免费的个人博客"/>
 <meta name="twitter:description" content="摘要：基于Hugo框架和Github-Page搭建个人博客"/>
@@ -178,13 +177,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 如果有chocolatey，就直接执行</span>
-<span class="n">choco</span> <span class="n">install</span> <span class="n">hugo</span> <span class="n">-confirm</span>
-<span class="c"># 如果没有chocolatey，就先安装一下</span>
-<span class="n">powershell</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">unrestricted</span> <span class="n">-Command</span> <span class="s2">&#34;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&#34;</span>
-<span class="c"># 设置环境变量</span>
-<span class="nb">SET </span><span class="n">PATH</span><span class="p">=</span><span class="k">%</span><span class="n">PATH</span><span class="p">%;</span><span class="k">%</span><span class="n">ALLUSERSPROFILE</span><span class="p">%\</span><span class="n">chocolatey</span><span class="p">\</span><span class="n">bin</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 如果有chocolatey，就直接执行</span>
+</span></span><span class="line"><span class="cl"><span class="n">choco</span> <span class="n">install</span> <span class="n">hugo</span> <span class="n">-confirm</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 如果没有chocolatey，就先安装一下</span>
+</span></span><span class="line"><span class="cl"><span class="n">powershell</span> <span class="n">-NoProfile</span> <span class="n">-ExecutionPolicy</span> <span class="n">unrestricted</span> <span class="n">-Command</span> <span class="s2">&#34;iex ((new-object net.webclient).DownloadString(&#39;https://chocolatey.org/install.ps1&#39;))&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c"># 设置环境变量</span>
+</span></span><span class="line"><span class="cl"><span class="nb">SET </span><span class="n">PATH</span><span class="p">=</span><span class="k">%</span><span class="n">PATH</span><span class="p">%;</span><span class="k">%</span><span class="n">ALLUSERSPROFILE</span><span class="p">%\</span><span class="n">chocolatey</span><span class="p">\</span><span class="n">bin</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装成功后，命令行执行 <strong><code>hugo version</code></strong> 检查hugo版本，能正确打印版本信息即表示正常安装。</p>
 </li>
@@ -206,16 +205,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#假设用户名是usernamexxx</span>
-<span class="nb">cd</span> /d/Files
-git clone https://github.com/usernamexxx/usernamexxx.github.io.git  
-<span class="nb">cd</span> usernamexxx.github.io
-<span class="c1">#测试第一个网页</span>
-<span class="nb">echo</span> <span class="s2">&#34;Hello World&#34;</span> &gt; index.html
-git add --all
-git commit -m <span class="s2">&#34;Initial commit&#34;</span>
-git push -u origin main
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#假设用户名是usernamexxx</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /d/Files
+</span></span><span class="line"><span class="cl">git clone https://github.com/usernamexxx/usernamexxx.github.io.git  
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> usernamexxx.github.io
+</span></span><span class="line"><span class="cl"><span class="c1">#测试第一个网页</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Hello World&#34;</span> &gt; index.html
+</span></span><span class="line"><span class="cl">git add --all
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;Initial commit&#34;</span>
+</span></span><span class="line"><span class="cl">git push -u origin main
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>注意⚠
@@ -230,11 +229,11 @@ git push -u origin main
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#windows平台需要执行这个，避免行尾\r\n,CRLF的提示，挺烦的</span>
-git config --global core.autocrlf <span class="nb">false</span>
-<span class="c1">#终端环境保存https的token密码，避免每次都输入密码</span>
-git config --global credential.helper store
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#windows平台需要执行这个，避免行尾\r\n,CRLF的提示，挺烦的</span>
+</span></span><span class="line"><span class="cl">git config --global core.autocrlf <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#终端环境保存https的token密码，避免每次都输入密码</span>
+</span></span><span class="line"><span class="cl">git config --global credential.helper store
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>虽然这个免费的服务有一些限制：项目大小最大为1GB，每月带宽使用不超过100GB，每小时最多构建10个版本。对于个人博客网站，是绰绰有余了，所以不用担心。</p>
 <h1 id="3新建hugo-site站点">3.新建hugo site站点</h1>
@@ -262,25 +261,25 @@ git config --global credential.helper store
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#cd到git仓库的目录</span>
-<span class="nb">cd</span> /d/Files/usernamexxx.github.io
-<span class="c1">#确认关联到了远端仓库https://github.com/usernamexxx/usernamexxx.github.io.git</span>
-git branch -v
-<span class="c1"># 新建hugo站点,起个英文site名，比如MyHugoBlog</span>
-hugo new site MyHugoBlog
-<span class="c1">##文件夹下会生成如下</span>
-<span class="c1">#   MyHugoBlog</span>
-<span class="c1">#     ├─archetypes</span>
-<span class="c1">#     ├─content   (markdown内容存放处,一般是content/post/hello.md)</span>
-<span class="c1">#     ├─data</span>
-<span class="c1">#     ├─layouts</span>
-<span class="c1">#     ├─static     (站点静态资源存放处,比如image,js,css)</span>
-<span class="c1">#     ├─themes     </span>
-<span class="c1">#     └─config.toml  (站点最重要的配置文件)</span>
-
-<span class="c1">#cd到站点目录的原因：所有hugo命令都要在hugo根目录下执行</span>
-<span class="nb">cd</span> MyHugoBlog
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#cd到git仓库的目录</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /d/Files/usernamexxx.github.io
+</span></span><span class="line"><span class="cl"><span class="c1">#确认关联到了远端仓库https://github.com/usernamexxx/usernamexxx.github.io.git</span>
+</span></span><span class="line"><span class="cl">git branch -v
+</span></span><span class="line"><span class="cl"><span class="c1"># 新建hugo站点,起个英文site名，比如MyHugoBlog</span>
+</span></span><span class="line"><span class="cl">hugo new site MyHugoBlog
+</span></span><span class="line"><span class="cl"><span class="c1">##文件夹下会生成如下</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   MyHugoBlog</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     ├─archetypes</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     ├─content   (markdown内容存放处,一般是content/post/hello.md)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     ├─data</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     ├─layouts</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     ├─static     (站点静态资源存放处,比如image,js,css)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     ├─themes     </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#     └─config.toml  (站点最重要的配置文件)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#cd到站点目录的原因：所有hugo命令都要在hugo根目录下执行</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> MyHugoBlog
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="4设置主题">4.设置主题</h1>
 <p>Hugo支持非常多简洁又美观的主题，可以在<a href="https://www.gohugo.org/theme/" target="_blank" rel="noopener noreffer">Hugo中文站的主题列表</a>里或者<a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreffer">Hugo官方站的主题列表</a>挑选，看个人喜好了。这里可以不用太纠结，可以先随便选一个，让站点运行起来先，可以很方便就换掉的(配置文件里的<code>theme</code>选项)。</p>
@@ -291,9 +290,9 @@ hugo new site MyHugoBlog
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /d/Files/usernamexxx.github.io
-git submodule add https://github.com/usernamexxx/hugo-theme-even  MyHugoBlog/theme/even
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /d/Files/usernamexxx.github.io
+</span></span><span class="line"><span class="cl">git submodule add https://github.com/usernamexxx/hugo-theme-even  MyHugoBlog/theme/even
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h1 id="5创建hugo新文章">5.创建hugo新文章</h1>
 <p>hugo的新文章在content/post目录，或者content/posts目录，看个人习惯而定，试用了几个主题，不同主题默认位置可能是二者其一。例如，执行下述hugo命令：</p>
@@ -304,10 +303,10 @@ git submodule add https://github.com/usernamexxx/hugo-theme-even  MyHugoBlog/the
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> /d/Files/usernamexxx.github.io/MyHugoBlog
-<span class="c1">#会新建文件content/post/MyFirst.md</span>
-hugo new post/MyFirst.md
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /d/Files/usernamexxx.github.io/MyHugoBlog
+</span></span><span class="line"><span class="cl"><span class="c1">#会新建文件content/post/MyFirst.md</span>
+</span></span><span class="line"><span class="cl">hugo new post/MyFirst.md
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>新生成的markdown文档默认如下(<code>三个短横---</code>之间是配置选项，正文内容从短横之后开始)，可以手动添加一下正文内容 ：</p>
 <div class="highlight"><div class="chroma">
@@ -321,14 +320,14 @@ hugo new post/MyFirst.md
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">---
-title: &#34;First&#34;
-date: 2022-01-03T15:19:14+08:00
-draft: true
----
-<span class="gh"># 正文内容在这里
-</span><span class="gh"></span><span class="k">-</span> Hello world,first post!
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;First&#34;
+</span></span><span class="line"><span class="cl">date: 2022-01-03T15:19:14+08:00
+</span></span><span class="line"><span class="cl">draft: true
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl"><span class="gh"># 正文内容在这里
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="k">-</span> Hello world,first post!
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>其中draft的含义是草稿的意思，在正式发布的时候不会被包含和编译，那时要改为false。</p>
 <p>所有文章的通用设置在根目录的<code>config.toml</code>进行配置，需要关注的有如下选项，更多选项请参考<a href="https://www.gohugo.org/doc/overview/configuration/" target="_blank" rel="noopener noreffer">hugo-configuration</a></p>
@@ -341,12 +340,12 @@ draft: true
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s1">&#39;https://usernamexxx.github.io&#39;</span>
-<span class="nx">languageCode</span> <span class="p">=</span> <span class="s1">&#39;zh-cn&#39;</span>
-<span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;my blog&#34;</span>
-<span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;even&#34;</span> 
-<span class="nx">publishDir</span><span class="p">=</span><span class="s2">&#34;../docs&#34;</span>   
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">baseURL</span> <span class="p">=</span> <span class="s1">&#39;https://usernamexxx.github.io&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">languageCode</span> <span class="p">=</span> <span class="s1">&#39;zh-cn&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;my blog&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;even&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">publishDir</span><span class="p">=</span><span class="s2">&#34;../docs&#34;</span>   
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上述<code>publishDir</code>也可以不配置，默认是根目录下的<code>public</code>目录，意思是后续编译出的静态网页文件存放的目录，不和hugo的内容文件混在一起的话，方便后续查看Git-Log以及其他部署工作。</p>
 <p>至此，Hugo新站点的骨架都搭建完了，可以<code>本地调试</code>看看效果了，在命令行运行：</p>
@@ -356,9 +355,9 @@ draft: true
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span>  /d/Files/usernamexxx.github.io/MyHugoBlog
-hugo server -w
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span>  /d/Files/usernamexxx.github.io/MyHugoBlog
+</span></span><span class="line"><span class="cl">hugo server -w
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>终端提示&quot;<em>Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)</em>&quot;，访问localHost本地URL： http://localhost:1313 ，即可看到上述添加的MyFirst.md里的内容，并且保持终端site运行的情况下，手动修改markdown内容，保存一下，<strong>网页实时更新</strong>，<code>调试非常方便</code>也非常快。</p>
 <div class="details admonition tip open">
@@ -385,16 +384,16 @@ hugo server -w
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span>  /d/Files/usernamexxx.github.io
-git add .
-git commit -m <span class="s2">&#34;first content post&#34;</span>
-<span class="nb">cd</span> MyHugoBlog
-hugo 
-<span class="c1">#假设这里配置的publishDir=&#34;../docs&#34;，如果不配置就是public目录</span>
-git add ../docs
-git commit -m <span class="s2">&#34;compiled results&#34;</span>
-git push -u origin
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span>  /d/Files/usernamexxx.github.io
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;first content post&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> MyHugoBlog
+</span></span><span class="line"><span class="cl">hugo 
+</span></span><span class="line"><span class="cl"><span class="c1">#假设这里配置的publishDir=&#34;../docs&#34;，如果不配置就是public目录</span>
+</span></span><span class="line"><span class="cl">git add ../docs
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;compiled results&#34;</span>
+</span></span><span class="line"><span class="cl">git push -u origin
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><strong>至此，就完成了Hugo + Github Page</strong>的搭建工作，不难发现，现在的站点有一点简陋(主题对应的特定选项还没配)，继续往下看，就是美化过程。</p>
 <h1 id="6配置theme相关的config">6.配置theme相关的Config</h1>
@@ -501,8 +500,10 @@ git push -u origin
             
                 
             
+                
+            
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 126556 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
             </div>
 
             <div class="footer-line">
