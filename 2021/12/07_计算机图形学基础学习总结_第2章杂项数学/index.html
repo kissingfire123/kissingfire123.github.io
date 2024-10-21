@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-01T22:47:40+08:00" />
+<meta property="article:modified_time" content="2021-12-27T00:00:00+00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Fundamentals of Computer Graphics第2章总结_(杂项数学)"/>
 <meta name="twitter:description" content="摘要：Fundamentals of Computer Graphics第四版，原书第2章Miscellaneous Math的总结"/>
@@ -24,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/"
-        },"genre": "posts","keywords": "图形渲染, 英文原本","wordcount":  10169 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/","datePublished": "2021-12-27T00:00:00+00:00","dateModified": "2022-04-01T22:47:40+08:00","publisher": {
+        },"genre": "posts","keywords": "图形渲染, 英文原本","wordcount":  10121 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6\/","datePublished": "2021-12-27T00:00:00+00:00","dateModified": "2021-12-27T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Fundamentals of Computer Graphics第2章总结_(杂项数学)</h1><h2 class="single-subtitle">计算机图形学-虎书,原版,第2章</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-27">2021-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10169 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-27">2021-12-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10121 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/2021/12/07_%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93_%E7%AC%AC2%E7%AB%A0%E6%9D%82%E9%A1%B9%E6%95%B0%E5%AD%A6/" class="leancloud_visitors" data-flag-title="Fundamentals of Computer Graphics第2章总结_(杂项数学)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -535,7 +536,7 @@ $\vec{v} =\vec{w} \times \vec{u} \text{ ,(向量} \vec{v} \text{ 很接近} \vec
         data-sizes="auto"
         alt="https://s2.loli.net/2021/12/12/LueG8vJI5scorHO.png"
         title="Chapter2-梯度偏微分分析.png" /></p>
-<p>回顾向量知识，如果$(x,y)$ 和 $(x&rsquo;,y&rsquo;)$垂直，则$xx&rsquo;+yy&rsquo;=0$，(x&rsquo;,y&rsquo;)可以取值$(y,-x)$.
+<p>回顾向量知识，如果$(x,y)$ 和 $(x',y')$垂直，则$xx'+yy'=0$，(x',y')可以取值$(y,-x)$.
 那么:
 $$(x_a,y_a)=k(\frac{\partial f}{\partial y} , - \frac{\partial f}{\partial x}) \text{,    (式2.5.2-b) }$$
 根据式子2.5.2-a和2.5.2-b，可以得出:
@@ -714,7 +715,7 @@ z= r \cos \theta \\
         data-sizes="auto"
         alt="https://s2.loli.net/2021/12/19/DZkKhLtuAXO92aC.png"
         title="Chapter2-等参曲线AutoDesk参考2.png" /></p>
-<p>则q的导数$q&rsquo;$和曲面相切，$q&rsquo;$为P的偏微分$P_u$，同样地，还可以得到第二条切线$P_v$，那么该点的法线$\vec n$指向曲面外，且同时垂直于这2条曲面切线：
+<p>则q的导数$q'$和曲面相切，$q'$为P的偏微分$P_u$，同样地，还可以得到第二条切线$P_v$，那么该点的法线$\vec n$指向曲面外，且同时垂直于这2条曲面切线：
 $$\vec n = \overrightarrow P_u \times \overrightarrow P_v$$</p>
 <hr>
 <h1 id="6-线性插值">6 线性插值</h1>
@@ -780,8 +781,7 @@ $$\text{&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Chapter2(完结) @2021
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-04-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/1df0b60c072a83ecd129ea39995381056df5dd14" target="_blank" title="commit by kissingfire123(lwy13697320205@163com) 1df0b60c072a83ecd129ea39995381056df5dd14: 整理了文件夹，准确分类，方便管理">
-                                    <i class="fas fa-hashtag fa-fw"></i>1df0b60</a></span>
+                <span>更新于 2021-12-27</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -860,13 +860,13 @@ $$\text{&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; Chapter2(完结) @2021
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

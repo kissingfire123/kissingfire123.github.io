@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2023/04/27_configure_mac_remote_control_ubuntu22.04/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-04-01T15:57:31+08:00" />
-<meta property="article:modified_time" content="2023-04-25T21:22:44+08:00" />
+<meta property="article:modified_time" content="2023-04-01T15:57:31+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mac 远程桌面控制Ubuntu 22.04 (RDP)"/>
 <meta name="twitter:description" content="摘要：记录安装与配置Ubuntu 22.04 的远程控制"/>
@@ -24,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2023\/04\/27_configure_mac_remote_control_ubuntu22.04\/"
-        },"genre": "posts","keywords": "Linux, Mac, RDP","wordcount":  1857 ,
-        "url": "https:\/\/kissingfire123.github.io\/2023\/04\/27_configure_mac_remote_control_ubuntu22.04\/","datePublished": "2023-04-01T15:57:31+08:00","dateModified": "2023-04-25T21:22:44+08:00","publisher": {
+        },"genre": "posts","keywords": "Linux, Mac, RDP","wordcount":  1858 ,
+        "url": "https:\/\/kissingfire123.github.io\/2023\/04\/27_configure_mac_remote_control_ubuntu22.04\/","datePublished": "2023-04-01T15:57:31+08:00","dateModified": "2023-04-01T15:57:31+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Mac 远程桌面控制Ubuntu 22.04 (RDP)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1857 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-04-01">2023-04-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1858 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2023/04/27_configure_mac_remote_control_ubuntu22.04/" class="leancloud_visitors" data-flag-title="Mac 远程桌面控制Ubuntu 22.04 (RDP)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -176,15 +177,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 更新 apt 信息</span>
-</span></span><span class="line"><span class="cl">sudo apt update
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 安装Xfce桌面</span>
-</span></span><span class="line"><span class="cl">sudo apt install xubuntu-desktop
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 这是服务器连接显示器要用的桌面，重启后显示器应出现图形界面</span>
-</span></span><span class="line"><span class="cl">sudo apt install xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 更新 apt 信息</span>
+sudo apt update
+
+<span class="c1"># 安装Xfce桌面</span>
+sudo apt install xubuntu-desktop
+
+<span class="c1"># 这是服务器连接显示器要用的桌面，重启后显示器应出现图形界面</span>
+sudo apt install xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils
+</code></pre></td></tr></table>
 </div>
 </div><p>编辑配置文件，将默认桌面切换为 xfce4 ，轻量快速体验好。</p>
 <p>执行下方命令即可配置默认桌面为xfce4:</p>
@@ -193,8 +194,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">echo</span> xfce4-session &gt; ~/.xsession
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> xfce4-session &gt; ~/.xsession
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="配置xrdp">配置xrdp</h1>
 <p>执行下方命令即可完成 xrdp 的<strong>安装</strong>：</p>
@@ -204,9 +205,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 安装</span>
-</span></span><span class="line"><span class="cl">sudo apt install xrdp
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 安装</span>
+sudo apt install xrdp
+</code></pre></td></tr></table>
 </div>
 </div><p>执行下方命令即可完成 xrdp 的<strong>配置</strong>：</p>
 <div class="highlight"><div class="chroma">
@@ -226,20 +227,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 允许xrdp 运行 </span>
-</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> xrdp
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 配置防火墙，让xrdp的3389 端口可以被访问。</span>
-</span></span><span class="line"><span class="cl">sudo ufw allow 3389/tcp
-</span></span><span class="line"><span class="cl"><span class="c1"># 想更安全的话执行: sudo ufw allow from 192.168.33.0/24 to any port 3389</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 其中 IP 范围是 192.168.33.0/24，可以换成你想要的</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 需要添加xrdp到 ssl-cert group </span>
-</span></span><span class="line"><span class="cl">sudo adduser xrdp ssl-cert
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 编辑ini文件，在文件末尾添加   exec startxfce4</span>
-</span></span><span class="line"><span class="cl">sudo vim /etc/xrdp/xrdp.ini
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 允许xrdp 运行 </span>
+sudo systemctl <span class="nb">enable</span> xrdp
+
+<span class="c1"># 配置防火墙，让xrdp的3389 端口可以被访问。</span>
+sudo ufw allow 3389/tcp
+<span class="c1"># 想更安全的话执行: sudo ufw allow from 192.168.33.0/24 to any port 3389</span>
+<span class="c1"># 其中 IP 范围是 192.168.33.0/24，可以换成你想要的</span>
+
+<span class="c1"># 需要添加xrdp到 ssl-cert group </span>
+sudo adduser xrdp ssl-cert
+
+<span class="c1"># 编辑ini文件，在文件末尾添加   exec startxfce4</span>
+sudo vim /etc/xrdp/xrdp.ini
+</code></pre></td></tr></table>
 </div>
 </div><p>配置完后，Xrdp 服务将自动运行，当然，也可以手动重启 xrdp 服务：(<strong>可选操作</strong>)</p>
 <div class="highlight"><div class="chroma">
@@ -248,9 +249,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo service xrdp restart 
-</span></span><span class="line"><span class="cl">sudo systemctl restart xrdp 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo service xrdp restart 
+sudo systemctl restart xrdp 
+</code></pre></td></tr></table>
 </div>
 </div><p>Xrdp 的状态确认可以通过执行 <code>sudo systemctl status xrdp</code>来确认：</p>
 <p>状态正常，大概应该是这样的，没有明显报错：</p>
@@ -261,13 +262,15 @@
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> xrdp.service - xrdp daemon
-</span></span><span class="line"><span class="cl">     Loaded: loaded <span class="o">(</span>/lib/systemd/system/xrdp.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: &gt;
-</span></span><span class="line"><span class="cl">     Active: active <span class="o">(</span>running<span class="o">)</span> since Tue 2023-03-25 16:47:22 CST<span class="p">;</span> 3h 39min ago
-</span></span><span class="line"><span class="cl"> ......（其他信息）
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"> xrdp.service - xrdp daemon
+     Loaded: loaded <span class="o">(</span>/lib/systemd/system/xrdp.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: &gt;
+     Active: active <span class="o">(</span>running<span class="o">)</span> since Tue 2023-03-25 16:47:22 CST<span class="p">;</span> 3h 39min ago
+ ......（其他信息）
+
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="远控软件推荐">远控软件推荐</h1>
 <p>目前我们是使用 RDP 协议控制 Ubuntu，那么在不同平台，均有不错的软件可以用来远控该 Ubuntu：</p>
@@ -306,9 +309,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 切换终端</span>
-</span></span><span class="line"><span class="cl">sudo update-alternatives --config x-terminal-emulator
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 切换终端</span>
+sudo update-alternatives --config x-terminal-emulator
+</code></pre></td></tr></table>
 </div>
 </div><p>打印出如下内容后：</p>
 <div class="highlight"><div class="chroma">
@@ -324,16 +327,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">有</span> <span class="s">2 个候选项可用于替换 x-terminal-emulator (提供 /usr/bin/x-terminal-emulator)。</span>
-</span></span><span class="line"><span class="cl"> <span class="na">选择</span>    <span class="s">路径              优先级 状态</span>
-</span></span><span class="line"><span class="cl"><span class="err">\------------------------------------------------------------</span>
-</span></span><span class="line"><span class="cl"><span class="na">\*</span> <span class="s">0      /usr/bin/gnome-terminal.wrapper  40    自动模式</span>
-</span></span><span class="line"><span class="cl">   <span class="na">1</span>      <span class="s">/usr/bin/gnome-terminal.wrapper  40    手动模式</span>
-</span></span><span class="line"><span class="cl">   <span class="na">2</span>      <span class="s">/usr/bin/xfce4-terminal.wrapper  40    手动模式</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">要维持当前值[*]请按&lt;回车键&gt;，或者键入选择的编号：</span>
-</span></span><span class="line"><span class="cl"><span class="na">update-alternatives</span><span class="o">:</span> <span class="s">使用 /usr/bin/xfce4-terminal.wrapper 来在手动模式中提供 /usr/bin/x-terminal-emulator (x-terminal-emulator)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">有 2 个候选项可用于替换 x-terminal-emulator (提供 /usr/bin/x-terminal-emulator)。
+ 选择    路径              优先级 状态
+\------------------------------------------------------------
+\* 0      /usr/bin/gnome-terminal.wrapper  40    自动模式
+   1      /usr/bin/gnome-terminal.wrapper  40    手动模式
+   2      /usr/bin/xfce4-terminal.wrapper  40    手动模式
+
+要维持当前值[*]请按&lt;回车键&gt;，或者键入选择的编号：
+update-alternatives: 使用 /usr/bin/xfce4-terminal.wrapper 来在手动模式中提供 /usr/bin/x-terminal-emulator (x-terminal-emulator)
+</code></pre></td></tr></table>
 </div>
 </div><p>选择和 <strong>xfce4 相关的</strong> terminal，上述是2 ，则输入 2 然后 Enter ，然后重新连接 RDP 远程即可。</p>
 <h1 id="参考文章">参考文章</h1>
@@ -345,8 +348,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-04-25&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/348748dd31ab8826b4fc6759309d782248e88313" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 348748dd31ab8826b4fc6759309d782248e88313: &lt;published&gt; publish remote control linux">
-                                    <i class="fas fa-hashtag fa-fw"></i>348748d</a></span>
+                <span>更新于 2023-04-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -425,13 +427,13 @@
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

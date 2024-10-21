@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2023/08/31_openscenegraph_1st/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-09-05T22:57:58+08:00" />
+<meta property="article:modified_time" content="2023-08-01T00:00:00+00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenSceneGraph学习(1)"/>
 <meta name="twitter:description" content="摘要：优雅地启用 OSG 的源码调试 Examples"/>
@@ -24,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2023\/08\/31_openscenegraph_1st\/"
-        },"genre": "posts","keywords": "渲染引擎, 图形渲染","wordcount":  1337 ,
-        "url": "https:\/\/kissingfire123.github.io\/2023\/08\/31_openscenegraph_1st\/","datePublished": "2023-08-01T00:00:00+00:00","dateModified": "2023-09-05T22:57:58+08:00","publisher": {
+        },"genre": "posts","keywords": "渲染引擎, 图形渲染","wordcount":  1338 ,
+        "url": "https:\/\/kissingfire123.github.io\/2023\/08\/31_openscenegraph_1st\/","datePublished": "2023-08-01T00:00:00+00:00","dateModified": "2023-08-01T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">OpenSceneGraph学习(1)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/"><i class="far fa-folder fa-fw"></i>计算机图形学</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-08-01">2023-08-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1337 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-08-01">2023-08-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1338 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2023/08/31_openscenegraph_1st/" class="leancloud_visitors" data-flag-title="OpenSceneGraph学习(1)">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -162,9 +163,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span>  /d/github_sourecs_projects/OSG
-</span></span><span class="line"><span class="cl">git clone https://github.com/openscenegraph/OpenSceneGraph.git
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span>  /d/github_sourecs_projects/OSG
+git clone https://github.com/openscenegraph/OpenSceneGraph.git
+</code></pre></td></tr></table>
 </div>
 </div><p>版本问题：我选择的最新的master，最新打的 tag 是 <code>OpenSceneGraph-3.6.5</code>。</p>
 <h1 id="下载依赖库数据包">下载依赖库/数据包</h1>
@@ -190,24 +191,26 @@ OSG 针对大多数人需要的 OSG-CORE 解决好了依赖关系，但对于其
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">-- The following OPTIONAL packages have been found:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> * GDAL
-</span></span><span class="line"><span class="cl"> * CURL
-</span></span><span class="line"><span class="cl"> * OpenGL
-</span></span><span class="line"><span class="cl"> * ZLIB
-</span></span><span class="line"><span class="cl"> * PNG
-</span></span><span class="line"><span class="cl"> * TIFF
-</span></span><span class="line"><span class="cl"> * Threads
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">-- The following OPTIONAL packages have not been found:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> * Freetype
-</span></span><span class="line"><span class="cl"> * ilmbase
-</span></span><span class="line"><span class="cl"> * Inventor
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash">-- The following OPTIONAL packages have been found:
+
+ * GDAL
+ * CURL
+ * OpenGL
+ * ZLIB
+ * PNG
+ * TIFF
+ * Threads
+
+-- The following OPTIONAL packages have not been found:
+
+ * Freetype
+ * ilmbase
+ * Inventor
+
+</code></pre></td></tr></table>
 </div>
 </div><p>所以我们需要前往：<a href="https://www.openscenegraph.com/index.php/download-section/dependencies" target="_blank" rel="noopener noreffer">OSG 官网Doc/Deps</a>
 下载对应的依赖包，解压缩到相关目录。</p>
@@ -227,9 +230,9 @@ OSG 针对大多数人需要的 OSG-CORE 解决好了依赖关系，但对于其
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /d/github_sourecs_projects/OSG
-</span></span><span class="line"><span class="cl">git clone https://github.com/openscenegraph/OpenSceneGraph-Data.git
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /d/github_sourecs_projects/OSG
+git clone https://github.com/openscenegraph/OpenSceneGraph-Data.git
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -256,17 +259,17 @@ OSG 针对大多数人需要的 OSG-CORE 解决好了依赖关系，但对于其
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="nv">build_dir</span><span class="o">=</span><span class="s2">&#34;build&#34;</span>
-</span></span><span class="line"><span class="cl">mkdir -p <span class="nv">$build_dir</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">pushd</span> <span class="nv">$build_dir</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">cmake ../OpenSceneGraph  -DBUILD_OSG_EXAMPLES<span class="o">=</span>ON  
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">popd</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+<span class="nv">build_dir</span><span class="o">=</span><span class="s2">&#34;build&#34;</span>
+mkdir -p <span class="nv">$build_dir</span>
+
+<span class="nb">pushd</span> <span class="nv">$build_dir</span>
+
+cmake ../OpenSceneGraph  -DBUILD_OSG_EXAMPLES<span class="o">=</span>ON  
+
+<span class="nb">popd</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>然后 GitBash 命令行 cd 到根目录后，执行 <code>./build.sh</code> 进行 Configure。</p>
 <p>对得到的工程 <code>OpenSceneGraph.sln</code> ，打开后解决方案管理器如下图：</p>
@@ -306,8 +309,7 @@ OSG 针对大多数人需要的 OSG-CORE 解决好了依赖关系，但对于其
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-09-05&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/3e641f26cd8e5bef41c0d1e025dd88b193b5835d" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 3e641f26cd8e5bef41c0d1e025dd88b193b5835d: &lt;published&gt; publish osg -1st">
-                                    <i class="fas fa-hashtag fa-fw"></i>3e641f2</a></span>
+                <span>更新于 2023-08-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -385,13 +387,13 @@ OSG 针对大多数人需要的 OSG-CORE 解决好了依赖关系，但对于其
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

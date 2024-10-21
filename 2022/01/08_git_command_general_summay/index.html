@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/01/08_git_command_general_summay/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-02T10:50:54+08:00" />
-<meta property="article:modified_time" content="2022-12-01T22:35:02+08:00" />
+<meta property="article:modified_time" content="2022-01-02T10:50:54+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="常用Git命令行总结"/>
 <meta name="twitter:description" content="摘要：针对工作中比较常用的一些Git命令做记录，希望能自己备忘的同时能帮到你"/>
@@ -24,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/01\/08_git_command_general_summay\/"
-        },"genre": "posts","keywords": "git, 开发工具链","wordcount":  8041 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/08_git_command_general_summay\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-12-01T22:35:02+08:00","publisher": {
+        },"genre": "posts","keywords": "git, 开发工具链","wordcount":  8036 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/01\/08_git_command_general_summay\/","datePublished": "2022-01-02T10:50:54+08:00","dateModified": "2022-01-02T10:50:54+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">常用Git命令行总结</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8041 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-01-02">2022-01-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 8036 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 17 分钟&nbsp;<span id="/2022/01/08_git_command_general_summay/" class="leancloud_visitors" data-flag-title="常用Git命令行总结">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -218,11 +219,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/Documents
-</span></span><span class="line"><span class="cl">mkdir MyGitRepo
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> MyGitRepo
-</span></span><span class="line"><span class="cl">git init
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Documents
+mkdir MyGitRepo
+<span class="nb">cd</span> MyGitRepo
+git init
+</code></pre></td></tr></table>
 </div>
 </div><p>在<em>git init</em> 执行后，执行<code>ls -a</code>可以看到多了一个 <strong>.git</strong> 文件夹，这就是git的主干文件了。</p>
 <p>接下来就可以新建文件，然后添加了，以及后续上传到远端。</p>
@@ -235,9 +236,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/Downloads
-</span></span><span class="line"><span class="cl">git clone https://github.com/facebook/folly.git
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Downloads
+git clone https://github.com/facebook/folly.git
+</code></pre></td></tr></table>
 </div>
 </div><p>命令执行完成后即可(如果因为网络失败，则可能需要git加速，或者代理加速了)。</p>
 <div class="details admonition info open">
@@ -256,8 +257,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone https://hub.fastgit.org/facebook/folly.git
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git clone https://hub.fastgit.org/facebook/folly.git
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -287,16 +288,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> <span class="nb">cd</span> ~/Downloads/folly
-</span></span><span class="line"><span class="cl">touch Learn.md
-</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;# MultiThread Content&#34;</span> &gt;&gt; Learn.md                <span class="c1">#手动写点内容</span>
-</span></span><span class="line"><span class="cl">git status        <span class="c1">#Git提示：Learn.md 是&#34;Untracked files&#34;,颜色是红色</span>
-</span></span><span class="line"><span class="cl">git add Learn.md  <span class="c1">#add到暂寸区</span>
-</span></span><span class="line"><span class="cl">git status        <span class="c1">#Git提示：Learn.md 是&#34;Changes to be committed&#34;,颜色是绿色</span>
-</span></span><span class="line"><span class="cl">git commit  -m  <span class="s2">&#34;new lesson note&#34;</span>  <span class="c1"># Git提示：1 file changed, 1 insertion(+),进入仓库</span>
-</span></span><span class="line"><span class="cl">git status        <span class="c1">#没有文件提示，会说明当前分支和远端分支的关系</span>
-</span></span><span class="line"><span class="cl">git log -3        <span class="c1">#可以看到刚才的一笔提交，处于最前面</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> <span class="nb">cd</span> ~/Downloads/folly
+touch Learn.md
+<span class="nb">echo</span> <span class="s2">&#34;# MultiThread Content&#34;</span> &gt;&gt; Learn.md                <span class="c1">#手动写点内容</span>
+git status        <span class="c1">#Git提示：Learn.md 是&#34;Untracked files&#34;,颜色是红色</span>
+git add Learn.md  <span class="c1">#add到暂寸区</span>
+git status        <span class="c1">#Git提示：Learn.md 是&#34;Changes to be committed&#34;,颜色是绿色</span>
+git commit  -m  <span class="s2">&#34;new lesson note&#34;</span>  <span class="c1"># Git提示：1 file changed, 1 insertion(+),进入仓库</span>
+git status        <span class="c1">#没有文件提示，会说明当前分支和远端分支的关系</span>
+git log -3        <span class="c1">#可以看到刚才的一笔提交，处于最前面</span>
+</code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>有时候，git add想要排除一些文件，除了add之后restore，还可以在添加的时候就排除。示例：  <code>git add --all ':!filename1'  ':!*.txt'</code></p>
@@ -432,13 +433,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">usage: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
-</span></span><span class="line"><span class="cl">   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> --cached <span class="o">[</span>&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
-</span></span><span class="line"><span class="cl">   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt; <span class="o">[</span>--merge-base<span class="o">]</span> <span class="o">[</span>&lt;commit&gt;...<span class="o">]</span> &lt;commit&gt; <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
-</span></span><span class="line"><span class="cl">   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt;...&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
-</span></span><span class="line"><span class="cl">   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;blob&gt; &lt;blob&gt;<span class="o">]</span>
-</span></span><span class="line"><span class="cl">   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> --no-index <span class="o">[</span>--<span class="o">]</span> &lt;path&gt; &lt;path&gt;<span class="o">]</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">usage: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> --cached <span class="o">[</span>&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt; <span class="o">[</span>--merge-base<span class="o">]</span> <span class="o">[</span>&lt;commit&gt;...<span class="o">]</span> &lt;commit&gt; <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;commit&gt;...&lt;commit&gt;<span class="o">]</span> <span class="o">[</span>--<span class="o">]</span> <span class="o">[</span>&lt;path&gt;...<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> &lt;blob&gt; &lt;blob&gt;<span class="o">]</span>
+   or: git diff <span class="o">[</span>&lt;options&gt;<span class="o">]</span> --no-index <span class="o">[</span>--<span class="o">]</span> &lt;path&gt; &lt;path&gt;<span class="o">]</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>根据个人在日常工作中最常用的命令简单汇总如下：</p>
 <table>
@@ -494,15 +495,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 回撤本地工作区中没有add的文件修改，包括对内容的修改，以及对文件本身的删除、新增</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># git checkout -- &lt;文件名&gt; 只能回撤修改，不能回撤对文件的增删</span>
-</span></span><span class="line"><span class="cl">git restore &lt;文件名&gt; 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 回撤已经add但还没commit的文件修改, -S 是 --staged 的简略形式</span>
-</span></span><span class="line"><span class="cl">git restore -S &lt;文件名&gt; 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># PS: 如果都commit了还想撤回到 added-but-not-commited 或 not-added 状态，参考 git reset</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 回撤本地工作区中没有add的文件修改，包括对内容的修改，以及对文件本身的删除、新增</span>
+<span class="c1"># git checkout -- &lt;文件名&gt; 只能回撤修改，不能回撤对文件的增删</span>
+git restore &lt;文件名&gt; 
+
+<span class="c1"># 回撤已经add但还没commit的文件修改, -S 是 --staged 的简略形式</span>
+git restore -S &lt;文件名&gt; 
+
+<span class="c1"># PS: 如果都commit了还想撤回到 added-but-not-commited 或 not-added 状态，参考 git reset</span>
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="log">git log</h1>
 <p><code>git log</code>的参数实在是多，这里简单的列出常用的几条：</p>
@@ -559,9 +560,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">alias</span> <span class="s">gitlo=&#39;git log --graph --oneline --decorate  --pretty=format:&#34;%C(yellow)%h %Cgreen%ad%Cred %an %Creset%s&#34;  --date=format:&#34;%Y-%m-%d %H:%M:%S&#34; &#39;</span>
-</span></span><span class="line"><span class="cl"><span class="na">alias</span> <span class="s">gitlh=&#39;git log --graph --abbrev-commit &#39;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">alias gitlo=&#39;git log --graph --oneline --decorate  --pretty=format:&#34;%C(yellow)%h %Cgreen%ad%Cred %an %Creset%s&#34;  --date=format:&#34;%Y-%m-%d %H:%M:%S&#34; &#39;
+alias gitlh=&#39;git log --graph --abbrev-commit &#39;
+</code></pre></td></tr></table>
 </div>
 </div><p>使用的时候直接执行<code>gitlh  -3</code>即可。</p>
 <p>如果使用git的alias，应该是执行<code>git config --global alias.lh 'log --graph --abbrev-commit'</code>,使用的时候执行<code>git lh -3</code>(注意alias定义时单引号紧贴命令，而使用时git和lh之间有空格)</p>
@@ -578,12 +579,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">* f939bad 2022-07-19 08:41:09 kissingfire123 add file: effective_mordern_cmake
-</span></span><span class="line"><span class="cl">* 34afa92 2022-07-07 14:32:15 kissingfire123 添加effective-c++系列list提示
-</span></span><span class="line"><span class="cl">* 8069d71 2022-07-06 23:26:20 kissingfire123 &lt;published&gt; 发布effective-c++<span class="o">(</span>4<span class="o">)</span>
-</span></span><span class="line"><span class="cl">* a30651a 2022-07-05 23:09:52 kissingfire123 effective-c++<span class="o">(</span>3<span class="o">)</span> Rule42
-</span></span><span class="line"><span class="cl">* e1345a3 2022-06-26 09:56:27 kissingfire123 &lt;published&gt; 完善友链描述
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">* f939bad 2022-07-19 08:41:09 kissingfire123 add file: effective_mordern_cmake
+* 34afa92 2022-07-07 14:32:15 kissingfire123 添加effective-c++系列list提示
+* 8069d71 2022-07-06 23:26:20 kissingfire123 &lt;published&gt; 发布effective-c++<span class="o">(</span>4<span class="o">)</span>
+* a30651a 2022-07-05 23:09:52 kissingfire123 effective-c++<span class="o">(</span>3<span class="o">)</span> Rule42
+* e1345a3 2022-06-26 09:56:27 kissingfire123 &lt;published&gt; 完善友链描述
+</code></pre></td></tr></table>
 </div>
 </div><p>举例某个我的博客仓库的feature分支如上log，现在如果要一次pick上述 <strong>中间3个修改节点</strong> 到master分支去，执行下面3种方式都可以:</p>
 <div class="highlight"><div class="chroma">
@@ -598,15 +599,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># A..B 的形式，不包括左节点A，左开右闭区间</span>
-</span></span><span class="line"><span class="cl">git cherry-pick e1345a3..34afa92
-</span></span><span class="line"><span class="cl"><span class="c1"># A~..B 的形式，包括左节点A，左闭右闭区间</span>
-</span></span><span class="line"><span class="cl">git cherry-pick a30651a~..34afa92
-</span></span><span class="line"><span class="cl"><span class="c1"># 也可以单独指定多个commit A B C 的形式</span>
-</span></span><span class="line"><span class="cl">git cherry-pick a30651a 8069d71  34afa92
-</span></span><span class="line"><span class="cl"><span class="c1"># ⚠️ 上述说的多个节点，顺序必须是老节点写在前面，避免造成无谓的代码冲突</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 上述指令测试的git版本为 2.32.0，更老的版本(特指1.7之前的)可能不支持</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># A..B 的形式，不包括左节点A，左开右闭区间</span>
+git cherry-pick e1345a3..34afa92
+<span class="c1"># A~..B 的形式，包括左节点A，左闭右闭区间</span>
+git cherry-pick a30651a~..34afa92
+<span class="c1"># 也可以单独指定多个commit A B C 的形式</span>
+git cherry-pick a30651a 8069d71  34afa92
+<span class="c1"># ⚠️ 上述说的多个节点，顺序必须是老节点写在前面，避免造成无谓的代码冲突</span>
+<span class="c1"># 上述指令测试的git版本为 2.32.0，更老的版本(特指1.7之前的)可能不支持</span>
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="push">git push</h1>
 <p><code>git push origin</code>可以推送当前分支的commit修改到同名的远端分支；</p>
@@ -623,10 +624,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">  D --- E  feature
-</span></span><span class="line"><span class="cl"> /
-</span></span><span class="line"><span class="cl">A --- B ---C master
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">  D --- E  feature
+ /
+A --- B ---C master
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>如果是merge</strong>，则是如下效果(其中F是merge节点):</p>
 <div class="highlight"><div class="chroma">
@@ -636,10 +637,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">  D --- E --- F --- G (feature/master)
-</span></span><span class="line"><span class="cl"> /           /
-</span></span><span class="line"><span class="cl">A --- B --- C 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">  D --- E --- F --- G (feature/master)
+ /           /
+A --- B --- C 
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>如果是rebase</strong>，则是如下效果:</p>
 <div class="highlight"><div class="chroma">
@@ -648,11 +649,11 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">A --- B --- C --- D&#39; --- E&#39;
-</span></span><span class="line"><span class="cl">          master       feature
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">A --- B --- C --- D&#39; --- E&#39;
+          master       feature
+</code></pre></td></tr></table>
 </div>
-</div><p>上述D&rsquo;，E&rsquo;是表示rebase后commit-ID会变，如果有冲突还得解决。</p>
+</div><p>上述D'，E&rsquo;是表示rebase后commit-ID会变，如果有冲突还得解决。</p>
 <p>可以rebase到别的分支(可以是本地或远端，最常用master)，比如执行<code>git rebase origin/master</code> ，或者<code>git rebase commit-ID-xx</code>选择rebase到某个分支的某个commit节点。</p>
 <p>解决冲突时，执行<code>git mergetool </code>调用工具手动解决，解决后<code>git rebase --continue</code>,至此，就完成了一次成功的commit。如果中途想放弃rebase，<code>git rebase --abort</code>即可。</p>
 <ul>
@@ -674,19 +675,19 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Fast-forwarding submodule moduleAxx
-</span></span><span class="line"><span class="cl">Auto-merging moduleAxx
-</span></span><span class="line"><span class="cl">error: add_cacheinfo failed to refresh <span class="k">for</span> path <span class="s1">&#39;moduleAxx&#39;</span><span class="p">;</span> merge aborting.
-</span></span><span class="line"><span class="cl">hint: Could not execute the todo <span class="nb">command</span>
-</span></span><span class="line"><span class="cl">hint: 
-</span></span><span class="line"><span class="cl">hint:     pick 4ec7e2de3b00bfc5a258e002b9e5b0efe8756345 update moduleAxx
-</span></span><span class="line"><span class="cl">hint: 
-</span></span><span class="line"><span class="cl">hint: It has been rescheduled<span class="p">;</span> To edit the <span class="nb">command</span> before continuing, please
-</span></span><span class="line"><span class="cl">hint: edit the todo list first:
-</span></span><span class="line"><span class="cl">hint: 
-</span></span><span class="line"><span class="cl">hint:     git rebase --edit-todo
-</span></span><span class="line"><span class="cl">hint:     git rebase --continue
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Fast-forwarding submodule moduleAxx
+Auto-merging moduleAxx
+error: add_cacheinfo failed to refresh <span class="k">for</span> path <span class="s1">&#39;moduleAxx&#39;</span><span class="p">;</span> merge aborting.
+hint: Could not execute the todo <span class="nb">command</span>
+hint: 
+hint:     pick 4ec7e2de3b00bfc5a258e002b9e5b0efe8756345 update moduleAxx
+hint: 
+hint: It has been rescheduled<span class="p">;</span> To edit the <span class="nb">command</span> before continuing, please
+hint: edit the todo list first:
+hint: 
+hint:     git rebase --edit-todo
+hint:     git rebase --continue
+</code></pre></td></tr></table>
 </div>
 </div><p>正确做法，执行 <code>git rebase --edit-todo</code> ，使用 <code>#</code> 号注释掉 <strong>子模块</strong> 的pick选项，先处理其他代码的 confilict ， 最后再来一起看看子模块的更新，一步到位更新。</p>
 </li>
@@ -705,13 +706,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log -5 --oneline
-</span></span><span class="line"><span class="cl">476a993ee <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Step3: add const static
-</span></span><span class="line"><span class="cl">2aa0cd976 Step2: add marco
-</span></span><span class="line"><span class="cl">0db8784df step1: new Function.cpp
-</span></span><span class="line"><span class="cl">d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</span> import or backport reinterpret_pointer_cast
-</span></span><span class="line"><span class="cl">1583ff067 Regen github actions <span class="o">(</span><span class="c1">#1614)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -5 --oneline
+476a993ee <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Step3: add const static
+2aa0cd976 Step2: add marco
+0db8784df step1: new Function.cpp
+d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</span> import or backport reinterpret_pointer_cast
+1583ff067 Regen github actions <span class="o">(</span><span class="c1">#1614)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>执行<code>git rebase -i HEAD~3</code>,则自动跳出vim编辑界面，内容如下(大量#号内容都是注释，不影响commit-msg)：</p>
 <div class="highlight"><div class="chroma">
@@ -721,14 +722,16 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pick 0db8784df step1: new Function.cpp
-</span></span><span class="line"><span class="cl">pick 2aa0cd976 Step2: add marco
-</span></span><span class="line"><span class="cl">pick 476a993ee Step3: add const static
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Rebase d6610d607..476a993ee onto d6610d607 (3 commands)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pick 0db8784df step1: new Function.cpp
+pick 2aa0cd976 Step2: add marco
+pick 476a993ee Step3: add const static
+
+<span class="c1"># Rebase d6610d607..476a993ee onto d6610d607 (3 commands)</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><p>vim的操作不多说，第一个pick不要改，把后面的2个pick改成字母<code>'s'</code>,表示squash:</p>
 <div class="highlight"><div class="chroma">
@@ -738,10 +741,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pick 0db8784df step1: new Function.cpp
-</span></span><span class="line"><span class="cl">s 2aa0cd976 Step2: add marco
-</span></span><span class="line"><span class="cl">s 476a993ee Step3: add const static
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">pick 0db8784df step1: new Function.cpp
+s 2aa0cd976 Step2: add marco
+s 476a993ee Step3: add const static
+</code></pre></td></tr></table>
 </div>
 </div><p>vim保存后<code>:wq</code>退出，会跳出第二个vim界面，需要编辑commit-msg信息，默认是3条commit-msg都在，#号注释的就不会算在最终commit-msg中。</p>
 <div class="highlight"><div class="chroma">
@@ -759,18 +762,18 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># This is the 1st commit message:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">step1: new Function.cpp
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># This is the commit message #2:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Step2: add marco
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># This is the commit message #3:
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Step3: add const static
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"># This is the 1st commit message:
+
+step1: new Function.cpp
+
+# This is the commit message #2:
+
+Step2: add marco
+
+# This is the commit message #3:
+
+Step3: add const static
+</code></pre></td></tr></table>
 </div>
 </div><p>注释掉多余的，留下想要的msg，<code>:wq</code>再次退出后即可,此时3条commit压缩成了一个，commit-msg也只有一条。</p>
 <div class="highlight"><div class="chroma">
@@ -781,11 +784,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git log -3 --oneline
-</span></span><span class="line"><span class="cl">13a004b52 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> add Function.cpp and support marco,const static
-</span></span><span class="line"><span class="cl">d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</span> import or backport reinterpret_pointer_cast
-</span></span><span class="line"><span class="cl">1583ff067 Regen github actions <span class="o">(</span><span class="c1">#1614)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git log -3 --oneline
+13a004b52 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> add Function.cpp and support marco,const static
+d6610d607 <span class="o">(</span>origin/master, origin/HEAD<span class="o">)</span> import or backport reinterpret_pointer_cast
+1583ff067 Regen github actions <span class="o">(</span><span class="c1">#1614)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>至此，已压缩成功。</p>
 <h1 id="tag">git tag</h1>
@@ -815,27 +818,27 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># -a 0.1.3是增加 名为0.1.3的标签;  -m 后面跟着的是标签的注释</span>
-</span></span><span class="line"><span class="cl">git tag -a 0.1.3 -m “Release version 0.1.3″
-</span></span><span class="line"><span class="cl"><span class="c1"># 给某个指定的commit-id (比如 34afa92 )打上tag,也可酌情加 tag-message</span>
-</span></span><span class="line"><span class="cl">git tag -a v1.5.12  34afa92
-</span></span><span class="line"><span class="cl"><span class="c1"># 推送本地指定的tag到远端 （建议先推当时的代码节点，再推tag）</span>
-</span></span><span class="line"><span class="cl">git push origin  v1.5.12 
-</span></span><span class="line"><span class="cl"><span class="c1"># 推送 本地所有的 标签到远程服务器上，在git push origin代码之后推送</span>
-</span></span><span class="line"><span class="cl">git push origin --tags
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看已有tag列表</span>
-</span></span><span class="line"><span class="cl">git tag --list 
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看tag以及其message</span>
-</span></span><span class="line"><span class="cl">git tag -n 
-</span></span><span class="line"><span class="cl"><span class="c1"># 基于已有的tag建立个名为newBranchV1.2的新分支</span>
-</span></span><span class="line"><span class="cl">git branch newBranchV1.2  v1.2
-</span></span><span class="line"><span class="cl"><span class="c1"># 切换到已有Tag,切换到指定tag/branch/commit都是此命令，用git switch也一样</span>
-</span></span><span class="line"><span class="cl">git checkout <span class="o">[</span>tag/branch/commit<span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 删除本地标签的命令</span>
-</span></span><span class="line"><span class="cl">git tag -d 0.1.3
-</span></span><span class="line"><span class="cl"><span class="c1"># 删除远端服务器的标签(把本地删除tag动作推送到远端)</span>
-</span></span><span class="line"><span class="cl">git push origin :refs/tags/0.1.3
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># -a 0.1.3是增加 名为0.1.3的标签;  -m 后面跟着的是标签的注释</span>
+git tag -a 0.1.3 -m “Release version 0.1.3″
+<span class="c1"># 给某个指定的commit-id (比如 34afa92 )打上tag,也可酌情加 tag-message</span>
+git tag -a v1.5.12  34afa92
+<span class="c1"># 推送本地指定的tag到远端 （建议先推当时的代码节点，再推tag）</span>
+git push origin  v1.5.12 
+<span class="c1"># 推送 本地所有的 标签到远程服务器上，在git push origin代码之后推送</span>
+git push origin --tags
+<span class="c1"># 查看已有tag列表</span>
+git tag --list 
+<span class="c1"># 查看tag以及其message</span>
+git tag -n 
+<span class="c1"># 基于已有的tag建立个名为newBranchV1.2的新分支</span>
+git branch newBranchV1.2  v1.2
+<span class="c1"># 切换到已有Tag,切换到指定tag/branch/commit都是此命令，用git switch也一样</span>
+git checkout <span class="o">[</span>tag/branch/commit<span class="o">]</span>
+<span class="c1"># 删除本地标签的命令</span>
+git tag -d 0.1.3
+<span class="c1"># 删除远端服务器的标签(把本地删除tag动作推送到远端)</span>
+git push origin :refs/tags/0.1.3
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="stash">git stash</h1>
 <p>日常工作中，临时切换任务是常态了，有时带来的就是分支切换了，但是$\longrightarrow$本地还有修改没有add，切分支是切不过去的，可选的办法有2种：</p>
@@ -860,9 +863,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> ~/Downloads/folly
-</span></span><span class="line"><span class="cl">git submodule add  https://github.com/nothings/stb.git 3rdImg/stb
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~/Downloads/folly
+git submodule add  https://github.com/nothings/stb.git 3rdImg/stb
+</code></pre></td></tr></table>
 </div>
 </div><p>根目录下<code>.gitmodules</code>文件的内容自动发生改动：</p>
 <div class="highlight"><div class="chroma">
@@ -873,11 +876,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ cat .gitmodules
-</span></span><span class="line"><span class="cl"><span class="o">[</span>submodule <span class="s2">&#34;3rdImg/stb&#34;</span><span class="o">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nv">path</span> <span class="o">=</span> 3rdImg/stb
-</span></span><span class="line"><span class="cl">        <span class="nv">url</span> <span class="o">=</span> https://github.com/nothings/stb.git
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ cat .gitmodules
+<span class="o">[</span>submodule <span class="s2">&#34;3rdImg/stb&#34;</span><span class="o">]</span>
+        <span class="nv">path</span> <span class="o">=</span> 3rdImg/stb
+        <span class="nv">url</span> <span class="o">=</span> https://github.com/nothings/stb.git
+</code></pre></td></tr></table>
 </div>
 </div><h2 id="update-submodule">update submodule</h2>
 <p>有时候，子模块是远程仓库自带的，第一次克隆下来后需要手动 <strong>初始化+同步</strong> ，执行：</p>
@@ -887,9 +890,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">rm -rf  3rdImg/stb/     <span class="c1">#试验一下，将已有的先删除</span>
-</span></span><span class="line"><span class="cl">git submodule update --init --recursive    <span class="c1">#这时发现文件又全都回来了</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">rm -rf  3rdImg/stb/     <span class="c1">#试验一下，将已有的先删除</span>
+git submodule update --init --recursive    <span class="c1">#这时发现文件又全都回来了</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>如果不是第一次同步子模块，可以不需要<code>--init</code>参数。</p>
 <p>子模块其实和文件类似，只是在仓库中，它的修改，是它的commit节点来记录和判别的。</p>
@@ -908,12 +911,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 举例要删除子模块subModAxxx </span>
-</span></span><span class="line"><span class="cl">git submodule deinit  subModAxxx
-</span></span><span class="line"><span class="cl">git rm subModAxxx 
-</span></span><span class="line"><span class="cl"><span class="c1"># 如果deinit命令再加上 --force 参数，就相当于上面2句</span>
-</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;delete submodule subModAxxx&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 举例要删除子模块subModAxxx </span>
+git submodule deinit  subModAxxx
+git rm subModAxxx 
+<span class="c1"># 如果deinit命令再加上 --force 参数，就相当于上面2句</span>
+git commit -m <span class="s2">&#34;delete submodule subModAxxx&#34;</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -948,12 +951,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ git submodule status             
-</span></span><span class="line"><span class="cl">+fd0529c190d63b9d6b2aa58d7467f92f8f6b02ff kissingfire123.github.io <span class="o">(</span>heads/main<span class="o">)</span>
-</span></span><span class="line"><span class="cl"> aa74e340906f29c8fafaf442cb6e1f766fb5df0f themes/LoveIt <span class="o">(</span>v0.2.10-2-gaa74e34<span class="o">)</span>
-</span></span><span class="line"><span class="cl">$ git ls-tree HEAD <span class="p">|</span> grep kissingfire123.github.io 
-</span></span><span class="line"><span class="cl"><span class="m">160000</span> commit 433feb82a37da65bd2690615485be754515f49fc	kissingfire123.github.io
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ git submodule status             
++fd0529c190d63b9d6b2aa58d7467f92f8f6b02ff kissingfire123.github.io <span class="o">(</span>heads/main<span class="o">)</span>
+ aa74e340906f29c8fafaf442cb6e1f766fb5df0f themes/LoveIt <span class="o">(</span>v0.2.10-2-gaa74e34<span class="o">)</span>
+$ git ls-tree HEAD <span class="p">|</span> grep kissingfire123.github.io 
+<span class="m">160000</span> commit 433feb82a37da65bd2690615485be754515f49fc	kissingfire123.github.io
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="grep">git grep</h1>
 <p><code>git grep</code> 的作用是在仓库指定分支/节点的所有文本中搜索指定的关键字文本，默认是当前节点/分支。</p>
@@ -966,9 +969,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git grep -h                   
-</span></span><span class="line"><span class="cl">usage: git grep <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>-e<span class="o">]</span> &lt;pattern&gt; <span class="o">[</span>&lt;rev&gt;...<span class="o">]</span> <span class="o">[[</span>--<span class="o">]</span> &lt;path&gt;...
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">git grep -h                   
+usage: git grep <span class="o">[</span>&lt;options&gt;<span class="o">]</span> <span class="o">[</span>-e<span class="o">]</span> &lt;pattern&gt; <span class="o">[</span>&lt;rev&gt;...<span class="o">]</span> <span class="o">[[</span>--<span class="o">]</span> &lt;path&gt;...
+</code></pre></td></tr></table>
 </div>
 </div></blockquote>
 <p>假设我们想看看 ParseInfo 这个接口，在当前仓库分支有没有合入，以及代码状态。</p>
@@ -984,14 +987,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git grep ParseInfo
-</span></span><span class="line"><span class="cl"><span class="c1"># -i 是忽略大小写，-n是指定行号</span>
-</span></span><span class="line"><span class="cl">git grep -i -n parseInfo
-</span></span><span class="line"><span class="cl"><span class="c1"># --name-only 只显示文本所在的那个文件名</span>
-</span></span><span class="line"><span class="cl">git grep --name-only ParseInfo
-</span></span><span class="line"><span class="cl"><span class="c1"># 命令参数后面指定 分支名 或 SHA 值 或 tag 值，可以指定 节点/分支 进行搜索</span>
-</span></span><span class="line"><span class="cl">git grep -i parseInfo  v1.6.3 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">git grep ParseInfo
+<span class="c1"># -i 是忽略大小写，-n是指定行号</span>
+git grep -i -n parseInfo
+<span class="c1"># --name-only 只显示文本所在的那个文件名</span>
+git grep --name-only ParseInfo
+<span class="c1"># 命令参数后面指定 分支名 或 SHA 值 或 tag 值，可以指定 节点/分支 进行搜索</span>
+git grep -i parseInfo  v1.6.3 
+</code></pre></td></tr></table>
 </div>
 </div><h1 id="other-commands">other commands</h1>
 <table>
@@ -1030,8 +1033,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-12-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/11d1bc77c0aa98bc82c850a80dc21de998c0afa5" target="_blank" title="commit by liwenyao(liwenyao@insta360.com) 11d1bc77c0aa98bc82c850a80dc21de998c0afa5: refine git 命令使用技巧">
-                                    <i class="fas fa-hashtag fa-fw"></i>11d1bc7</a></span>
+                <span>更新于 2022-01-02</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1110,13 +1112,13 @@
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-01T15:57:31+08:00" />
-<meta property="article:modified_time" content="2022-07-27T23:08:38+08:00" />
+<meta property="article:modified_time" content="2022-05-01T15:57:31+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Hugo框架LoveIt博客主题配置"/>
 <meta name="twitter:description" content="摘要：LoveIt主题从默认模板到个性化所需要做的重要配置"/>
@@ -24,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/05\/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95\/"
-        },"genre": "posts","keywords": "Hugo, LoveIt","wordcount":  4072 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95\/","datePublished": "2022-05-01T15:57:31+08:00","dateModified": "2022-07-27T23:08:38+08:00","publisher": {
+        },"genre": "posts","keywords": "Hugo, LoveIt","wordcount":  4073 ,
+        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95\/","datePublished": "2022-05-01T15:57:31+08:00","dateModified": "2022-05-01T15:57:31+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Hugo框架LoveIt博客主题配置</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Benjamin Lee</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E6%8A%98%E8%85%BE/"><i class="far fa-folder fa-fw"></i>折腾</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4072 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-01">2022-05-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4073 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/2022/05/15_hugo%E6%A1%86%E6%9E%B6%E5%8D%9A%E5%AE%A2loveit%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/" class="leancloud_visitors" data-flag-title="Hugo框架LoveIt博客主题配置">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -173,22 +174,24 @@
 </span><span class="lnt">11
 </span><span class="lnt">12
 </span><span class="lnt">13
+</span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">---</span>
-</span></span><span class="line"><span class="cl"><span class="nx">title</span><span class="err">:</span> <span class="s2">&#34;{{ replace .Name &#34;</span><span class="nx">-</span><span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">subtitle</span><span class="err">:</span>    <span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">description</span><span class="err">:</span> <span class="s2">&#34;摘要：&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">featuredImage</span><span class="err">:</span> <span class="s2">&#34;/img/&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">tags</span><span class="err">:</span>        <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">categories</span><span class="err">:</span>  <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span> <span class="c"># 当前可选分类:计算机图形学,脚本,程序设计,折腾</span>
-</span></span><span class="line"><span class="cl"><span class="nx">date</span><span class="err">:</span> <span class="p">{{</span> <span class="p">.</span><span class="nx">Date</span> <span class="p">}}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">draft</span><span class="err">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl"><span class="nx">---</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">&lt;!</span><span class="nx">--more--</span><span class="err">&gt;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">---</span>
+<span class="nx">title</span><span class="err">:</span> <span class="s2">&#34;{{ replace .Name &#34;</span><span class="nx">-</span><span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
+<span class="nx">subtitle</span><span class="err">:</span>    <span class="s2">&#34;&#34;</span>
+<span class="nx">description</span><span class="err">:</span> <span class="s2">&#34;摘要：&#34;</span>
+<span class="nx">featuredImage</span><span class="err">:</span> <span class="s2">&#34;/img/&#34;</span>
+<span class="nx">tags</span><span class="err">:</span>        <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">]</span>
+<span class="nx">categories</span><span class="err">:</span>  <span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span> <span class="c"># 当前可选分类:计算机图形学,脚本,程序设计,折腾</span>
+<span class="nx">date</span><span class="err">:</span> <span class="p">{{</span> <span class="p">.</span><span class="nx">Date</span> <span class="p">}}</span>
+
+<span class="nx">draft</span><span class="err">:</span> <span class="kc">true</span>
+<span class="nx">---</span>
+
+<span class="err">&lt;!</span><span class="nx">--more--</span><span class="err">&gt;</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><p>表示每篇新建的md文档，都会预先在文章起始位置填写上述内容：其中，title和date是自动获取的，#号表示注释内容。</p>
 <h1 id="是否发布markdown原文">是否发布markdown原文</h1>
@@ -206,15 +209,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 用于 Hugo 输出文档的设置</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">outputs</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="c"># </span>
-</span></span><span class="line"><span class="cl">  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">page</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span> <span class="c"># 如果都想输出，则设置为[&#34;HTML&#34;, &#34;MarkDown&#34;]，页面底部有&#34;查看网页原文&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">section</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">taxonomy</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">taxonomyTerm</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># 用于 Hugo 输出文档的设置</span>
+<span class="p">[</span><span class="nx">outputs</span><span class="p">]</span>
+  <span class="c"># </span>
+  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span>
+  <span class="nx">page</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span> <span class="c"># 如果都想输出，则设置为[&#34;HTML&#34;, &#34;MarkDown&#34;]，页面底部有&#34;查看网页原文&#34;</span>
+  <span class="nx">section</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">]</span>
+  <span class="nx">taxonomy</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">]</span>
+  <span class="nx">taxonomyTerm</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">]</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>我个人是倾向不输出，所以删去了“MarkDown”字段。</p>
 <h1 id="文章摘要">文章摘要</h1>
@@ -231,8 +234,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">description</span><span class="err">:</span> <span class="s2">&#34;摘要：LoveIt主题从Github模板到个性化所需要做的重要配置&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">description</span><span class="err">:</span> <span class="s2">&#34;摘要：LoveIt主题从Github模板到个性化所需要做的重要配置&#34;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>这样每篇新建的文章只要填写description字段内容即可，注意，使用纯文本，不要加入代码块、字体加粗格式等富文本，容易引起渲染错误。</p>
 <h1 id="文章封面图">文章封面图</h1>
@@ -243,8 +246,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">featuredImage</span><span class="err">:</span> <span class="s2">&#34;/img/Chore-Pic/LoveIt-Theme.webp&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">featuredImage</span><span class="err">:</span> <span class="s2">&#34;/img/Chore-Pic/LoveIt-Theme.webp&#34;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>🤔图片的分辨率建议是1000x300或者长宽比相近的分辨率，可以避免预览被裁剪。</p>
 <p>图片格式尽量选择webp格式(或使用ffmpeg等工具将其他图片格式转换为webp)。</p>
@@ -284,13 +287,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;algolia&#34;</span><span class="p">:</span> <span class="s2">&#34;atomic-algolia&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;algolia&#34;</span><span class="p">:</span> <span class="s2">&#34;atomic-algolia&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -303,11 +306,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">ALGOLIA_APP_ID=你的Application</span> <span class="err">ID</span>
-</span></span><span class="line"><span class="cl"><span class="err">ALGOLIA_INDEX_NAME=你的algolia-index名字</span>
-</span></span><span class="line"><span class="cl"><span class="err">ALGOLIA_INDEX_FILE=public/index.json</span>
-</span></span><span class="line"><span class="cl"><span class="err">ALGOLIA_ADMIN_KEY=你的Admin</span> <span class="err">API</span> <span class="err">Key</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="err">ALGOLIA_APP_ID=你的Application</span> <span class="err">ID</span>
+<span class="err">ALGOLIA_INDEX_NAME=你的algolia-index名字</span>
+<span class="err">ALGOLIA_INDEX_FILE=public/index.json</span>
+<span class="err">ALGOLIA_ADMIN_KEY=你的Admin</span> <span class="err">API</span> <span class="err">Key</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>上述的关键信息 Application ID 和 Admin API Key可以在algolia的DashBoard页面获取，“API Keys”按钮，点进去后，就能看到，前者是大概10位长度的大写英文与数字，后者大概30位的小写英文与数字。</p>
 <p>Index的名字是自己重命名的，index-file的路径指的是你的发布路径和Hugo根目录的相对位置，上述示例是public为发布目录。</p>
@@ -331,15 +334,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl">  <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">search</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl">    <span class="c"># 搜索引擎的类型 (&#34;lunr&#34;, &#34;algolia&#34;)</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;algolia&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">algolia</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">index</span> <span class="p">=</span> <span class="s2">&#34;Benjamin-Blog&#34;</span> <span class="c"># index-name,这个的确是我的，个人自行命名</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">appID</span> <span class="p">=</span> <span class="s2">&#34;B45S568G91&#34;</span> <span class="c"># app-id，内容我随意写的</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">searchKey</span> <span class="p">=</span> <span class="s2">&#34;c00000d11111e22222f444e2333&#34;</span><span class="c">#admin-key，内容此处为演示，随意写的</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml">  <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">search</span><span class="p">]</span>
+    <span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>
+    <span class="c"># 搜索引擎的类型 (&#34;lunr&#34;, &#34;algolia&#34;)</span>
+    <span class="nx">type</span> <span class="p">=</span> <span class="s2">&#34;algolia&#34;</span>
+      <span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">algolia</span><span class="p">]</span>
+        <span class="nx">index</span> <span class="p">=</span> <span class="s2">&#34;Benjamin-Blog&#34;</span> <span class="c"># index-name,这个的确是我的，个人自行命名</span>
+        <span class="nx">appID</span> <span class="p">=</span> <span class="s2">&#34;B45S568G91&#34;</span> <span class="c"># app-id，内容我随意写的</span>
+        <span class="nx">searchKey</span> <span class="p">=</span> <span class="s2">&#34;c00000d11111e22222f444e2333&#34;</span><span class="c">#admin-key，内容此处为演示，随意写的</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -359,17 +362,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ npm  run algolia
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&gt; algolia
-</span></span><span class="line"><span class="cl">&gt; atomic-algolia
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="o">[</span>Algolia<span class="o">]</span> Adding <span class="m">0</span> hits to Benjamin-Blog
-</span></span><span class="line"><span class="cl"><span class="o">[</span>Algolia<span class="o">]</span> Updating <span class="m">0</span> hits to Benjamin-Blog
-</span></span><span class="line"><span class="cl"><span class="o">[</span>Algolia<span class="o">]</span> Removing <span class="m">0</span> hits from Benjamin-Blog
-</span></span><span class="line"><span class="cl"><span class="o">[</span>Algolia<span class="o">]</span> <span class="m">219</span> hits unchanged in Benjamin-Blog
-</span></span><span class="line"><span class="cl"><span class="o">{}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ npm  run algolia
+
+&gt; algolia
+&gt; atomic-algolia
+
+<span class="o">[</span>Algolia<span class="o">]</span> Adding <span class="m">0</span> hits to Benjamin-Blog
+<span class="o">[</span>Algolia<span class="o">]</span> Updating <span class="m">0</span> hits to Benjamin-Blog
+<span class="o">[</span>Algolia<span class="o">]</span> Removing <span class="m">0</span> hits from Benjamin-Blog
+<span class="o">[</span>Algolia<span class="o">]</span> <span class="m">219</span> hits unchanged in Benjamin-Blog
+<span class="o">{}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -408,12 +411,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">valine</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl">   	<span class="nx">appId</span> <span class="p">=</span> <span class="s2">&#34;6aYYYY22YY222YYX34rjksex-X4XXXGah9X&#34;</span> <span class="c"># 仅作演示，随意输入的，要换成你自己的</span>
-</span></span><span class="line"><span class="cl">   	<span class="nx">appKey</span> <span class="p">=</span> <span class="s2">&#34;OOELIDKIddsowhV&#34;</span> <span class="c"># 同上，也是我随意输入的，但是内容长度和形式差不多</span>
-</span></span><span class="line"><span class="cl">   	<span class="nx">placeholder</span> <span class="p">=</span> <span class="s2">&#34;期待您的评论...&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">params</span><span class="p">.</span><span class="nx">page</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">valine</span><span class="p">]</span>
+	<span class="nx">enable</span> <span class="p">=</span> <span class="kc">true</span>
+   	<span class="nx">appId</span> <span class="p">=</span> <span class="s2">&#34;6aYYYY22YY222YYX34rjksex-X4XXXGah9X&#34;</span> <span class="c"># 仅作演示，随意输入的，要换成你自己的</span>
+   	<span class="nx">appKey</span> <span class="p">=</span> <span class="s2">&#34;OOELIDKIddsowhV&#34;</span> <span class="c"># 同上，也是我随意输入的，但是内容长度和形式差不多</span>
+   	<span class="nx">placeholder</span> <span class="p">=</span> <span class="s2">&#34;期待您的评论...&#34;</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -432,13 +435,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 是否使用 git 信息,必须得是全局配置,配置gitInfo更新lastMod</span>
-</span></span><span class="line"><span class="cl"><span class="nx">enableGitInfo</span> <span class="p">=</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="c"># 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效,注意要写publish的发布仓库</span>
-</span></span><span class="line"><span class="cl">  <span class="c"># 下方示例路径是我的publish仓库，注意要换成自己的</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">gitRepo</span> <span class="p">=</span> <span class="s2">&#34;https://github.com/kissingfire123/kissingfire123.github.io.git&#34;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="c"># 是否使用 git 信息,必须得是全局配置,配置gitInfo更新lastMod</span>
+<span class="nx">enableGitInfo</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+  <span class="c"># 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效,注意要写publish的发布仓库</span>
+  <span class="c"># 下方示例路径是我的publish仓库，注意要换成自己的</span>
+  <span class="nx">gitRepo</span> <span class="p">=</span> <span class="s2">&#34;https://github.com/kissingfire123/kissingfire123.github.io.git&#34;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>修改好并发布后，可以在每篇文章(包括预览时的draft)的末尾底部左下角，看到一行小字，格式形如 &ldquo;<em>更新于  20xx-mm-dd #SHA值</em> &ldquo;，即表示<strong>修改成功</strong>了。</p>
 <h1 id="seo优化">SEO优化</h1>
@@ -479,8 +482,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-07-27&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/e5f8dc3bf04ac6a07efdb7a0a5cc07011b49f4b2" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) e5f8dc3bf04ac6a07efdb7a0a5cc07011b49f4b2: &lt;published&gt; 发布 Metal Shader Debug">
-                                    <i class="fas fa-hashtag fa-fw"></i>e5f8dc3</a></span>
+                <span>更新于 2022-05-01</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -559,13 +561,13 @@
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2022/05/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-20T22:34:53+08:00" />
-<meta property="article:modified_time" content="2022-07-07T14:32:15+08:00" />
+<meta property="article:modified_time" content="2022-05-20T22:34:53+08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Effective C&#43;&#43;(第3版)精读总结(四)"/>
 <meta name="twitter:description" content="摘要：Effective C&#43;&#43;(第三版)内容第七、第八章的总结"/>
@@ -25,7 +26,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2022\/05\/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B\/"
         },"genre": "posts","keywords": "C\u002b\u002b, 程序设计","wordcount":  10590 ,
-        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B\/","datePublished": "2022-05-20T22:34:53+08:00","dateModified": "2022-07-07T14:32:15+08:00","publisher": {
+        "url": "https:\/\/kissingfire123.github.io\/2022\/05\/17_effective-c-%E4%B9%8B%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93%E5%9B%9B\/","datePublished": "2022-05-20T22:34:53+08:00","dateModified": "2022-05-20T22:34:53+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -214,13 +215,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">doProcessing</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">someNastyWidget</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">    <span class="p">...</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
+<span class="kt">void</span> <span class="n">doProcessing</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;</span> <span class="n">w</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">w</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">someNastyWidget</span><span class="p">){</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>doProcessing属于隐式接口，类型不定，传入不同类型T，就得到不同的函数。</p>
 <p>由于 <strong><ruby>操作符重载<rt>operator overloading</rt></ruby></strong> 的存在，隐式接口对传入的 T 类型的要求<strong>比较宽松</strong>，列举如下：</p>
@@ -241,9 +242,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Widget</span> <span class="p">;</span> <span class="c1">//早期C++使用这个声明Template参数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Widget</span><span class="p">;</span> <span class="c1">//现在更推荐用这个，暗示参数不一定是个class类型
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Widget</span> <span class="p">;</span> <span class="c1">//早期C++使用这个声明Template参数
+</span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">Widget</span><span class="p">;</span> <span class="c1">//现在更推荐用这个，暗示参数不一定是个class类型
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -260,14 +261,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">C</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">printContainer2ndVal</span><span class="p">(</span><span class="k">const</span> <span class="n">C</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">typename</span> <span class="n">C</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">iter</span><span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;this container&#39;s second value is: &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*++</span><span class="n">iter</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">     <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">C</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">printContainer2ndVal</span><span class="p">(</span><span class="k">const</span> <span class="n">C</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">typename</span> <span class="n">C</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">iter</span><span class="p">(</span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;this container&#39;s second value is: &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*++</span><span class="n">iter</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>此时，typename 的作用就是告诉编译器 C::const_iterator 是个类型，否则会编译报错。此时可以用 class 关键字替代，但是不建议。</p>
 <p>typename 使用范围不只是 template 函数内部，也包括了函数入参 ：</p>
@@ -278,10 +279,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">C</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">foo</span><span class="p">(</span><span class="k">const</span> <span class="n">C</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span>    <span class="c1">// 不允许使用 &#34;typename&#34;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="k">typename</span> <span class="n">C</span><span class="o">::</span><span class="n">iterator</span> <span class="n">iter</span><span class="p">);</span> <span class="c1">// 必须使用 &#34;typename&#34;
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">C</span><span class="o">&gt;</span> 
+<span class="kt">void</span> <span class="n">foo</span><span class="p">(</span><span class="k">const</span> <span class="n">C</span><span class="o">&amp;</span> <span class="n">container</span><span class="p">,</span>    <span class="c1">// 不允许使用 &#34;typename&#34;
+</span><span class="c1"></span>      <span class="k">typename</span> <span class="n">C</span><span class="o">::</span><span class="n">iterator</span> <span class="n">iter</span><span class="p">);</span> <span class="c1">// 必须使用 &#34;typename&#34;
+</span></code></pre></td></tr></table>
 </div>
 </div><p>⚠️ 其他特殊情况：不要在 <strong><ruby>基类列表<rt>base class list</rt></ruby></strong> 或 <strong><ruby>成员初始化列<rt>member initialization list</rt></ruby></strong> 使用 typename</p>
 <div class="highlight"><div class="chroma">
@@ -297,16 +298,16 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span> <span class="k">public</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Nested</span><span class="p">{</span> <span class="c1">//基类列表不允许使用typename
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">Derived</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span><span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Nested</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="c1">// 成员初值列也不允许typename
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Nested</span> <span class="n">NestedType</span><span class="p">;</span><span class="c1">//结合typedef定义，常规用法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">NestedType</span> <span class="n">temp</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">...</span><span class="c1">// 其他操作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
+<span class="k">class</span> <span class="nc">Derived</span><span class="o">:</span> <span class="k">public</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Nested</span><span class="p">{</span> <span class="c1">//基类列表不允许使用typename
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+    <span class="k">explicit</span> <span class="n">Derived</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span><span class="o">:</span><span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Nested</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="c1">// 成员初值列也不允许typename
+</span><span class="c1"></span>        <span class="k">typedef</span> <span class="k">typename</span> <span class="n">Base</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">Nested</span> <span class="n">NestedType</span><span class="p">;</span><span class="c1">//结合typedef定义，常规用法
+</span><span class="c1"></span>        <span class="n">NestedType</span> <span class="n">temp</span><span class="p">;</span>
+        <span class="p">...</span><span class="c1">// 其他操作
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -331,20 +332,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Company</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MsgSender</span><span class="p">{</span> 
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">SendPlain</span><span class="p">(){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;send plain</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">SendEncrypted</span><span class="p">(){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;send encrypted</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>  <span class="c1">// 基类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Company</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LoggingMsgSender</span><span class="o">:</span> <span class="k">public</span> <span class="n">MsgSender</span><span class="o">&lt;</span><span class="n">Company</span><span class="o">&gt;</span><span class="p">{</span><span class="c1">//子类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">SendPlainMsg</span><span class="p">(){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">SendPlain</span><span class="p">();</span><span class="c1">//  ==&gt; 这样直接调用是不行的，想想为什么？
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Company</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">MsgSender</span><span class="p">{</span> 
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">SendPlain</span><span class="p">(){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;send plain</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+    <span class="kt">void</span> <span class="nf">SendEncrypted</span><span class="p">(){</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;send encrypted</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;}</span>
+<span class="p">};</span>  <span class="c1">// 基类
+</span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">Company</span><span class="o">&gt;</span> 
+<span class="k">class</span> <span class="nc">LoggingMsgSender</span><span class="o">:</span> <span class="k">public</span> <span class="n">MsgSender</span><span class="o">&lt;</span><span class="n">Company</span><span class="o">&gt;</span><span class="p">{</span><span class="c1">//子类
+</span><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">SendPlainMsg</span><span class="p">(){</span>
+        <span class="n">SendPlain</span><span class="p">();</span><span class="c1">//  ==&gt; 这样直接调用是不行的，想想为什么？
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>上述注释中问题的原因：因为当全特化时可随意去除 MsgSender 内的函数，那么编译器无法确定基类是否仍有  SendPlain 这个方法。所以，编译器干脆 <strong>拒绝在编译时</strong>去模板化基类中<strong>主动寻找</strong>继承而来的名称。</p>
 <p>解决方法有三个：</p>
@@ -367,12 +368,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SquareMatrix</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">invert</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;size is &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">SquareMatrix</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">invert</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;size is &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>应用代码如下：</p>
 <div class="highlight"><div class="chroma">
@@ -385,13 +386,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//下面这2句，模板类实例化 1 次。 invert函数有 1 份实现
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">mat5</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">mat5New</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//换成下面这2句，模板类实例化 2 次。invert函数有 2 份实现(问题暴露)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">mat5</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl"><span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">mat10</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//下面这2句，模板类实例化 1 次。 invert函数有 1 份实现
+</span><span class="c1"></span><span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">mat5</span><span class="p">;</span>
+<span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">mat5New</span><span class="p">;</span>
+<span class="c1">//换成下面这2句，模板类实例化 2 次。invert函数有 2 份实现(问题暴露)
+</span><span class="c1"></span><span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">5</span><span class="o">&gt;</span> <span class="n">mat5</span><span class="p">;</span> 
+<span class="n">SquareMatrix</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="mi">10</span><span class="o">&gt;</span> <span class="n">mat10</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>膨胀原因</strong>：在编译器看来，SquareMatrix&lt;int, 5&gt; 和 SquareMatrix&lt;int, 10&gt; 是2个<strong>完全不同的 C++ 类</strong>，实例化了2次，生成了这2个类。试想，如果代码中还需要其他 size 的SquareMatrix ，都会再生成一个新类，那么最后二进制文件就多了许多重复的目标代码，也就是膨胀。</p>
 <p>如果能<strong>抽离参数相关代码</strong>，做到尺寸无关，便可解决这个问题。</p>
@@ -411,17 +412,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BaseSqaureMatrix</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">BaseSqaureMatrix</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n</span><span class="p">,</span><span class="n">T</span><span class="o">*</span> <span class="n">dataPtr</span><span class="p">)</span> <span class="o">:</span><span class="n">n_</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">dataPtr_</span><span class="p">(</span><span class="n">dataPtr</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl"><span class="k">protected</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">baseInvert</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;invert: pData = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dataPtr_</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; , size = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n_</span>  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">SetDataPtr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">dataPtr</span><span class="p">)</span> <span class="p">{</span> <span class="n">dataPtr_</span> <span class="o">=</span> <span class="n">dataPtr</span><span class="p">;</span> <span class="p">};</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">T</span><span class="o">*</span> <span class="n">dataPtr_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
+<span class="k">class</span> <span class="nc">BaseSqaureMatrix</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">BaseSqaureMatrix</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n</span><span class="p">,</span><span class="n">T</span><span class="o">*</span> <span class="n">dataPtr</span><span class="p">)</span> <span class="o">:</span><span class="n">n_</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">dataPtr_</span><span class="p">(</span><span class="n">dataPtr</span><span class="p">)</span> <span class="p">{}</span>
+<span class="k">protected</span><span class="o">:</span>
+    <span class="kt">void</span> <span class="n">baseInvert</span><span class="p">()</span> <span class="p">{</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;invert: pData = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">dataPtr_</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; , size = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">n_</span>  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">SetDataPtr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">dataPtr</span><span class="p">)</span> <span class="p">{</span> <span class="n">dataPtr_</span> <span class="o">=</span> <span class="n">dataPtr</span><span class="p">;</span> <span class="p">};</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">T</span><span class="o">*</span> <span class="n">dataPtr_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p><mark>目标派生类</mark>实现如下：</p>
 <div class="highlight"><div class="chroma">
@@ -438,17 +439,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SquareMatrix</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseSqaureMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">SquareMatrix</span><span class="p">()</span> <span class="o">:</span><span class="n">BaseSqaureMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="k">nullptr</span><span class="p">),</span> <span class="n">data_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">-&gt;</span><span class="n">SetDataPtr</span><span class="p">(</span><span class="n">data_</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">invert</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">baseInvert</span><span class="p">();</span> <span class="p">}</span><span class="c1">// 参考Rule43
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">data_</span> <span class="p">;</span><span class="c1">// RAII管理资源
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">n</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">SquareMatrix</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseSqaureMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SquareMatrix</span><span class="p">()</span> <span class="o">:</span><span class="n">BaseSqaureMatrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="k">nullptr</span><span class="p">),</span> <span class="n">data_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span> <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="k">this</span><span class="o">-&gt;</span><span class="n">SetDataPtr</span><span class="p">(</span><span class="n">data_</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="nf">invert</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">baseInvert</span><span class="p">();</span> <span class="p">}</span><span class="c1">// 参考Rule43
+</span><span class="c1"></span><span class="k">private</span><span class="o">:</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">data_</span> <span class="p">;</span><span class="c1">// RAII管理资源
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>最终效果：相同 T 类型的template实例类(比如SquareMatrix&lt;float,5&gt;和SquareMatrix&lt;float,6&gt;)，<mark>共享实现码</mark>，祛除代码膨胀。</p>
 <hr>
@@ -486,29 +487,29 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SmartPtr</span> <span class="p">{</span> 
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">SmartPtr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">origPtr</span><span class="p">)</span> <span class="o">:</span><span class="n">originPtr_</span><span class="p">(</span><span class="n">origPtr</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">SmartPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="n">smt</span><span class="p">)</span> <span class="o">:</span><span class="n">originPtr_</span><span class="p">(</span><span class="n">smt</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{}</span><span class="c1">// 正常Copy构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//正常copy操作符函数: 简单演示，就浅复制吧
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="n">smt</span><span class="p">)</span> <span class="p">{</span> <span class="n">originPtr_</span> <span class="o">=</span> <span class="n">smt</span><span class="p">.</span><span class="n">get</span><span class="p">();</span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="o">&gt;</span> <span class="c1">//泛化构造函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">SmartPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="o">:</span><span class="n">originPtr_</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">//为了隐式转换不加 explict
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="o">&gt;</span> <span class="c1">//泛化赋值操作符
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">originPtr_</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span><span class="c1">//简单演示，浅复制
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">    <span class="n">T</span><span class="o">*</span> <span class="nf">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">originPtr_</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">SmartPtr</span><span class="p">()</span> <span class="p">{</span> <span class="k">delete</span> <span class="n">originPtr_</span><span class="p">;}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">T</span><span class="o">*</span> <span class="n">originPtr_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> 
+<span class="k">class</span> <span class="nc">SmartPtr</span> <span class="p">{</span> 
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">SmartPtr</span><span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">origPtr</span><span class="p">)</span> <span class="o">:</span><span class="n">originPtr_</span><span class="p">(</span><span class="n">origPtr</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">SmartPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="n">smt</span><span class="p">)</span> <span class="o">:</span><span class="n">originPtr_</span><span class="p">(</span><span class="n">smt</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{}</span><span class="c1">// 正常Copy构造函数
+</span><span class="c1"></span>    <span class="c1">//正常copy操作符函数: 简单演示，就浅复制吧
+</span><span class="c1"></span>    <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="n">smt</span><span class="p">)</span> <span class="p">{</span> <span class="n">originPtr_</span> <span class="o">=</span> <span class="n">smt</span><span class="p">.</span><span class="n">get</span><span class="p">();</span> <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="o">&gt;</span> <span class="c1">//泛化构造函数
+</span><span class="c1"></span>    <span class="n">SmartPtr</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span><span class="o">:</span><span class="n">originPtr_</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">get</span><span class="p">())</span> <span class="p">{</span> <span class="p">}</span> <span class="c1">//为了隐式转换不加 explict
+</span><span class="c1"></span>
+    <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="o">&gt;</span> <span class="c1">//泛化赋值操作符
+</span><span class="c1"></span>    <span class="n">SmartPtr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">originPtr_</span> <span class="o">=</span> <span class="n">other</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span><span class="c1">//简单演示，浅复制
+</span><span class="c1"></span>
+    <span class="n">T</span><span class="o">*</span> <span class="nf">get</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">originPtr_</span><span class="p">;</span> <span class="p">}</span>
+    <span class="o">~</span><span class="n">SmartPtr</span><span class="p">()</span> <span class="p">{</span> <span class="k">delete</span> <span class="n">originPtr_</span><span class="p">;}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">T</span><span class="o">*</span> <span class="n">originPtr_</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>有上述的代码支持，我们就能写出如下的应用代码：</p>
 <div class="highlight"><div class="chroma">
@@ -520,12 +521,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BaseObj</span><span class="p">{};</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DerivedObj</span><span class="o">:</span><span class="k">public</span> <span class="n">BaseObj</span> <span class="p">{};</span><span class="c1">//DerivedObj是BaseObj兼容类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">DerivedObj</span><span class="o">&gt;</span> <span class="n">smDerived</span><span class="p">(</span><span class="k">new</span> <span class="n">DerivedObj</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl"><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">BaseObj</span><span class="o">&gt;</span> <span class="n">smBase</span><span class="p">(</span><span class="n">smDerived</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">BaseObj</span><span class="o">&gt;</span> <span class="n">smBase2</span> <span class="o">=</span> <span class="n">smDerived</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">BaseObj</span><span class="p">{};</span>
+<span class="k">class</span> <span class="nc">DerivedObj</span><span class="o">:</span><span class="k">public</span> <span class="n">BaseObj</span> <span class="p">{};</span><span class="c1">//DerivedObj是BaseObj兼容类型
+</span><span class="c1"></span><span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">DerivedObj</span><span class="o">&gt;</span> <span class="n">smDerived</span><span class="p">(</span><span class="k">new</span> <span class="n">DerivedObj</span><span class="p">());</span>
+<span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">BaseObj</span><span class="o">&gt;</span> <span class="n">smBase</span><span class="p">(</span><span class="n">smDerived</span><span class="p">);</span>
+<span class="n">SmartPtr</span><span class="o">&lt;</span><span class="n">BaseObj</span><span class="o">&gt;</span> <span class="n">smBase2</span> <span class="o">=</span> <span class="n">smDerived</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -561,21 +562,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RationalNew</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">RationalNew</span><span class="p">(</span><span class="n">T</span> <span class="n">numerator</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">T</span> <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">:</span><span class="n">numerator_</span><span class="p">(</span><span class="n">numerator</span><span class="p">),</span> <span class="n">denominator_</span><span class="p">(</span><span class="n">denominator</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">T</span> <span class="nf">numerator</span><span class="p">()</span><span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">numerator_</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">T</span> <span class="nf">denominator</span><span class="p">()</span><span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">denominator_</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">(),</span><span class="n">lhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">T</span> <span class="n">numerator_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">T</span> <span class="n">denominator_</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">RationalNew</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="n">RationalNew</span><span class="p">(</span><span class="n">T</span> <span class="n">numerator</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">T</span> <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">:</span><span class="n">numerator_</span><span class="p">(</span><span class="n">numerator</span><span class="p">),</span> <span class="n">denominator_</span><span class="p">(</span><span class="n">denominator</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="n">T</span> <span class="nf">numerator</span><span class="p">()</span><span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">numerator_</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">T</span> <span class="nf">denominator</span><span class="p">()</span><span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="n">denominator_</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">friend</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">(),</span><span class="n">lhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="n">T</span> <span class="n">numerator_</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">T</span> <span class="n">denominator_</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>那么，对如下的应用代码，就使用自如了：</p>
 <div class="highlight"><div class="chroma">
@@ -585,10 +586,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">RationalNew</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">oneHalf</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">RationalNew</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">oneHalf</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">RationalNew</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">res2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">oneHalf</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">RationalNew</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">oneHalf</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">);</span>
+<span class="n">RationalNew</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">oneHalf</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">RationalNew</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">res2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">oneHalf</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -612,20 +613,20 @@
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RationalNew</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//  其他部分略。注意 operator* 函数体实现，改为调用doMultiply
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">friend</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nf">doMultiply</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span><span class="n">rhs</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 类外函数  doMultiply
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">doMultiply</span><span class="p">(</span><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">(),</span> <span class="n">lhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="k">class</span> <span class="nc">RationalNew</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="c1">//  其他部分略。注意 operator* 函数体实现，改为调用doMultiply
+</span><span class="c1"></span>    <span class="k">friend</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">doMultiply</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span><span class="n">rhs</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// 类外函数  doMultiply
+</span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
+<span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">doMultiply</span><span class="p">(</span><span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">lhs</span><span class="p">,</span> <span class="k">const</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">RationalNew</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">numerator</span><span class="p">(),</span> <span class="n">lhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">()</span><span class="o">*</span><span class="n">rhs</span><span class="p">.</span><span class="n">denominator</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -648,11 +649,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">InputIt</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Distance</span> <span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">advance</span><span class="p">(</span> <span class="n">InputIt</span><span class="o">&amp;</span> <span class="n">it</span><span class="p">,</span> <span class="n">Distance</span> <span class="n">n</span> <span class="p">);</span>       <span class="c1">// C++17 之前
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">InputIt</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Distance</span> <span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">constexpr</span> <span class="kt">void</span> <span class="n">advance</span><span class="p">(</span> <span class="n">InputIt</span><span class="o">&amp;</span> <span class="n">it</span><span class="p">,</span> <span class="n">Distance</span> <span class="n">n</span> <span class="p">);</span> <span class="c1">// 自C++17 开始
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">InputIt</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Distance</span> <span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">advance</span><span class="p">(</span> <span class="n">InputIt</span><span class="o">&amp;</span> <span class="n">it</span><span class="p">,</span> <span class="n">Distance</span> <span class="n">n</span> <span class="p">);</span>       <span class="c1">// C++17 之前
+</span><span class="c1"></span><span class="k">template</span><span class="o">&lt;</span> <span class="k">class</span> <span class="nc">InputIt</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Distance</span> <span class="o">&gt;</span>
+<span class="k">constexpr</span> <span class="kt">void</span> <span class="n">advance</span><span class="p">(</span> <span class="n">InputIt</span><span class="o">&amp;</span> <span class="n">it</span><span class="p">,</span> <span class="n">Distance</span> <span class="n">n</span> <span class="p">);</span> <span class="c1">// 自C++17 开始
+</span></code></pre></td></tr></table>
 </div>
 </div><p>再看下示例应用代码：</p>
 <div class="highlight"><div class="chroma">
@@ -673,21 +674,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">vIter</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">advance</span><span class="p">(</span><span class="n">vIter</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;after advance  3 offset: *vIter = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">vIter</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">fNums</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">dIter</span> <span class="o">=</span> <span class="n">fNums</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">advance</span><span class="p">(</span><span class="n">dIter</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;after advance -2 offset: *dIter = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">dIter</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">chList</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">cIter</span> <span class="o">=</span> <span class="n">chList</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">advance</span><span class="p">(</span><span class="n">cIter</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;after advance  2 offset: *cIter = &#34;</span> <span class="o">&lt;&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">cIter</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nums</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">};</span>
+<span class="k">auto</span> <span class="n">vIter</span> <span class="o">=</span> <span class="n">nums</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">advance</span><span class="p">(</span><span class="n">vIter</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;after advance  3 offset: *vIter = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">vIter</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">deque</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">fNums</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">};</span>
+<span class="k">auto</span> <span class="n">dIter</span> <span class="o">=</span> <span class="n">fNums</span><span class="p">.</span><span class="n">end</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">advance</span><span class="p">(</span><span class="n">dIter</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;after advance -2 offset: *dIter = &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">dIter</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span> <span class="n">chList</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">};</span>
+<span class="k">auto</span> <span class="n">cIter</span> <span class="o">=</span> <span class="n">chList</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">advance</span><span class="p">(</span><span class="n">cIter</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;after advance  2 offset: *cIter = &#34;</span> <span class="o">&lt;&lt;</span> <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">cIter</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>最终输出信息如下：</p>
 <div class="highlight"><div class="chroma">
@@ -697,10 +698,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">after advance  3 offset: *vIter = 4
-</span></span><span class="line"><span class="cl">after advance -2 offset: *dIter = 0.5
-</span></span><span class="line"><span class="cl">after advance  2 offset: *cIter = 30
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text">after advance  3 offset: *vIter = 4
+after advance -2 offset: *dIter = 0.5
+after advance  2 offset: *cIter = 30
+</code></pre></td></tr></table>
 </div>
 </div></div>
         </div>
@@ -756,12 +757,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">input_iterator_tag</span><span class="p">{};</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">output_iterato_tag</span><span class="p">{};</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">forward_iterator_tag</span><span class="o">:</span><span class="k">public</span> <span class="n">input_iterator_tag</span> <span class="p">{};</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">bidirectional_iterator_tag</span><span class="o">:</span> <span class="k">public</span> <span class="n">forward_iterator_tag</span><span class="p">{};</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">random_access_iterator_tag</span><span class="o">:</span> <span class="k">public</span> <span class="n">bidirectional_iterator_tag</span><span class="p">{};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">struct</span> <span class="nc">input_iterator_tag</span><span class="p">{};</span>
+<span class="k">struct</span> <span class="nc">output_iterato_tag</span><span class="p">{};</span>
+<span class="k">struct</span> <span class="nc">forward_iterator_tag</span><span class="o">:</span><span class="k">public</span> <span class="n">input_iterator_tag</span> <span class="p">{};</span>
+<span class="k">struct</span> <span class="nc">bidirectional_iterator_tag</span><span class="o">:</span> <span class="k">public</span> <span class="n">forward_iterator_tag</span><span class="p">{};</span>
+<span class="k">struct</span> <span class="nc">random_access_iterator_tag</span><span class="o">:</span> <span class="k">public</span> <span class="n">bidirectional_iterator_tag</span><span class="p">{};</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -779,15 +780,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span> <span class="p">...</span> <span class="o">&gt;</span> <span class="c1">//省略template 参数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">vector</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">iterator</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>   <span class="c1">// ps: C++11 之后使用的都是 using 定义式
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    	<span class="k">typedef</span> <span class="n">random_access_iterator_tag</span> <span class="n">iterator_category</span><span class="p">;</span>   
-</span></span><span class="line"><span class="cl">    <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span> <span class="p">...</span> <span class="o">&gt;</span> <span class="c1">//省略template 参数
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">vector</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">class</span> <span class="nc">iterator</span><span class="p">{</span>
+    <span class="k">public</span><span class="o">:</span>   <span class="c1">// ps: C++11 之后使用的都是 using 定义式
+</span><span class="c1"></span>    	<span class="k">typedef</span> <span class="n">random_access_iterator_tag</span> <span class="n">iterator_category</span><span class="p">;</span>   
+    <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -801,11 +802,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="o">&gt;</span>  <span class="c1">// ⚠️ 注意：使用的是 struct
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="nc">iterator_traits</span> <span class="p">{</span> <span class="c1">//这里的 IterT 就可以传入vector等容器类
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">IterT</span><span class="o">::</span><span class="n">iterator_category</span>  <span class="n">iterator_category</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="o">&gt;</span>  <span class="c1">// ⚠️ 注意：使用的是 struct
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">iterator_traits</span> <span class="p">{</span> <span class="c1">//这里的 IterT 就可以传入vector等容器类
+</span><span class="c1"></span>    <span class="k">typedef</span> <span class="k">typename</span> <span class="n">IterT</span><span class="o">::</span><span class="n">iterator_category</span>  <span class="n">iterator_category</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>注意，这里的 IterT 类型不能是指针类型，因为 pointer 不能后续嵌套。那么就需要一个特化版本了，代码如下：</p>
 <div class="highlight"><div class="chroma">
@@ -816,11 +817,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="o">&gt;</span>   
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">iterator_traits</span><span class="o">&lt;</span><span class="n">IterT</span><span class="o">*&gt;</span><span class="p">{</span> <span class="c1">// 指针类型和 random 迭代器类似
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">typedef</span> <span class="n">random_access_iterator_tag</span> <span class="n">iterator_category</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="o">&gt;</span>   
+<span class="k">struct</span> <span class="nc">iterator_traits</span><span class="o">&lt;</span><span class="n">IterT</span><span class="o">*&gt;</span><span class="p">{</span> <span class="c1">// 指针类型和 random 迭代器类似
+</span><span class="c1"></span>    <span class="k">typedef</span> <span class="n">random_access_iterator_tag</span> <span class="n">iterator_category</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
@@ -845,21 +846,21 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">doAdvance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">random_access_iterator_tag</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">iter</span> <span class="o">+=</span> <span class="n">d</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">doAdvance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">bidirectional_iterator_tag</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">while</span> <span class="p">(</span><span class="n">d</span><span class="o">--</span><span class="p">)</span> <span class="o">++</span><span class="n">iter</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="p">{</span> <span class="k">while</span> <span class="p">(</span><span class="n">d</span><span class="o">++</span><span class="p">)</span> <span class="o">--</span><span class="n">iter</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">doAdvance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">input_iterator_tag</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Negative distance&#34;</span><span class="p">);}</span><span class="c1">//ps: msvc中的C++实现是采用编译期间的asset判定
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">d</span><span class="o">--</span><span class="p">)</span> <span class="o">++</span><span class="n">iter</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">doAdvance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">random_access_iterator_tag</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">iter</span> <span class="o">+=</span> <span class="n">d</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">doAdvance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">bidirectional_iterator_tag</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> <span class="k">while</span> <span class="p">(</span><span class="n">d</span><span class="o">--</span><span class="p">)</span> <span class="o">++</span><span class="n">iter</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span> <span class="k">while</span> <span class="p">(</span><span class="n">d</span><span class="o">++</span><span class="p">)</span> <span class="o">--</span><span class="n">iter</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">doAdvance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">input_iterator_tag</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&#34;Negative distance&#34;</span><span class="p">);}</span><span class="c1">//ps: msvc中的C++实现是采用编译期间的asset判定
+</span><span class="c1"></span>    <span class="k">while</span> <span class="p">(</span><span class="n">d</span><span class="o">--</span><span class="p">)</span> <span class="o">++</span><span class="n">iter</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>自然地，advance 函数的实现如下所示：</p>
 <div class="highlight"><div class="chroma">
@@ -871,12 +872,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span>  <span class="n">advance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">    <span class="n">doAdvance</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span><span class="n">d</span><span class="p">,</span> <span class="cm">/*不论 category 的tag类型是什么，重载能找到匹配函数。即编译期的 if...else 测试*/</span>
-</span></span><span class="line"><span class="cl">              <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">IterT</span><span class="o">&gt;::</span><span class="n">iterator_category</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">IterT</span><span class="p">,</span> <span class="k">typename</span> <span class="n">DistT</span><span class="o">&gt;</span>
+<span class="kt">void</span>  <span class="n">advance</span><span class="p">(</span><span class="n">IterT</span><span class="o">&amp;</span> <span class="n">iter</span><span class="p">,</span> <span class="n">DistT</span> <span class="n">d</span><span class="p">){</span>
+    <span class="n">doAdvance</span><span class="p">(</span><span class="n">iter</span><span class="p">,</span><span class="n">d</span><span class="p">,</span> <span class="cm">/*不论 category 的tag类型是什么，重载能找到匹配函数。即编译期的 if...else 测试*/</span>
+              <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">iterator_traits</span><span class="o">&lt;</span><span class="n">IterT</span><span class="o">&gt;::</span><span class="n">iterator_category</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>至此，一个完整的 (以 iterator_traits 为例)Traits 技术实现与运用的过程就完成了。</p>
 <div class="details admonition info open">
@@ -931,17 +932,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="n">n</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Factorial</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>   <span class="c1">// 递归的形式体现: f(n) = n * f(n -1)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">enum</span> <span class="p">{</span><span class="n">value</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span> <span class="n">Factorial</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">Factorial</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>  <span class="c1">// 模板全特化: 实际是初始化 f(0) = 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">enum</span> <span class="p">{</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="kt">unsigned</span> <span class="n">n</span><span class="o">&gt;</span>
+<span class="k">struct</span> <span class="nc">Factorial</span>
+<span class="p">{</span>   <span class="c1">// 递归的形式体现: f(n) = n * f(n -1)
+</span><span class="c1"></span>    <span class="k">enum</span> <span class="p">{</span><span class="n">value</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span> <span class="n">Factorial</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">};</span>
+<span class="p">};</span>
+<span class="k">template</span><span class="o">&lt;&gt;</span>
+<span class="k">struct</span> <span class="nc">Factorial</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span>
+<span class="p">{</span>  <span class="c1">// 模板全特化: 实际是初始化 f(0) = 1
+</span><span class="c1"></span>    <span class="k">enum</span> <span class="p">{</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>那么阶乘计算在编译期就完成了，运行时就是直接取用了：</p>
 <div class="highlight"><div class="chroma">
@@ -950,9 +951,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Factorial(&#34;</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;) = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Factorial</span><span class="o">&lt;</span><span class="mi">5</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Factorial(&#34;</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;) = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Factorial</span><span class="o">&lt;</span><span class="mi">7</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Factorial(&#34;</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;) = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Factorial</span><span class="o">&lt;</span><span class="mi">5</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;Factorial(&#34;</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;) = &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">Factorial</span><span class="o">&lt;</span><span class="mi">7</span><span class="o">&gt;::</span><span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div><hr>
 <h1 id="ch8-定制new和delete">CH8 定制new和delete</h1>
@@ -969,9 +970,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="kt">int</span> <span class="o">*</span><span class="n">pArr</span> <span class="o">=</span> <span class="k">new</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">nothrow</span><span class="p">)</span> <span class="kt">int</span><span class="p">[</span><span class="mh">0x1fffffff</span><span class="p">];</span> <span class="c1">//即使分配失败，也不抛异常，而是得到null指针.    
-</span></span></span><span class="line"><span class="cl"><span class="c1">// ⚠️ nothroow-new 不能保证 class 后续的构造函数不抛异常
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"> <span class="kt">int</span> <span class="o">*</span><span class="n">pArr</span> <span class="o">=</span> <span class="k">new</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">nothrow</span><span class="p">)</span> <span class="kt">int</span><span class="p">[</span><span class="mh">0x1fffffff</span><span class="p">];</span> <span class="c1">//即使分配失败，也不抛异常，而是得到null指针.    
+</span><span class="c1">// ⚠️ nothroow-new 不能保证 class 后续的构造函数不抛异常
+</span></code></pre></td></tr></table>
 </div>
 </div></blockquote>
 <p>如果需要抛异常，在抛异常前，实际上会执行一个事先指定的函数指针  <code>new_handler</code>  (如果指定了的话)。   指定这个函数指针的方法声明如下：</p>
@@ -983,11 +984,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">std</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">new_handler</span><span class="p">)();</span>  <span class="c1">//下方throw()表示不抛异常。现在都使用 noexcept 代替
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">new_handler</span> <span class="nf">set_new_handler</span><span class="p">(</span><span class="n">new_handler</span> <span class="n">p</span><span class="p">)</span> <span class="k">throw</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// ⚠️ ：set 进新的handler，返回原来旧的handler作为返回值
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">namespace</span> <span class="n">std</span> <span class="p">{</span>
+    <span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">new_handler</span><span class="p">)();</span>  <span class="c1">//下方throw()表示不抛异常。现在都使用 noexcept 代替
+</span><span class="c1"></span>    <span class="n">new_handler</span> <span class="nf">set_new_handler</span><span class="p">(</span><span class="n">new_handler</span> <span class="n">p</span><span class="p">)</span> <span class="k">throw</span><span class="p">();</span>
+<span class="p">}</span> <span class="c1">// ⚠️ ：set 进新的handler，返回原来旧的handler作为返回值
+</span></code></pre></td></tr></table>
 </div>
 </div><p>new-hanlder 的使用示例如下：</p>
 <div class="highlight"><div class="chroma">
@@ -1002,15 +1003,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//先定义一个函数
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">OutOfMemTip</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;new memory fail,out of memory!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">abort</span><span class="p">();</span><span class="c1">//终止程序，若调试模式会弹窗提示
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 故意制造new失败的情形，程序会调用 OutOfMemTip，触发std::abort()
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">OutOfMemTip</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="o">*</span><span class="n">pArr</span> <span class="o">=</span>  <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mh">0x1fffffff</span><span class="p">];</span><span class="c1">//约2GB,如果扛的住，调大这个数 
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//先定义一个函数
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">OutOfMemTip</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;new memory fail,out of memory!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">abort</span><span class="p">();</span><span class="c1">//终止程序，若调试模式会弹窗提示
+</span><span class="c1"></span><span class="p">}</span>
+<span class="c1">// 故意制造new失败的情形，程序会调用 OutOfMemTip，触发std::abort()
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">OutOfMemTip</span><span class="p">);</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">pArr</span> <span class="o">=</span>  <span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mh">0x1fffffff</span><span class="p">];</span><span class="c1">//约2GB,如果扛的住，调大这个数 
+</span></code></pre></td></tr></table>
 </div>
 </div><p>可以看出这样的函数指针给了使用者非常大的设计弹性，可以做到以下事情：</p>
 <ul>
@@ -1051,24 +1052,24 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">NewHandlerSupport</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">set_new_handler</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">p</span><span class="p">)</span><span class="k">noexcept</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">oldHandler</span> <span class="o">=</span> <span class="n">currentHandler_</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">currentHandler_</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">oldHandler</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="k">throw</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">oldHandle</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">currentHandler_</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">void</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="o">::</span><span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">size</span><span class="p">);</span> <span class="c1">//new完后复原global-new-handler
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">oldHandle</span><span class="p">);</span><span class="c1">//原书使用RAII手法在还原这个handler，这里作用类似
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">currentHandler_</span><span class="p">;</span><span class="c1">//初始化动作放到类外cpp文件里去
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span> 
+<span class="k">class</span> <span class="nc">NewHandlerSupport</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">set_new_handler</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">p</span><span class="p">)</span><span class="k">noexcept</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">oldHandler</span> <span class="o">=</span> <span class="n">currentHandler_</span><span class="p">;</span>
+        <span class="n">currentHandler_</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">oldHandler</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">static</span> <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="k">throw</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">oldHandle</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">currentHandler_</span><span class="p">);</span>
+        <span class="kt">void</span> <span class="o">*</span><span class="n">res</span> <span class="o">=</span> <span class="o">::</span><span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">size</span><span class="p">);</span> <span class="c1">//new完后复原global-new-handler
+</span><span class="c1"></span>        <span class="n">std</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">oldHandle</span><span class="p">);</span><span class="c1">//原书使用RAII手法在还原这个handler，这里作用类似
+</span><span class="c1"></span>        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="k">private</span><span class="o">:</span>
+    <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">new_handler</span> <span class="n">currentHandler_</span><span class="p">;</span><span class="c1">//初始化动作放到类外cpp文件里去
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>那么目标类 <code>TestNewHandler</code> 只要基于 <strong><code>CRTP</code></strong> 方法继承于基类就可以了，实现如下：</p>
 <div class="highlight"><div class="chroma">
@@ -1081,13 +1082,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TestNewHandler</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NewHandlerSupport</span><span class="o">&lt;</span><span class="n">TestNewHandler</span><span class="o">&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//不必声明 set_new_handler 或 operator new
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//最终应用时也非常简单
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">TestNewHandler</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">OutOfMemTip</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">TestNewHandler</span><span class="o">*</span> <span class="n">pTestHandle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestNewHandler</span><span class="p">();</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">TestNewHandler</span> <span class="o">:</span> <span class="k">public</span> <span class="n">NewHandlerSupport</span><span class="o">&lt;</span><span class="n">TestNewHandler</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="c1">//不必声明 set_new_handler 或 operator new
+</span><span class="c1"></span><span class="p">};</span>
+<span class="c1">//最终应用时也非常简单
+</span><span class="c1"></span><span class="n">TestNewHandler</span><span class="o">::</span><span class="n">set_new_handler</span><span class="p">(</span><span class="n">OutOfMemTip</span><span class="p">);</span>
+<span class="n">TestNewHandler</span><span class="o">*</span> <span class="n">pTestHandle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TestNewHandler</span><span class="p">();</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1156,22 +1157,22 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="k">throw</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">        <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">        <span class="err">尝试分配</span> <span class="n">size</span> <span class="n">bytes</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="err">分配成功</span><span class="p">)</span> 
-</span></span><span class="line"><span class="cl">            <span class="k">return</span>  <span class="n">target_pointer</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    	<span class="n">new_handler</span> <span class="n">globalHandler</span> <span class="o">=</span> <span class="n">set_new_handler</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">set_new_handler</span><span class="p">(</span><span class="n">globalHandler</span><span class="p">);</span><span class="c1">//分配失败了
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">globalHandler</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="n">globalHanler</span><span class="p">)();</span>
-</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="k">throw</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">){</span>
+    <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">){</span>
+        <span class="err">尝试分配</span> <span class="n">size</span> <span class="n">bytes</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="err">分配成功</span><span class="p">)</span> 
+            <span class="k">return</span>  <span class="n">target_pointer</span><span class="p">;</span>
+    	<span class="n">new_handler</span> <span class="n">globalHandler</span> <span class="o">=</span> <span class="n">set_new_handler</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">set_new_handler</span><span class="p">(</span><span class="n">globalHandler</span><span class="p">);</span><span class="c1">//分配失败了
+</span><span class="c1"></span>        <span class="k">if</span><span class="p">(</span><span class="n">globalHandler</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="n">globalHanler</span><span class="p">)();</span>
+        <span class="k">else</span> <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -1188,14 +1189,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span><span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">){</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">!=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Base</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">::</span><span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">size</span><span class="p">);</span><span class="c1">//子类走这里
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Base</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">static</span> <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span><span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">size</span> <span class="o">!=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Base</span><span class="p">))</span>
+            <span class="k">return</span> <span class="o">::</span><span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">size</span><span class="p">);</span><span class="c1">//子类走这里
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>值得注意的是，<strong>operator new[] 不能这样在基类中区分</strong>。因为即使在Base类，也无法假定每个元素是 sizeof(Base)，通常还有额外内存空间来保存元素个数。</p>
 </li>
@@ -1214,9 +1215,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//这个特殊的也是最常涉及的 placement-new 已被纳入C++标准程序库
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="kt">void</span><span class="o">*</span> <span class="n">pMemory</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">//这个特殊的也是最常涉及的 placement-new 已被纳入C++标准程序库
+</span><span class="c1"></span><span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="kt">void</span><span class="o">*</span> <span class="n">pMemory</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>先暂时考虑一个调用了placement-new的正常构造过程：</p>
 <div class="highlight"><div class="chroma">
@@ -1226,10 +1227,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 有这样一个placement-new,接收一个ostream来log分配时的相关信息
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">logStream</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">Widget</span><span class="o">*</span> <span class="n">pw</span> <span class="o">=</span> <span class="k">new</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="p">)</span> <span class="n">Widget</span><span class="p">;</span><span class="c1">//传入ostream
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// 有这样一个placement-new,接收一个ostream来log分配时的相关信息
+</span><span class="c1"></span><span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">logStream</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span>
+<span class="n">Widget</span><span class="o">*</span> <span class="n">pw</span> <span class="o">=</span> <span class="k">new</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="p">)</span> <span class="n">Widget</span><span class="p">;</span><span class="c1">//传入ostream
+</span></code></pre></td></tr></table>
 </div>
 </div><p>对于任何的new对象构造过程，至少可分为下述2个过程：</p>
 <ol>
@@ -1251,15 +1252,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Widget</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">logStream</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//不抛异常时，最后对象析构时正常调用这个
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="kt">void</span> <span class="k">operator</span> <span class="nf">delete</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pMemory</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//new抛异常时，调用这个 额外参数个数和类型都一致的 placement-delete
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="kt">void</span> <span class="k">operator</span> <span class="nf">delete</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pMemory</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">logStream</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">Widget</span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">static</span> <span class="kt">void</span><span class="o">*</span> <span class="k">operator</span> <span class="k">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">logStream</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span>
+    <span class="c1">//不抛异常时，最后对象析构时正常调用这个
+</span><span class="c1"></span>    <span class="k">static</span> <span class="kt">void</span> <span class="k">operator</span> <span class="nf">delete</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pMemory</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="c1">//new抛异常时，调用这个 额外参数个数和类型都一致的 placement-delete
+</span><span class="c1"></span>    <span class="k">static</span> <span class="kt">void</span> <span class="k">operator</span> <span class="nf">delete</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pMemory</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">logStream</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>⚠️  <strong>One More Thing</strong>  : C++ 在global 作用域提供以下形式的 operator new:</p>
 <div class="highlight"><div class="chroma">
@@ -1269,10 +1270,10 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">nothrow_t</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span><span class="c1">//见条款49 new-Handler的行为
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bad_alloc</span><span class="p">);</span>
+<span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="kt">void</span> <span class="o">*</span> <span class="k">operator</span> <span class="nf">new</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">nothrow_t</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span><span class="c1">//见条款49 new-Handler的行为
+</span></code></pre></td></tr></table>
 </div>
 </div><p>😎 所以，如果在class 内声明了上述 operator new， 则global作用域的 operator new 会被<code>名称遮掩</code>。</p>
 <p>🤔 <code>解决办法</code>：在基类对global作用域的 ::operator new 进行封装调用，然后在子类中使用using 声明式破除名称遮掩。</p>
@@ -1298,17 +1299,17 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">BaseWarn</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetWarnInfo</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;Base&#34;</span><span class="p">;</span> <span class="p">}</span> 
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DerivedWarn</span> <span class="o">:</span><span class="k">public</span> <span class="n">BaseWarn</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetWarnInfo</span><span class="p">()</span>  <span class="p">{</span><span class="c1">//缺了const 
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="s">&#34;Derived&#34;</span><span class="p">;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="k">class</span> <span class="nc">BaseWarn</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetWarnInfo</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&#34;Base&#34;</span><span class="p">;</span> <span class="p">}</span> 
+<span class="p">};</span>
+<span class="k">class</span> <span class="nc">DerivedWarn</span> <span class="o">:</span><span class="k">public</span> <span class="n">BaseWarn</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+    <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">GetWarnInfo</span><span class="p">()</span>  <span class="p">{</span><span class="c1">//缺了const 
+</span><span class="c1"></span>        <span class="k">return</span> <span class="s">&#34;Derived&#34;</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>如上代码所示，没有成功实现虚函数重写，而是造成了“<strong>名称遮掩</strong>”。</p>
 <p>这样的错误较为隐蔽，有些编译器会给出警告信息，有些甚至连警告信息都没有（Ps：我自行测试了VS2017，没有warning信息）。</p>
@@ -1375,9 +1376,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// 假设有个函数 double calcDaySale(int);
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">result_of</span><span class="o">&lt;</span><span class="n">calcDaySale</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span><span class="c1">//x就是double类型. C++11中直接 std::result_of
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="c1">// 假设有个函数 double calcDaySale(int);
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">tr1</span><span class="o">::</span><span class="n">result_of</span><span class="o">&lt;</span><span class="n">calcDaySale</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;::</span><span class="n">type</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span><span class="c1">//x就是double类型. C++11中直接 std::result_of
+</span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -1408,8 +1409,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-07-07&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/34afa92fa45278d71f9fce0fbf267eb1baa3dd19" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 34afa92fa45278d71f9fce0fbf267eb1baa3dd19: &lt;published&gt; 添加effective-c&#43;&#43;系列list提示">
-                                    <i class="fas fa-hashtag fa-fw"></i>34afa92</a></span>
+                <span>更新于 2022-05-20</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1488,13 +1488,13 @@
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -10,7 +10,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kissingfire123.github.io/2021/12/01_ten_linux_useful_commands/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-18T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-08-01T20:57:53+08:00" />
+<meta property="article:modified_time" content="2021-12-18T00:00:00+00:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="10个容易遗忘但好用的Linux命令"/>
 <meta name="twitter:description" content="摘要：10个简单好用的Linux命令"/>
@@ -24,8 +25,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kissingfire123.github.io\/2021\/12\/01_ten_linux_useful_commands\/"
-        },"genre": "posts","keywords": "shell脚本, linux","wordcount":  1428 ,
-        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/01_ten_linux_useful_commands\/","datePublished": "2021-12-18T00:00:00+00:00","dateModified": "2022-08-01T20:57:53+08:00","publisher": {
+        },"genre": "posts","keywords": "shell脚本, linux","wordcount":  1429 ,
+        "url": "https:\/\/kissingfire123.github.io\/2021\/12\/01_ten_linux_useful_commands\/","datePublished": "2021-12-18T00:00:00+00:00","dateModified": "2021-12-18T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -116,7 +117,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">10个容易遗忘但好用的Linux命令</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>     "Benjamin Lee"</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%84%9A%E6%9C%AC/"><i class="far fa-folder fa-fw"></i>脚本</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-18">2021-12-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1428 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-12-18">2021-12-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1429 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2021/12/01_ten_linux_useful_commands/" class="leancloud_visitors" data-flag-title="10个容易遗忘但好用的Linux命令">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -161,8 +162,8 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ pgrep -u  username_xx
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">$ pgrep -u  username_xx
+</code></pre></td></tr></table>
 </div>
 </div><p>​	这个命令相当于：</p>
 <div class="highlight"><div class="chroma">
@@ -171,9 +172,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">##效果待定,awk命令不熟悉(逃</span>
-</span></span><span class="line"><span class="cl">ps -ef <span class="p">|</span> egrep <span class="s1">&#39;^username_xx&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span>   
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">##效果待定,awk命令不熟悉(逃</span>
+ps -ef <span class="p">|</span> egrep <span class="s1">&#39;^username_xx&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span>   
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="2pstree">2）pstree</h3>
 <p>​	这个命令可以用树形的方式列出进程。</p>
@@ -191,15 +192,15 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span>
-</span></span><span class="line"><span class="cl"><span class="k">then</span>    <span class="nb">echo</span> <span class="s1">&#39;Usage: sqrt number&#39;</span>    
-</span></span><span class="line"><span class="cl">	<span class="nb">exit</span> <span class="m">1</span>
-</span></span><span class="line"><span class="cl"><span class="k">else</span>    
-</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> -e <span class="s2">&#34;sqrt(</span><span class="nv">$1</span><span class="s2">)\nquit\n&#34;</span> <span class="p">|</span> bc -q -i
-</span></span><span class="line"><span class="cl"><span class="k">fi</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#运行方式：./squar.sh   或者 ./square.sh  10.00</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span>
+<span class="k">then</span>    <span class="nb">echo</span> <span class="s1">&#39;Usage: sqrt number&#39;</span>    
+	<span class="nb">exit</span> <span class="m">1</span>
+<span class="k">else</span>    
+	<span class="nb">echo</span> -e <span class="s2">&#34;sqrt(</span><span class="nv">$1</span><span class="s2">)\nquit\n&#34;</span> <span class="p">|</span> bc -q -i
+<span class="k">fi</span>
+<span class="c1">#运行方式：./squar.sh   或者 ./square.sh  10.00</span>
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="4split">4）split</h3>
 <p>​	把一个很大的文件分割成一些小的文件，注意，split执行后源文件仍然在的。</p>
@@ -213,13 +214,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#例如把上文的square.sh分割成多个文件,先查看大小，发现是124字节</span>
-</span></span><span class="line"><span class="cl">ls -al 
-</span></span><span class="line"><span class="cl"><span class="c1">#sqx_为前缀，会得到3个文件:sqx_aa,sqx_ab,sqx_ac</span>
-</span></span><span class="line"><span class="cl">split  -b   <span class="m">50</span>  square.sh   sqx_  
-</span></span><span class="line"><span class="cl"><span class="c1">#把文件重新合并，使用cat命令即可</span>
-</span></span><span class="line"><span class="cl">cat  sqx_*  &gt; square.sh.new
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#例如把上文的square.sh分割成多个文件,先查看大小，发现是124字节</span>
+ls -al 
+<span class="c1">#sqx_为前缀，会得到3个文件:sqx_aa,sqx_ab,sqx_ac</span>
+split  -b   <span class="m">50</span>  square.sh   sqx_  
+<span class="c1">#把文件重新合并，使用cat命令即可</span>
+cat  sqx_*  &gt; square.sh.new
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="5nl">5）nl</h3>
 <p>​	nl命令其它和cat命令很像，只不过它会打上行号。</p>
@@ -234,14 +235,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#不加后续的head命令也可以</span>
-</span></span><span class="line"><span class="cl">benjamin@ubuntu:~$ nl square.sh <span class="p">|</span> head -n <span class="m">5</span>
-</span></span><span class="line"><span class="cl">     1	<span class="c1">#!/bin/bash</span>
-</span></span><span class="line"><span class="cl">     2	<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span>
-</span></span><span class="line"><span class="cl">     3	<span class="k">then</span>    <span class="nb">echo</span> <span class="s1">&#39;Usage: sqrt number&#39;</span>    
-</span></span><span class="line"><span class="cl">     4		<span class="nb">exit</span> <span class="m">1</span>
-</span></span><span class="line"><span class="cl">     5	<span class="k">else</span> 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#不加后续的head命令也可以</span>
+benjamin@ubuntu:~$ nl square.sh <span class="p">|</span> head -n <span class="m">5</span>
+     1	<span class="c1">#!/bin/bash</span>
+     2	<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span>
+     3	<span class="k">then</span>    <span class="nb">echo</span> <span class="s1">&#39;Usage: sqrt number&#39;</span>    
+     4		<span class="nb">exit</span> <span class="m">1</span>
+     5	<span class="k">else</span> 
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="6mkfifo">6）mkfifo</h3>
 <p>​	mkfifo的作用是创建一个有名管道，平时使用的较多的是无名管道，例如“ls | grep txt”.</p>
@@ -257,13 +258,13 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#在终端窗口1执行如下命令，ls没有输出内容</span>
-</span></span><span class="line"><span class="cl">mkfifo  pipex
-</span></span><span class="line"><span class="cl">ls  &gt;  pipex
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#打开终端窗口2执行如下命，会看到 ls 命令输出的内容</span>
-</span></span><span class="line"><span class="cl">cat  &lt;   pipex 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#在终端窗口1执行如下命令，ls没有输出内容</span>
+mkfifo  pipex
+ls  &gt;  pipex
+
+<span class="c1">#打开终端窗口2执行如下命，会看到 ls 命令输出的内容</span>
+cat  &lt;   pipex 
+</code></pre></td></tr></table>
 </div>
 </div><p><strong>拓展：常用的管道命令有</strong>==&gt;</p>
 <ul>
@@ -279,9 +280,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">###假设有个文件calc.so,命令后接文件名即可，具体参数选项可参照命令help内容</span>
-</span></span><span class="line"><span class="cl">ldd calc.so
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">###假设有个文件calc.so,命令后接文件名即可，具体参数选项可参照命令help内容</span>
+ldd calc.so
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="8col">8）col</h3>
 <p>​	Linux col命令用于过滤控制字符。</p>
@@ -294,9 +295,9 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#man命令用法，man + linux命令</span>
-</span></span><span class="line"><span class="cl">man man <span class="p">|</span> col -b &gt; man_help 
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#man命令用法，man + linux命令</span>
+man man <span class="p">|</span> col -b &gt; man_help 
+</code></pre></td></tr></table>
 </div>
 </div><h3 id="9xmlwf">9）xmlwf</h3>
 <p>​	这个命令可以让你检查一下一个XML文档是否是所有的tag都是正常的。</p>
@@ -311,12 +312,12 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>benjamin@RHELSVR5 ~<span class="o">]</span><span class="c1"># lsof | grep TCP</span>
-</span></span><span class="line"><span class="cl">httpd       <span class="m">548</span>    apache    4u     IPv6   <span class="m">14300967</span>    TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span><span class="line"><span class="cl">httpd       <span class="m">548</span>    apache    6u     IPv6   <span class="m">14300972</span>    TCP *:https <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span><span class="line"><span class="cl">httpd       <span class="m">561</span>    apache    4u     IPv6   <span class="m">14300967</span>    TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span><span class="line"><span class="cl">httpd       <span class="m">561</span>    apache    6u     IPv6   <span class="m">14300972</span>    TCP *:https <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>benjamin@RHELSVR5 ~<span class="o">]</span><span class="c1"># lsof | grep TCP</span>
+httpd       <span class="m">548</span>    apache    4u     IPv6   <span class="m">14300967</span>    TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+httpd       <span class="m">548</span>    apache    6u     IPv6   <span class="m">14300972</span>    TCP *:https <span class="o">(</span>LISTEN<span class="o">)</span>
+httpd       <span class="m">561</span>    apache    4u     IPv6   <span class="m">14300967</span>    TCP *:http <span class="o">(</span>LISTEN<span class="o">)</span>
+httpd       <span class="m">561</span>    apache    6u     IPv6   <span class="m">14300972</span>    TCP *:https <span class="o">(</span>LISTEN<span class="o">)</span>
+</code></pre></td></tr></table>
 </div>
 </div><p>还可以代替<code>netstat</code>命令查看本机开放的网络端口，执行<code>lsof -n -P -i TCP -s TCP:LISTEN</code>：</p>
 <div class="highlight"><div class="chroma">
@@ -327,15 +328,17 @@
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[</span>benjamin@Mac-mini<span class="o">]</span><span class="c1">#  lsof -n -P -i TCP -s TCP:LISTEN</span>
-</span></span><span class="line"><span class="cl">COMMAND     PID     USER   FD   TYPE    DEVICE   SIZE/OFF NODE NAME
-</span></span><span class="line"><span class="cl">PicGo      <span class="m">4627</span> benjamin   55u  IPv4 0x37a9d32411      0t0  TCP 127.0.0.1:36677 <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span><span class="line"><span class="cl">nginx     <span class="m">40321</span> benjamin    8u  IPv4 0x37a9d32411      0t0  TCP *:1935 <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span><span class="line"><span class="cl">nginx     <span class="m">40321</span> benjamin    9u  IPv4 0x37a9d32411      0t0  TCP *:12306 <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span><span class="line"><span class="cl">nginx     <span class="m">40322</span> benjamin    8u  IPv4 0x37a9d32411      0t0  TCP *:1935 <span class="o">(</span>LISTEN<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="o">[</span>benjamin@Mac-mini<span class="o">]</span><span class="c1">#  lsof -n -P -i TCP -s TCP:LISTEN</span>
+COMMAND     PID     USER   FD   TYPE    DEVICE   SIZE/OFF NODE NAME
+PicGo      <span class="m">4627</span> benjamin   55u  IPv4 0x37a9d32411      0t0  TCP 127.0.0.1:36677 <span class="o">(</span>LISTEN<span class="o">)</span>
+nginx     <span class="m">40321</span> benjamin    8u  IPv4 0x37a9d32411      0t0  TCP *:1935 <span class="o">(</span>LISTEN<span class="o">)</span>
+nginx     <span class="m">40321</span> benjamin    9u  IPv4 0x37a9d32411      0t0  TCP *:12306 <span class="o">(</span>LISTEN<span class="o">)</span>
+nginx     <span class="m">40322</span> benjamin    8u  IPv4 0x37a9d32411      0t0  TCP *:1935 <span class="o">(</span>LISTEN<span class="o">)</span>
+
+</code></pre></td></tr></table>
 </div>
 </div><p>杀死占用指定端口的进程：</p>
 <p>比如hugo服务的默认预览端口1313被占用了,执行下方指令：</p>
@@ -348,19 +351,18 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo lsof -i :1313
-</span></span><span class="line"><span class="cl"><span class="c1"># 输出端口相关的进程列表，第一列就是command,比如说是nginx</span>
-</span></span><span class="line"><span class="cl">ps -ef <span class="p">|</span> grep hugo 
-</span></span><span class="line"><span class="cl"><span class="c1"># 输出所有nginx的进程,第二列就是PID，找到对应的那个nginx进程PID,比如4366</span>
-</span></span><span class="line"><span class="cl">sudo <span class="nb">kill</span>  -9  <span class="m">4366</span>
-</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">sudo lsof -i :1313
+<span class="c1"># 输出端口相关的进程列表，第一列就是command,比如说是nginx</span>
+ps -ef <span class="p">|</span> grep hugo 
+<span class="c1"># 输出所有nginx的进程,第二列就是PID，找到对应的那个nginx进程PID,比如4366</span>
+sudo <span class="nb">kill</span>  -9  <span class="m">4366</span>
+</code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-08-01&nbsp;<a class="git-hash" href="https://github.com/kissingfire123/kissingfire123.github.io.git/commit/0e8acc3eef804c6b53bb3300449678cc7349c198" target="_blank" title="commit by kissingfire123(lwy13697320205@163.com) 0e8acc3eef804c6b53bb3300449678cc7349c198: rename some markdown files">
-                                    <i class="fas fa-hashtag fa-fw"></i>0e8acc3</a></span>
+                <span>更新于 2021-12-18</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -439,13 +441,13 @@
                 
             
             <div class="footer-line">
-				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128293 字 </span>
+				<span > 本站 <i class='fas fa-thin fa-file-word'></i> 总计 128055 字 </span>
             </div>
 
             <div class="footer-line">
 				<span id="run-time"></span>
             </div>
-            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+            <div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2021 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Benjamin Lee</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
